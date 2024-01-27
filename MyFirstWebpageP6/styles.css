@@ -1,0 +1,40 @@
+td {
+    min-width: 100px;
+    text-align:center;
+    color: rgba(122, 30, 214, 0.853);
+}
+
+table, td, th {
+    border: 5px groove hotpink;
+    border-collapse: collapse;
+}
+
+/* References the elements with the class "nav-list" */
+.nav-list li
+{
+    background-color: maroon;
+    list-style-type: none;
+    padding: 10px 5px;
+    display: inline-flex;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: white;
+}
+
+.active {
+    color: hotpink;
+    background-color: blue;
+}
+
+.nav-list li a:hover{
+    background-color:rgba(179, 169, 169, 0.853);
+}
+
+
+
+/* referncing an 'id'*/
+#top {
+
+}

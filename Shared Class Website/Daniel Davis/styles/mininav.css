@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0px 0px 10px 0px;
+  overflow-x: hidden;
+  width: 180px;
+}
+
+header:hover {
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+header:hover nav {
+  margin-right: 20px;
+}
+
+nav a:hover {
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.wordmark {
+  font-size: 1.5em;
+  font-weight: bold;
+  order: 1;
+  white-space: nowrap;
+}
+
+nav {
+  display: flex;
+  order: 2;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 5px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px 10px 0px 0px;
+  width: 100%;
+}

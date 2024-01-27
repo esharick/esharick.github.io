@@ -1,0 +1,38 @@
+table, th, td {
+    border: 5px ridge  lightblue;
+    border-collapse: collapse;
+    padding: 2px;
+    margin: 5px;
+    
+    /* border-radius: 10px; */
+}
+
+table {
+    width: 400px;
+}
+
+ul {
+    list-style-type: none;
+    background-color:black;
+    padding: 14px;
+}
+
+li {
+    display: inline-flex;
+}
+
+li a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 3px;
+    text-align: center;
+}
+
+li a:hover {
+    background-color: grey;
+}
+
+.active {
+    background-color: honeydew;
+    color: black;
+}

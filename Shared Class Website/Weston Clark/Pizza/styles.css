@@ -1,0 +1,72 @@
+body {
+    background: linear-gradient(90deg,mediumaquamarine, #9198e5, mediumaquamarine);
+}
+.nav-list li{
+    background: linear-gradient(rgb(70, 70, 255), #4cd681);
+    display: inline-flex;
+    justify-content:space-between;
+    list-style:none;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid black;
+}
+.nav-list li a {
+    text-decoration: none;
+    color: white;
+}
+.nav-list li:hover{
+    background: linear-gradient(#e66465, #9198e5);
+    border: 2px solid white;
+}
+.nav-list ul {
+    margin-top: 30px;
+}
+.nav-list ul:hover {
+    transition: transform 35s ease;
+    transform: translateX(100%);
+}
+
+.pizza {
+    position: absolute;
+    top: 15%;
+    left: 35%;
+}
+.pizza:hover {
+    transition: transform 30s ease-in;
+    transform: rotate(36000deg);
+    transform-origin: 150px 150px;
+}
+.crust {
+    width: 400px;
+    aspect-ratio: 1;
+    background-color: #ffcc66;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.tomato-sauce {
+    width: 380px;
+    aspect-ratio: 1;
+    background-color: #ff3333;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.cheese {
+    width: 320px;
+    aspect-ratio: 1;
+    background-color: cornsilk;
+    border-radius: 50%;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+.pepperoni {
+    width: 20px;
+    height: 20px;
+    background-color: #ff3333;
+    border-radius: 50%;
+    position: absolute;
+}

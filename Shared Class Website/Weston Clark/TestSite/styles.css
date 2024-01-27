@@ -1,0 +1,21 @@
+body{
+    
+    overflow: auto;
+}
+div {
+    display: inline;
+}
+td {
+    min-width: 200px;
+    text-align:center;
+    color: brown;
+}
+table, td, th {
+    border: 5px dotted brown;
+    border-collapse: collapse;
+    border-radius: 69px;
+}
+table {
+    top: 0;
+    position: sticky;
+}

@@ -1,0 +1,11 @@
+td{
+    min-width: 100px;
+    text-align:center;
+    color:rgba(122, 39, 214, 0.853)
+}
+table, td,th{
+    border:5px groove hotpink;
+
+    /* border:1px solid black; */
+    border-collapse: collapse;
+}
