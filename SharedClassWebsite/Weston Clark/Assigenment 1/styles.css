@@ -1,8 +1,14 @@
+body {
+    overflow-x: hidden;
+    background-color: blanchedalmond;
+}
 ol {
     display: flex;
     list-style: none;
     padding: 0%;
     resize: horizontal;
+    flex-wrap: nowrap;
+    animation: spin 30s linear infinite;
 }
 li{
     margin-right: 20px;
@@ -10,13 +16,17 @@ li{
     background-color: aqua;
     text-align: center;
     width: 100%;
-    resize: horizontal;
+    min-width: 125px;
+}
+.late{
+    transform: translate(-242vw);
 }
 h3, h1 {
     background-color: tomato;
 }
 p {
     background-color: aqua;
+    font-size: medium;
 }
 img {
     height: 80px;
@@ -32,6 +42,10 @@ th {
 td {
     background-color: aqua;
 }
+td:hover {
+    transition: transform 0.3s ease-in;
+    transform: scale(1.5);
+}
 .hor {
     display: flex;
 }
@@ -42,4 +56,11 @@ td {
 }
 .about {
     border: 5px solid black;
+}
+@keyframes spin {
+    from{
+        transform: translateX(0);
+    } to {
+        transform: translateX(121.5vw);
+    }
 }

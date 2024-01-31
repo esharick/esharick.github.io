@@ -1,9 +1,5 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
 header {
+  position: relative;
   background-color: #333;
   color: #fff;
   padding: 15px;
@@ -13,11 +9,18 @@ header {
   border-radius: 0px 0px 10px 0px;
   overflow-x: hidden;
   width: 180px;
+  transition: width 0.3s ease-out;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 header:hover {
   width: 100%;
-  padding-bottom: 20px;
 }
 
 header:hover nav {

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Notes</title>
+    <link rel="icon" type="image/x-icon" href="/bing.jfif">
+    <link rel="stylesheet" href="/MyFirstWebpageP6/styles.css">
+</head>
+
+<body>
+    <ul class="nav-list">
+        <li><a href="./">HTML Notes</a></li>
+        <li  class="active"><a href="./formDemo.html">Form Notes</a></li>
+    </ul>
+
+    <div>
+        <form id="greetingForm">
+            <label for="username">Enter name:</label>
+            <input type="text" id="username" name="username"/>
+            <input type="submit"/>
+        </form>
+    </div>
+    <p id="greeting"></p>
+
+    <script>
+        document.getElementById('greetingForm').addEventListener('submit', function (e) {
+            e.preventDefault(); //prevent redirect of page
+            var name = document.getElementById('username').value;
+            document.getElementById('greeting').innerHTML = name;
+        });
+    </script>
+
+</body>

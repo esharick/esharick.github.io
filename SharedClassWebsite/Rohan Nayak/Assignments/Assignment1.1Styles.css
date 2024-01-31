@@ -1,0 +1,36 @@
+h1 {color:purple}
+table, td, th {
+    border: 1px solid black;
+    min-width: 100px;
+    border-collapse: collapse;
+}
+table th{
+    /* margin-left: auto;
+    margin-right: auto; */
+    background-color: aqua;
+}
+
+
+.Kittyimages{
+    background-color: dodgerblue;
+    color: purple;
+}
+.Kittyimages li img{
+   
+    width: 165px;
+   
+}
+
+.Kittyimages li{
+
+    padding: 0px;
+    list-style: none;
+    display: inline-flex;
+}
+
+figcaption{
+    text-align: center;
+}
+#title{
+    text-align:center; 
+}

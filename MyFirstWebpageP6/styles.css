@@ -23,15 +23,18 @@ table, td, th {
     color: white;
 }
 
-.active {
-    color: hotpink;
-    background-color: blue;
+.nav-list li.active {
+    background-color: slategrey;
 }
+
+    .nav-list li.active a {
+        color: hotpink;
+    }
+
 
 .nav-list li a:hover{
     background-color:rgba(179, 169, 169, 0.853);
 }
-
 
 
 /* referncing an 'id'*/

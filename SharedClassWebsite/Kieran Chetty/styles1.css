@@ -1,0 +1,15 @@
+img{
+    height: 200px;
+    width: 50%px;
+}
+
+td {
+    min-width: 100px;
+    text-align:center;
+    color: rgba(12, 100, 0, 0.853);
+}
+
+table, td, th {
+    border: 5px groove blue;
+    border-collapse: collapse;
+}

@@ -1,0 +1,54 @@
+body {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/010/750/704/original/cats-seamless-pattern-cats-seamless-great-as-background-website-book-cover-banners-wallpapers-packaging-flat-style-vector.jpg');
+}
+
+h1 {
+    text-align: center;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+}
+
+.red {
+    color: red;
+}
+
+.orange {
+    color: orange;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.green {
+    color: green;
+}
+
+.blue {
+    color: blue;
+}
+
+.indigo {
+    color: indigo;
+}
+
+.violet {
+    color:violet;
+}
+
+table {
+    margin: 0 auto;
+    background-color: white;
+    border: 7px solid;
+    border-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+    border-image-slice: 1;
+    text-align: left;
+    padding: 7px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    background-color: #f2f2f2;
+}

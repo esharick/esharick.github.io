@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Projects | Mewing Central</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+    <link rel="stylesheet" href="../styles/theme.css" />
+    <link rel="stylesheet" href="../styles/navbar.css" />
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&family=Rubik:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- External CSS Libraries -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Opengraph metadata -->
+    <meta property="og:title" content="Projects | Mewing Central" />
+    <meta property="og:type" content="website" />
+  </head>
+
+  <body>
+    <header onmouseover="expandNavbar()" onmouseout="collapseNavbar()">
+      <div class="wordmark">Mewing Central</div>
+      <nav>
+        <a href="../index.html">Back</a>
+      </nav>
+    </header>
+  </body>
+  <div class="pure-u-md-1-1" style="height: 60px"></div>
+
+  <div class="center">
+    <div>
+      <h1 class="title">Projects</h1>
+    </div>
+  </div>
+
+  <div class="pure-u-md-1-1" style="height: 100px"></div>
+
+  <section id="card-container" class="pure-g">
+    <div class="card pure-g">
+      <div class="card-content">
+        <h1 class="title">Ethel's Furry Friends</h1>
+        <p>
+          January 28, 2024 -
+          <a href="https://schoology.tesd.net/assignment/7136185827/info"
+            >Assignment 1.1</a
+          >
+        </p>
+
+        <h3>Project Description</h3>
+        <a href="../cats/index.html">View</a>
+        <a href="../cats/index.html"><img src="./assets/cats.gif" /></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Design inspiration from
+    <a href="https://vivime.info/#projects">vivime.info</a>
+  </footer>
+
+  <style>
+    body {
+      min-height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--offwhite);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23404040' fill-opacity='0.7' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    }
+
+    .title {
+      font-size: 4em;
+      font-weight: 700;
+      margin: 0;
+      font-family: "Rubik", sans-serif;
+    }
+
+    .center {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .card {
+      font-family: "Rubik", sans-serif;
+      padding: 1.5rem;
+      padding-top: 1.25rem;
+      background-color: var(--secondary-color);
+      color: var(--offwhite);
+      border-radius: 0.75rem;
+      height: 475px;
+      width: 600px;
+    }
+
+    .card > .card-content {
+      display: inline;
+      text-align: left;
+    }
+
+    .card > .card-content > .title {
+      font-size: 2em;
+      font-weight: 700;
+      margin-bottom: 0px;
+    }
+
+    .card > .card-content > p {
+      font-weight: 400;
+      padding-top: 0;
+      margin-bottom: 0px;
+      margin-top: 2px;
+    }
+
+    .card > .card-content > h3 {
+      font-size: 1.2em;
+      font-weight: 500;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .card > .card-content a {
+      color: #0081eb;
+    }
+
+    .card > .card-content > a {
+      font-size: 1em;
+      font-weight: 400;
+    }
+
+    .card > .card-content img {
+      margin-top: 15px;
+      width: 100%;
+      height: auto;
+    }
+
+    #card-container {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    footer a {
+      color: #0081eb;
+    }
+  </style>
+</html>

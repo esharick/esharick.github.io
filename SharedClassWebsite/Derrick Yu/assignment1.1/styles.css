@@ -1,0 +1,37 @@
+body{
+    background-color: lightsalmon;
+}
+h1{
+    font-size: 36px;
+    text-align: center;
+    background-color: salmon;
+    padding: 10px;
+}
+table{
+    
+    border: black ridge;
+    border-width: 2px;
+    padding: 20px;
+    border-collapse: collapse;
+}
+td{
+    border: black ridge;
+    border-width: 2px;
+    padding: 7px;
+    padding-right: 15px;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+li{
+    padding: 10px;
+    font-size: larger;
+}
+th{
+    font-size: 22px;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+img{
+    width:200px;
+}
