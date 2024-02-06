@@ -1,10 +1,30 @@
 table, th, td {
-    border: 5px ridge  lightblue;
+    /*border: 5px ridge  lightblue;*/
     border-collapse: collapse;
-    padding: 2px;
-    margin: 5px;
-    
+    padding: 9px;
+    margin: 5px;   
     /* border-radius: 10px; */
+}
+table {
+    border: solid 1px black;
+}
+
+tr {
+/*    border: solid 1px transparent;
+*/}
+
+tr:nth-child(even){
+    background-color: cornsilk;
+}
+
+    tr:hover {
+        /*    border: solid 1px gray;
+    border-collapse: collapse;*/
+        background-color: khaki;
+    }
+
+th {
+    background-color: lightsalmon;
 }
 
 table {
@@ -14,7 +34,9 @@ table {
 .navbar {
     list-style-type: none;
     background-color:black;
-    padding: 14px;
+    padding: 7px;
+    margin: -8px 0 0 -8px;
+    width: 100vw;
 }
 
 .navbar li {
@@ -39,3 +61,37 @@ table {
 .navbar li.active a {
     color: black;
 }
+
+/**:hover {
+    cursor: progress;
+}*/
+
+input, select {
+    font-size:12px;
+    padding: .5em;
+    margin: 2px;
+}
+
+    input[type="text"] {
+        background-color: aquamarine;
+        width: 30vw;
+        min-width: 200px;
+    }
+
+label[for="no-coffee"] {
+    font-size: 30px;
+}
+
+label {
+    font-variant: small-caps;
+}
+
+input[type="submit"] {
+    display: block;
+    visibility: hidden;
+}
+
+label::selection {
+    text-decoration: line-through red 3px;
+}
+

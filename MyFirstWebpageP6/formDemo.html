@@ -12,23 +12,100 @@
 <body>
     <ul class="nav-list">
         <li><a href="./">HTML Notes</a></li>
-        <li  class="active"><a href="./formDemo.html">Form Notes</a></li>
+        <li class="active"><a href="./formDemo.html">Form Notes</a></li>
     </ul>
 
+
+    <form id="greetingForm">
+        <label for="username">Enter name:</label>
+        <input type="text" id="username" name="username" required />
+        <input type="submit" />
+    </form>
+
+    <p id="greeting"></p>
+
     <div>
-        <form id="greetingForm">
-            <label for="username">Enter name:</label>
-            <input type="text" id="username" name="username"/>
-            <input type="submit"/>
+        <form id="userpw" action="somescript" method="post">
+            <label for="username2">Enter name:</label>
+            <input type="text" id="username2" name="username2" required />
+            <br />
+            <label for="password">Enter password:</label>
+            <input type="password" id="password" name="password" required />
+            <input type="submit" />
         </form>
     </div>
-    <p id="greeting"></p>
+    <br />
+
+
+    <div>
+        <form id="surveyForm">
+            <label for="name">Enter name:</label>
+            <input type="text" id="name" name="name" required />
+            <br />
+
+            <label for="email">Enter email:</label>
+            <input type="email" id="email" name="email" />
+            <br />
+            <br />
+
+            <label>Do you have any pets?</label>
+            <input type="radio" id="yesPets" name="pets" value="yes" required />
+            <label for="yesPets">Yes</label>
+            <input type="radio" id="noPets" name="pets" value="no" required />
+            <label for="noPets">No</label>
+            <br />
+            <br />
+
+            <div id="petchecks">
+
+            <label>What kind of pets do you have?</label>
+            <br />
+            <input type="checkbox" id="petsDogs" name="petsList" value="dogs" />
+            <label for="petsDogs">Dog(s)</label>
+            <input type="checkbox" id="petsCats" name="petsList" value="cats" />
+            <label for="petsCats">Cat(s)</label>
+            <input type="checkbox" id="petsFish" name="petsList" value="fish" />
+            <label for="petsFish">Fish</label>
+            <input type="checkbox" id="petsRabbits" name="petsList" value="rabbits" />
+            <label for="petsRabbits">Rabbit(s)</label>
+            <input type="checkbox" id="petsSnakes" name="petsList" value="snakes" />
+            <label for="petsSnakes">Snake(s)</label>
+            <input type="checkbox" id="petsGuineaPigs" name="petsList" value="guineaPigs" />
+            <label for="petsGuineaPigs">Guinea Pig(s)</label>
+            <input type="checkbox" id="petsTurtles" name="petsList" value="turtles" />
+            <label for="petsTurtles">Turtle(s)</label>
+            </div>
+            <br />
+            <br />
+
+            <label for="ownershipSelect">How long have you had pets?</label>
+            <select id="ownershipSelect" name="ownershipSelect">
+                <option value="-1"></option>
+                <option value="0">0 years</option>
+                <option value="1">1-2 years</option>
+                <option value="2">3-5 years</option>
+                <option value="3">5+ years</option>
+            </select>
+            <br />
+            <br />
+
+            <label for="comments">Additional Comments:</label>
+            <br />
+            <textarea id="comments" name="comments" rows="5"></textarea>
+            <br />
+            <input type="submit" />
+
+        </form>
+    </div>
+
+
+
 
     <script>
         document.getElementById('greetingForm').addEventListener('submit', function (e) {
             e.preventDefault(); //prevent redirect of page
             var name = document.getElementById('username').value;
-            document.getElementById('greeting').innerHTML = name;
+            document.getElementById('greeting').innerHTML = "Hello, " + name + "!";
         });
     </script>
 
