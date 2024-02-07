@@ -11,11 +11,29 @@
 			border-radius:0px 0px 30px 30px;
         }
     </style>
-	
+<head class="background">	  
+	<style>
+html {
+		height: 100%;
+		width: 100%;
+		background-image: repeating-linear-gradient(45deg, transparent, transparent 64px, #272727 18px, #272727 136px);
+		background-color: #ff4747;
+		background-repeat: repeat-x;
+		animation-name: shift;
+		animation-duration: 2s; /* Smaller is faster */
+		animation-iteration-count: infinite;
+        animation-timing-function: linear;		
+}
+
+@keyframes shift {  
+	0%   {background-position: 190 0;}
+	100% {background-position: 0% 0;}
+}
+</style>
+</head>
+
 <div class="header">
-  <head>
-  <h1 style= "color: #000000; font-size: 50px; font-weight: bold; font-family: Georgia">Welcome to My Homepage!</h1>
-  </head>
+  <h1 style= "color: #000000; font-size: 50px; font-weight: bold; font-family: Georgia">Welcome to My Homepage</h1>
 </div>
 
 
@@ -29,22 +47,38 @@
 			background-color: lightgray;
 			text-align: center;
 			border-radius:30px 30px 30px 30px;
+	}
+		
+	.middleBox {
+			align-content: center;
+			height: 290px + text;	
+			width: 550px;
+			margin: 0;
+			border: 6px solid #272727;
+			background-color: lightgray;
+			text-align: center;
+			border-radius:30px 30px 30px 30px;
         }
     </style>
     <center>
   <h1 style= "color: #FFFFFF; text-shadow: 1px 1px 2px black, 0 0 25px gray, 0 0 5px darkgray;">Created by Nicholas Cabel</h1>
-   </center>	
+   </center>
+	
 <body>
-
-
-
+	<center>
+	<div class="middleBox">
+	 <h3> New Content 😏</h3> 
+		</div>
+	</center>
+	
+	
 	<div class="leftBox">
 	<h1>Homework:<h1>
 	<text-align="left"
-<li><a href="./Homework/indexcats.html">The Cats</a></li>
+<li><a href="./Homework/indexcats.html">Aunt Ethal</a></li>
 <p></p>
 <text-align="left"
-<li><a href="./Homework/indexcats.html">The Project #2</a></li>
+<li><a href="./Homework/indexJack.html">"Uncle Jack"</a></li>
 <p></p>
 <text-align="left"
 <li><a href="./Homework/indexcats.html">Project #3</a></li>
@@ -54,7 +88,7 @@
 <style>
 	.rightBox {
 			float: right;
-			height: 180px + text;	
+			height: 200px;	
 			width: 260px;
 			margin: 0;
 			border: 4px solid #272727;
@@ -62,40 +96,34 @@
 			text-align: center;
 			border-radius:30px 30px 30px 30px;
         }
-		
-	.icons {
-			float: left;
+	
+    .circles {
+		display: flex;
+		justify-content: center;
+		gap: 16px;
 	}
-    </style>
-
-
-	<div class="rightBox">
-		<h1>Socials:<h1>
+	
 		
-		<h2><a href="https://www.twitch.tv/lazer_crafttv">Twitch</a></h2>
-	</div>
-</body>
-
-  <style>
-html {
-		height: 100%
-		width: 100%;
-		background-image: repeating-linear-gradient(45deg, transparent, transparent 92px, #272727 18px, #272727 136px);
-		background-color: #ff4747;
-		background-repeat: repeat-x;
-		}
-div {
-		animation-name: shift;
-		animation-duration: 5s;
-		animation-iteration-count: infinite;
-
-}		
-@keyframes shift {
-  0%   {left:0px; top:0px;}
-  50%  {left:200px; top:0px;}
-  100% {left:0px; top:0px;}
+	.circle {
+  height: 75px;
+  width: 75px;
+  background-color: #FFFFFF;
+  border: 3px solid #272727;
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px black, 0 0 25px gray, 0 0 5px darkgray;
+  align-content:center;
+  border-spacing: 50px;
+  float: left;
 }
-</style>
-
+    </style>
+	
+	<div class="rightBox">
+		<h1>Socials:</h1>
+	<div class="circles">
+		<div class="circle"><a title="YouTube" href="https://www.youtube.com/channel/UC68PAy-J02anyv3U0jcCtOA"><svg viewBox="0 0 20 20"><path d="M16.848 6.244a1.79 1.79 0 00-1.259-1.26C14.471 4.68 10 4.68 10 4.68s-4.47 0-5.589.294c-.6.165-1.094.659-1.259 1.27-.294 1.119-.294 3.437-.294 3.437s0 2.33.294 3.436a1.79 1.79 0 001.26 1.259C5.54 14.68 10 14.68 10 14.68s4.471 0 5.59-.294a1.79 1.79 0 001.258-1.26c.295-1.117.295-3.435.295-3.435s.011-2.33-.295-3.448z" fill="red"></path><path d="M12.294 9.68L8.576 7.538v4.283l3.718-2.141z" fill="#fff"></path></svg></a></div>
+		<p></p>
+		<div class="circle"><a title="Twitch" href="https://www.twitch.tv/lazer_crafttv"><svg x="0px" y="0px" width="65" height="65" viewBox="0 -4 48 48">
+<path d="M 15.189453 6 C 13.33091 6 11.593951 6.9426764 10.580078 8.5019531 L 5.8417969 15.78125 L 5.9003906 15.701172 C 5.3170163 16.479504 5 17.426275 5 18.400391 L 5 36.5 C 5 38.967501 7.0324991 41 9.5 41 L 15 41 L 15 44.5 A 1.50015 1.50015 0 0 0 16.5 46 L 17.671875 46 C 18.599988 46 19.490527 45.630566 20.146484 44.974609 L 24.121094 41 L 30.173828 41 C 31.441313 41 32.649666 40.463511 33.501953 39.527344 L 41.050781 31.224609 L 41.048828 31.224609 C 42.30393 29.844549 43 28.045092 43 26.179688 L 43 10.5 C 43 8.0324991 40.967501 6 38.5 6 L 15.189453 6 z M 15.189453 9 L 23 9 L 38.5 9 C 39.346499 9 40 9.6535009 40 10.5 L 40 26.179688 C 40 27.300283 39.583024 28.379091 38.830078 29.207031 L 38.371094 29.710938 L 38.400391 29.650391 L 35.662109 32.681641 C 34.903109 33.521641 33.825359 34 32.693359 34 L 24.5 34 L 19 39 L 19 34 L 15 34 C 13.9 34 13 33.1 13 32 L 13 11 C 13 10.459499 13.216346 9.9711738 13.564453 9.6113281 C 14.011909 9.2264864 14.582744 9 15.189453 9 z M 23.476562 14.978516 A 1.50015 1.50015 0 0 0 22 16.5 L 22 24.5 A 1.50015 1.50015 0 1 0 25 24.5 L 25 16.5 A 1.50015 1.50015 0 0 0 23.476562 14.978516 z M 31.476562 14.978516 A 1.50015 1.50015 0 0 0 30 16.5 L 30 24.5 A 1.50015 1.50015 0 1 0 33 24.5 L 33 16.5 A 1.50015 1.50015 0 0 0 31.476562 14.978516 z"></path></svg></a></div></div>
+	</div>		
+</body>
 </html> 
- 
