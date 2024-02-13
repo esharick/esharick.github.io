@@ -13,6 +13,11 @@
   			-webkit-text-stroke-color: black;
 		}
 		
+		
+		a:link, a:visited, a:hover, a:active {
+  		color: inherit;
+  		text-decoration: inherit;
+		}
 	.header
 		{
 			flex-direction: column;
@@ -48,7 +53,7 @@
 	<head>
 		<center>
 		<div class="title"; style: "font-size: 5em">
-			<h1 href="./Homework/indexJack.html" style="font-size: em5">Big Jack and Son's</h1>
+			<h1 style="font-size: em5"><a href="/indexJack.html">Big Jack and Son's</a></h1>
 		</div>
 		</center>
 	</head>
@@ -107,28 +112,29 @@
 <style>
 
 #reviews {
-  height: 200px;
+  height: auto;
   width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
+  overflow: auto;
+  white-space: normal;
 }
 
 .review {
-  width: 200px + text;
-  float: inherit;
+  width: 300;
   display: inline-block;
   margin: 5px;
   padding: 10px;
   border: 5px solid #ddd;
   animation: scroll;
-  animation-duration: 15s;
+  animation-duration: 20s;
   animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  animation-timing-function: ease-in;
 	}
-	
+
+
 @keyframes scroll {
-  0% {transform: translateX(0%);}
-  100% {transform: translateX(-200%);}
+  0%  {transform: translateX(70%);}
+  50% {transform: translateX(120%);}
+  100% {transform: translateX(70%);}
 }
 </style>
 <body>
@@ -136,16 +142,20 @@
 <div id="reviews">
   <div class="review">
     <h2>Federal Bureau of Investigation</h2>
-    <p>We recommend these "idiots" for any weapon related service. The get it done though their methods are shady.</p>
+    <span>We recommend these "idiots" for any weapon related service. The get it done though their methods are shady.</span>
   </div>
   <div class="review">
     <h2>Duolingo</h2>
-    <p>Ever since Jack's two kids missed their spanish lesson, they have been the best suplier one could ask for. They have provied many gadgets one include a device that can track down any Duo Slackers. They no spanish, they vanish.</p>
+    <span>Ever since Jack's two kids missed their spanish lesson, they have been the best suplier one could ask for. They have provied many gadgets one include a device that can track down any Duo Slackers. They no spanish, they vanish.</span>
   </div>
   <div class="review">
-    <h2>Deep State</h2>
-    <p>Ever since Oppenheimer finished the bomb, he became to much of a risk. He had built a bomb that could travel far but not enough.</p>
-	<p>Confirmed Purchase: August 4, 1945</p>
+    <h2>The Deep State</h2>
+    <span>Ever since Oppenheimer finished the bomb, he became to much of a risk. He had built a bomb that could travel far but not enough.</span>
+	<span>Confirmed Purchase: August 4, 1945</span>
+</div>
+	<div class="review">
+    <h2>Goggle</h2>
+    <span>Ever wonder how everything you use runs at such incredable speeds. It's because of us!</span>
 </div>
 	
 </body>
