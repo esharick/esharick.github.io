@@ -1,54 +1,128 @@
-body {
-    background-image: url('https://static.vecteezy.com/system/resources/previews/010/750/704/original/cats-seamless-pattern-cats-seamless-great-as-background-website-book-cover-banners-wallpapers-packaging-flat-style-vector.jpg');
+/* Main Page */
+
+.mainPage {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
-    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 }
 
-.red {
-    color: red;
+p {
+    line-height: 1.6;
 }
 
-.orange {
-    color: orange;
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.yellow {
-    color: yellow;
+li {
+    margin-bottom: 20px;
+    text-align: center;
+    flex: 0 0 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+    margin-right: 20px;
 }
 
-.green {
-    color: green;
+li:last-child {
+    margin-right: 0;
 }
 
-.blue {
-    color: blue;
+li img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-.indigo {
-    color: indigo;
+li img:hover {
+    transform: scale(1.05);
 }
-
-.violet {
-    color:violet;
+li img:hover {
+    transform: scale(1.05);
 }
-
-table {
-    margin: 0 auto;
+.section {
     background-color: white;
-    border: 7px solid;
-    border-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
-    border-image-slice: 1;
-    text-align: left;
-    padding: 7px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
-th {
-    background-color: #f2f2f2;
+.section-header {
+    font-size: 24px;
+    color: cornflowerblue;
+    margin-bottom: 10px;
 }
 
-td {
-    background-color: #f2f2f2;
+.button {
+    text-align: center;
+}
+
+.button a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: lightblue;
+    color:black;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    font-size: 16px;
+    border: none;
+}
+
+.button a:hover {
+    background-color: skyblue;
+}
+
+/* Contact Form */
+
+.form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"], textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: lightblue;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background-color: skyblue;
 }

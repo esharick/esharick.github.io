@@ -1,0 +1,123 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial;
+}
+
+.navbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar button:hover, button:hover .navbtn {
+    background-color: red;
+}
+
+img {
+    display: block;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    position: relative;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    border: #333;
+    border-style: solid;
+    border-radius: 10%;
+    border-width: 20px;
+    color: white;
+    text-align: center;
+}
+
+.center h1 {
+    font-size: 60px;
+    font-family: Helvetica;
+    font-weight: bold;
+    margin: 0px;
+    border: white;
+    border-bottom-style: solid;
+}
+
+.center h2 {
+    font-size: 20px;
+    font-family: Lucida Handwriting;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.story {
+    background-color: royalblue;
+    font-family: Helvetica;
+    color: white;
+    margin: 10px;
+    position: absolute;
+}
+
+.story h1 {
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+.story p {
+    font-size: 20px;
+    padding: 40px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    border-bottom: solid;
+    margin-bottom: 0px;
+}
+
+.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 300px;
+    margin-left: 13px;
+    margin-right: 13px;
+    background-color: white;
+}
+  
+.gallery:hover {
+    border: 1px solid #777;
+}
+  
+.gallery img {
+    width: 100%;
+    height: auto;
+}
+  
+.desc p {
+    padding: 15px;
+    text-align: center;
+    font-family: Helvetica;
+    color: black;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: lightgray;
+}

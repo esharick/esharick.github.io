@@ -7,9 +7,10 @@ header {
   justify-content: space-between;
   align-items: center;
   border-radius: 0px 0px 10px 0px;
-  overflow-x: hidden;
+  overflow: hidden;
   width: 180px;
   transition: width 0.3s ease-out;
+  max-height: 30px;
 }
 
 header::before {

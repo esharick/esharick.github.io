@@ -1,0 +1,150 @@
+#navBar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+}
+li a.active {
+  background-color: #ddd;
+}
+#navBar li {
+    float: left; 
+
+}
+body{
+    background-color: black;
+}
+#navBar{
+    background-color: gray;     
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+#navBar img{
+    height: 60px;
+}
+#navBar h1{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 60px;
+    color: black;
+    text-align: left;
+    margin-bottom: 0px;
+    margin-left: -100px;
+}
+
+#navBar a{
+    font-size: 34px;
+    font-family: Arial;
+    font-weight: bold;
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 18px;
+}
+
+#navBar li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.parent { 
+    position: relative; 
+} 
+
+.child { 
+    padding-left: 50px;
+    top: 100px; 
+    padding-top: 0px;
+    left: 0; 
+    width: 550px;
+    height: 250px; 
+    position: absolute; 
+    background-color: rgba(0,0,0,0.4);
+} 
+
+.child h1{ 
+    font-size: 60px; 
+    color: black; 
+    font-family:'Segoe UI', sans-serif; 
+} 
+
+h2{
+    margin: 10px;
+    padding: 20px;
+    padding-left: 40px;
+    margin-top: 90px;
+    margin-bottom: 40px;
+    background-color: rgba(200,200,200,0.2);;
+    color: #dddddd;
+    font-size: 50px;
+    font-family: Tahoma, sans-serif; 
+    word-spacing: 5px;
+}
+
+p{
+    font-size: 30px;
+    color: #dddddd;
+    font-family: Tahoma, sans-serif;
+    line-height: 1.5;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+}
+.tab {
+    display: inline-block;
+    margin-left: 80px;
+}
+
+table{
+    table-layout:fixed;
+}
+
+h3{
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+input{
+    font-size: 20px;
+}
+
+input[type="email"]{
+    width: 400px;
+}
+
+input[type="text"]{
+    width: 600px;
+    height: 400px;
+}
+
+textarea{
+    font-size: 20px;
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type="submit"]{
+    font-size: 28px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 28px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #000;
+    background-color: #eeeeee;
+    border-width: 1px;
+    border-radius: 5px;
+  }
+  
+  .button:hover {background-color: #888888; color: #fff; border: none;}
+  
+  .button:active {
+    background-color: #666666; 
+    color: #fff;
+    border: none;
+    transform: translateY(3px);
+  }

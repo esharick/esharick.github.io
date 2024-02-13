@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Demo</title>
+    <!-- setting tab icon -->
+    <link rel="icon" type="image/x-icon" href="bing.png">
+    <link rel="stylesheet" href="styles.css">
+    <!-- these styles take precedent over style sheet, takes rule that is closest to element-->
+    <style>
+       
+    </style>
+</head>
+
+<body id="top">
+
+    <ul class="nav-list">
+        <li><a href="./" class="active">HTML Notes</a></li>
+        <li><a href="./cssNotes.html">CSS Notes</a></li>
+        <li><a href="./dropdowns.html">Dropdown Notes</a></li>
+        <li><a href="./cats.html">Cats</a></li>
+    </ul>
+
+    <div>
+        <form id="greetingForm">
+            <label for="username">Enter name:</label>
+            <input type="text" id="name" name="name" required/>
+            <br/>
+            <!-- no get request on sensitive info-->
+            <label for="password">Enter password:</label>
+            <input type="password" id="password" name="password" required/>
+
+            <br/>
+
+            <input type="submit" />
+        </form>
+    </div>
+    <p id="greeting"></p>
+
+    <div>
+        <form id="surveyForm">
+            <label for="name">Enter name:</label>
+            <input type="text" id="username" name="name" required/>
+            
+            <br/>
+            <br/>
+
+            <label for="email">Enter email:</label>
+            <input type="email" id="email" name="email" required/>
+
+            <br/>
+            <br/>
+
+
+            <label>Do you own any pets?</label>
+            <input type="radio" id="yesPets" name="pets" value="yes" required/>
+            <label for="yesPets">Yes</label>
+            <input type="radio" id="noPets" name="pets" value="no" required/>
+            <label for="noPets">No</label>
+            <br/>
+            <br/>
+
+            <label for="">What kinds of pets do you have?</label>
+            <input type="checkbox" id="petsDogs" name="petsList" value="dogs"/>
+            <label for="petsDogs">Dog(s)</label>
+
+            <input type="checkbox" id="petsCats" name="petsList" value="cats"/>
+            <label for="petsCats">Cat(s)</label>
+
+            <input type="checkbox" id="petsTurtles" name="petsList" value="turtles"/>
+            <label for="petsTurtles">Turtle(s)</label>
+
+            <input type="checkbox" id="petsFish" name="petsList" value="fish"/>
+            <label for="petsFish">Fish</label>
+
+            <input type="checkbox" id="petsBirds" name="petsList" value="birds"/>
+            <label for="petsBirds">Bird(s)</label>
+
+            <input type="checkbox" id="petsOther" name="petsList" value="other"/>
+            <label for="petsOther">Other</label>
+
+            <br/>
+            <br/>
+
+
+            <label for="ownershipSelect">How long have you had pets?</label>
+            <select id="ownershipSelect" name="ownershipSelect">
+                <option value="-1"></option>
+                <option value="0">0 years</option>
+                <option value="1">1-2 years</option>
+                <option value="2">3-4 years</option>
+                <option value="3">5+ years</option>
+            </select>
+            <br/>
+            <br/>
+
+            <label for="comments">Additional Comments?</label>
+            <br/>
+
+            <textarea id="comments" name="comments" rows="5"></textarea>
+            <br/>
+            <br/>
+
+            <input type="submit" />
+
+            
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('greetingForm').addEventListener('submit', function(e) 
+        {
+            e.preventDefault(); //prevent redirect of page
+            var name = document.getElementById('username').value;
+            document.getElementById('greeting').innerHTML = "Hello, " + name + "!";
+        });
+    </script>
+
+</body>

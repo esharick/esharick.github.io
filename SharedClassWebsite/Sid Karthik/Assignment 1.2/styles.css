@@ -1,0 +1,31 @@
+.title1 {
+    background-color:lightsalmon;
+    font-family:'Poor Richard';
+    text-align:center;
+    margin:0;
+}
+
+.craftsmanship {
+    border:groove;
+    border-color:maroon;
+    border-width:25px;
+}
+
+.paragraph1 {
+    background-color:lavender;
+    font-family:'Poor Richard';
+    font-size:x-large;
+    text-align:center;
+}
+
+.paragraph2 {
+    background-color:lavenderblush;
+    font-family:'Poor Richard';
+    text-align:center;
+}
+
+.links {
+    background-color:antiquewhite;
+    font-family:'Lucida Calligraphy';
+    text-align:center;
+}
