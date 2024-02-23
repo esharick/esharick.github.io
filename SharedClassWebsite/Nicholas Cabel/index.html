@@ -1,12 +1,15 @@
 <html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/14727/14727269.png">
 	<style>
         .header {
-            width: 99%;
+            width: 75%;
 			height: 120px;
 			margin: 0;
-			border: 5px solid #272727;
-			background-color: lightgray;
+			border: 6px solid #272727;
+			background: rgba(255,255,255,0.6);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
 			text-align: center;
 			border-radius:0px 0px 30px 30px;
         }
@@ -16,25 +19,28 @@
 html {
 		height: 100%;
 		width: 100%;
-		background-image: repeating-linear-gradient(45deg, transparent, transparent 64px, #272727 18px, #272727 136px);
+		background-image: repeating-linear-gradient(208deg, transparent, transparent 40px, #272727 35px, #272727 154px);
 		background-color: #ff4747;
-		background-repeat: repeat-x;
+		background-repeat: repeat;
 		animation-name: shift;
 		animation-duration: 2s; /* Smaller is faster */
 		animation-iteration-count: infinite;
         animation-timing-function: linear;		
+		animation-direction: reverse;
 }
 
 @keyframes shift {  
-	0%   {background-position: 190 0;}
+	0%   {background-position: 305 0;}
 	100% {background-position: 0% 0;}
 }
 </style>
 </head>
 
+	<center>
 <div class="header">
   <h1 style= "color: #000000; font-size: 50px; font-weight: bold; font-family: Georgia">Welcome to My Homepage</h1>
 </div>
+	</center>
 
 
 <style>
@@ -42,22 +48,29 @@ html {
 			float: left;
 			height: 160px + text;	
 			width: 260px;
-			margin: 0;
-			border: 4px solid #272727;
-			background-color: lightgray;
+			margin: 0; 
 			text-align: center;
+			background: rgba(255,255,255,0.6);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
+			border: 6px solid #272727;
 			border-radius:30px 30px 30px 30px;
+			box-shadow: 3px 8.5px 0 3px #9f9f9f;
 	}
 		
 	.middleBox {
-			align-content: center;
-			height: 290px + text;	
-			width: 550px;
-			margin: 0;
-			border: 6px solid #272727;
-			background-color: lightgray;
-			text-align: center;
-			border-radius:30px 30px 30px 30px;
+       	    display: flex;
+        	justify-content: center;
+        	align-items: center;
+        	height: 340px;	
+        	width: 580px;
+        	margin: 0;
+			border: 5px solid rgba(255,255,255,0.6);
+			background: rgba(255,255,255,0.6);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
+        	border-radius:30px 30px 30px 30px;
+			box-shadow: 3px 8.5px 0 3px #272727;    
         }
     </style>
     <center>
@@ -66,10 +79,10 @@ html {
 	
 <body>
 	<center>
-	<div class="middleBox">
-	 <h3> New Content 😏</h3> 
+	<div class="middleBox" >
+	 <iframe class="video" width="560" height="315" src="https://www.youtube-nocookie.com/embed/BvQ571eAOZE?si=lPiCY7k_FtoMWWu9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 		</div>
-	</center>
+	<center>
 	
 	
 	<div class="leftBox">
@@ -92,9 +105,12 @@ html {
 			width: 260px;
 			margin: 0;
 			border: 4px solid #272727;
-			background-color: lightgray;
 			text-align: center;
+			background: rgba(255,255,255,0.6);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(5px);
 			border-radius:30px 30px 30px 30px;
+			box-shadow: -3px 8.5px 0 3px #9f9f9f;
         }
 	
     .circles {
