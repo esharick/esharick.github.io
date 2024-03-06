@@ -19,29 +19,49 @@
 	.testimonial {
 		align-self: center;
 		align-content: center;
-		width: 24%;
 		border-color: white;
 		border-width: thick;
-		display: inline-block;
-		padding: 0px 50px;
+		padding: 10px 10px;
 		background-color: darkgrey;
 		text-align: center;
 		border-radius:50px 50px 50px 50px;
     }
 	.navbar {
-    list-style-type: none;
-    background-color: darkgrey;
-    padding: 7px;
-    margin: -8px 0 0 -8px;
-    width: 100vw;
+		align-content: center;
+    	list-style-type: none;
+    	background-color: darkgrey;
+    	padding: 7px;
+    	margin: -8px 0 0 -8px;
+    	width: 100vw;
+	}
+	.navbar li {
+    	display: inline-flex;
+	}
+	.navbar li a {
+    	color: white;
+    	text-decoration: none;
+    	padding: 14px 3px;
+    	text-align: center;
+	}
+	.navbar li a:hover {
+    	background-color: black;
+	}
+	.navbar li.active {
+    	background-color: honeydew;
+	}
+	.navbar li.active a {
+    	color: black;
+	}
+	.navbar li.active a:hover{
+		color: white;
 	}
 </style>
 </head>
 
 <body bgcolor="">
 	<ul class="navbar">
-		<li>Home</li>
-		<li>Contact Us!</li>
+		<li class="active"><a>Home</a></li>
+		<li><a>Contact Us!</a></li>
 	</ul>
 	
 	<div class="header">
@@ -49,14 +69,37 @@
 		<h2 style="color:white">A Place Where Passion Meets Craftsmanship</h2>
 		<p align="center"></p>
 	</div>
+	<table style="border: solid; border-color: black; border-width: 10px">
+	<tr>
+		<td style="border: solid; border-color: black; border-width: 10px"><img src="unclejack4.png" style="height: 300px; margin: 0" alt=""></td>
+		<td style="border: solid; border-color: black; border-width: 10px"><img src="unclejackpic2.png" style="height: 300px; margin: 0" alt=""></td>
+		<td style="border: solid; border-color: black; border-width: 10px"><img src="unclejackpic3.png" style="height: 300px; margin: 0" alt=""></td>
+		<td style="border: solid; border-color: black; border-width: 10px"><img src="unclejackpic5.png" style="height: 300px; margin: 0" alt=""></td>
+		</tr>
+	<tr>
+		<td class="testimonial">
+			<p>"Uncle Jack and Sons brought our vision to life with their exquisite wood sculptures! Their craftsmanship is unparalleled, and their attention to detail is truly remarkable. We couldn't be happier with the beautiful piece they created for us."</p>
+			<p><em>-Very Real Customer</em></p>
+		</td>
+		<td class="testimonial">
+			<p>"I commissioned Uncle Jack and Sons to create a custom wood sculpture for my office, and I couldn't be happier with the result. Not only is the craftsmanship outstanding, but they also went above and beyond to ensure that the final piece perfectly captured my vision. I highly recommend them to anyone looking for high-quality wood sculptures." </p>
+			<p><em>-Totally a Human</em></p>
+		</td>
+		<td class="testimonial">
+			<p>"Working with Uncle Jack and Sons was an absolute pleasure from start to finish. They were professional, accommodating, and incredibly talented. The wood sculpture they crafted for our home is now the focal point of our living room and never fails to impress our guests."</p>
+			<p><em>-Not a Robot</em></p>
+		</td>
+		<td class="testimonial">
+			<p>"Uncle Jack and Sons exceeded all of my expectations with the wood sculpture they crafted for my outdoor garden. Despite the intricate design I requested, they delivered the piece ahead of schedule and flawlessly executed every detail. I'm already planning to commission them for my next project!"</p>
+			<p><em>-Forde Todd</em></p>
+		</td>
+		</tr>
+	</table>
 	
-	<img src="unclejack4.png" style="height: 300px; width: 24%; margin: 0" alt="">
-	<img src="unclejackpic2.png" style="height: 300px; width: 24%; margin: 0" alt="">
-	<img src="unclejackpic3.png" style="height: 300px; width: 24%; margin: 0" alt="">
-	<img src="unclejackpic5.png" style="height: 300px; width: 24%; margin: 0" alt="">
 	
-	<div class="testimonial">
-		<p>"Uncle Jack and Sons brought our vision to life with their exquisite wood sculptures! Their craftsmanship is unparalleled, and their attention to detail is truly remarkable. We couldn't be happier with the beautiful piece they created for us."</p>
-	</div>
+	
+	
+	
+	
 </body>
 </html>

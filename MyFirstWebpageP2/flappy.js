@@ -1,3 +1,28 @@
+//Set cookie
+function setCookie(cname, cvalue, exdays=365*15) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+//Get cookie
+function getCookie(cname) {
+    let name = cname + "="; //substring to search for
+    let cookieVals = document.cookie.split(';');
+    for (let i = 0; i < cookieVals.length; i++) {
+        let c = cookieVals[i];
+        //remove white spaces 
+        while (c.charAt(0) === ' ')
+            c = c.substring(1);  
+            
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return ""; //no cookie found
+}
+
 //Classes should be defined before usage
 class Sound {
     constructor(src) {
@@ -20,7 +45,7 @@ class Sound {
     }
 }
 
-const playerPiece = new component(100, 100, 30, 30, "./sprites/redbird-midflap.png", 0, 0.1, type = "image");
+const playerPiece = new component(100, 100, 20, 20, "./sprites/redbird-midflap.png", 0, 0.1, type = "image");
 const background = new component(0, 0, 480, 270, "./sprites/background-day.png", -1, 0, type = "bckImage");
 const obstacles = [];
 let gameInterval;
@@ -42,6 +67,15 @@ const gameArea = {
         this.score = 0;
         this.scoreText = new component(10, 30, "25px", "Consolas", "white", 0, 0, type = "text");
         this.scoreText.text = "Score: " + this.score;
+
+        let x = getCookie("highScore");
+        if (x === "")
+            this.highScore = 0;
+        else
+            this.highScore = x;
+        this.highScoreText = new component(250, 30, "25px", "Consolas", "white", 0, 0, type = "text");
+        this.highScoreText.text = "High Score: " + this.highScore;
+
 
         //for key presses
         window.addEventListener('keydown', function (e) {
@@ -105,18 +139,19 @@ const gameArea = {
     },
 
     spawnPipes: function () {
-        let pipeWidth = 20;
+        let pipeWidth = 30;
         let difficulty = 4; // 1 = impossible
         let obstacleSpeed = 1;
         let pipeGap = playerPiece.height * difficulty;
-        let minHeight = .10 * this.canvas.height;
-        let maxHeight = .50 * this.canvas.height;
+        let minHeight = .20 * this.canvas.height;
+        let maxHeight = .70 * this.canvas.height;
         let topPipeHeight = Math.floor(Math.random() * (maxHeight - minHeight) + minHeight);
         let botPipeHeight = this.canvas.height - topPipeHeight - pipeGap;
         //top 
-        obstacles.push(new component(this.canvas.width, 0, pipeWidth, topPipeHeight, "green", -obstacleSpeed));
+        obstacles.push(new component(this.canvas.width, topPipeHeight - maxHeight, pipeWidth, maxHeight,
+            "./sprites/pipe-green-flip.png", -obstacleSpeed, 0, "image"));
         obstacles.push(new component(this.canvas.width, this.canvas.height - botPipeHeight,
-            pipeWidth, botPipeHeight, "green", -obstacleSpeed));
+            pipeWidth, maxHeight, "./sprites/pipe-green.png", -obstacleSpeed, 0, "image"));
     },
 
     reset: function () {  
@@ -168,10 +203,10 @@ function component(x, y, width, height, color, vx=0, ay=0, type="rect") {
         else if (this.type === "image" || this.type === "bckImage") {
             if (this.vy !== 0) { //rotate player
                 ctx.save();
-                ctx.translate(this.x, this.y);
+                ctx.translate(this.x + this.width/2, this.y + this.height/2);
                 let angle = Math.tanh(this.vy);
                 ctx.rotate(angle);
-                ctx.drawImage(this.image, this.width / -2, this.height / -2, this.width, this.height);
+                ctx.drawImage(this.image, -this.width/2, -this.height/2, this.width, this.height);
                 ctx.restore();
             } else {
                 ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
@@ -185,17 +220,19 @@ function component(x, y, width, height, color, vx=0, ay=0, type="rect") {
     }
 
     this.collideWith = function (otherObj) {
-        let x2 = this.x + this.width;
-        let y2 = this.y + this.height;
-        let otherx2 = otherObj.x + otherObj.width;
-        let othery2 = otherObj.y + otherObj.height; //bottom
-        if (this.x < otherx2 &&
-            x2 > otherObj.x &&
-            this.y < othery2 &&
-            y2 > otherObj.y
-        ) {
+        let radius = this.width / 2;
+        let circleX = this.x + radius;
+        let circleY = this.y + radius;
+
+        let closestX = Math.min(Math.max(circleX, otherObj.x), otherObj.x + otherObj.width); //either end; or where the circle x is
+        let closestY = Math.min(Math.max(circleY, otherObj.y), otherObj.y + otherObj.height);
+
+        let distanceX = circleX - closestX;
+        let distanceY = circleY - closestY;
+        let distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+        let buffer = 2;
+        if (distance <= radius - buffer) 
             stopGame();
-        }
     }
 
 }
@@ -233,6 +270,11 @@ function updateGame() {
     if (obstacles[0].x + obstacles[0].width === playerPiece.x) {
         gameArea.score += 1;
         gameArea.scoreText.text = "Score: " + gameArea.score;
+        if (gameArea.score > gameArea.highScore) {
+            gameArea.highScore = gameArea.score;
+            gameArea.highScoreText.text = "High Score: " + gameArea.highScore;
+            setCookie("highScore", gameArea.highScore);
+        }
     }
     //remove pipes when they go off screen
     else if (obstacles[0].x + obstacles[0].width < 0) {
@@ -240,6 +282,7 @@ function updateGame() {
         obstacles.shift();
     }
     gameArea.scoreText.update();
+    gameArea.highScoreText.update();
 }
 
 function movePlayer(vx, vy) {

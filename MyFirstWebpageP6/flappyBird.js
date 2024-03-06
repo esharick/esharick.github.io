@@ -169,7 +169,7 @@ function component(x, y, width, height, color, vx=0, type="rect") {
         else if (this.type === "image" || this.type === "bckimage") {
             if (this.vy !== 0) { //rotate player
                 this.ctx.save();
-                this.ctx.translate(this.x, this.y);
+                this.ctx.translate(this.x + this.width/2, this.y + this.height/2);
                 let angle = Math.tanh(this.vy);
                 this.ctx.rotate(angle);
                 this.ctx.drawImage(this.image, this.width / -2, this.height / -2, this.width, this.height);
@@ -188,12 +188,18 @@ function component(x, y, width, height, color, vx=0, type="rect") {
     }
 
     this.collideWith = function (otherObj) {
-        let x2 = this.x + this.width; //right side of player
-        let y2 = this.y + this.height; //bottom side of player
-        let otherx2 = otherObj.x + otherObj.width; //right side of obstacle
-        let othery2 = otherObj.y + otherObj.height; //bottom of the obstacle
-        if (this.x < otherx2 && x2 > otherObj.x &&
-            this.y < othery2 && y2 > otherObj.y)
+        let radius = this.width / 2;
+        let circleX = this.x + radius;
+        let circleY = this.y + radius;
+
+        let closestX = Math.min(Math.max(circleX, otherObj.x), otherObj.x + otherObj.width); //either end; or where the circle x is
+        let closestY = Math.min(Math.max(circleY, otherObj.y), otherObj.y + otherObj.height);
+
+        let distanceX = circleX - closestX;
+        let distanceY = circleY - closestY;
+        let distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+        let buffer = 2;
+        if (distance <= radius - buffer)
             stopGame();
     }
 
