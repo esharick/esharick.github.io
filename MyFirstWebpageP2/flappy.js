@@ -45,11 +45,27 @@ class Sound {
     }
 }
 
+//Load bird sprites
+const redBirdImage = new Image();
+redBirdImage.src = "./sprites/redbird-midflap.png";
+const blueBirdImage = new Image();
+blueBirdImage.src = "./sprites/bluebird-midflap.png";
+const yellowBirdImage = new Image();
+yellowBirdImage.src = "./sprites/yellowbird-midflap.png";
+const birdSprites = [redBirdImage, blueBirdImage, yellowBirdImage];
+let colorSelected = localStorage.getItem("colorSelected");
+if (colorSelected === null)
+    colorSelected = 0; //default to red bird
+else
+    colorSelected = parseInt(colorSelected);
+
 const playerPiece = new component(100, 100, 20, 20, "./sprites/redbird-midflap.png", 0, 0.1, type = "image");
-const background = new component(0, 0, 480, 270, "./sprites/background-day.png", -1, 0, type = "bckImage");
+playerPiece.image = birdSprites[colorSelected];
+const background = new component(0, 0, 480, 270, "./sprites/background-night.png", -1, 0, type = "bckImage");
 const obstacles = [];
 let gameInterval;
 const flapSound = new Sound("./audio/wing.wav");
+let paused = false;
 
 const gameArea = {
     canvas: document.createElement("canvas"),
@@ -79,6 +95,14 @@ const gameArea = {
 
         //for key presses
         window.addEventListener('keydown', function (e) {
+            //pausing the game
+            if (e.code === "KeyP") {
+                if (!paused) pauseGame();
+                else unpauseGame();
+                return;
+            }
+
+
             if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Space"].includes(e.code)) {
                 e.preventDefault();
             }
@@ -93,9 +117,13 @@ const gameArea = {
 
         //for mouse clicks
         window.addEventListener('mousedown', function (e) {
-            startGame();
-            //gameArea.mouseX = e.pageX - gameArea.canvas.offsetLeft;
-            //gameArea.mouseY = e.pageY - gameArea.canvas.offsetTop;
+            if (!paused)
+                startGame();
+            else {
+                gameArea.mouseX = e.pageX - gameArea.canvas.offsetLeft;
+                gameArea.mouseY = e.pageY - gameArea.canvas.offsetTop;
+                gameArea.checkMenuButtonClick(gameArea.mouseX, gameArea.mouseY);
+            }
         });
 
         //touch event/tap event
@@ -164,6 +192,66 @@ const gameArea = {
         playerPiece.x = 100;
         playerPiece.y = 100;
         playerPiece.vy = 0;
+    },
+
+    pause: function () {
+        //Draw a pause menu
+        let marginX = 50, marginY = 50;
+        let ctx = this.context;
+        let width = this.canvas.width - marginX * 2;
+        let height = this.canvas.height - marginY * 2;
+        ctx.fillStyle = 'gray';
+        ctx.globalAlpha = 0.5;
+        ctx.fillRect(marginX, marginY, width, height);
+        ctx.font = "25px consolas";
+        ctx.fillStyle = 'white';
+        ctx.globalAlpha = 1.0;
+        ctx.fillText("Paused", width / 2, height / 2);
+        ctx.font = "14px consolas";
+        ctx.fillText("Select Character: ", marginX + 10, marginY + 60);
+
+        //Draw buttons
+        for (let i = 0; i < birdSprites.length; i++) {
+            if (i === colorSelected)
+                ctx.fillStyle = 'yellow';
+            else
+                ctx.fillStyle = 'black';
+            let x = marginX + 70 + 100 * i;
+            let y = marginY + 100;
+            ctx.fillRect(x, y, 40, 40);
+            ctx.drawImage(birdSprites[i], x+5, y+5, 30, 30);
+        }
+    },
+
+   
+    checkMenuButtonClick: function (mx, my) {
+        let marginX = 50, marginY = 50;
+
+        for (let i = 0; i < birdSprites.length; i++) {
+            if (i === colorSelected)
+                continue;
+            let x = marginX + 70 + 100 * i;
+            let y = marginY + 100;
+            if (mx > x && mx < x + 40 && my > y && my < y + 40) {
+                playerPiece.image = birdSprites[i];
+                colorSelected = i;
+                localStorage.setItem("colorSelected", "" + i);
+            //    gameArea.pause(); //redraw the menu
+            }
+        }
+        //Draw buttons
+        let ctx = this.context;
+
+        for (let i = 0; i < birdSprites.length; i++) {
+            if (i === colorSelected)
+                ctx.fillStyle = 'yellow';
+            else
+                ctx.fillStyle = 'black';
+            let x = marginX + 70 + 100 * i;
+            let y = marginY + 100;
+            ctx.fillRect(x, y, 40, 40);
+            ctx.drawImage(birdSprites[i], x + 5, y + 5, 30, 30);
+        }
     }
 }
 
@@ -250,6 +338,17 @@ function startGame() {
 function stopGame() {
     clearInterval(gameInterval);
     //logic of game over message
+}
+
+function pauseGame() {
+    paused = true;
+    clearInterval(gameInterval);
+    gameArea.pause();
+}
+
+function unpauseGame() {
+    paused = false;
+    gameInterval = setInterval(updateGame, 1000 / 60);
 }
 
 function updateGame() {

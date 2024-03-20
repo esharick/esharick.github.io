@@ -1,3 +1,27 @@
+//Cookie functions
+function setCookie(cname, cvalue, exdays = 400) { //max number of days to expire is 400
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 1000 * 60 * 60 * 24));
+    document.cookie = cname + "=" + cvalue + "; expires=" + d.toUTCString() + "; path=/;";
+} 
+
+function getCookie(cname) {
+    let cookieVals = document.cookie.split(";");
+    let name = cname + "="; //substring we are searching for
+    for (let i = 0; i < cookieVals.length; i++) {
+        let c = cookieVals[i];
+        //manually remove white space if exists
+        while (c.charAt(0) === ' ')
+            c = c.substring(1);
+
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+
 //JavaScript Classes
 class Sound {
     constructor(src) {
@@ -32,6 +56,13 @@ const gameArea = {
 
         //event listeners - key/mouse listeners
         window.addEventListener('keydown', function (e) {
+            if (e.code === "KeyP") {
+                if (!paused) pauseGame();
+                else unpauseGame();
+                return;
+            }
+
+
             if(["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown", "Space"].includes(e.code))
                 e.preventDefault(); //prevents arrow keys from scrolling
 
@@ -52,7 +83,12 @@ const gameArea = {
         });
 
         window.addEventListener('mousedown', function (e) {
-            startGame();
+            if (!paused)
+                startGame();
+            else
+                gameArea.checkMenuButtonClick(e.pageX - gameArea.canvas.offsetLeft,
+                    e.pageY - gameArea.canvas.offsetTop);
+                                                //correct for scrolling
         });
 
         //touch/tap events
@@ -117,16 +153,98 @@ const gameArea = {
         playerPiece.y = 150;
         playerPiece.vy = 0;
         clearInterval(gameInterval);
+    },
+
+    paused: function () {
+        let ctx = this.context;
+        let marginX = 50, marginY = 50;
+        let menuWidth = this.canvas.width - 2 * marginX;
+        let menuHeight = this.canvas.height - 2 * marginY;
+        ctx.fillStyle = 'gray';
+        ctx.globalAlpha = 0.5; //transparent menu
+        ctx.fillRect(marginX, marginY, menuWidth, menuHeight);
+        ctx.font = "25px consolas";
+        ctx.fillStyle = 'white';
+        ctx.globalAlpha = 1.0;
+        ctx.fillText("Paused", menuWidth / 2, menuHeight / 2);
+        ctx.font = "14px consolas";
+        ctx.fillText("Select Character:", marginX + 10, menuHeight / 2 + 30);
+
+        //draw buttons
+        for (let i = 0; i < birdImages.length; i++) {
+            let x = marginX + 100 * i + 70;
+            let y = marginY + 100;
+            if (colorSelected === i)
+                ctx.fillStyle = "yellow";
+            else
+                ctx.fillStyle = "black";
+            ctx.fillRect(x, y, 40, 40);
+            ctx.drawImage(birdImages[i], x+5, y+5, 30, 30);
+        }
+    },
+
+    checkMenuButtonClick: function (mx, my) {
+        let marginX = 50, marginY = 50;
+        let change = false;
+        for (let i = 0; i < birdImages.length; i++) {
+            if (i === colorSelected) continue;
+            let x = marginX + 100 * i + 70;
+            let y = marginY + 100;
+            if (x < mx && mx < x + 40 && y < my && my < y + 40) {
+                colorSelected = i;
+                localStorage.setItem("colorSelected", "" + i);
+                playerPiece.image = birdImages[colorSelected];
+                change = true;
+            }
+        }
+        if (change) //redraw buttons
+        {
+            let ctx = this.context;
+            for (let i = 0; i < birdImages.length; i++) {
+                let x = marginX + 100 * i + 70;
+                let y = marginY + 100;
+                if (colorSelected === i)
+                    ctx.fillStyle = "yellow";
+                else
+                    ctx.fillStyle = "black";
+                ctx.fillRect(x, y, 40, 40);
+                ctx.drawImage(birdImages[i], x + 5, y + 5, 30, 30);
+            }
+        }
     }
 }
+
+const redBirdImage = new Image();
+redBirdImage.src = "./sprites/redbird-midflap.png";
+const blueBirdImage = new Image();
+blueBirdImage.src = "./sprites/bluebird-midflap.png";
+const yellowBirdImage = new Image();
+yellowBirdImage.src = "./sprites/yellowbird-midflap.png";
+let colorSelected = localStorage.getItem("colorSelected");
+if (colorSelected === null) {
+    //default to red bird
+    colorSelected = 0;
+} else {
+    //localstorage is stored as string
+    colorSelected = parseInt(colorSelected);
+}
+const birdImages = [redBirdImage, blueBirdImage, yellowBirdImage];
+
 const playerPiece = new component(100, 150, 20, 20, "./sprites/bluebird-midflap.png", 0, "image");
+playerPiece.image = birdImages[colorSelected];
+
 const scoreText = new component(30, 30, "25px", "consolas", "white", 0, "text");
+const highScoreText = new component(250, 30, "25px", "consolas", "white", 0, "text");
 const background = new component(0, 0, 480, 270, "./sprites/background-night.png", -0.2, "bckimage");
 playerPiece.ay = 0.20;
 const jumpSpeed = -2.7;
 const obstacles = [];
 const FPS = 40;
-let gameInterval, score = 0, scored = false;
+let gameInterval, score = 0, scored = false, paused = false;
+let highScore = getCookie("highScore");
+if (highScore === "")
+    highScore = 0;
+
 const flapSound = new Sound("./audio/swoosh.wav");
 const crashSound = new Sound("./audio/hit.wav");
 
@@ -218,6 +336,19 @@ function stopGame() {
     clearInterval(gameInterval);
 }
 
+function pauseGame() {
+    clearInterval(gameInterval);
+    paused = true;
+    gameArea.paused(); //draw the menu for the user
+}
+
+function unpauseGame() {
+    gameInterval = setInterval(updateGame, 1000 / FPS);
+    paused = false;
+}
+
+
+
 //Once per frame
 function updateGame() {
     if (gameArea.frameCount % (FPS * 2) == 0) 
@@ -244,11 +375,17 @@ function updateGame() {
     if (!scored && obstacles[0].x + obstacles[0].width < playerPiece.x) {
         score += 1;
         scored = true;
+        if (score > highScore) {
+            highScore = score;
+            setCookie("highScore", highScore);
+        }
     }
 
     //UI components
     scoreText.text = "Score: " + score;
     scoreText.update();
+    highScoreText.text = "High Score: " + highScore;
+    highScoreText.update();
 }
 
 function updatePlayerSpeed(vx, vy) {

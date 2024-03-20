@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: darkslategray;
+    place-items: center;
+    overflow: hidden;
+}
+#buttons {
+    display: block;
+    width: 33vw;
+    align-items: center;
+    text-align: center;
+}
+#buttons button{
+    margin: 25px;
+    width: 100px;
+    aspect-ratio: 2;
+    background: linear-gradient(45deg, navy, blue);
+    border: none;
+    color: white;
+    border-radius: 10%;
+    border: white 3px solid;
+}
+#buttons button:hover {
+    box-shadow: 1px 3px 5px white;
+}
+#color {
+    left: 80vw;
+    top: 40dvh;
+    position: absolute;
+    display: block;
+    height: 100vh;
+    width: fit-content;
+    color: white;
+}
+#color input, #color label {
+    margin: 10px;
+}

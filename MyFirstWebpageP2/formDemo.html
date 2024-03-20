@@ -16,7 +16,7 @@
     <div>
         <form id="greetingForm">
             <label>Greeting:</label>
-            <input type="text" id="userGreeting" required/>
+            <input type="text" id="userGreeting" required />
             <input type="submit" />
         </form>
     </div>
@@ -25,9 +25,9 @@
     <div>
         <form id="otherForm">
             <label>Do you have coffee?</label>
-            <input type="radio" name="coffee" id="yes-coffee"/>
+            <input type="radio" name="coffee" id="yes-coffee" />
             <label for="yes-coffee">Yes</label>
-            <input type="radio" name="coffee" id="no-coffee"/>
+            <input type="radio" name="coffee" id="no-coffee" />
             <label for="no-coffee">No</label>
             <input type="submit" />
         </form>
@@ -60,17 +60,27 @@
     </div>
     <br />
     <div>
-        <form action="somescript" method="post"> <!-- USE POST FOR SENSITIVE INFORMATION-->
-        <!--Note: This won't work unless your server is configured to handle post requests.-->
+        <!--Set the action to js code that does nothing, but it prevents redirect-->
+        <!--return false prevents cascading behavior-->
+        <form action="javascript:void(0)" method="post" onsubmit="downloadFormData(); return false;">
+            <!-- USE POST FOR SENSITIVE INFORMATION-->
+            <!--Note: This won't work unless your server is configured to handle post requests.-->
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" />
             <br />
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" />
             <br />
-            <input type="submit" />
+            <input type="submit" value="Download" />
         </form>
     </div>
+
+    <div>
+        <input type="file" id="fileInput"/>
+        <button onclick="readFile()">Display Password</button>
+        <div id="output"></div>
+    </div>
+
 
 
     <script>
@@ -81,6 +91,9 @@
             result.innerHTML = greeting;
         });
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="readWriteScripts.js"></script>
 
 </body>
 </html>

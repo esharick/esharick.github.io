@@ -1,0 +1,101 @@
+td {
+    min-width: 100px;
+    text-align:center;
+    color: ghostwhite;
+}
+
+th {
+    background-color:rgb(11, 49, 233);
+    color:azure;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+tr {
+    background-color: cornflowerblue;
+}
+
+tr:nth-child(odd){
+    background-color: rgb(138, 179, 229);
+}
+
+tr:hover {
+    background-color: cadetblue;
+}
+
+table {
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+/* References the elements with the class "nav-list" */
+.nav-list li
+{
+    background-color: maroon;
+    list-style-type: none;
+    padding: 10px 5px;
+    display: inline-flex;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-list li.active {
+    background-color: slategrey;
+}
+
+    .nav-list li.active a {
+        color: hotpink;
+    }
+
+
+.nav-list li a:hover{
+    background-color:rgba(179, 169, 169, 0.853);
+}
+
+
+#greetingForm label{
+    color: blue;
+}
+
+form {
+    border: 3px solid red;
+    padding: 10px;
+    margin: 5px 20% 5px 20%;
+}
+
+input, label {
+    display: block;
+}
+
+#petchecks {
+    display: none;
+    /*visibility: hidden;*/ /*Reserves space*/
+}
+
+div form {
+    border: 3px solid blue;
+}
+
+form input[type="text"]:focus {
+    background-color: lightblue;
+}
+
+
+form label[for="username2"] {
+    font-size: 26px;
+}
+
+/*body:hover {
+     cursor: not-allowed;
+}*/
+
+
+label{
+    /*text-decoration: line-through red 1px;*/
+    text-shadow: 2px 2px 5px pink;
+    font-variant: small-caps;
+}
+
+

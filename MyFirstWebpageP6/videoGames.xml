@@ -1,0 +1,23 @@
+<games>
+	<game>
+		<title>Minecraft</title>
+		<playedBefore>No</playedBefore>
+		<year>2011</year>
+		<type>Survival, Creative, Adventure</type>
+		<platform>PC, Console, Mobile</platform>
+	</game>
+	<game>
+		<title>Dota 2</title>
+		<playedBefore>Yes, every day</playedBefore>
+		<year>2013</year>
+		<type>Moba, PVP</type>
+		<platform>PC</platform>
+	</game>
+	<game>
+		<title>Super Smash Bros.</title>
+		<playedBefore>Yes</playedBefore>
+		<year>1999</year>
+		<type>PVP</type>
+		<platform>N64</platform>
+	</game>
+</games>

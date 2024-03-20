@@ -15,7 +15,7 @@
 </head>
 <body>
     <ul class="navbar">
-        <li class="active"><a href="./" >HTML</a></li>
+        <li class="active"><a href="./">HTML</a></li>
         <li><a href="./formDemo.html">Form Demo</a></li>
     </ul>
 
@@ -32,9 +32,9 @@
     <p> <u>x<sup>2</sup> + x = 3</u></p>
 
     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-        target="_blank">Great content!</a>
+       target="_blank">Great content!</a>
     <br>
-    <a href="https://www.google.com" >
+    <a href="https://www.google.com">
         <img src="randomicon.jfif">
     </a>
     <hr>
@@ -82,7 +82,8 @@
         </tr>
     </table>
 
-    <ol>Best Mobas
+    <ol>
+        Best Mobas
         <li>Dota 2</li>
         <li></li>
         <li></li>
@@ -98,13 +99,14 @@
         <li>LoL</li>
     </ol>
 
-    <ul style="list-style-type:lower-greek;">Colin's Grades
+    <ul style="list-style-type:lower-greek;">
+        Colin's Grades
         <li>
             AppDev: -30000%
         </li>
         <li>
             Math: 68%
-        </li>    
+        </li>
         <li>
             Physics: 50%
         </li>
@@ -123,8 +125,31 @@
     <!--<button onclick="drawClock()">Draw Clock</button>-->
     <script src="clock.js"></script>
     <br />
-    
+
+    <!--For 2nd period-->
     <script src="flappy.js"></script>
+
+    <!--My notes-->
+    <!--<script src="myFlappy.js"></script>-->
+
+
+
+    <br />
+    <button type="button" onclick="loadXMLDoc()">Read XML Data</button>
+    <br />
+    <table id="dogData"></table>
+
+
+    <br />
+    <button type="button" onclick="loadXMLDocWithFetch()">Read XML Data With Fetch</button>
+    <button type="button" onclick="loadJSONDocWithFetch()">Read JSON Data With Fetch</button>
+
+    <br />
+
+    <script src="readingXMLData.js"></script>
+
+
+
     <a href="#heading1">Back to top</a>
 
 

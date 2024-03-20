@@ -28,3 +28,9 @@ body {
 .X {
     background: red;
 }
+#canvas {
+    width: 400px;
+    height: 400px;
+    background: #000;
+    margin: 2%;
+}

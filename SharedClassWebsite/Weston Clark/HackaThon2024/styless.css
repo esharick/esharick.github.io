@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#Dual {
+    width: 100vw;
+    position: absolute;
+}
+
+#Content {
+    width:250px;
+    height: 80%;
+    padding: 15px;
+    background: rgb(135, 41, 41, 0.3);
+    color: white;
+    border: 3px solid grey;
+    border-radius: 20%;
+    position: absolute;
+    right: 80px;
+    top: 30px;
+    text-align: center;
+    font-size: 60px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+#DualImg {
+    display:none;
+    width: 80%;
+}
+
+#Overlay {
+    width:fit-content;
+    height: fit-content;
+    padding: 15px;
+    background: rgb(135, 41, 41, 0.3);
+    color: white;
+    border: 3px solid grey;
+    border-radius: 20%;
+    position: absolute;
+    left: 80px;
+    top: 50px;
+    text-align: center;
+    font-size: 60px;
+}
+
+#Overlay button {
+    color: white;
+    background: rgb(85, 127, 212, 0.8);
+    box-shadow: 15px, 15px, 10px, black;
+    border-radius: 20%;
+    padding: 10px;
+}

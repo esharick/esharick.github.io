@@ -25,16 +25,27 @@
     <p id="greeting"></p>
 
     <div>
-        <form id="userpw" action="somescript" method="post">
+        <!--action - set to js code that does nothing and stops the page from redirecting-->
+        <!--return false; prevent cascading events (redirects)-->
+        <form id="userpw" action="javascript:void(0)" method="post" onsubmit="downloadFormData(); return false;">
             <label for="username2">Enter name:</label>
             <input type="text" id="username2" name="username2" required />
             <br />
             <label for="password">Enter password:</label>
             <input type="password" id="password" name="password" required />
-            <input type="submit" />
+            <input type="submit" value="Download Username and Password" />
+
+            <input type="file" id="fileInput" />
+            <button onclick="readFile()">Read and display password</button>
+            <div id="output">Output placeholder</div>
         </form>
     </div>
+
+
+
     <br />
+
+
 
 
     <div>
@@ -58,22 +69,22 @@
 
             <div id="petchecks">
 
-            <label>What kind of pets do you have?</label>
-            <br />
-            <input type="checkbox" id="petsDogs" name="petsList" value="dogs" />
-            <label for="petsDogs">Dog(s)</label>
-            <input type="checkbox" id="petsCats" name="petsList" value="cats" />
-            <label for="petsCats">Cat(s)</label>
-            <input type="checkbox" id="petsFish" name="petsList" value="fish" />
-            <label for="petsFish">Fish</label>
-            <input type="checkbox" id="petsRabbits" name="petsList" value="rabbits" />
-            <label for="petsRabbits">Rabbit(s)</label>
-            <input type="checkbox" id="petsSnakes" name="petsList" value="snakes" />
-            <label for="petsSnakes">Snake(s)</label>
-            <input type="checkbox" id="petsGuineaPigs" name="petsList" value="guineaPigs" />
-            <label for="petsGuineaPigs">Guinea Pig(s)</label>
-            <input type="checkbox" id="petsTurtles" name="petsList" value="turtles" />
-            <label for="petsTurtles">Turtle(s)</label>
+                <label>What kind of pets do you have?</label>
+                <br />
+                <input type="checkbox" id="petsDogs" name="petsList" value="dogs" />
+                <label for="petsDogs">Dog(s)</label>
+                <input type="checkbox" id="petsCats" name="petsList" value="cats" />
+                <label for="petsCats">Cat(s)</label>
+                <input type="checkbox" id="petsFish" name="petsList" value="fish" />
+                <label for="petsFish">Fish</label>
+                <input type="checkbox" id="petsRabbits" name="petsList" value="rabbits" />
+                <label for="petsRabbits">Rabbit(s)</label>
+                <input type="checkbox" id="petsSnakes" name="petsList" value="snakes" />
+                <label for="petsSnakes">Snake(s)</label>
+                <input type="checkbox" id="petsGuineaPigs" name="petsList" value="guineaPigs" />
+                <label for="petsGuineaPigs">Guinea Pig(s)</label>
+                <input type="checkbox" id="petsTurtles" name="petsList" value="turtles" />
+                <label for="petsTurtles">Turtle(s)</label>
             </div>
             <br />
             <br />
@@ -98,8 +109,8 @@
         </form>
     </div>
 
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="readWriteScripts.js"></script>
 
     <script>
         document.getElementById('greetingForm').addEventListener('submit', function (e) {

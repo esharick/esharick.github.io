@@ -1,0 +1,13 @@
+<DOGS>
+	<DOG>
+		<NAME>Lucy</NAME>
+		<AGE>7</AGE>
+		<COLOR>Black</COLOR>
+	</DOG>
+	<DOG>
+		<NAME>Rocky</NAME>
+		<AGE>13</AGE>
+		<COLOR>Brown</COLOR>
+		<BREED>German Sheperd</BREED>
+	</DOG>
+</DOGS>

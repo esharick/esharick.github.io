@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+</head>
+<body>
+    <canvas id="myCanvas" width="600" height="300" style="border:1px solid #000000;"></canvas>
+    <img id="gravityGuySprite" src="gravityGuy.jpg" width="30" height="30" style="display: none;">
+    <img id="backgroundImg" src="background.jpg" style="display: none;">
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var gravityGuyImg = document.getElementById("gravityGuySprite");
+        var backgroundImg = document.getElementById("backgroundImg");
+        var rectHeight = 100; // Height of obstacles
+        var obstacleSpeed = 2; // Initial speed of obstacles
+        var maxObstacleSpeed = 5; // Maximum speed of obstacles
+        var obstacleAcceleration = 0.0025; // Rate of acceleration
+        var backgroundSpeed = 0.5; // Speed of background movement
+        var gravity = 1;
+        var speedY = 0; // Change speedY to start at 0 initially
+        var gravityGuyWidth = 30;
+        var gravityGuyHeight = 30;
+        var isJumping = false;
+        var isGameOver = false;
+        var obstacles = [];
+        var backgroundX = 0;
+        var obstacleSpacing = 200; // Space between obstacles
+        var score = 0;
+
+        var GravityGuy = function(x, y) {
+            this.x = x;
+            this.y = y;
+            this.coins = 0;
+        };
+
+        GravityGuy.prototype.draw = function() {
+            ctx.clearRect(0, 0, c.width, c.height);
+            drawBackground();
+            ctx.drawImage(gravityGuyImg, this.x, this.y, gravityGuyWidth, gravityGuyHeight);
+            drawObstacles();
+            drawScore();
+        };
+
+        GravityGuy.prototype.jump = function() {
+            if (!isJumping) {
+                gravity = gravity*-1;
+                isJumping = true;
+            }
+        };
+
+        GravityGuy.prototype.fall = function() {
+            this.y += speedY;
+            speedY += gravity; // Apply gravity
+            if (this.y + gravityGuyHeight > c.height) { // Adjusted condition to check GravityGuy's position
+                this.y = c.height - gravityGuyHeight; // Stop GravityGuy at the bottom
+                speedY = 0; // Reset speedY when GravityGuy hits the ground
+                isJumping = false; // Reset jump flag
+            } else if(this.y < 0) { // If GravityGuy reaches the top
+                this.y = 0; // Stop GravityGuy at the top
+                speedY = 0; // Reset speedY when GravityGuy hits the top
+                isJumping = false; // Reset jump flag
+            }
+        };
+
+        var gravityGuy = new GravityGuy(200, 100); // Adjust initial position of GravityGuy
+
+        function draw() {
+            gravityGuy.draw();
+            gravityGuy.fall(); // Make GravityGuy fall by default
+            score++; // Increment score
+
+            if (!isGameOver) {
+                createObstacles();
+                updateObstacles();
+                detectCollision();
+            }
+
+            if (!isGameOver) {
+                requestAnimationFrame(draw);
+            } else {
+                ctx.font = "30px Arial";
+                ctx.fillText("Game Over", c.width / 2 - 80, c.height / 2);
+            }
+
+            backgroundX -= backgroundSpeed; // Move background to the left
+
+            // Increase obstacle speed over time
+            if (obstacleSpeed < maxObstacleSpeed) {
+                obstacleSpeed += obstacleAcceleration;
+            }
+        }
+
+        function createObstacles() {
+            if (Math.random() < 0.01) {
+                var yPosition = Math.random() < 0.5 ? 0 : c.height - rectHeight;
+                var obstacle = {
+                    x: c.width,
+                    y: yPosition,
+                    width: gravityGuyWidth,
+                    height: rectHeight
+                };
+                obstacles.push(obstacle);
+            }
+        }
+
+        function updateObstacles() {
+            for (var i = 0; i < obstacles.length; i++) {
+                var obstacle = obstacles[i];
+                obstacle.x -= obstacleSpeed;
+            }
+            obstacles = obstacles.filter(function(obstacle) {
+                return obstacle.x + obstacle.width > 0;
+            });
+        }
+
+        function detectCollision() {
+            for (var i = 0; i < obstacles.length; i++) {
+                var obstacle = obstacles[i];
+                if (gravityGuy.x < obstacle.x + obstacle.width &&
+                    gravityGuy.x + gravityGuyWidth > obstacle.x &&
+                    gravityGuy.y < obstacle.y + obstacle.height &&
+                    gravityGuy.y + gravityGuyHeight > obstacle.y) {
+                    isGameOver = true;
+                    return;
+                }
+            }
+        }
+
+        function drawObstacles() {
+            for (var i = 0; i < obstacles.length; i++) {
+                var obstacle = obstacles[i];
+                ctx.fillStyle = "#000000";
+                ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+            }
+        }
+
+        function drawBackground() {
+            ctx.drawImage(backgroundImg, backgroundX, 0, c.width, c.height);
+            ctx.drawImage(backgroundImg, backgroundX + c.width, 0, c.width, c.height);
+            if (backgroundX <= -c.width) {
+                backgroundX = 0;
+            }
+        }
+
+        function drawScore() {
+            ctx.font = "20px Arial";
+            ctx.fillStyle = "#000000";
+            ctx.fillText("Score: " + score, c.width - 100, 30);
+        }
+
+        draw();
+
+        // Event listeners for jump
+        document.addEventListener("keydown", function(event) {
+            if (event.code === "Space") {
+                gravityGuy.jump();
+            }
+        });
+
+        document.addEventListener("mousedown", function(event) {
+            if (event.button === 0) { // Left mouse button
+                gravityGuy.jump();
+            }
+        });
+    </script>
+</body>
+</html>

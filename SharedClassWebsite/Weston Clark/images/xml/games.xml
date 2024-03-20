@@ -1,0 +1,17 @@
+<games>
+    <game>
+        <title>Tom Clancy's Rainbow Six Seige</title>
+        <year>2012</year>
+        <platform>ALL</platform>
+    </game>
+    <game>
+        <title>Minecraft</title>
+        <year>2009</year>
+        <platform>ALL</platform>
+    </game>
+    <game>
+        <title>Brawl Stars</title>
+        <year>2016</year>
+        <platform>MOBILE</platform>
+    </game>
+</games>

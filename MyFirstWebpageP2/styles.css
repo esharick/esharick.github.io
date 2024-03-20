@@ -88,8 +88,8 @@ label {
 
 input[type="submit"] {
     display: block;
-    visibility: hidden;
-}
+/*    visibility: hidden;
+*/}
 
 label::selection {
     text-decoration: line-through red 3px;
