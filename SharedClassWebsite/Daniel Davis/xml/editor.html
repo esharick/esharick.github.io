@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XML Editor</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .xml-card {
+        margin-bottom: 10px;
+      }
+      .xml-card .card-header {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2>XML Editor</h2>
+      <div id="xmlContainer"></div>
+      <button id="exportBtn" class="btn btn-success mt-3">
+        Export Changes
+      </button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let uploadedXML = localStorage.getItem("uploadedXML"); // Get XML from localStorage
+
+        if (uploadedXML) {
+          let parser = new DOMParser();
+          let xmlDoc = parser.parseFromString(uploadedXML, "text/xml");
+          let elements = xmlDoc.documentElement.childNodes;
+
+          $(elements).each(function () {
+            if (this.nodeType === 1) {
+              // Process only element nodes
+              let card = $('<div class="card xml-card"></div>');
+              let cardHeader = $('<div class="card-header"></div>').text(
+                this.nodeName
+              );
+              let cardBody = $('<div class="card-body"></div>');
+              let editableContent = $(
+                '<div contenteditable="true" class="xml-content"></div>'
+              ).text(this.textContent.trim());
+
+              cardBody.append(editableContent);
+              card.append(cardHeader, cardBody);
+              $("#xmlContainer").append(card);
+            }
+          });
+        } else {
+          $("#xmlContainer").text(
+            "No XML loaded. Please go back and upload an XML file."
+          );
+        }
+
+        $("#exportBtn").click(function () {
+          let newXml = '<?xml version="1.0"?>\n';
+          $(".xml-card").each(function () {
+            let nodeName = $(this).find(".card-header").text();
+            let nodeValue = $(this).find(".xml-content").text();
+            newXml += `<${nodeName}>${nodeValue}</${nodeName}>\n`;
+          });
+
+          let blob = new Blob([newXml], { type: "text/xml" });
+          let link = document.createElement("a");
+          link.href = window.URL.createObjectURL(blob);
+          link.download = "modifiedXML.xml";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      });
+    </script>
+  </body>
+</html>

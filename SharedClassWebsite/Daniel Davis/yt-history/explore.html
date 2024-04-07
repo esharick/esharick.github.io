@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore my history</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./theme.css" />
+  </head>
+  <script src="script/utils.js"></script>
+
+  <body>
+    <h1>My Stats</h1>
+
+    <div id="loader" class="loader-overlay" style>
+      <div class="text-center">
+        <h1>Finishing Up</h1>
+        <div class="lds-dual-ring"></div>
+        <h3>This won't take long.</h3>
+      </div>
+    </div>
+
+    <div class="card text-left" style="width: 60%; max-width: 1000px">
+      <h2 id="totalvc" class="text-center">
+        You've watched {a} videos on YouTube.
+      </h2>
+      <h3 id="uniquevc">That's {a} unique videos.</h3>
+      <h3 id="totaltime">
+        If the videos you watch are typically
+        <input type="number" id="avgtime" min="1" max="60" value="6" />
+        minutes,
+      </h3>
+      <h3 id="timeout"></h3>
+    </div>
+
+    <!-- card with your top video -->
+    <div class="card" style="width: 60%">
+      <div class="card-body">
+        <iframe
+          src=""
+          id="no1embed"
+          frameborder="0"
+          allowfullscreen=""
+        ></iframe>
+        <h2 class="card-title" id="most-watched-title">Now Loading.</h2>
+        <p class="card-text" id="most-watched-d">
+          Remember this? You watched it {a} times.
+        </p>
+      </div>
+    </div>
+
+    <div class="card" style="max-width: 80%">
+      <div class="card-body">
+        <h3 class="card-title">My Top Videos</h3>
+        <!-- horizontal row -->
+        <div class="row center-flex" id="top-videos">
+          <input
+            type="text"
+            id="search"
+            class="form-control"
+            placeholder="Search your history"
+          />
+          <!-- Dropdown for choosing export format (Bootstrap 5) -->
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Export
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" id="export-json">JSON</a>
+              <a class="dropdown-item" id="export-xml">XML</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- chart -->
+      <div class="row">
+        <div class="col">
+          <div class="center-flex">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col" class="vidtitle">Title</th>
+                  <th scope="col">Times Seen</th>
+                </tr>
+              </thead>
+              <tbody id="top-videos-table"></tbody>
+            </table>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-danger" id="load-all">Load All</button>
+            <button class="btn btn-primary rightbtn" id="load-more">
+              Load More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <style>
+    .btn-row {
+      width: 100%;
+      text-align: right;
+    }
+
+    .btn-row button {
+      width: 150px;
+    }
+
+    .rightbtn {
+      margin-left: auto;
+      margin-right: 10%;
+    }
+
+    #search {
+      width: 80%;
+    }
+
+    #top-videos-table .vidtitle {
+      max-width: 90%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    #top-videos-table td {
+      width: min-content;
+    }
+
+    #top-videos {
+      margin-top: 20px;
+    }
+
+    .center-flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card input {
+      width: 60px;
+    }
+
+    .card table {
+      width: 90%;
+      margin-top: 20px;
+      color: white;
+      border: 1px solid white;
+      border-radius: 1rem;
+    }
+
+    .card {
+      margin: 0 auto;
+      margin-top: 20px;
+      background-color: #212121;
+      color: white;
+      padding: 10px;
+      border-radius: 1em;
+      max-width: 1200px;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90% !important;
+        max-width: 90% !important;
+      }
+    }
+
+    .card iframe {
+      width: 90%;
+      height: 500px;
+      border-radius: 1em;
+    }
+
+    body {
+      padding-top: 20px;
+      background-color: #f8f9fa;
+      text-align: center;
+    }
+
+    .loader-overlay {
+      background-color: rgba(0, 0, 0, 0.769);
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="./script/explore.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</html>

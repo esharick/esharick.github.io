@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+#plantTable {
+  border: 2px solid #000;
+  padding: 3px;
+  border-collapse: collapse;
+  font-size: large;
+  margin-right: 20px;
+}
+
+#plantTable tbody tr:nth-child(even) {
+  background-color:rgb(251, 232, 211);
+}
+
+.scroll-table{
+    height: 450px; 
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+th, td{
+    padding: 3px;
+    white-space: nowrap;
+}
+
+td{
+    padding-right: 20px;
+}
+
+th{
+    padding: 5px;
+    padding-right: 20px;
+
+    text-align: left;
+
+    position: sticky;
+    top: 0;
+
+    background-color: rgb(243, 213, 144);
+}
+body{
+    background-color:green;
+    background-image: url("leaf.png");
+}
+input[type="search"]{
+    font-size: larger;
+}
+select{
+    font-size: large;
+}
+
+table{
+    border: 2px solid #666;
+    border-collapse: collapse;
+}
+
+h3{
+    margin: 3px;
+}
+
+h1{
+    background-color:rgb(255, 255, 255);
+    color: rgb(0, 143, 38);
+    font-size: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 6px;
+    text-align: center;
+    border: 4px solid #999;
+}
+
+button{
+    font-size: x-large;
+    font-weight: bold;
+    border-width: 3px;
+    border-radius: 5px;
+    background-color: lightskyblue;
+}
+
+        </style>
+    </head>
+    <body>
+        <table style="margin: auto; border: none;">
+            <tr>
+                <td style="padding: 20px; border: none; background-color: whitesmoke;">
+                    <h1 style="margin-top: 0px;">Plant Catalog</h1>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="search" id="searchBar" oninput="updateTable()" placeholder="Search">
+                            </td>
+                            <td>
+                                <h3>Filter By</h3>
+                            </td>
+                            <td>
+                                <select id="selectFilter" onchange="updateTable()"></select>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="margin-top: -1.5px;">
+                        <tr>
+                            <td>
+                                <h3>Sort By</h3>
+                            </td>
+                            <td>
+                                <select id="selectSort" onchange="updateTable()"></select>
+                            </td>
+                            <td>
+                                <select id="selectOrder" onchange="updateTable()"></select>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <br><br>
+                    <div class="scroll-table">
+                        <table id="plantTable"></table>
+                    </div>
+                    <br><br>
+                    <button onclick="downloadJSON()">Download selection as JSON</button>
+                    <br><br><br><br>
+                </td>
+            </tr>
+        </table>
+        <script src="Plant.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

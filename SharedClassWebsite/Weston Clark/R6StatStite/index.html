@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brawl Stars Stat Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="Background"></div>
+    <div id="Body">
+        <h1>Brawl Stars Stat Tracker</h1>
+        <form id="InfoForm">
+            <label for="ID">Add Brawler by Player Id</label> <br>
+            <input type="text" id="BrawlID" placeholder="Ex: 00000000"> <br>
+            <button type="button" id="Submit" onclick="ShowStats()">Submit</button>
+            <button type="button" id="Submit" onclick="DownloadStats()">Download Stats</button> <br>
+        </form>
+        <form id="SearchForm">
+            <label for="Search">Search Database</label> <br>
+            <input type="search" name="Search" id="Search" autocomplete="off">
+        </form>
+        <div id="tableContainer">
+            <table id="BrawlTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Trophies</th>
+                    <th>Wins</th>
+                    <th>Club</th>
+                    <th>Tag</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="StatDisplay">
+        <div>
+            <h1 id="Header">Stats</h1>
+            <div id="Stats">
+                <div id="PlayerName">Name:</div>
+                <div id="PlayerTag">Tag:</div>
+                <div id="PlayerIconId">Icon Id:</div>
+                <div id="PlayerClub">Club Name:</div>
+                <div id="PlayerTrophies">Trophies:</div>
+                <div id="PlayerHighestTrophies">Highest Trophies:</div>
+                <div id="PlayerExpLvl">Experience Level:</div>
+                <div id="PlayerTotalVictories">Total Victories:</div>
+                <div id="Player3v3Victories">3v3 Victories:</div>
+                <div id="PlayerSoloVictories">Solo Victories:</div>
+                <div id="PlayerDuoVictories">Due Victories:</div>
+                <div id="PlayerBestRoboRumbleTime">Best Robo Rumble Time:</div>
+                <div id="PlayerBestBigBrawlerTime">Longest Time as Big Brawler:</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

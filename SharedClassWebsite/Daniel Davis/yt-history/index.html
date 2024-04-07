@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YT History Viewer</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./theme.css" />
+  </head>
+  <body>
+    <div class="container mt-5 text-center">
+      <h1>YouTube History</h1>
+      <h4>Converter & Explorer</h4>
+    </div>
+
+    <div class="container mt-5" id="uploadArea">
+      <svg
+        style="height: 50px"
+        class="mb-3 w-10 h-10 text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+        ></path>
+      </svg>
+      <p class="text-center"><b>Click to upload</b> or drag and drop</p>
+      <p class="text-center">
+        Upload <i>watch-history.html</i> from Google Takeout.
+      </p>
+      <div id="foundDataRow">
+        <button class="btn btn-primary" id="explore">Use Past Data</button>
+        <button class="btn btn-danger" id="clear">Clear Past Data</button>
+      </div>
+    </div>
+
+    <!-- to link to instructions -->
+    <div class="container mt-5">
+      <p class="text-center">
+        <a href="./instructions.html"
+          >How to get your <i>watch-history.html</i> file</a
+        >
+      </p>
+    </div>
+
+    <div id="loader" class="loader-overlay" style="display: none">
+      <div class="text-center">
+        <h1>Converting File</h1>
+        <div class="lds-dual-ring"></div>
+        <h3>This could take several minutes depending on the file size.</h3>
+      </div>
+    </div>
+
+    <style>
+      #uploadArea {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      #foundDataRow {
+        display: none;
+      }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="script/utils.js"></script>
+    <script src="script/index.js"></script>
+  </body>
+</html>

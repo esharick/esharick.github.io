@@ -6,18 +6,17 @@ let shrunk = false;
 let ticking = false;
 
 btn.addEventListener('click', function(e){
-
     shrink();
 });
 
 function shrink() {
+    shrunk=!shrunk;
     if(!shrunk){
-        bgText.classList.add('textBox');
-        welcome.style.backgroundPositionY = '-120vh';
-    }
-    else {
-        bgText.classList.remove('textBox');
+        bgText.style.width = '80%';
         welcome.style.backgroundPositionY = '0';
     }
-    shrunk=!shrunk;
+    else {
+        bgText.style.width = '20%';
+        welcome.style.backgroundPositionY = '-120vh';
+    }
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload XML</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2>Upload your XML file</h2>
+      <input type="file" id="fileInput" class="form-control" />
+      <button id="uploadButton" class="btn btn-primary mt-3">Upload</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#uploadButton").click(function (e) {
+          var file = $("#fileInput").prop("files")[0];
+          if (file && /xml$/.test(file.name)) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              localStorage.setItem("uploadedXML", e.target.result);
+              window.location.href = "editor.html"; // Redirect to editor page
+            };
+            reader.readAsText(file);
+          } else {
+            alert("Please upload a valid XML file.");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

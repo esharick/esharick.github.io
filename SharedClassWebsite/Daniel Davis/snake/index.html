@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Under Construction | Mewing Central</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+    <link rel="stylesheet" href="../styles/navbar.css" />
+
+    <!-- Opengraph metadata -->
+    <meta property="og:title" content="Under Construction | Mewing Central" />
+    <meta property="og:type" content="website" />
+  </head>
+
+
+  
+  <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    #image-container {
+        position: relative;
+        display: inline-block;
+    }
+    #bg {
+        width: 100vw;
+           height: auto;
+    }
+    canvas {
+        position: absolute;
+        pointer-events: none;
+    }
+
+</style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="640" height="480"></canvas>
+    <div id="image-container">
+        <img id="bg" src="./assets/background.png">
+        
+        </div>
+        </body>
+        
+        <script src="./game.js"></script>
+        </html>
