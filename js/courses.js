@@ -1,25 +1,24 @@
 let coursesData = [];
 
 function loadCourses(callback) {
-  const cachedData = localStorage.getItem("coursesData");
+  const CACHE_ENABLED = false; //set to true after data cleaning
 
-  if (cachedData) {
-    coursesData = JSON.parse(cachedData);
-    console.log("Loaded courses from localStorage");
-    callback();
-  } else {
-    fetch("/data/courses.json")
-      .then(response => response.json())
-      .then(data => {
-        coursesData = data;
+  let cachedRaw = localStorage.getItem("coursesData");
+  let cachedVersion = localStorage.getItem("coursesVersion");
 
+  fetch("/data/courses.json")
+    .then(response => response.json())
+    .then(data => {
+      if (CACHE_ENABLED && cachedRaw && cachedVersion === data.version) {
+        coursesData = JSON.parse(cachedRaw);
+        console.log("Loaded courses from cache (same version)");
+      } else {
+        coursesData = data.courses;
         localStorage.setItem("coursesData", JSON.stringify(coursesData));
-
-        console.log("Fetched and stored courses JSON");
-
-        callback();
-      })
-      .catch(err => console.error("Error loading courses:", err));
-  }
+        localStorage.setItem("coursesVersion", data.version);
+        console.log("Fetched updated courses JSON (new version)");
+      }
+      callback();
+    })
+    .catch(err => console.error("Error loading courses:", err));
 }
-
