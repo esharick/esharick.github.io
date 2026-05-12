@@ -1,15 +1,39 @@
 nav {
-    background-color: #333;
-    padding: 10px;
-  }
+  background-color: #333;
+  padding: 10px;
+}
 
-  nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-    font-size: 16px;
-  }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 16px;
+}
 
-  nav a:hover {
-    text-decoration: underline;
-  }
+nav a:hover {
+  text-decoration: underline;
+}
+
+.course {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.parsed {
+  width: 40%;
+  background: #f4f4f4;
+  padding: 10px;
+}
+
+.original {
+  width: 60%;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+pre {
+  white-space: pre-wrap;
+  font-size: 13px;
+}
