@@ -1,20 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>My Website</title>
   <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 40px;
+      background: white;
+      color: black;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 40px;
+    }
+
+    .main-container {
+      display: flex;
+      gap: 100px; /* Space between the left and right sides */
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .item-group {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 8px 16px;
+      background: white;
+      border: 1px solid black;
+      cursor: pointer;
+      font-size: 13px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+
+    button:hover {
+      background: #eeeeee;
+    }
+  </style>
 </head>
-
 <body>
-
-  <div id="navbar"></div>
-
 
   <h1>Welcome to the 11th grade page</h1>
 
+  <div class="main-container">
+    
+    <div class="column">
+      <div class="item-group"><label>Label 1</label><button>Button 1</button></div>
+      <div class="item-group"><label>Label 2</label><button>Button 2</button></div>
+      <div class="item-group"><label>Label 3</label><button>Button 3</button></div>
+      <div class="item-group"><label>Label 4</label><button>Button 4</button></div>
+      <div class="item-group"><label>Label 5</label><button>Button 5</button></div>
+    </div>
+
+    <div class="column">
+      <div class="item-group"><label>Label 6</label><button>Button 6</button></div>
+      <div class="item-group"><label>Label 7</label><button>Button 7</button></div>
+      <div class="item-group"><label>Label 8</label><button>Button 8</button></div>
+      <div class="item-group"><label>Label 9</label><button>Button 9</button></div>
+      <div class="item-group">
+        <label>Label 10</label>
+        <button>Button 10</button>
+        <button>Button 11</button>
+      </div>
+      <div class="item-group">
+        <label>Label 11</label>
+        <button>Button 12</button>
+        <button>Button 13</button>
+      </div>
+    </div>
+
+  </div>
+
   <script src="../js/nav.js"></script>
 </body>
-
 </html>
