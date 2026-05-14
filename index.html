@@ -4,14 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <title>My Website</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
+
     <div id="navbar"></div>
+
     <h1>Welcome to the Home Page</h1>
 
-    <script src="js/nav.js"></script>
+
+    <div id="course"></div>
+
+    <script src="/js/nav.js"></script>
+    <script src="/js/courses.js"></script>
+    <script>
+        
+        function displayOneCourse() {
+          loadCourses(() => {
+            const course = coursesData[0];
+        
+            document.getElementById("course").innerHTML =
+              "<h2>" + course.name + "</h2>" +
+              "<p>" + course.description + "</p>";
+          });
+        }    
+        displayOneCourse();
+    </script>
+
 </body>
 
 </html>
