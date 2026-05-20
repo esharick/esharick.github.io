@@ -1,0 +1,1186 @@
+{
+"version": "2026",
+"courses":
+  [
+    {
+      "name": "Literary Foundations",
+      "levels": [
+        "H",
+        "X",
+        "A"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "EN",
+        "LF"
+      ],
+      "grades": [
+        "9"
+      ],
+      "courseNumbers": {
+        "H": [
+          "0300"
+        ],
+        "X": [
+          "0301",
+          "0311"
+        ],
+        "A": [
+          "0312"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Literary Foundations\nGrade 9 Year 1 credit\n0300 (H) 0301 (X) 0311 (X) 0312 (A) LF\nIn this course, students will explore themes in literature written across a variety of genres (e.g. epic, drama, prose, poetry, narrative non-fiction, informational and persuasive texts) and contexts (e.g. historical, geographical, cultural, temporal). Through this exposure to a diversity of literary voices, students will acquire an understanding of how to read and analyze a variety of texts at the high school level, as well as develop their own reader’s identity. Additionally, students will participate in writing as part of a recursive process with their reading, practicing written expression across a variety of modes (e.g. analytical, persuasive, narrative, informative). This course will provide the foundations for critical thinking, close reading, literary vocabulary, analytical and creative writing, and speaking and listening skills that will carry through their high school career and beyond."
+    },
+    {
+      "name": "American Voices",
+      "levels": [
+        "H",
+        "X",
+        "A"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "EN",
+        "AV"
+      ],
+      "grades": [
+        "10"
+      ],
+      "courseNumbers": {
+        "H": [
+          "0320"
+        ],
+        "X": [
+          "0321",
+          "0331"
+        ],
+        "A": [
+          "0332"
+        ]
+      },
+      "prerequisites": "",
+      "description": "American Voices \nGrade 10 Year 1 credit \n0320 (H) 0321 (X) 0331 (X) 0332 (A) AV \nThis course invites students to explore American literary traditions from pre-colonial oral narratives to contemporary multicultural voices. Through close reading, critical analysis, and contextual exploration, students will examine how literature reflects and shapes the evolving American identity. Emphasis will be placed on understanding the author’s purpose, the historical context of each work, and the literary movements that influenced American thought and expression. The curriculum is organized both chronologically and thematically, allowing students to trace the development of key ideas such as freedom, justice, identity, and the American Dream. Students will develop skills in literary interpretation, academic writing, and oral communication through essays and presentations as well as research tasks in preparation for the greater scholarly demands of upper class and collegiate coursework. Students in this class will take the Pennsylvania Literature Keystone Exam at the end of the year."
+    },
+    {
+      "name": "Language and Composition",
+      "levels": [
+        "AP",
+        "H",
+        "X",
+        "A"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "EN",
+        "LC"
+      ],
+      "grades": [
+        "11"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "0050"
+        ],
+        "H": [
+          "0070"
+        ],
+        "X": [
+          "0071"
+        ],
+        "A": [
+          "0072"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Language and Composition \nGrade 11 Year 1 credit\n0050 (AP) 0070 (H) 0071(X) 0072(A)* LC\nLanguage and Composition focuses primarily on the reading and writing of the best non-fiction from both contemporary and classical sources. Students read critically to discover the rhetorical strategies of good writers and to apply those strategies to their own writing. Students analyze audience and purpose as well as mechanics, diction, and style in the readings and in their own writing. Students can expect to write across multiple forms, including memoir, argument, personal essay, and creative non-fiction. In addition to a selection of novels and non-fiction books, students will practice critical reading and analysis by examining shorter works, such as letters, speeches, historical documents, newspaper editorials, and longform periodical features. The course also focuses on news literacy and reflects the newest trends and technology in 21st-century journalism. Across all levels, students will create research projects based on both primary and secondary sources. Students who take the course at the AP level are prepared to sit for The College Board’s AP English Language and Composition Examination."
+    },
+    {
+      "name": "Comparative Literature: Mayhem",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "EN"
+      ],
+      "grades": [
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "0410"
+        ],
+        "X": [
+          "0411"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Comparative Literature: Mayhem\nGrade 12 Year 1 credit\n0410 (H) 0411 (X) EN\nThis comparative literature course dives into the thrilling, unsettling, and diverse genres of science fiction, dystopia, mystery, and horror. Students will explore how authors across cultures and time periods use imaginative storytelling to confront real-world anxieties, challenge societal norms, and speculate on the future of humanity. Students will be asked to identify literary themes in fiction and compare representations of mayhem within film, art, music, and poetry. Through close reading, creative projects, classroom discussions, and a robust inquiry essay, students will develop critical thinking skills while engaging with texts that push boundaries and provoke deep questions about what it means to be human."
+    },
+    {
+      "name": "Comparative Literature: Mirrors",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "EN"
+      ],
+      "grades": [
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "0430"
+        ],
+        "X": [
+          "0431"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Comparative Literature: Mirrors \nGrade 12 Year 1 credit \n0430 (H) 0431 (X) EN \nHow does literature explore the way people form and shape their identities? What role does a community play in shaping that identity? What happens when the individual comes in conflict with that community? This year-long course will focus on stories where protagonists come of age and establish their identities. Core texts will explore the role of a community in the coming-of-age story where protagonists may find themselves questioning their society. In examining these topics in writing, film, art, and music, students will research and compose a literary inquiry essay throughout the school year."
+    },
+    {
+      "name": "Comparative Literature: Masks",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "EN"
+      ],
+      "grades": [
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "0440"
+        ],
+        "X": [
+          "0441"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Comparative Literature: Masks\nGrade 12 Year 1 credit\n0440 (H) 0441 (X) EN\nFrom the beginning of civilization, humans have turned to performance to understand themselves and the world around them. This course will focus on a variety of performances: comedies, tragedies, historical fiction, musicals, etc. This is a survey course that is meant to introduce students to a myriad of different types of performative literature. Beginning with the traditional Greek texts where drama started, students will be exposed to historical plays as well as current and contemporary playwrights that ask probing questions about life and humanity. In examining these topics in writing, film, art, and music, students will research and compose a literary inquiry essay throughout the school year."
+    },
+    {
+      "name": "AP Literature and Composition",
+      "levels": [
+        "AP"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "EN"
+      ],
+      "grades": [
+        "12"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "0040"
+        ]
+      },
+      "prerequisites": "",
+      "description": "AP Literature and Composition\nGrade 12 Year 1 credit\n0040 (AP) EN\nAP Literature is a course for advanced readers that encourages deep exploration into both the theory and craft of literature. Drawing from many cultures and many time periods, the course features novels, short stories, plays, and poetry by such authors as William Shakespeare, Margaret Atwood, Toni Morrison, Jesmyn Ward, Flannery O'Connor, and Tommy Orange. The year culminates in a lengthy multi-modal research paper that synthesizes across reading experiences. Students will be required to read independently chosen literary works in addition to class selections and be encouraged to sit for The College Board's AP English Literature and Composition Examination."
+    },
+    {
+      "name": "English Language Development (ELD)",
+      "levels": [],
+      "term": "S",
+      "credit": "0.5",
+      "category": [
+        "EL",
+        "EN"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "S1": [
+          "0289"
+        ],
+        "S2": [
+          "0299"
+        ]
+      },
+      "prerequisites": "",
+      "description": "English Language Development** \nGrades 9, 10, 11, 12 \n0289 EN, EL Semester 1 .5 credit \n0299 EN, EL Semester 2 .5 credit\nThe English Language Development course is open only to students whose native language is not English and who have met the entry criteria as stated in the school district’s ELD policy. The course is designed to provide instruction in listening, speaking, reading and writing English. The course curriculum is designed to develop English language skills including grammar, usage, vocabulary, idioms and American customs. Language structure and form will be learned in authentic contexts. Weekly journals include informal entries and reader responses, ranging from 10-20 pages per week. Juniors will conclude the year with an independent writing project. ELD courses do not currently meet NCAA eligibility standards for English credit."
+    },
+    {
+      "name": "Language of Film",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "S",
+      "credit": "0.5",
+      "category": [
+        "EN",
+        "EL"
+      ],
+      "grades": [
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "0420"
+        ],
+        "X": [
+          "0421"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Language of Film\nGrades 11, 12 Semester .5 credit\n0420 (H) 0421 (X) EL\nThis course is an introduction to the language of film, examining how filmmakers compose a shot in the same way that authors compose a sentence. Students will develop a formal appreciation for the art of film and develop a critical vocabulary to understand the unique grammar of cinema. Students will explore the language of film to determine how it reflects the beliefs and values of society, to explore how films make us think, and to examine the relationship between the viewer and the film. The class will experience many genres and styles including narrative, documentary, and experimental films."
+    },
+    {
+      "name": "The Writer's Craft",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "S",
+      "credit": "0.5",
+      "category": [
+        "EN",
+        "EL"
+      ],
+      "grades": [
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "0600"
+        ],
+        "X": [
+          "0601"
+        ]
+      },
+      "prerequisites": "",
+      "description": "The Writer’s Craft\n\nGrades 11, 12\nSemester .5 credit\n0600 (H) 0601 (X) EL\n\nThis course is designed for students with an avid interest in creative writing. Students will examine specific crafting strategies of published writers of fiction, nonfiction, playwriting, screenwriting, and poetry and will use those strategies in their own writing. Through workshop and seminar formats, the course will build a community of writers comfortable in taking an idea from its initial spark to a finished product. Students will compose a portfolio of their writing and will have an opportunity for publication."
+    },
+    {
+      "name": "Journalism Foundations",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "S",
+      "credit": "0.5",
+      "category": [
+        "EN",
+        "EL"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "0520"
+        ],
+        "X": [
+          "0521"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Journalism Foundations\nGrades 9, 10, 11, 12 Semester .5 credit\n0520 (H) 0521 (X) EL\nJournalism Foundations is a semester course for students interested in contributing to The Spoke and Pioneer or learning more about student journalism in general. Students will learn the fundamentals of journalism: writing, reporting, photography, layout and design, copy editing, AP style, law and ethics, publishing software, and marketing. Students will have the opportunity to write news, features, columns, sports, and opinion pieces."
+    },
+    {
+      "name": "Newspaper (The Spoke)",
+      "levels": [],
+      "term": "Y",
+      "credit": "0.5",
+      "category": [
+        "EN",
+        "EL",
+        "CC"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "default": [
+          "0405"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Newspaper (The Spoke)**\nGrades 9, 10, 11, 12 Year .5 credit\n0405 EL\nThe Spoke is Conestoga’s student newspaper. Published seven times during the school year, The Spoke offers students the opportunity to write news, features, columns, sports, and editorials of interest to the school and community. Students gain experience in graphic arts, photography, editing, advertising, design, and layout. Selection is by application and recommendation. The application and teacher recommendation forms can be obtained during Course Selection Week from English teachers, the newspaper advisor(s), or a counselor (in the case of 8th graders). Forms must be returned to The Spoke by the announced deadline. Prior to the close of the course selection period, applicants will be notified by the advisor whether they have been selected. The signature of the newspaper advisor (or 8th-grade counselor) is required on the Course Selection Card."
+    },
+    {
+      "name": "News Editors’ Seminar (The Spoke)",
+      "levels": [],
+      "term": "Y",
+      "credit": "0.5",
+      "category": [
+        "EN",
+        "EL",
+        "CC"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "default": [
+          "0415"
+        ]
+      },
+      "prerequisites": "",
+      "description": "News Editors’ Seminar (The Spoke)**\nGrades 10, 11, 12 Year .5 credit\n0415 EL\nExperienced staff members of The Spoke may apply for editorial and management positions on the following year’s Editorial Board, which oversees the production of The Spoke. These leaders are required to schedule News Editors’ Seminar in addition to Newspaper. Prior to the close of the course selection period, applicants will be notified by the advisor whether they have been selected. The signature of the newspaper advisor is required on the Course Selection Card."
+    },
+    {
+      "name": "Literary and Art Magazine",
+      "levels": [],
+      "term": "Y",
+      "credit": "0.5",
+      "category": [
+        "EN",
+        "EL",
+        "CC"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "default": [
+          "0445"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Literary and Art Magazine (The Folio)**\nGrades 9, 10, 11, 12 Year .5 credit\n0445 EL\nConestoga’s literary and art magazine is a course for students who wish to serve on the magazine production staff of The Folio. Student writers and artists work together to produce two magazines per year, featuring the best writing and art from the school. Editors, chosen by the faculty advisor, direct students in the selection of format, theme, material, layout, and artwork. The requirements are that students be interested in writing and art, able to critique submissions, and willing to fulfill designated duties. Students are required to submit at least two literary or artistic submissions per semester. Inkwell, a coffee-house and open mic night, serves as the magazine’s major fundraising activity. Statements of interest, along with a teacher recommendation, may be obtained during course selection week from an English or Art teacher, the magazine advisor, or a counselor (in the case of 8th graders). Interested students may enter “Literary and Art Magazine” during course selection."
+    },
+    {
+      "name": "Yearbook",
+      "levels": [],
+      "term": "S`",
+      "credit": "0.25",
+      "category": [
+        "EN",
+        "EL",
+        "CC"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "default": [
+          "0425"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Yearbook (Pioneer)\n\nGrades 9, 10, 11, 12\nSemester 1 .25 credit\n0425 EL\n\nYearbook is a course for students who wish to be a part of the production of The Pioneer, the school’s yearbook. Involved students’ responsibilities include: writing, photography, design, and budgeting. Interested students should be able to interview and work with others, maintain journalistic principles in writing and design, and work independently under tight deadlines. Yearbook staff members should be interested in design, with a keen eye for detail. Interested students should complete the yearbook interest survey to enroll in the course."
+    },
+    {
+      "name": "Yearbook Editors' Seminar",
+      "levels": [],
+      "term": "Y",
+      "credit": "0.5",
+      "category": [
+        "EN",
+        "EL",
+        "CC"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "default": [
+          "0435"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Yearbook Editors’ Seminar (Pioneer)**\nGrades 10, 11,12 Year .5 credit\n0435 EL\nThis course is for current and future Pioneer editors, who will be responsible for bringing closure to the publication of the current yearbook and for carrying out training, planning, and leadership activities for the next year. The signature of the yearbook advisor is required on the Course Selection Card. Prior to the close of the course selection period, applicants will be notified by the advisor whether they have been selected."
+    },
+    {
+      "name": "Introduction to Television Broadcast Journalism",
+      "levels": [],
+      "term": "S",
+      "credit": "0.5",
+      "category": [
+        "TE",
+        "EL"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "default": [
+          "8549"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Introduction to Television Broadcast Journalism\nGrades 9, 10, 11, 12 Semester .5 credit\n8549 TE, EL\nStudents will learn the basic principles of broadcast journalism, newsgathering, and video editing using Final Cut Pro software. Students will complete hands-on video projects, including but not limited to broadcast news episodes, broadcast news packages, and commercials in collaboration with the Marketing classes using live production, field production and post-production editing techniques. They will function as writers, talent, directors, camera operators and video editors in both live-to-tape and edited broadcasts. Both interpersonal and on-air communication skills will be stressed. Students will produce video and learn elements of advanced journalistic style and the standards involved in producing for the cable network with the goal to possibly have their work showcased on Good Morning ‘Stoga or T/E TV broadcasts. This course is the prerequisite for Advanced Television Broadcast Journalism (GMS)."
+    },
+    {
+      "name": "Advanced Television Production/Broadcast Journalism (GMS)",
+      "levels": [],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "EL"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "default": [
+          "8595"
+        ]
+      },
+      "prerequisites": "Introduction to Television Broadcast Journalism",
+      "description": "Advanced Television Production/Broadcast Journalism (GMS)** \nGrades 10, 11, 12 \nYear 1 credit \n8595 BT, EL \nPrerequisite: Introduction to Television Broadcast Journalism \nThis class will meet first or second period so students can produce and broadcast the morning announcements program, Good Morning 'Stoga, during homeroom. In addition, students enrolled in this class will produce packages that will air on both Good Morning 'Stoga and T/E News. A strong background in control room procedure and/or journalistic writing, producing, shooting and editing will be necessary."
+    },
+    {
+      "name": "Film Screen Writing and Production",
+      "levels": [],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "EL"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "default": [
+          "8489"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Film Screen Writing and Production\nGrades 9, 10, 11, 12 Year 1 credit\n8489 EL\nStudents will produce narrative, experimental, music video, documentary and other types of short films for T/E TV programming and other outlets. They will script, pitch, storyboard, shoot and edit each project. This course will require collaboration, commitment and planning, directing, editing and lighting/sound. Students should have an interest in publishing and sharing their work."
+    },
+    {
+      "name": "Sports Broadcasting",
+      "levels": [],
+      "term": "S",
+      "credit": "0.5",
+      "category": [
+        "EL"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "default": [
+          "8499"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Sports Broadcasting\nGrades 9, 10, 11, 12 Semester .5 credit\n8499 EL\nStudents will produce narrative, experimental, music video, documentaries and other types of short films for Stoga Film programming and other outlets. They will script, pitch, storyboard, shoot and edit each project. This course will require collaboration, commitment and planning, directing, editing and lighting/sound. Students should have an interest in publishing and sharing their work."
+    },
+    {
+      "name": "Pre Algebra*",
+      "levels": [],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "A": [
+          "2002"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Pre-Algebra*\nGrades 9, 10, 11, 12 Year 1 credit\n*requires administrative approval\n2002 (A) MA\nThis course is intended to prepare students for Algebra 1. Number properties, operations and applications are emphasized. The role of a variable is explored and used in multiple contexts. Properties of integers, linear equations in one variable, polynomial operations, selected geometric topics, and some algebraic-level concepts are developed. Students who successfully complete this course should be able to:\n• solve linear equations containing one variable\n• graph linear equations on the coordinate plane\n• apply knowledge of the real number system and numerical operations to solve practical problems\n• apply the techniques of algebra to solve simple and multi-step linear equations\n• complete number sentences and apply logical problem-solving strategies\n• apply geometric concepts to the solution of practical problems involving perimeter, area, volume, and special right triangles\n• communicate mathematical ideas verbally and in writing\n• demonstrate an introductory level understanding of systems of equations"
+    },
+    {
+      "name": "Algebra 1",
+      "levels": [
+        "X",
+        "A"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA"
+      ],
+      "grades": [
+        "9",
+        "10"
+      ],
+      "courseNumbers": {
+        "X": [
+          "2011"
+        ],
+        "A": [
+          "2092"
+        ]
+      },
+      "prerequisites": "Pre-Algebra",
+      "description": "Algebra 1 \nGrades 9,10 \n2011 (X) MA Year 1 credit \n2092 (A) MA Year 1 credit\nPrerequisite: Pre-Algebra\nThis course is designed for students ready to begin the formal study of Algebra while also preparing for the Algebra 1 Keystone Exam. Students will build a strong foundation in algebraic reasoning and problem solving while they explore linear and non-linear relationships and work with algebraic expressions, equations, and inequalities with one and two variables. Students will interpret and represent data in meaningful ways through a variety of real-world examples in each unit of study."
+    },
+    {
+      "name": "Geometry",
+      "levels": [
+        "H",
+        "X",
+        "A"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "2080"
+        ],
+        "X": [
+          "2081"
+        ],
+        "A": [
+          "2082"
+        ]
+      },
+      "prerequisites": "Algebra 1",
+      "description": "Geometry\nGrades 9, 10, 11\n2080 (H) MA Year 1 credit\n2081 (X) MA Year 1 credit\n2082 (A) MA Year 1 credit\nPrerequisite: Algebra 1\n\nAThis course covers all major geometric topics and theorems typically taught in a year-long geometry class, while also introducing algebra-based applications in statistics, probability, and trigonometry. The rigor and scope will vary by course level. Students will develop skills to apply geometric concepts to problem-solving, write and analyze proofs, establish relationships among triangles, and identify corresponding parts in congruent and similar polygons. They will use algebraic and geometric techniques to solve perimeter, area, and volume problems, apply distance and midpoint formulas, and prove theorems using coordinates. The course includes performing geometric transformations and applying trigonometric definitions to right triangles. Students will also solve problems involving circles, inscribed polygons, and circumscribed polygons. Additionally, they will apply combinations, permutations, and probability theorems in discrete situations, and analyze data using measures of center and spread. "
+    },
+    {
+      "name": "Algebra 2",
+      "levels": [
+        "A",
+        "X",
+        "H",
+        "H*"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H*": [
+          "2050"
+        ],
+        "H": [
+          "2150"
+        ],
+        "X": [
+          "2051"
+        ],
+        "A": [
+          "2052"
+        ]
+      },
+      "prerequisites": "Geometry",
+      "description": "Algebra 2\n2050 (H*) MA (Pre-BC Calculus)\nGrades 9, 10 Year 1 credit\n2150 (H) MA (Pre-AB Calculus)\nGrades 9, 10, 11 Year 1 credit\n2051 (X) MA Grades 10, 11, 12 Year 1 credit\n2052 (A) MA Grades 11, 12 Year 1 credit\nPrerequisite: Geometry\nAll of the traditional topics will be addressed in these Algebra 2 courses. This course extends the concepts learned in Algebra 1 to include the complex number system and functional notation. Topics include, but are not limited to, real numbers and expressions, linear equations and systems, matrices, functions, quadratic equations and functions, advanced factoring skills, polynomials, rational functions, exponential and logarithmic functions, conic sections, sequences and series, periodic functions and trigonometry and trigonometric identities and equations. The rigor and scope of the material covered will vary with the level of the course. \n\nAcademic (A) and Accelerated (X) Algebra 2 are college preparatory classes for students who wish to continue their formal study of Algebra in preparation for subsequent studies in Math Analysis or Trigonometry. \n\nHonors (Pre-AB Calculus) is a college preparatory class for students who wish to continue their mathematical studies in Math Analysis (AB) and then AP Calculus AB. The course is rigorous and the depth of the topics is extensive in preparation for continued studies at the Honors Math Analysis AB level. \n\nHonors (Pre-BC Calculus) is a college preparatory class for students who wish to continue their mathematics studies in Math Analysis (BC) and then AP Calculus BC. This course is part of a compacted curriculum in which Algebra 2, Math Analysis, AP Calculus AB, and AP Calculus BC are taught over the course of three years as opposed to a traditional pathway in which these courses would be taught over four years. The pace of this course requires strong motivation along with strong work and study habits. In addition, students will be expected to acquire and process new information rapidly while at the same time have strong foundational skills in which they will be asked to apply without needing review"
+    },
+    {
+      "name": "Math Analysis",
+      "levels": [
+        "H*",
+        "H",
+        "X"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H*": [
+          "2100"
+        ],
+        "H": [
+          "2110"
+        ],
+        "X": [
+          "2111"
+        ]
+      },
+      "prerequisites": "Algebra 2",
+      "description": "Math Analysis\n2100 (H*) MA (Pre-BC Calculus)\nGrades 9, 10, 11 Year 1 credit\n2110 (H) MA (Pre-AB Calculus)\nGrades 9, 10, 11 Year 1 credit\n2111 (X) MA (Pre-Calculus)\nGrades 11, 12 Year 1 credit\nPrerequisite: Algebra 2\nThese Math Analysis courses are designed to prepare students for high school or college calculus. A functional approach is used throughout to provide an extensive treatment of topics from algebra, geometry, and trigonometry. Students who successfully complete the course will be able to analyze polynomial, trigonometric, rational, exponential, and logarithmic functions, apply graphing techniques to a variety of functions, evaluate and expand sequences and series, evaluate limits, and apply a variety of trigonometric concepts. Students who have completed a course in Trigonometry / Algebra 3 or its equivalent are not eligible to earn additional math credits through Math Analysis. The rigor and scope of the material covered will vary with the level of the course. \n\nAccelerated (X) Math Analysis is a college preparatory class for students who wish to continue their formal study of Math Analysis in preparation for subsequent studies in Calculus (H) or Calculus (X) or an introductory Calculus course at the University level. \n\nHonors (Pre-AB Calculus) is a college preparatory class for students who wish to continue their mathematical studies in Calculus (H) or AP Calculus AB. The course is rigorous and the depth of the topics is extensive in preparation for continued studies at the Honors or AP level of Calculus. \n\nHonors (Pre-BC Calculus) is a college preparatory class for students who wish to continue their mathematics studies in AP Calculus BC. This course is part of a compacted curriculum in which Algebra 2, Math Analysis, AP Calculus AB, and AP Calculus BC are taught over the course of three years as opposed to a traditions pathway in which these courses would be taught over four years. The pace of this course requires strong motivation along with strong work and study habits. In addition, students will be expected to acquire and process new information rapidly while at the same time have strong foundational skills in which they will be asked to apply without needing review"
+    },
+    {
+      "name": "Trigonometry and Algebra 3",
+      "levels": [
+        "X"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA"
+      ],
+      "grades": [
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "X": [
+          "2141"
+        ]
+      },
+      "prerequisites": "Algebra 2",
+      "description": "Trigonometry and Algebra 3\n\nGrades 11*, 12 Year 1 credit\n*with administrative approval\n2141 (X) MA\n\nPrerequisite: Algebra 2\n\nThis course emphasizes the inter-relationships of algebraic and trigonometric functions. A functional approach is used throughout to provide extensive treatment of topics from algebra and trigonometry. Topics in algebra are extended to make connections and identify similarities to trigonometry. Topics include, but are not limited to: solving quadratic and linear equations, graphing quadratic and linear functions, graphing trigonometric functions, solving trigonometric equations, sketching polynomial functions, and application problems. Students who have completed a course in Math Analysis or its equivalent are not eligible to earn additional math credits through Trigonometry and Algebra 3. This course is intended to be an alternative to Math Analysis for students who do not anticipate taking Calculus during or after high school. Students who have successfully completed this course should be able to:\n-Define the trigonometric functions and demonstrate relationships among them.\n-Demonstrate techniques of graph sketching of functions.\n-Solve equations involving the trigonometric functions and their inverses.\n-Apply algebraic concepts to the solution of equations and application problems."
+    },
+    {
+      "name": "Calculus",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA"
+      ],
+      "grades": [
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "2220"
+        ],
+        "X": [
+          "2221"
+        ]
+      },
+      "prerequisites": "Math Analysis",
+      "description": "Calculus \nGrade 12 Year 1 credit\n2220 (H) 2221 (X) MA\nPrerequisite: Math Analysis \nThis high school calculus course prepares students to apply calculus in sciences, social sciences, and business, while building a strong foundation for advanced study. The course emphasizes both practical applications and the theoretical principles of calculus. Students will learn to compute derivatives of polynomial, exponential, logarithmic, and trigonometric functions. They will also develop skills to solve definite and indefinite integrals and simple ordinary differential equations. Techniques of differentiation and integration will be applied to curve sketching, optimization problems, and finding volumes of revolution. Additionally, students will explore real-world applications in fields such as statistics, economics, business, physics, and biology."
+    },
+    {
+      "name": "AP Calculus AB",
+      "levels": [
+        "AP"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "2210"
+        ]
+      },
+      "prerequisites": "Math Analysis",
+      "description": "AP Calculus AB\nGrades 10, 11, 12 Year 1 credit\n2210 (AP) MA\nPrerequisite: Math Analysis\nThis is a college level course that covers material equal to 1 semester of college work. Students are required to have and use a graphing calculator, considered an integral part of the course. Students will work with functions represented in a variety of ways (graphical, numerical, analytical, and verbal) and need to apply knowledge learned in previous math courses in the context of Calculus. Upon successful completion of this course, students will be able to evaluate limits, including using L’Hopital’s Rule to evaluate indeterminate forms, know the basic techniques of differentiation and integration, and apply these rules in context. Some of the applications are related rates, curve sketching, optimization, accumulation, area between curves, and volumes of solids of revolution."
+    },
+    {
+      "name": "AP Calculus BC",
+      "levels": [
+        "AP"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "2200"
+        ]
+      },
+      "prerequisites": "Math Analysis",
+      "description": "AP Calculus BC\nGrades 10, 11, 12 Year 1 credit\n2200 (AP) MA\nPrerequisite: Math Analysis\nThis is a college level course that covers material equal to two semesters of college work. Although this is a rigorous course, and all definitions and theorems are precisely stated, many of the proofs are deferred to later courses. Students are required to have and use a graphing calculator which is considered an integral part of the course. Students who successfully complete this course will also be proficient in the topics of AP Calculus AB. In addition to these topics, all students should be able to apply integration techniques to length of curves, use algebraic and trigonometric substitution, partial fractions, integration by parts, and improper integration techniques as appropriate for integration, solve logistic differential equations and observe solutions to differential equations using slope fields and Euler’s Method, differentiate and integrate parametrically defined relations and vector relations and apply these to applications of the derivative and the integral , differentiate and integrate polar relations and apply these to applications of the derivative and the integral, show the convergence and divergence of infinite sequences and series using a variety of tests, use Taylor series to represent transcendental functions, find the radius and interval of convergence, and estimate remainders."
+    },
+    {
+      "name": "Statistics",
+      "levels": [
+        "X",
+        "H"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA",
+        "EL"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "2230"
+        ],
+        "X": [
+          "2231"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Statistics\nGrades 9, 10, 11, 12 Year 1 credit\n2230 (H) 2231 (X) MA, EL\nThis course is designed to give students an introduction to the concepts of statistics. Descriptive statistics, sampling, experimental design, probability, and inferential statistics will be studied and applied to real-life scenarios. This course stresses the practical application of statistics to various disciplines and scenarios. Students who have successfully completed this course should be able to utilize appropriate statistical methods of analysis for both quantitative and categorical variables, using numerical summaries and graphical displays (for both one variable and two variable analyses.) Sampling and experimental design procedures are introduced to ensure students understand how to produce data in ways that allow them to draw valid conclusions. Students will understand the roll of chance behavior through probability and simulation techniques. Lastly, students will study statistical inference, which includes confidence intervals and significance tests for both quantitative and categorical variables. Students will leave the course with a rich understanding of the role of probability in decision-making. The course will utilize various forms of technology to enrich the experience of learning statistics through hands-on methods of modeling and simulation."
+    },
+    {
+      "name": "AP Statistics",
+      "levels": [
+        "AP"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA",
+        "EL"
+      ],
+      "grades": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "2240"
+        ]
+      },
+      "prerequisites": "Algebra 2",
+      "description": "AP Statistics\nGrades 9, 10, 11, 12 Year 1 credit\n2240 (AP) MA, EL\nPrerequisite: Algebra 2\nThis college-level course covers material equivalent to one semester of college statistics and is activity-driven, with applications in gaming scenarios, population growth, and sports. Students who successfully complete the course will be able to perform exploratory data analysis using graphical and numerical techniques to study patterns, apply sampling methods to estimate population parameters, and design and conduct experiments and observational studies. Students will utilize statistical software to analyze univariate and bivariate data and perform statistical inference on sample data. Additionally, they will learn to anticipate patterns by producing models through probability and simulation and make statistical inferences using appropriate models. Students will have the opportunity to explore topics of their choice as they apply the statistical concepts learned to a variety of projects throughout year."
+      },
+      {
+      "name": "Multi-Variable Calculus with Advanced Topics",
+      "levels": [
+        "H*"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "MA",
+        "EL"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H*": [
+          "2300"
+        ]
+      },
+      "prerequisites": "AP Calculus BC",
+      "description": "Multi-Variable Calculus with Advanced Topics\nGrades 11, 12 Year 1 credit\n2300 (H*) MA\n\nPrerequisite: AP Calculus BC\n\nThis course is a continuation of the calculus sequence and is intended for students who have successfully completed AP Calculus BC. Students who successfully complete this course will earn one Conestoga math credit and should be prepared for advanced college calculus or differential equations. The first part of the course covers vectors and multi-variable calculus including functions of several variables, multiple integration, and vector analysis in 2 and 3-space. Advanced applications will also be considered and may include selected topics from number theory, matrix algebra, modeling applications used in business, science, and economics, or differential equations.\n\nIt is important to note that courses similar to this one may be offered at colleges or universities; however, it should be clearly understood that this course offers only Conestoga math credit. Please note that students and their families, and not the T/E School District, are responsible for any student tuition or online charges for any student-elected college or university courses."
+    },
+    {
+      "name": "Biology",
+      "levels": [
+        "AP",
+        "H",
+        "X",
+        "A"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "SC",
+        "BI"
+      ],
+      "grades": [
+        "9"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "3100"
+        ],
+        "H": [
+          "3110"
+        ],
+        "X": [
+          "3111"
+        ],
+        "A": [
+          "3112"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Biology \nGrade 9 Year 1 credit\n3100 (AP) 3110 (H) 3111 (X) 3112 (A) BI\nBiology at the AP level prepares students for success on the Advanced Placement (AP) Biology examination. The pace of the AP course requires strong motivation along with strong work and study habits. Students enrolled in the AP level will read a college text which will examine more content and address more detail than that covered in the (H) level course. \nHonors Biology (H) includes all of the content of the accelerated level with more breadth and depth. In addition, the course is supplemented with readings in technical writing of laboratory projects and additional laboratory work.\nThe Accelerated (X) level features the study of the genetic continuity of life, cell structure and function, cell growth and reproduction, population characteristics, bioenergetics, interaction of organisms and their environment, and the chemistry of life. The class is a laboratory-based course where students perform a variety of laboratory experiments.\nAt the academic level (A), Biology is a laboratory-centered, college preparatory course in the life sciences and is paced to emphasize a thorough understanding of basic biological concepts. This course includes the study of plants, animals, genetics, cell composition, human physiology, microbiology, and ecology."
+    },
+    {
+      "name": "Environmental Science",
+      "levels": [
+        "AP",
+        "H",
+        "X",
+        "A"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "SC",
+        "EL"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "3130"
+        ],
+        "H": [
+          "3140"
+        ],
+        "X": [
+          "3141"
+        ],
+        "A": [
+          "3142"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Environmental Science\nGrades 10, 11, 12 Year 1 credit\n3130 (AP) 3140 (H) 3141 (X) 3142 (A) SC, EL\nEnvironmental Science is a course designed for students who have an interest in biology/environmental themes. The class is an extension of environmental/ecology topics that were covered in the student’s first year Biology class. This is a multi-disciplinary science course that applies scientific concepts to real world problems and dilemmas. The course focuses on both background and laboratory studies of the environment. Course topics include traditional and experimental ecology, types of pollution, energy sources, oceanography, global trends, economics, ethics, and sustainability. Students who were previously enrolled in 3122 Topics in Life Sciences cannot enroll in this course for credit."
+    },
+    {
+      "name": "Chemistry 1",
+      "levels": [
+        "AP",
+        "H",
+        "X",
+        "A"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "SC",
+        "EL"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "3200"
+        ],
+        "H": [
+          "3210"
+        ],
+        "X": [
+          "3211"
+        ],
+        "A": [
+          "3212"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Chemistry 1\nGrades 10, 11, 12 Year 1 credit\n3200 (AP) 3210 (H) 3211 (X) 3212 (A) SC, EL\nChemistry 1 is a math-based, physical science course which covers basic first-year chemistry topics. Numerous hands-on laboratory experiments are included at all levels. Topics covered include but are not limited to dimensional analysis, critical thinking and problem solving, stoichiometry, bonding and molecular geometry, chemical reactions, intermolecular forces, gas laws, atomic theory, thermochemistry, kinetics, acids and bases, and the relationship between chemistry and the world around us. While each level covers similar topics, the levels differ in the pacing and depth of the course, the rigor of questions asked, and the level of math skill needed to be successful in the course. AP Progression: AP Chemistry 1 is meant to be the first course of a two-year sequence that prepares students for the AP Chemistry exam. After successfully completing AP Chemistry 1, students can register for AP Chemistry 2 the following year and take the AP Chemistry exam at the end of that year. Students do not take the AP Chemistry exam at the end of AP Chemistry 1. Chemistry at the Honors (H) level is a mathematics-based treatment of chemistry for the highly motivated student and is taught using a college text. This rigorous course differs from the AP level in the depth of mathematical treatment and coverage of one or two fewer topics per semester. Success in this course will depend on high motivation, good work and study skills, and understanding of basic mathematical concepts. Chemistry at the Accelerated (X) level is a college preparatory class for students who wish to obtain a thorough introduction to the major topics of a first-year chemistry course. It is taught with a high school text and is less mathematically oriented than either the Honors or AP course. Students who take this course will be well prepared for an entry-level college science class. Laboratory activities and written lab reports are an integral part of this course. Academic (A) Chemistry is a college preparatory course for students. It is taught from a high school text and focuses on laboratory-based activities that relate to chemistry in everyday applications."
+    },
+    {
+      "name": "AP Chemistry 2",
+      "levels": [
+        "AP"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "SC",
+        "EL"
+      ],
+      "grades": [
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "3220"
+        ]
+      },
+      "prerequisites": "Chemistry 1",
+      "description": "AP Chemistry [2]\nGrades 11, 12 Year 1 credit\n3220 (AP) SC, EL\nPrerequisite: Chemistry 1\nEnrollment in AP Chemistry 2 allows students to continue the study of certain concepts from Chemistry 1 in greater depth. Considerable emphasis is placed on individual laboratory activities. This course provides a more complete background for those students interested in a science career. Students are encouraged to take the AP Chemistry Examination at the conclusion of this course."
+    },
+    {
+      "name": "Physics",
+      "levels": [
+        "AP",
+        "H",
+        "X",
+        "A"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "SC",
+        "EL"
+      ],
+      "grades": [
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "3300"
+        ],
+        "H": [
+          "3310"
+        ],
+        "X": [
+          "3311"
+        ],
+        "A": [
+          "3312"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Physics\nGrades 11, 12 Year 1 credit\n3300 (AP) 3310 (H) 3311 (X) 3312 (A) SC, EL\nThe calculus-based Advanced Placement (AP) Physics course is approximately equivalent to a one-year, college-level course in general physics for scientists and engineers. Topics include: motion, forces, vectors, momentum, and energy. This course is designed to prepare students for the calculus-based AP Physics C: Mechanics test administered annually in May. Honors (H) Physics is a non-calculus based college level laboratory course in mechanics. Topically, Honors Physics is similar to AP physics with less emphasis on the application of calculus. Group problem solving and hands-on activities are incorporated. Honors Physics is a mathematics-intensive course. Accelerated (X) Physics is a college preparatory class for students who wish to obtain a thorough introduction to several major topics typically covered in a first-year college physics course. This course is taught using an algebra-based text and is less mathematically oriented than either the Honors or AP courses. The topics of motion, forces, vectors, and momentum are included. Academic (A) Physics is a college preparatory course for students. The class uses a high school text and focuses on laboratory-based activities that relate physics to everyday applications."
+    },
+    {
+      "name": "AP Physics C: Electricity and Magnetism",
+      "levels": [
+        "AP"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "SC",
+        "EL"
+      ],
+      "grades": [
+        "12"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "3320"
+        ]
+      },
+      "prerequisites": "AP Physics C: Mechanics",
+      "description": "AP Physics C: Electricity and Magnetism\nGrade 12 Year 1 credit\n3320 (AP) SC, EL\nPrerequisite: AP Physics C: Mechanics\nThis calculus-based course is a continuation of AP Physics C: Mechanics. Topics include: electrostatics, electricity and circuits, field theory and electric fields, magnetism and magnetic fields, electromagnetic waves and optics. Recommended for students pursuing college majors in the physical sciences, engineering, mathematics, or computer science, the course is designed to prepare students for Part 2 (Electricity and Magnetism) of the calculus-based AP examination administered annually in May."
+    },
+    {
+      "name": "Microbiology",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "S",
+      "credit": "0.5",
+      "category": [
+        "SC",
+        "EL"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "3160"
+        ],
+        "X": [
+          "3161"
+        ]
+      },
+      "prerequisites": "Biology",
+      "description": "Microbiology\nGrades 10, 11, 12 Semester .5 credit\n3160 (H) 3161 (X) SC, EL\nPrerequisite: Biology\nMicrobiology is a laboratory-oriented course in which students learn about the largest group of living organisms on Earth. Students gain an appreciation for the great diversity of microorganisms through an overview of various organisms in Kingdoms Fungi and Protista. Laboratory activities will include the safe handling of microorganisms, soil microbiology, the genetics of microorganisms, and industrial uses of microorganisms."
+    },
+    {
+      "name": "Anatomy and Physiology",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "SC",
+        "EL"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "3190"
+        ],
+        "X": [
+          "3191"
+        ]
+      },
+      "prerequisites": "Biology",
+      "description": "Anatomy and Physiology \nGrades 10, 11, 12 Year 1 credit \n3190 (H) 3191 (X) SC, EL \nPrerequisite: Biology \nThis laboratory-based course is intended for students who are interested in pursuing a science/health-related career. The class will provide an in-depth study of both anatomy – the parts of the human body, and physiology – the function of the organs within the body. Upon completion, students should be able to demonstrate a more complete understanding of organ systems and how they contribute to normal body functions. NOTE: This course will include labs that examine computer models as well as the dissection of preserved mammalian specimens."
+    },
+    {
+      "name": "Fundamentals of Organic Chemistry",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "S",
+      "credit": "0.5",
+      "category": [
+        "SC",
+        "EL"
+      ],
+      "grades": [
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "3230"
+        ],
+        "X": [
+          "3231"
+        ]
+      },
+      "prerequisites": "Chemistry 1",
+      "description": "Fundamentals of Organic Chemistry\nGrades 11, 12 Semester .5 credit\n3230 (H) 3231 (X) SC, EL\nPrerequisite: Chemistry 1\nFundamentals of Organic Chemistry is a research-focused, laboratory-based investigation of an important and practical domain of Chemistry. As a laboratory-based course, students will develop proficiency with a broad array of equipment, instrumentation, and analytical techniques including digital data collection technologies. Topics such as organic nomenclature, functional groups, synthesis reactions, stereochemistry/chirality, spectroscopy, and biochemistry will be investigated. This course will also reinforce the concepts learned in Chemistry 1 such as gas laws, intermolecular forces, and atomic structure. Although the concepts and techniques examined in this course are typically taught in college-level Pre-Med and STEM major tracks, this course will be a primer for future success in these fields."
+    },
+    {
+      "name": "Genetics",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "S",
+      "credit": "0.5",
+      "category": [
+        "SC",
+        "EL"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "3180"
+        ],
+        "X": [
+          "3181"
+        ]
+      },
+      "prerequisites": "Biology",
+      "description": "Genetics\nGrades 10, 11, 12 Semester .5 credit\n3180 (H) 3181 (X) SC, EL\nPrerequisite: Biology\n\nGenetics is a laboratory-based course designed for students who have an interest in furthering their knowledge in the field of genetics and inheritance. This course focuses on the role of chromosomes, genes, and DNA in the inheritance of human traits and disorders. Topics will include a detailed study of DNA structure, function, and replication, cell reproduction, Mendelian genetics, human inheritance, and genetic engineering. Current genetic issues and technologies will also be investigated."
+    },
+    {
+      "name": "Forensic Science",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "S",
+      "credit": "0.5",
+      "category": [
+        "SC",
+        "EL"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "3050"
+        ],
+        "X": [
+          "3051"
+        ]
+      },
+      "prerequisites": "Biology",
+      "description": "Forensic Science\nGrades 10, 11, 12 Semester .5 credit\n3050 (H) 3051 (X) SC, EL\nPrerequisite: Biology\nForensic Science is an introduction to the analysis of crime scenes that explores the collecting and analyzing of physical evidence. This course is designed to integrate the core scientific disciplines (as outlined in the Pennsylvania Standards for grades 9-12) while giving students both theory and hands-on experience with the skills and knowledge required of a forensic crime scene investigator. This multidisciplinary approach will highlight topics in pathology, DNA, anatomy, chemistry, anthropology, toxicology, entomology, and investigative techniques with supplemental subject matter through case studies, earth science, mathematics, medicine, technology and psychology. In addition, some of the ethical, legal, and social concerns surrounding forensics will be discussed. Process skills will include: comparative analysis, critical thinking, deductive reasoning, observation, organization, problem solving, research, communication, and technical reading. Project-based learning through laboratory investigation and discussions/class lecture will serve as the main method of content delivery. Individually and/or in groups, students will perform lab work and apply inference and deductive reasoning to the investigation and potential solving of crimes."
+    },
+    {
+      "name": "Astronomy",
+      "levels": [
+        "H",
+        "X"
+      ],
+      "term": "S",
+      "credit": "0.5",
+      "category": [
+        "SC",
+        "EL"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "H": [
+          "3420"
+        ],
+        "X": [
+          "3421"
+        ]
+      },
+      "prerequisites": "Biology",
+      "description": "Astronomy\nGrades 10, 11, 12 Semester .5 credit\n3420 (H) 3421 (X) SC, EL\nPrerequisite: Biology\nAstronomy is a laboratory-based course designed for students who have an interest in furthering their knowledge of astronomy. The course focuses on the history of astronomy, the solar system, the sun and life cycles of stars, galaxies and cosmology. Laboratory activities will include: Kepler’s Laws, planetary motion, Doppler Effect, and optics. This course is excellent preparation for any college course in introductory astronomy."
+    },
+  ]
+}
