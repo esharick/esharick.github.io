@@ -1,1 +1,23 @@
-hello
+{
+      "name": "AP Art History",
+      "levels": [
+        "AP"
+      ],
+      "term": "Y",
+      "credit": "1",
+      "category": [
+        "VP",
+        "EL"
+      ],
+      "grades": [
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "AP": [
+          "7000"
+        ]
+      },
+      "prerequisites": "",
+      "description": "AP Art History\nGrades 11, 12 Year 1 credit\n7000 (AP) VP, EL\nAP Art History is designed for students wishing to earn college credit for an introductory level course in Art History. Students gain an understanding of history and aesthetics through the examination and discussion of painting, sculpture and architecture. Strong reading, writing, and work/study skills are required. Students are encouraged to take the AP Art History Examination. Students who have not taken AP courses in the past or feel that they are not prepared for that level of difficulty may take Art History at the Honors or Accelerated levels. Testing and assessment of writing will be differentiated to meet the needs of students at the various levels. This course is also listed in Social Studies as an elective course.\n*This course does not currently meet NCAA eligibility standards for Social Studies"
+    }
