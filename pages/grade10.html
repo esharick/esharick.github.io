@@ -4,15 +4,40 @@
 <head>
   <meta charset="UTF-8">
   <title>My Website</title>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
   <div id="navbar"></div>
 
-  <h1>Welcome to the 10th grade page</h1>
+  <main class="container">
+    <h1>Course Selection</h1>
 
-  <script src="../js/nav.js"></script>
+    <!-- Course selection rows -->
+    <div id="course-selection"></div>
+
+    <!-- Selected schedule -->
+    <h2>Selected Courses</h2>
+    <table id="schedule-table">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Course</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- Utility buttons -->
+    <div class="actions">
+      <button id="print-btn">Print View</button>
+      <button id="clear-btn">Clear All</button>
+    </div>
+  </main>
+
+  <script src="/js/nav.js"></script>
+  <script src="/js/courses.js"></script>
+  <script src="/js/gradePageCreation.js"></script>
 </body>
 
 </html>
