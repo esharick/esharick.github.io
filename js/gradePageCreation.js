@@ -37,6 +37,7 @@ function groupBySubject(courses) {
 
   return grouped;
 }
+
 function renderCourses() {
   const grade = getCurrentGrade();
 
@@ -45,32 +46,57 @@ function renderCourses() {
     ? coursesData.filter(c => c.grades && c.grades.includes(grade))
     : coursesData;
 
-  const container = document.getElementById("course-selection");
-  const grouped = groupBySubject(gradeCourses);
+  // --- Isolate English Electives from Core English ---
+  // Core English: Must have "EN" but NOT "EL"
+  const coreEnglishCourses = gradeCourses.filter(
+    c => c.category.includes("EN") && !c.category.includes("EL")
+  );
+  // English Electives: Must have BOTH "EN" and "EL"
+  const englishElectiveCourses = gradeCourses.filter(
+    c => c.category.includes("EN") && c.category.includes("EL")
+  );
 
+  // --- UPDATED: Isolate Social Studies Electives from Core Social Studies ---
+  // Core Social Studies: Must have "SS" but NOT "EL"
+  const coreSocialStudiesCourses = gradeCourses.filter(
+    c => c.category.includes("SS") && !c.category.includes("EL")
+  );
+  // Social Studies Electives: Must have BOTH "SS" and "EL"
+  const socialStudiesElectiveCourses = gradeCourses.filter(
+    c => c.category.includes("SS") && c.category.includes("EL")
+  );
+
+  // Remaining courses: Exclude anything handled by English or Social Studies filters above
+  const remainingCourses = gradeCourses.filter(
+    c => !c.category.includes("EN") && !c.category.includes("SS")
+  );
+
+  // Group the remaining courses using your standard structural logic
+  const grouped = groupBySubject(remainingCourses);
+
+  const container = document.getElementById("course-selection");
   container.innerHTML = "";
 
-  // 1. Core Priority Order (Everything else automatically renders as an Elective)
-  const coreOrder = ["EN", "MA", "SS", "SC", "WL", "PE"];
+  // 1. Core Priority Order (Note: EN and SS are handled manually below)
+  const coreOrder = ["MA", "SC", "WL", "PE"];
   const allSubjects = Object.keys(grouped);
 
-  // 2. Separate Core Subjects from Elective-style Subjects
   const coreSubjects = coreOrder.filter(subj => allSubjects.includes(subj));
   const electiveSubjects = allSubjects.filter(subj => !coreOrder.includes(subj));
 
   // --- Helper function to build a standard button section ---
-  function createSection(subject) {
+  function createSection(labelName, coursesList) {
     const section = document.createElement("div");
     section.className = "subject-section";
 
     const label = document.createElement("div");
     label.className = "subject-label";
-    label.textContent = subject === "EN" ? "English" : (subjectNames[subject] || subject);
+    label.textContent = labelName;
 
     const buttonContainer = document.createElement("div");
     buttonContainer.className = "course-buttons";
 
-    grouped[subject].forEach(course => {
+    coursesList.forEach(course => {
       const btn = document.createElement("button");
       btn.textContent = course.name;
       
@@ -78,7 +104,7 @@ function renderCourses() {
         btn.classList.add("selected");
       }
       
-      btn.onclick = () => selectCourse(subject, course, btn);
+      btn.onclick = () => selectCourse(labelName, course, btn);
       buttonContainer.appendChild(btn);
     });
 
@@ -87,9 +113,19 @@ function renderCourses() {
     return section;
   }
 
-  // 3. Render Main Core Subjects First
+  // 3. Render Core English First (Only if courses exist)
+  if (coreEnglishCourses.length > 0) {
+    container.appendChild(createSection("English", coreEnglishCourses));
+  }
+
+  // Render Core Social Studies (Only if courses exist)
+  if (coreSocialStudiesCourses.length > 0) {
+    container.appendChild(createSection("Social Studies", coreSocialStudiesCourses));
+  }
+
+  // Render Main Remaining Core Subjects (Math, Science, World Language, PE)
   coreSubjects.forEach(subject => {
-    container.appendChild(createSection(subject));
+    container.appendChild(createSection(subjectNames[subject] || subject, grouped[subject]));
   });
 
   // 4. Construct the Main "Electives" Dropdown Menu
@@ -106,8 +142,8 @@ function renderCourses() {
   mainElectivesContainer.style.paddingLeft = "15px";
   mainElectivesContainer.style.marginTop = "10px";
 
-  // CHANGED: English Electives is now wrapped in a <details> dropdown format
-  if (grouped["EN"]) {
+  // English Electives dropdown (EN + EL)
+  if (englishElectiveCourses.length > 0) {
     const enDetails = document.createElement("details");
     enDetails.style.marginBottom = "10px";
 
@@ -117,7 +153,7 @@ function renderCourses() {
     enSummary.style.cursor = "pointer";
     enSummary.style.fontSize = "14px";
 
-    const enContent = createSection("EN");
+    const enContent = createSection("English Electives", englishElectiveCourses);
     const oldEnLabel = enContent.querySelector(".subject-label");
     if (oldEnLabel) oldEnLabel.remove();
 
@@ -126,10 +162,28 @@ function renderCourses() {
     mainElectivesContainer.appendChild(enDetails);
   }
 
+  // UPDATED: Social Studies Electives dropdown (SS + EL)
+  if (socialStudiesElectiveCourses.length > 0) {
+    const ssDetails = document.createElement("details");
+    ssDetails.style.marginBottom = "10px";
+
+    const ssSummary = document.createElement("summary");
+    ssSummary.className = "subject-label";
+    ssSummary.textContent = "Social Studies Electives";
+    ssSummary.style.cursor = "pointer";
+    ssSummary.style.fontSize = "14px";
+
+    const ssContent = createSection("Social Studies Electives", socialStudiesElectiveCourses);
+    const oldSsLabel = ssContent.querySelector(".subject-label");
+    if (oldSsLabel) oldSsLabel.remove();
+
+    ssDetails.appendChild(ssSummary);
+    ssDetails.appendChild(ssContent);
+    mainElectivesContainer.appendChild(ssDetails);
+  }
+
   // B. Group remaining sections (TE, VP, IL, AP, FC, BU, EL, etc.) underneath
   electiveSubjects.forEach(subject => {
-    if (subject === "EN") return; 
-
     const innerDetails = document.createElement("details");
     innerDetails.style.marginBottom = "10px";
 
@@ -139,7 +193,7 @@ function renderCourses() {
     innerSummary.style.cursor = "pointer";
     innerSummary.style.fontSize = "14px";
 
-    const innerContent = createSection(subject);
+    const innerContent = createSection(subjectNames[subject] || subject, grouped[subject]);
     const oldLabel = innerContent.querySelector(".subject-label");
     if (oldLabel) oldLabel.remove();
 
