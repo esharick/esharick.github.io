@@ -37,3 +37,281 @@ pre {
   white-space: pre-wrap;
   font-size: 13px;
 }
+
+.subject-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  max-width: 900px; 
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Additions for Layout & Filter Controls
+   ========================================================================== */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #334155;
+  background-color: #f8fafc;
+}
+
+#courses {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+#filter-controls {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.filter-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-group {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* ==========================================================================
+   Additions for Filter Buttons & States
+   ========================================================================== */
+.filter-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #1e293b;
+}
+
+.grade-btn.active {
+  background-color: #333333;
+  color: #ffffff;
+  border-color: #333333;
+}
+
+.subj-btn.active {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.clear-filters-btn {
+  background: #fef2f2;
+  border: 1px solid #fee2e2;
+  color: #ef4444;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.clear-filters-btn:hover {
+  background: #fee2e2;
+}
+
+.all-indicator {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Additions for Dynamic Course Card Components
+   ========================================================================== */
+.course-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: flex;
+  gap: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.course-main {
+  flex: 3; 
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.course-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.course-details p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.course-sidebar {
+  flex: 2;
+  border-left: 1px solid #e2e8f0;
+  padding-left: 24px;
+}
+
+details {
+  width: 100%;
+}
+
+summary {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  user-select: none;
+}
+
+summary:hover {
+  color: #334155;
+}
+
+.sidebar-content {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 8px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* ==========================================================================
+   Additions for Course Details & Badges
+   ========================================================================== */
+.meta-badges {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.level-H { background: #dbeafe; color: #1e40af; }
+.level-X { background: #fef3c7; color: #92400e; }
+.level-A { background: #e2e8f0; color: #334155; }
+.level-AP { background: #f3e8ff; color: #6b21a8; }
+.level-none { background: #f1f5f9; color: #64748b; }
+
+.grade-pill { background: #e2e8f0; color: #475569; }
+.category-pill { background: #e0f2fe; color: #0369a1; }
+
+.prereq-alert {
+  background: #fffbeb;
+  border-left: 3px solid #f59e0b;
+  padding: 0.5rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.85rem !important;
+  color: #b45309;
+}
+
+.course-numbers-box {
+  background: #f1f5f9;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.course-numbers-box code {
+  font-family: monospace;
+  background: #ffffff;
+  padding: 0.1rem 0.3rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+}
+
+.no-courses-alert {
+  background: #ffffff;
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* Responsive Stack Adjustments */
+@media (max-width: 768px) {
+  .course-card {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .course-sidebar {
+    border-left: none;
+    border-top: 1px solid #e2e8f0;
+    padding-left: 0;
+    padding-top: 16px;
+  }
+}

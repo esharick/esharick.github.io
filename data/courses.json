@@ -427,7 +427,8 @@
       "credit": "0.5",
       "category": [
         "TE",
-        "EL"
+        "EL",
+        "EN"
       ],
       "grades": [
         "9",
@@ -449,7 +450,8 @@
       "term": "Y",
       "credit": "1",
       "category": [
-        "EL"
+        "EL",
+        "EN"
       ],
       "grades": [
         "10",
@@ -470,7 +472,8 @@
       "term": "Y",
       "credit": "1",
       "category": [
-        "EL"
+        "EL",
+        "EN"
       ],
       "grades": [
         "9",
@@ -492,7 +495,8 @@
       "term": "S",
       "credit": "0.5",
       "category": [
-        "EL"
+        "EL",
+        "EN"
       ],
       "grades": [
         "9",
