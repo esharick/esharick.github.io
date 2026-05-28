@@ -50,7 +50,32 @@ function renderCourses() {
 
   container.innerHTML = "";
 
-  Object.keys(grouped).forEach(subject => {
+  // 1. Define your strict custom sorting order
+  const customOrder = ["EN", "MA", "SS", "SC", "WL"];
+
+  // 2. Gather all subjects that exist in your current grouped data
+  const allSubjects = Object.keys(grouped);
+
+  // 3. Sort them: explicit priorities first, everything else follows underneath
+  const sortedSubjects = allSubjects.sort((a, b) => {
+    const indexA = customOrder.indexOf(a);
+    const indexB = customOrder.indexOf(b);
+
+    // If both subjects are in our custom list, sort by their defined priority
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    
+    // If only 'a' is prioritized, push it above 'b'
+    if (indexA !== -1) return -1;
+    
+    // If only 'b' is prioritized, push it above 'a'
+    if (indexB !== -1) return 1;
+
+    // If neither is prioritized, keep their original structural order
+    return 0;
+  });
+
+  // 4. Loop through the correctly sorted subjects to generate the HTML
+  sortedSubjects.forEach(subject => {
     const section = document.createElement("div");
     section.className = "subject-section";
 
