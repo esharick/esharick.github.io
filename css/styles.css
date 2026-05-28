@@ -131,3 +131,28 @@ th {
   cursor: pointer;
   border-radius: 6px;
 }
+
+/* Remove or replace .subject-row with this: */
+.subject-section {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.subject-section:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.subject-label {
+  font-weight: bold;
+  font-size: 15px;
+  color: var(--primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.course-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
