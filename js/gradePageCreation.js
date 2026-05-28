@@ -20,6 +20,7 @@ function getCurrentGrade() {
   return match ? match[1] : null;
 }
 
+// UNCHANGED: Kept exactly as it was originally
 function groupBySubject(courses) {
   const grouped = {};
 
@@ -73,25 +74,30 @@ function renderCourses() {
   });
 }
 
+// CHANGED: Toggles individual buttons independently and tracks by name so you can pick multiple
 function selectCourse(subject, course, button) {
-  // Remove selection from other buttons in same row
-  const parent = button.parentElement;
-  Array.from(parent.children).forEach(btn => btn.classList.remove("selected"));
+  const isAlreadySelected = button.classList.contains("selected");
 
-  button.classList.add("selected");
+  if (isAlreadySelected) {
+    button.classList.remove("selected");
+    delete selectedCourses[course.name];
+  } else {
+    button.classList.add("selected");
+    selectedCourses[course.name] = course;
+  }
 
-  selectedCourses[subject] = course;
-
+  // Refresh the schedule table with the new state
   updateTable();
 }
 
+// CHANGED: Only adjusted the loop mapping to extract course data from unique course names
 function updateTable() {
   const tbody = document.querySelector("#schedule-table tbody");
   tbody.innerHTML = "";
 
   let totalCredits = 0;
 
-  Object.entries(selectedCourses).forEach(([subject, course]) => {
+  Object.entries(selectedCourses).forEach(([courseName, course]) => {
     const levels = course.levels || [];
     const credits = parseFloat(course.credit) || 0;
     const hasLevels = levels.length > 0;
