@@ -135,7 +135,7 @@ function updateTable() {
 
       tdLevel.appendChild(select);
     } else {
-      tdLevel.textContent = "N/A";
+      tdLevel.textContent = "EL";
     }
 
     // Credits
