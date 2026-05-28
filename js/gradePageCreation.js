@@ -60,7 +60,7 @@ function renderCourses() {
     container.appendChild(section);
   });
 }
-}
+
 
 function selectCourse(subject, course, button) {
   // Remove selection from other buttons in same row
