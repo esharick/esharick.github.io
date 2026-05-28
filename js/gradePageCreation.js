@@ -74,14 +74,23 @@ function renderCourses() {
 }
 
 function selectCourse(subject, course, button) {
-  // Remove selection from other buttons in same row
+  // Check if this specific button is already selected
+  const isAlreadySelected = button.classList.contains("selected");
+
+  // Remove selection from all buttons in the same row first
   const parent = button.parentElement;
   Array.from(parent.children).forEach(btn => btn.classList.remove("selected"));
 
-  button.classList.add("selected");
+  if (isAlreadySelected) {
+    // If it was already picked, remove it from our tracking object entirely
+    delete selectedCourses[subject];
+  } else {
+    // If it wasn't picked, select it and save the course data
+    button.classList.add("selected");
+    selectedCourses[subject] = course;
+  }
 
-  selectedCourses[subject] = course;
-
+  // Refresh the schedule table with the new state
   updateTable();
 }
 
