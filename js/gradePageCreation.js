@@ -94,32 +94,49 @@ function updateTable() {
   Object.entries(selectedCourses).forEach(([subject, course]) => {
     const levels = course.levels || [];
     const credits = parseFloat(course.credit) || 0;
+    const defaultLevel = levels[0] || "";
+    const defaultNumbers = course.courseNumbers?.[defaultLevel] || [];
+
+    totalCredits += credits;
+
+    const tr = document.createElement("tr");
+
+    // Course Name
+    const tdName = document.createElement("td");
+    tdName.textContent = course.name;
+
+    // Level — dropdown
+    const tdLevel = document.createElement("td");
+    const select = document.createElement("select");
 
     levels.forEach(level => {
-      const numbers = course.courseNumbers?.[level] || [];
-      const courseNumDisplay = numbers.join(", ") || "—";
-      totalCredits += credits;
-
-      const tr = document.createElement("tr");
-
-      const tdName = document.createElement("td");
-      tdName.textContent = course.name;
-
-      const tdLevel = document.createElement("td");
-      tdLevel.textContent = level;
-
-      const tdNum = document.createElement("td");
-      tdNum.textContent = courseNumDisplay;
-
-      const tdCredits = document.createElement("td");
-      tdCredits.textContent = credits % 1 === 0 ? credits.toFixed(0) : credits;
-
-      tr.appendChild(tdName);
-      tr.appendChild(tdLevel);
-      tr.appendChild(tdNum);
-      tr.appendChild(tdCredits);
-      tbody.appendChild(tr);
+      const option = document.createElement("option");
+      option.value = level;
+      option.textContent = level;
+      select.appendChild(option);
     });
+
+    // When level changes, update Course # cell
+    select.addEventListener("change", () => {
+      const nums = course.courseNumbers?.[select.value] || [];
+      tdNum.textContent = nums.join(", ") || "—";
+    });
+
+    tdLevel.appendChild(select);
+
+    // Course #
+    const tdNum = document.createElement("td");
+    tdNum.textContent = defaultNumbers.join(", ") || "—";
+
+    // Credits
+    const tdCredits = document.createElement("td");
+    tdCredits.textContent = credits % 1 === 0 ? credits.toFixed(0) : credits;
+
+    tr.appendChild(tdName);
+    tr.appendChild(tdLevel);
+    tr.appendChild(tdNum);
+    tr.appendChild(tdCredits);
+    tbody.appendChild(tr);
   });
 
   // Total row
