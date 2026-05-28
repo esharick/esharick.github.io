@@ -50,38 +50,22 @@ function renderCourses() {
 
   container.innerHTML = "";
 
-  // UPDATED: "PE" added right after "WL" to lock its position
-  const customOrder = ["EN", "MA", "SS", "SC", "WL", "PE"];
-
-  // Gather all subjects that exist in your current grouped data
+  // 1. Core Priority Order (Everything else automatically renders as an Elective)
+  const coreOrder = ["EN", "MA", "SS", "SC", "WL", "PE"];
   const allSubjects = Object.keys(grouped);
 
-  // Sort them: explicit priorities first, everything else follows underneath
-  const sortedSubjects = allSubjects.sort((a, b) => {
-    const indexA = customOrder.indexOf(a);
-    const indexB = customOrder.indexOf(b);
+  // 2. Separate Core Subjects from Elective-style Subjects
+  const coreSubjects = coreOrder.filter(subj => allSubjects.includes(subj));
+  const electiveSubjects = allSubjects.filter(subj => !coreOrder.includes(subj));
 
-    // If both subjects are in our custom list, sort by their defined priority
-    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-    
-    // If only 'a' is prioritized, push it above 'b'
-    if (indexA !== -1) return -1;
-    
-    // If only 'b' is prioritized, push it above 'a'
-    if (indexB !== -1) return 1;
-
-    // If neither is prioritized, keep their original structural order
-    return 0;
-  });
-
-  // Loop through the correctly sorted subjects to generate the HTML
-  sortedSubjects.forEach(subject => {
+  // --- Helper function to build a standard button section ---
+  function createSection(subject) {
     const section = document.createElement("div");
     section.className = "subject-section";
 
     const label = document.createElement("div");
     label.className = "subject-label";
-    label.textContent = subjectNames[subject] || subject;
+    label.textContent = subject === "EN" ? "English" : (subjectNames[subject] || subject);
 
     const buttonContainer = document.createElement("div");
     buttonContainer.className = "course-buttons";
@@ -89,14 +73,83 @@ function renderCourses() {
     grouped[subject].forEach(course => {
       const btn = document.createElement("button");
       btn.textContent = course.name;
+      
+      if (selectedCourses[course.name]) {
+        btn.classList.add("selected");
+      }
+      
       btn.onclick = () => selectCourse(subject, course, btn);
       buttonContainer.appendChild(btn);
     });
 
     section.appendChild(label);
     section.appendChild(buttonContainer);
-    container.appendChild(section);
+    return section;
+  }
+
+  // 3. Render Main Core Subjects First
+  coreSubjects.forEach(subject => {
+    container.appendChild(createSection(subject));
   });
+
+  // 4. Construct the Main "Electives" Dropdown Menu
+  const mainElectivesDetails = document.createElement("details");
+  mainElectivesDetails.className = "subject-section electives-main-dropdown";
+  
+  const mainElectivesSummary = document.createElement("summary");
+  mainElectivesSummary.className = "subject-label";
+  mainElectivesSummary.textContent = "Electives Menu";
+  mainElectivesSummary.style.cursor = "pointer";
+  mainElectivesDetails.appendChild(mainElectivesSummary);
+
+  const mainElectivesContainer = document.createElement("div");
+  mainElectivesContainer.style.paddingLeft = "15px";
+  mainElectivesContainer.style.marginTop = "10px";
+
+  // CHANGED: English Electives is now wrapped in a <details> dropdown format
+  if (grouped["EN"]) {
+    const enDetails = document.createElement("details");
+    enDetails.style.marginBottom = "10px";
+
+    const enSummary = document.createElement("summary");
+    enSummary.className = "subject-label";
+    enSummary.textContent = "English Electives";
+    enSummary.style.cursor = "pointer";
+    enSummary.style.fontSize = "14px";
+
+    const enContent = createSection("EN");
+    const oldEnLabel = enContent.querySelector(".subject-label");
+    if (oldEnLabel) oldEnLabel.remove();
+
+    enDetails.appendChild(enSummary);
+    enDetails.appendChild(enContent);
+    mainElectivesContainer.appendChild(enDetails);
+  }
+
+  // B. Group remaining sections (TE, VP, IL, AP, FC, BU, EL, etc.) underneath
+  electiveSubjects.forEach(subject => {
+    if (subject === "EN") return; 
+
+    const innerDetails = document.createElement("details");
+    innerDetails.style.marginBottom = "10px";
+
+    const innerSummary = document.createElement("summary");
+    innerSummary.className = "subject-label";
+    innerSummary.textContent = subjectNames[subject] || subject;
+    innerSummary.style.cursor = "pointer";
+    innerSummary.style.fontSize = "14px";
+
+    const innerContent = createSection(subject);
+    const oldLabel = innerContent.querySelector(".subject-label");
+    if (oldLabel) oldLabel.remove();
+
+    innerDetails.appendChild(innerSummary);
+    innerDetails.appendChild(innerContent);
+    mainElectivesContainer.appendChild(innerDetails);
+  });
+
+  mainElectivesDetails.appendChild(mainElectivesContainer);
+  container.appendChild(mainElectivesDetails);
 }
 
 // CHANGED: Toggles individual buttons independently and tracks by name so you can pick multiple

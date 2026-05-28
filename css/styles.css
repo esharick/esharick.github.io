@@ -228,4 +228,18 @@ th:last-child {
     size: landscape;
     margin: 0.5in;
   }
+  /* Custom styles for your native dropdown layout components */
+details summary.subject-label {
+  display: list-item;
+  outline: none;
+  user-select: none;
+}
+
+details summary.subject-label::-webkit-details-marker {
+  color: var(--primary); /* Makes the native disclosure arrow match your theme color */
+}
+
+details[open] > summary.subject-label {
+  margin-bottom: 8px;
+}
 }
