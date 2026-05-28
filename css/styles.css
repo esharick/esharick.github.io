@@ -114,8 +114,8 @@ td {
 }
 
 th {
-  background-color: var(--button);
-  color: var(--text);
+  background-color: var(--button) !important;
+  color: var(--text) !important;
   text-align: left;
 }
 
@@ -141,6 +141,26 @@ th:last-child {
   border-radius: 6px;
 }
 
+.print-button-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#printButton {
+  padding: 10px 18px;
+  background-color: var(--button);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#printButton:hover {
+  background-color: var(--primary);
+  color: black;
+}
+
 /* Remove or replace .subject-row with this: */
 .subject-section {
   padding: 20px 0;
@@ -164,4 +184,37 @@ th:last-child {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+/* Stuff for printing */
+@media print {
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  table {
+    background: white;
+  }
+
+  th {
+    background: #e0e0e0 !important;
+    color: black !important;
+  }
+
+  td {
+    color: black;
+  }
+
+  nav,
+  #navbar,
+  .print-button-container {
+    display: none;
+  }
+
+  @page {
+    size: landscape;
+    margin: 0.5in;
+  }
 }
