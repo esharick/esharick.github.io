@@ -94,8 +94,13 @@ function updateTable() {
   Object.entries(selectedCourses).forEach(([subject, course]) => {
     const levels = course.levels || [];
     const credits = parseFloat(course.credit) || 0;
-    const defaultLevel = levels[0] || "";
-    const defaultNumbers = course.courseNumbers?.[defaultLevel] || [];
+    const hasLevels = levels.length > 0;
+    const defaultLevel = hasLevels ? levels[0] : null;
+
+    // If no levels, flatten all courseNumbers values
+    const defaultNumbers = defaultLevel
+      ? course.courseNumbers?.[defaultLevel] || []
+      : Object.values(course.courseNumbers || {}).flat();
 
     totalCredits += credits;
 
@@ -105,28 +110,33 @@ function updateTable() {
     const tdName = document.createElement("td");
     tdName.textContent = course.name;
 
-    // Level — dropdown
+    // Level — dropdown if levels exist, otherwise "N/A"
     const tdLevel = document.createElement("td");
-    const select = document.createElement("select");
 
-    levels.forEach(level => {
-      const option = document.createElement("option");
-      option.value = level;
-      option.textContent = level;
-      select.appendChild(option);
-    });
-
-    // When level changes, update Course # cell
-    select.addEventListener("change", () => {
-      const nums = course.courseNumbers?.[select.value] || [];
-      tdNum.textContent = nums.join(", ") || "—";
-    });
-
-    tdLevel.appendChild(select);
-
-    // Course #
+    // Course # — declared here so the dropdown's change handler can reference it
     const tdNum = document.createElement("td");
     tdNum.textContent = defaultNumbers.join(", ") || "—";
+
+    if (hasLevels) {
+      const select = document.createElement("select");
+
+      levels.forEach(level => {
+        const option = document.createElement("option");
+        option.value = level;
+        option.textContent = level;
+        select.appendChild(option);
+      });
+
+      // When level changes, update Course # cell
+      select.addEventListener("change", () => {
+        const nums = course.courseNumbers?.[select.value] || [];
+        tdNum.textContent = nums.join(", ") || "—";
+      });
+
+      tdLevel.appendChild(select);
+    } else {
+      tdLevel.textContent = "N/A";
+    }
 
     // Credits
     const tdCredits = document.createElement("td");
