@@ -11,7 +11,8 @@ const subjectNames = {
   BU: "Business",
   TE: "Technology & Engineering",
   PE: "Physical Education",
-  EL: "Electives"
+  EL: "Electives",
+  CAP: "AP Capstone"
 };
 
 // --- Detect current grade from URL (e.g. /pages/grade10.html → "10") ---
