@@ -175,7 +175,32 @@ function updateTable() {
 
   let totalCredits = 0;
 
-  Object.entries(selectedCourses).forEach(([courseName, course]) => {
+  // 1. Define the strict sorting order for the table
+  const tableOrder = ["EN", "MA", "SS", "SC", "WL", "PE"];
+
+  // 2. Get the selected courses as an array and sort them by their subject category
+  const sortedEntries = Object.entries(selectedCourses).sort(([nameA, courseA], [nameB, courseB]) => {
+    const subjA = courseA.category[0];
+    const subjB = courseB.category[0];
+
+    const indexA = tableOrder.indexOf(subjA);
+    const indexB = tableOrder.indexOf(subjB);
+
+    // If both subjects are in our custom list, sort by their defined priority
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    
+    // If only 'a' is prioritized, push it to the top
+    if (indexA !== -1) return -1;
+    
+    // If only 'b' is prioritized, push it to the top
+    if (indexB !== -1) return 1;
+
+    // If neither is prioritized, sort alphabetically by subject code
+    return subjA.localeCompare(subjB);
+  });
+
+  // 3. Loop through the correctly sorted entries to build the table rows
+  sortedEntries.forEach(([courseName, course]) => {
     const levels = course.levels || [];
     const credits = parseFloat(course.credit) || 0;
     const hasLevels = levels.length > 0;
@@ -219,7 +244,7 @@ function updateTable() {
 
       tdLevel.appendChild(select);
     } else {
-      tdLevel.textContent = "EL";
+      tdLevel.textContent = "N/A";
     }
 
     // Credits
