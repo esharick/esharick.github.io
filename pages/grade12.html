@@ -4,17 +4,42 @@
 <head>
   <meta charset="UTF-8">
   <title>My Website</title>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-
   <div id="navbar"></div>
 
+  <main class="container">
+    <h1>Course Selection</h1>
 
-  <h1>Welcome to the 12th grade page</h1>
+    <!-- Course selection rows -->
+    <div id="course-selection"></div>
 
-  <script src="../js/nav.js"></script>
+    <!-- Selected schedule -->
+    <h2>Selected Courses</h2>
+    <table id="schedule-table">
+      <thead>
+        <tr>
+          <th>Course Name</th>
+          <th>Level</th>
+          <th>Course #</th>
+          <th>Credits</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- Utility buttons -->
+    <div class="actions">
+      <button id="print-btn">Print View</button>
+      <button id="clear-btn">Clear All</button>
+    </div>
+  </main>
+
+  <script src="/js/nav.js"></script>
+  <script src="/js/courses.js"></script>
+  <script src="/js/gradePageCreation.js"></script>
 </body>
 
 </html>
