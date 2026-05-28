@@ -107,13 +107,22 @@ table {
   background: var(--surface);
 }
 
-th, td {
+th,
+td {
   border: 1px solid var(--border);
-  padding: 8px;
+  padding: 10px;
 }
 
 th {
-  background: var(--button);
+  background-color: var(--button);
+  color: var(--text);
+  text-align: left;
+}
+
+td:last-child,
+th:last-child {
+  width: 120px;
+  text-align: center;
 }
 
 /* Actions */
