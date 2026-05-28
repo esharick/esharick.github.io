@@ -7,7 +7,12 @@ const subjectNames = {
   MA: "Math",
   SC: "Science",
   SS: "Social Studies",
-  WL: "World Language"
+  WL: "World Language",
+  VP: "Visual & Performing Arts",
+  BU: "Business",
+  TE: "Technology & Engineering",
+  PE: "Physical Education",
+  EL: "Electives"
 };
 
 function groupBySubject(courses) {
@@ -33,8 +38,8 @@ function renderCourses() {
   container.innerHTML = "";
 
   Object.keys(grouped).forEach(subject => {
-    const row = document.createElement("div");
-    row.className = "subject-row";
+    const section = document.createElement("div");
+    section.className = "subject-section";
 
     const label = document.createElement("div");
     label.className = "subject-label";
@@ -46,16 +51,15 @@ function renderCourses() {
     grouped[subject].forEach(course => {
       const btn = document.createElement("button");
       btn.textContent = course.name;
-
       btn.onclick = () => selectCourse(subject, course, btn);
-
       buttonContainer.appendChild(btn);
     });
 
-    row.appendChild(label);
-    row.appendChild(buttonContainer);
-    container.appendChild(row);
+    section.appendChild(label);
+    section.appendChild(buttonContainer);
+    container.appendChild(section);
   });
+}
 }
 
 function selectCourse(subject, course, button) {
