@@ -36,7 +36,6 @@ function groupBySubject(courses) {
 
   return grouped;
 }
-
 function renderCourses() {
   const grade = getCurrentGrade();
 
@@ -50,13 +49,13 @@ function renderCourses() {
 
   container.innerHTML = "";
 
-  // 1. Define your strict custom sorting order
-  const customOrder = ["EN", "MA", "SS", "SC", "WL"];
+  // UPDATED: "PE" added right after "WL" to lock its position
+  const customOrder = ["EN", "MA", "SS", "SC", "WL", "PE"];
 
-  // 2. Gather all subjects that exist in your current grouped data
+  // Gather all subjects that exist in your current grouped data
   const allSubjects = Object.keys(grouped);
 
-  // 3. Sort them: explicit priorities first, everything else follows underneath
+  // Sort them: explicit priorities first, everything else follows underneath
   const sortedSubjects = allSubjects.sort((a, b) => {
     const indexA = customOrder.indexOf(a);
     const indexB = customOrder.indexOf(b);
@@ -74,7 +73,7 @@ function renderCourses() {
     return 0;
   });
 
-  // 4. Loop through the correctly sorted subjects to generate the HTML
+  // Loop through the correctly sorted subjects to generate the HTML
   sortedSubjects.forEach(subject => {
     const section = document.createElement("div");
     section.className = "subject-section";
