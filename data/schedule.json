@@ -1,18 +1,50 @@
 [
     {
         "year": 9,
-        "courses": ["course1", "course2"] 
+        "courses": [
+            {
+                "name": "English 1",
+                "credits": 1
+            },
+            {
+                "name": "Algebra 1",
+                "credits": 1
+            },
+            {
+                "name": "Biology",
+                "credits": 1
+            }
+        ]
     },
     {
         "year": 10,
-        "courses": ["course1", "course2"] 
-    },    
+        "courses": [
+            {
+                "name": "English 2",
+                "credits": 1
+            },
+            {
+                "name": "Geometry",
+                "credits": 1
+            }
+        ]
+    },
     {
         "year": 11,
-        "courses": ["course1", "course2"] 
+        "courses": [
+            {
+                "name": "English 3",
+                "credits": 1
+            }
+        ]
     },
     {
         "year": 12,
-        "courses": ["course1", "course2"] 
+        "courses": [
+            {
+                "name": "English 4",
+                "credits": 1
+            }
+        ]
     }
 ]
