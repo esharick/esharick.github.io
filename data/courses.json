@@ -1469,7 +1469,7 @@
       "description": "Psychology\nGrades 11, 12 Semester .5 credit\n1610 (H) 1611 (X) 1612 (A) EL\nPsychology is the study of mental processes and behavior. This course includes the following topics: the history of psychology, research methods, biological bases of behavior, sensation and perception, states of consciousness, learning, cognition, motivation and emotion, development, personality, testing and individual differences, abnormal behavior, treatment of psychological disorders, and social behavior. An opportunity is given for student research and class discussion. Demonstrations and experiments are emphasized, and extensive use of video supplements the text. Upon successful completion of this course, students should be able to:\n-understand major concepts and theories in psychology\n-devise simple experiments, interpret and generalize from results, evaluate the general validity of research studies\n-build on critical thinking skills and synthesize concepts\n-describe major psychological disorders and treatments\n-apply psychological concepts to their own lives, engage in inductive reasoning and broaden self-awareness"
     },
     {
-      "name": "Asain American Studies",
+      "name": "Asian American Studies",
       "levels": [
         "H",
         "X",
@@ -3681,8 +3681,7 @@
       "term": "Y",
       "credit": "1",
       "category": [
-        "AP",
-        "SEM",
+        "CAP",
         "EL"
       ],
       "grades": [
@@ -3705,8 +3704,7 @@
       "term": "Y",
       "credit": "1",
       "category": [
-        "AP",
-        "SEM",
+        "CAP",
         "EL"
       ],
       "grades": [
@@ -4358,6 +4356,126 @@
       },
       "prerequisites": "",
       "description": "Grades 9, 10, 11, 12 Semester .5 credit\n8639 TE, EL (Lab Fee - $25.00)\n\nThis advanced course is designed for students with interests in technology, science, or engineering. Students will apply a problems-based approach to authentic situations in structural design, construction technology, communications, product design, manufacturing, and environmental engineering. Solutions will be designed on computers and built in the fabrication lab using a CNC milling machine, a laser engraver, 3D printing machines, and traditional tools. Students will work in teams to learn research and development procedures, testing and analysis techniques, and applied technology. Topics include structural engineering, design engineering, manufacturing systems engineering, and environmental engineering."
-    }
+    },
+    {
+        "name": "AP Computer Science Principles",
+        "levels": [
+          "AP"
+        ],
+        "term": "Y",
+        "credit": "1",
+        "category": [
+          "TE",
+          "EL",
+          "MA"
+        ],
+        "grades": [
+          "9",
+          "10",
+          "11",
+          "12"
+        ],
+        "courseNumbers": {
+          "AP": [
+            "2450"
+          ]
+        },
+        "prerequisites": "Algebra 1",
+        "description": "AP Computer Science Principles\nGrades 9, 10, 11, 12 Year 6 periods/cycle 1 credit\n2450 (AP) MA, BT, EL\nPrerequisite: Algebra 1\nWith a unique focus on creative problem solving and real-world applications, the AP Computer Science Principles (AP CSP) \ncourse introduces students to the fundamentals of computing and the creative aspects of programming. The course is designed \nto be equivalent to a first semester introductory college course in computing. Students will develop computational thinking vital \nfor success across all disciplines, such as working with large data sets to analyze, visualize and draw conclusions from trends. \nStudents will be encouraged to think creatively when developing computational artifacts and while using computer software \nand other technologies to explore questions that interest them. \nAdditionally, they will develop effective communication and collaboration skills while problem solving. Discussing and writing about the importance of these problems and the impacts \non their community, society and world will be integral to the course. Students will study the following big ideas:\n• Creative Development - Work collaboratively to design and write programs\n• Data - use computing tools to process information in order to gain new insights\n• Algorithms and Programming - Write and implement algorithms in a program\n• Computer Systems and Networks - Understand the form and function of the internet and other systems\n• Impact of Computing - Explore the effects, legal impacts and ethical issues surrounding innovations\n*This course does not currently meet NCAA eligibility requirements for math."
+      },
+      {
+        "name": "App Development 1",
+        "levels": [],
+        "term": "S",
+        "credit": "0.5",
+        "category": [
+          "TE",
+          "EL",
+          "MA"
+        ],
+        "grades": [
+          "11",
+          "12"
+        ],
+        "courseNumbers": {
+          "default": [
+            "2559"
+          ]
+        },
+        "prerequisites": "AP Computer Science A (preferred) or AP Computer Science Principles",
+        "description": "App Development 1\nGrades 11, 12 1st Semester 6 periods/cycle 0.5 credit\n2559 MA, BT, EL\nPrerequisite: AP Computer Science A (preferred) or AP Computer Science Principles\nIn this course, students will learn about the app development process. Students will research, design and implement a desktop, Android, IOS, or web application. Students who successfully complete this course should be able to:\n• Research a target audience for an application\n• Produce a fully functional Android, IOS or web application\n• Use an iterative development process to test and refine the application\n*This course does not currently meet NCAA eligibility requirements for math."
+      },
+      {
+        "name": "App Development 2",
+        "levels": [],
+        "term": "S",
+        "credit": "0.5",
+        "category": [
+          "TE",
+          "EL",
+          "MA"
+        ],
+        "grades": [
+          "11",
+          "12"
+        ],
+        "courseNumbers": {
+          "default": [
+            "2569"
+          ]
+        },
+        "prerequisites": "App Development 1",
+        "description": "App Development 2\nGrades 11, 12 2nd Semester .5 credit\n2569 MA, BT, EL\nPrerequisite: App Development 1\nIn this course, students will learn about the app development process using C# and the .NET framework. Students will build on the knowledge from App Development 1 to design and develop web and gaming applications, and study the architecture differences between mobile, web, and gaming applications. Students will understand the different graphical styles of gaming applications, including 2-dimensional, 3-dimensional, top-down, side-view, 1st person, and 3rd person. Students will build various UI and UX for some simple games and link their applications to a backend database for persistent data storage. Students who complete this course should be able to:\n• Design and implement a frontend and backend for a web application\n• Understand the different styles of gaming applications\n• Design and implement their own gaming application\n*This course does not currently meet NCAA eligibility requirements for math."
+      },
+      {
+        "name": "Coding",
+        "levels": [],
+        "term": "S",
+        "credit": "0.5",
+        "category": [
+          "TE",
+          "EL",
+          "MA"
+        ],
+        "grades": [
+          "9",
+          "10",
+          "11",
+          "12"
+        ],
+        "courseNumbers": {
+          "default": [
+            "2549"
+          ]
+        },
+        "prerequisites": "",
+        "description": "Coding\nGrades 9, 10, 11, 12 Semester .5 credit \n2549 MA, BT, EL\nIn this course, students will be introduced to computer coding and its various applications. For most tasks, we will use the programming language Python. Students who successfully complete this course should be able to produce:\n• A piece of computer-generated music \n• A piece of computer-generated visual art\n• Code for an electronic circuit connected to an Arduino\n• A 2D video game\n*This course does not currently meet NCAA eligibility requirements for math"
+      },
+      {
+        "name": "AP Compsci A",
+        "levels": [
+          "AP"
+        ],
+        "term": "Y",
+        "credit": "1",
+        "category": [
+          "TE",
+          "EL",
+          "MA"
+        ],
+        "grades": [
+          "9",
+          "10",
+          "11",
+          "12"
+        ],
+        "courseNumbers": {
+          "AP": [
+            "2400"
+          ]
+        },
+        "prerequisites": "Algebra 2",
+        "description": "AP Computer Science A\nGrades 9, 10, 11, 12 Year 1 credit\n2400 (AP) MA, BT, EL\nPrerequisite: Algebra 2\nThis is a college-level course taught in Java designed to provide college credit for those students successfully completing the Advanced Placement Examination. Students who successfully complete this course should be able to:\n• design and implement computer-based solutions to problems in several application areas\n• learn well-known algorithms and data structures\n• develop and select appropriate algorithms and data structures to solve problems\n• code fluently in a well-structured fashion\n• read and understand a large program and a description of the design and development process leading to such a program\n• recognize the ethical and social implications of computer use\n*This course does not currently meet NCAA eligibility requirements for math"
+      }
   ]
 }

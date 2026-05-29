@@ -94,9 +94,20 @@ h1, h2 {
   color: #000;
 }
 
-.selected {
+/* --- REPLACE YOUR OLD .selected BLOCK WITH THIS --- */
+.course-buttons button.selected {
   background-color: var(--primary);
-  color: black;
+  color: #000000;
+  font-weight: bold;
+  border-color: var(--primary);
+  box-shadow: 0 0 8px rgba(76, 175, 239, 0.4); /* Gives it a slight glow */
+}
+
+/* Optional: Tweaks the hover state slightly so you can tell the difference 
+   between a button that is already selected and one you are hovering over */
+.course-buttons button.selected:hover {
+  background-color: #3aa3de; /* Slightly darker shade of your primary blue */
+  cursor: default;
 }
 
 /* Table */
@@ -217,4 +228,18 @@ th:last-child {
     size: landscape;
     margin: 0.5in;
   }
+  /* Custom styles for your native dropdown layout components */
+details summary.subject-label {
+  display: list-item;
+  outline: none;
+  user-select: none;
+}
+
+details summary.subject-label::-webkit-details-marker {
+  color: var(--primary); /* Makes the native disclosure arrow match your theme color */
+}
+
+details[open] > summary.subject-label {
+  margin-bottom: 8px;
+}
 }

@@ -11,7 +11,8 @@ const subjectNames = {
   BU: "Business",
   TE: "Technology & Engineering",
   PE: "Physical Education",
-  EL: "Electives"
+  EL: "Electives",
+  CAP: "AP Capstone"
 };
 
 // --- Detect current grade from URL (e.g. /pages/grade10.html → "10") ---
@@ -20,6 +21,7 @@ function getCurrentGrade() {
   return match ? match[1] : null;
 }
 
+// UNCHANGED: Kept exactly as it was originally
 function groupBySubject(courses) {
   const grouped = {};
 
@@ -44,82 +46,270 @@ function renderCourses() {
     ? coursesData.filter(c => c.grades && c.grades.includes(grade))
     : coursesData;
 
-  const container = document.getElementById("course-selection");
-  const grouped = groupBySubject(gradeCourses);
+  // --- Isolate English Electives from Core English ---
+  // Core English: Must have "EN" but NOT "EL"
+  const coreEnglishCourses = gradeCourses.filter(
+    c => c.category.includes("EN") && !c.category.includes("EL")
+  );
+  // English Electives: Must have BOTH "EN" and "EL"
+  const englishElectiveCourses = gradeCourses.filter(
+    c => c.category.includes("EN") && c.category.includes("EL")
+  );
 
+  // --- UPDATED: Isolate Social Studies Electives from Core Social Studies ---
+  // Core Social Studies: Must have "SS" but NOT "EL"
+  const coreSocialStudiesCourses = gradeCourses.filter(
+    c => c.category.includes("SS") && !c.category.includes("EL")
+  );
+  // Social Studies Electives: Must have BOTH "SS" and "EL"
+  const socialStudiesElectiveCourses = gradeCourses.filter(
+    c => c.category.includes("SS") && c.category.includes("EL")
+  );
+
+  // Remaining courses: Exclude anything handled by English or Social Studies filters above
+  const remainingCourses = gradeCourses.filter(
+    c => !c.category.includes("EN") && !c.category.includes("SS")
+  );
+
+  // Group the remaining courses using your standard structural logic
+  const grouped = groupBySubject(remainingCourses);
+
+  const container = document.getElementById("course-selection");
   container.innerHTML = "";
 
-  Object.keys(grouped).forEach(subject => {
+  // 1. Core Priority Order (Note: EN and SS are handled manually below)
+  const coreOrder = ["MA", "SC", "WL", "PE"];
+  const allSubjects = Object.keys(grouped);
+
+  const coreSubjects = coreOrder.filter(subj => allSubjects.includes(subj));
+  const electiveSubjects = allSubjects.filter(subj => !coreOrder.includes(subj));
+
+  // --- Helper function to build a standard button section ---
+  function createSection(labelName, coursesList) {
     const section = document.createElement("div");
     section.className = "subject-section";
 
     const label = document.createElement("div");
     label.className = "subject-label";
-    label.textContent = subjectNames[subject] || subject;
+    label.textContent = labelName;
 
     const buttonContainer = document.createElement("div");
     buttonContainer.className = "course-buttons";
 
-    grouped[subject].forEach(course => {
+    coursesList.forEach(course => {
       const btn = document.createElement("button");
       btn.textContent = course.name;
-      btn.onclick = () => selectCourse(subject, course, btn);
+      
+      if (selectedCourses[course.name]) {
+        btn.classList.add("selected");
+      }
+      
+      btn.onclick = () => selectCourse(labelName, course, btn);
       buttonContainer.appendChild(btn);
     });
 
     section.appendChild(label);
     section.appendChild(buttonContainer);
-    container.appendChild(section);
+    return section;
+  }
+
+  // 3. Render Core English First (Only if courses exist)
+  if (coreEnglishCourses.length > 0) {
+    container.appendChild(createSection("English", coreEnglishCourses));
+  }
+
+  // Render Core Social Studies (Only if courses exist)
+  if (coreSocialStudiesCourses.length > 0) {
+    container.appendChild(createSection("Social Studies", coreSocialStudiesCourses));
+  }
+
+  // Render Main Remaining Core Subjects (Math, Science, World Language, PE)
+  coreSubjects.forEach(subject => {
+    container.appendChild(createSection(subjectNames[subject] || subject, grouped[subject]));
   });
+
+  // 4. Construct the Main "Electives" Dropdown Menu
+  const mainElectivesDetails = document.createElement("details");
+  mainElectivesDetails.className = "subject-section electives-main-dropdown";
+  
+  const mainElectivesSummary = document.createElement("summary");
+  mainElectivesSummary.className = "subject-label";
+  mainElectivesSummary.textContent = "Electives Menu";
+  mainElectivesSummary.style.cursor = "pointer";
+  mainElectivesDetails.appendChild(mainElectivesSummary);
+
+  const mainElectivesContainer = document.createElement("div");
+  mainElectivesContainer.style.paddingLeft = "15px";
+  mainElectivesContainer.style.marginTop = "10px";
+
+  // English Electives dropdown (EN + EL)
+  if (englishElectiveCourses.length > 0) {
+    const enDetails = document.createElement("details");
+    enDetails.style.marginBottom = "10px";
+
+    const enSummary = document.createElement("summary");
+    enSummary.className = "subject-label";
+    enSummary.textContent = "English Electives";
+    enSummary.style.cursor = "pointer";
+    enSummary.style.fontSize = "14px";
+
+    const enContent = createSection("English Electives", englishElectiveCourses);
+    const oldEnLabel = enContent.querySelector(".subject-label");
+    if (oldEnLabel) oldEnLabel.remove();
+
+    enDetails.appendChild(enSummary);
+    enDetails.appendChild(enContent);
+    mainElectivesContainer.appendChild(enDetails);
+  }
+
+  // UPDATED: Social Studies Electives dropdown (SS + EL)
+  if (socialStudiesElectiveCourses.length > 0) {
+    const ssDetails = document.createElement("details");
+    ssDetails.style.marginBottom = "10px";
+
+    const ssSummary = document.createElement("summary");
+    ssSummary.className = "subject-label";
+    ssSummary.textContent = "Social Studies Electives";
+    ssSummary.style.cursor = "pointer";
+    ssSummary.style.fontSize = "14px";
+
+    const ssContent = createSection("Social Studies Electives", socialStudiesElectiveCourses);
+    const oldSsLabel = ssContent.querySelector(".subject-label");
+    if (oldSsLabel) oldSsLabel.remove();
+
+    ssDetails.appendChild(ssSummary);
+    ssDetails.appendChild(ssContent);
+    mainElectivesContainer.appendChild(ssDetails);
+  }
+
+  // B. Group remaining sections (TE, VP, IL, AP, FC, BU, EL, etc.) underneath
+  electiveSubjects.forEach(subject => {
+    const innerDetails = document.createElement("details");
+    innerDetails.style.marginBottom = "10px";
+
+    const innerSummary = document.createElement("summary");
+    innerSummary.className = "subject-label";
+    innerSummary.textContent = subjectNames[subject] || subject;
+    innerSummary.style.cursor = "pointer";
+    innerSummary.style.fontSize = "14px";
+
+    const innerContent = createSection(subjectNames[subject] || subject, grouped[subject]);
+    const oldLabel = innerContent.querySelector(".subject-label");
+    if (oldLabel) oldLabel.remove();
+
+    innerDetails.appendChild(innerSummary);
+    innerDetails.appendChild(innerContent);
+    mainElectivesContainer.appendChild(innerDetails);
+  });
+
+  mainElectivesDetails.appendChild(mainElectivesContainer);
+  container.appendChild(mainElectivesDetails);
 }
 
+// CHANGED: Toggles individual buttons independently and tracks by name so you can pick multiple
 function selectCourse(subject, course, button) {
-  // Remove selection from other buttons in same row
-  const parent = button.parentElement;
-  Array.from(parent.children).forEach(btn => btn.classList.remove("selected"));
+  const isAlreadySelected = button.classList.contains("selected");
 
-  button.classList.add("selected");
+  if (isAlreadySelected) {
+    button.classList.remove("selected");
+    delete selectedCourses[course.name];
+  } else {
+    button.classList.add("selected");
+    selectedCourses[course.name] = course;
+  }
 
-  selectedCourses[subject] = course;
-
+  // Refresh the schedule table with the new state
   updateTable();
 }
 
+// CHANGED: Only adjusted the loop mapping to extract course data from unique course names
 function updateTable() {
   const tbody = document.querySelector("#schedule-table tbody");
   tbody.innerHTML = "";
 
   let totalCredits = 0;
 
-  Object.entries(selectedCourses).forEach(([subject, course]) => {
+  // 1. Define the strict sorting order for the table
+  const tableOrder = ["EN", "MA", "SS", "SC", "WL", "PE"];
+
+  // 2. Get the selected courses as an array and sort them by their subject category
+  const sortedEntries = Object.entries(selectedCourses).sort(([nameA, courseA], [nameB, courseB]) => {
+    const subjA = courseA.category[0];
+    const subjB = courseB.category[0];
+
+    const indexA = tableOrder.indexOf(subjA);
+    const indexB = tableOrder.indexOf(subjB);
+
+    // If both subjects are in our custom list, sort by their defined priority
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    
+    // If only 'a' is prioritized, push it to the top
+    if (indexA !== -1) return -1;
+    
+    // If only 'b' is prioritized, push it to the top
+    if (indexB !== -1) return 1;
+
+    // If neither is prioritized, sort alphabetically by subject code
+    return subjA.localeCompare(subjB);
+  });
+
+  // 3. Loop through the correctly sorted entries to build the table rows
+  sortedEntries.forEach(([courseName, course]) => {
     const levels = course.levels || [];
     const credits = parseFloat(course.credit) || 0;
+    const hasLevels = levels.length > 0;
+    const defaultLevel = hasLevels ? levels[0] : null;
 
-    levels.forEach(level => {
-      const numbers = course.courseNumbers?.[level] || [];
-      const courseNumDisplay = numbers.join(", ") || "—";
-      totalCredits += credits;
+    // If no levels, flatten all courseNumbers values
+    const defaultNumbers = defaultLevel
+      ? course.courseNumbers?.[defaultLevel] || []
+      : Object.values(course.courseNumbers || {}).flat();
 
-      const tr = document.createElement("tr");
+    totalCredits += credits;
 
-      const tdName = document.createElement("td");
-      tdName.textContent = course.name;
+    const tr = document.createElement("tr");
 
-      const tdLevel = document.createElement("td");
-      tdLevel.textContent = level;
+    // Course Name
+    const tdName = document.createElement("td");
+    tdName.textContent = course.name;
 
-      const tdNum = document.createElement("td");
-      tdNum.textContent = courseNumDisplay;
+    // Level — dropdown if levels exist, otherwise "N/A"
+    const tdLevel = document.createElement("td");
 
-      const tdCredits = document.createElement("td");
-      tdCredits.textContent = credits % 1 === 0 ? credits.toFixed(0) : credits;
+    // Course # — declared here so the dropdown's change handler can reference it
+    const tdNum = document.createElement("td");
+    tdNum.textContent = defaultNumbers.join(", ") || "—";
 
-      tr.appendChild(tdName);
-      tr.appendChild(tdLevel);
-      tr.appendChild(tdNum);
-      tr.appendChild(tdCredits);
-      tbody.appendChild(tr);
-    });
+    if (hasLevels) {
+      const select = document.createElement("select");
+
+      levels.forEach(level => {
+        const option = document.createElement("option");
+        option.value = level;
+        option.textContent = level;
+        select.appendChild(option);
+      });
+
+      // When level changes, update Course # cell
+      select.addEventListener("change", () => {
+        const nums = course.courseNumbers?.[select.value] || [];
+        tdNum.textContent = nums.join(", ") || "—";
+      });
+
+      tdLevel.appendChild(select);
+    } else {
+      tdLevel.textContent = "EL";
+    }
+
+    // Credits
+    const tdCredits = document.createElement("td");
+    tdCredits.textContent = credits % 1 === 0 ? credits.toFixed(0) : credits;
+
+    tr.appendChild(tdName);
+    tr.appendChild(tdLevel);
+    tr.appendChild(tdNum);
+    tr.appendChild(tdCredits);
+    tbody.appendChild(tr);
   });
 
   // Total row
