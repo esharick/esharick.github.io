@@ -242,4 +242,80 @@ details summary.subject-label::-webkit-details-marker {
 details[open] > summary.subject-label {
   margin-bottom: 8px;
 }
+/* --- Floating Modal Overlay (Covers the entire screen) --- */
+#course-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75); /* Darkens screen underneath popup */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Forces box to sit completely on top of all other page elements */
+}
+
+/* Modal Content Window Box */
+.course-modal-content {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 550px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  max-height: 80vh;
+  overflow-y: auto; /* Adds a clean inner scrollbar if the text description is long */
+}
+
+/* Interior Modal Elements Style */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 22px;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 5px;
+}
+
+.modal-close-btn:hover {
+  color: var(--text);
+}
+
+.modal-meta p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #b0b0b0;
+}
+
+.modal-meta strong {
+  color: var(--text);
+}
+
+.modal-divider {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 15px 0;
+}
+
+.modal-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+}
 }

@@ -3735,7 +3735,7 @@
         "12"
       ],
       "courseNumbers": {
-        "default": [
+        "AP": [
           "9100"
         ]
       },
@@ -3759,9 +3759,9 @@
         "12"
       ],
       "courseNumbers": {
-        "default": [
-          "9000"
-        ]
+        "AP": [
+      "9000"
+    ]
       },
       "prerequisites": "",
       "description": "AP Seminar\nGrades 10, 11, 12 Year 1 credit\n9000\nWhat is truth? What does it mean to look at something from a moral or ethical perspective? What role does ‘play’ have in society? These are just some of the many questions that students in AP Seminar consider in a course that prioritizes curiosity, inquiry, argument, personal interest, choice, and discussion. AP Seminar is an interdisciplinary course that takes students beyond the boundaries of single discipline subject courses, engaging students in academic and real-world topics of inquiry. In the first semester, students will focus their study on the topics: Truth, Justice, and Play. Throughout these units, students will work individually and in teams to dive deep into these issues, present their findings, and propose creative solutions. In the second half of the year, students are given autonomy to complete College Board performance tasks, formulating their own lines of inquiry, designing their own projects, and sharing their research with broader audiences. These Performance Tasks become part of students’ AP scores. College Board assesses the students based on the following components: Team Project & Presentation - 25%, Individual Research-Based Essay & Presentation - 35%, and End-of-Course Exam - 40%. Beyond the AP designation and the classroom experience, Seminar provides students with meaningful experiences that mirror the self-directed and collaborative skills students will need in college and beyond."
@@ -4043,9 +4043,9 @@
       "description": "Adaptive Physical Education\nGrades 9, 10, 11, 12 Semester .25 credit\n5655 PE\nThis course is a program alternative that is available to meet the\nneeds of students who are temporarily or permanently unable,\nfor physical or medical reasons, to participate in the regularly\nscheduled physical education program. This program's flexibility\npermits a student to be changed from one activity to another\nduring the regularly scheduled class. Students will receive a\ngrade and credit for participation in this program. No student\nwill be excused from attending their regularly scheduled physical\neducation classes. Should the attending physician reject all the\nactivity options of the Adaptive Program, the student will be given\nappropriate alternative assignments for the recommended time\nperiod. When a student is released by the attending physician,\nthey will return to the regular physical education program"
     },
     {
-      "name": "Alternative Physical Education",
+      "name": "Alternative Physical Education Semester 1",
       "levels": [],
-      "term": "S",
+      "term": "S1",
       "credit": "0.25",
       "category": [
         "PE"
@@ -4056,12 +4056,36 @@
         "12"
       ],
       "courseNumbers": {
-        "Spring/Fall Team Sport": [
-          "5145",
+        "Fall Team Sport": [
+          "5145"
+        ],
+        "Fall EEPE": [
+          "5155"
+        ]
+      },
+      "prerequisites": "",
+      "description": "Alternative Physical Education\nGrades 10, 11, 12\n5145 Team Sport (Fall) 5245 (Spring) .25 credit\n5155 Extended Experience PE (Fall) 5255 (Spring) .25 credit\n\nStudents may satisfy up to 1.5 credits of required physical education through involvement in inter-scholastic athletics or other approved alternative PE programs (including club sports: Ice Hockey, Rugby, Squash, and/or Crew). Students intending to take part in Extended Experience PE or club sport must complete an application, available online at http://www.tesd.net/page/640 or in the Main Office. Students intending to take part in a CHS team sport and receive PE credit should visit the Athletics Office for information. Students who do not continue on an athletic team, are not selected for a team, or otherwise discontinue their involvement in a school or community-based alternative PE program will be required to recover the lost PE credits in a subsequent semester. Second-semester seniors faced with recovering PE credits must do so through CHS physical education classes to improve the likelihood of graduating on time."
+    },
+    {
+      "name": "Alternative Physical Education Semester 2",
+      "levels": [],
+      "term": "S2",
+      "credit": "0.25",
+      "category": [
+        "PE"
+      ],
+      "grades": [
+        "10",
+        "11",
+        "12"
+      ],
+      "courseNumbers": {
+        "Spring Team Sport": [
+          
           "5245"
         ],
-        "Spring/Fall EEPE": [
-          "5155",
+        "Spring EEPE": [
+          
           "5255"
         ]
       },
