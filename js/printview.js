@@ -35,6 +35,7 @@ async function loadSchedule() {
             thead.innerHTML = `
                 <tr>
                     <th>Course</th>
+                    <th>Course Number</th>
                     <th>Credits</th>
                 </tr>
             `;
@@ -49,14 +50,15 @@ async function loadSchedule() {
             yearData.courses.forEach(course => {
 
                 totalCredits += Number(course.credits);
-
+            
                 const row = document.createElement("tr");
-
+            
                 row.innerHTML = `
                     <td>${course.name}</td>
+                    <td>${course.courseNumber}</td>
                     <td>${course.credits}</td>
                 `;
-
+            
                 tbody.appendChild(row);
             });
 
@@ -66,6 +68,7 @@ async function loadSchedule() {
 
             totalRow.innerHTML = `
                 <td>Total Credits</td>
+                <td></td>
                 <td>${totalCredits}</td>
             `;
 
