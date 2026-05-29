@@ -11,8 +11,11 @@ const subjectNames = {
   BU: "Business",
   TE: "Technology & Engineering",
   PE: "Physical Education",
-  EL: "Electives",
-  CAP: "AP Capstone"
+  EL: "Communications",
+  CAP: "AP Capstone",
+  IL: "Indepenedent Learning",
+  FC: "Family Consumer Science",
+  CT: "CCT"
 };
 
 // --- Detect current grade from URL (e.g. /pages/grade10.html → "10") ---
@@ -47,29 +50,33 @@ function renderCourses() {
     : coursesData;
 
   // --- Isolate English Electives from Core English ---
-  // Core English: Must have "EN" but NOT "EL"
   const coreEnglishCourses = gradeCourses.filter(
     c => c.category.includes("EN") && !c.category.includes("EL")
   );
-  // English Electives: Must have BOTH "EN" and "EL"
   const englishElectiveCourses = gradeCourses.filter(
     c => c.category.includes("EN") && c.category.includes("EL")
   );
 
-  // --- UPDATED: Isolate Social Studies Electives from Core Social Studies ---
-  // Core Social Studies: Must have "SS" but NOT "EL"
+  // --- Isolate Social Studies Electives from Core Social Studies ---
   const coreSocialStudiesCourses = gradeCourses.filter(
     c => c.category.includes("SS") && !c.category.includes("EL")
   );
-  // Social Studies Electives: Must have BOTH "SS" and "EL"
   const socialStudiesElectiveCourses = gradeCourses.filter(
     c => c.category.includes("SS") && c.category.includes("EL")
   );
 
-  // Remaining courses: Exclude anything handled by English or Social Studies filters above
-  const remainingCourses = gradeCourses.filter(
-    c => !c.category.includes("EN") && !c.category.includes("SS")
-  );
+  // --- NEW: Isolate CCT (CT) if it is 11th Grade ---
+  const isGrade11 = (grade === "11");
+  const cctCourses = isGrade11 
+    ? gradeCourses.filter(c => c.category.includes("CT")) 
+    : [];
+
+  // Remaining courses: Exclude EN, SS, and conditionally CT so it doesn't duplicate in Electives
+  const remainingCourses = gradeCourses.filter(c => {
+    if (c.category.includes("EN") || c.category.includes("SS")) return false;
+    if (isGrade11 && c.category.includes("CT")) return false;
+    return true;
+  });
 
   // Group the remaining courses using your standard structural logic
   const grouped = groupBySubject(remainingCourses);
@@ -126,6 +133,11 @@ function renderCourses() {
   // Render Main Remaining Core Subjects (Math, Science, World Language, PE)
   coreSubjects.forEach(subject => {
     container.appendChild(createSection(subjectNames[subject] || subject, grouped[subject]));
+    
+    // --- NEW: Inject CCT immediately after PE row if we are on Grade 11 ---
+    if (subject === "PE" && isGrade11 && cctCourses.length > 0) {
+      container.appendChild(createSection(subjectNames["CT"] || "CCT", cctCourses));
+    }
   });
 
   // 4. Construct the Main "Electives" Dropdown Menu
@@ -162,7 +174,7 @@ function renderCourses() {
     mainElectivesContainer.appendChild(enDetails);
   }
 
-  // UPDATED: Social Studies Electives dropdown (SS + EL)
+  // Social Studies Electives dropdown (SS + EL)
   if (socialStudiesElectiveCourses.length > 0) {
     const ssDetails = document.createElement("details");
     ssDetails.style.marginBottom = "10px";
