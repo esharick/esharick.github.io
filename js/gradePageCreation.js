@@ -12,7 +12,10 @@ const subjectNames = {
   TE: "Technology & Engineering",
   PE: "Physical Education",
   EL: "Electives",
-  CAP: "AP Capstone"
+  CAP: "AP Capstone",
+  IL: "Indepenedent Learning",
+  FC: "Family Consumer Science",
+  CT: "CCT"
 };
 
 // --- Detect current grade from URL (e.g. /pages/grade10.html → "10") ---
