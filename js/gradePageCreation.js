@@ -219,6 +219,7 @@ function renderCourses() {
 }
 
 // CHANGED: Toggles individual buttons independently and tracks by name so you can pick multiple
+// MODIFIED: Manages selecting the course AND handles rendering a centered floating popup box
 function selectCourse(subject, course, button) {
   const isAlreadySelected = button.classList.contains("selected");
 
@@ -228,10 +229,89 @@ function selectCourse(subject, course, button) {
   } else {
     button.classList.add("selected");
     selectedCourses[course.name] = course;
+    
+    // Trigger the floating pop-up box with details over everything else
+    showCoursePopup(course);
   }
 
   // Refresh the schedule table with the new state
   updateTable();
+}
+
+// NEW: Generates and injects a floating modal overlay directly onto the screen viewport
+function showCoursePopup(course) {
+  // 1. Remove any existing popup instance just in case
+  const existingPopup = document.getElementById("course-modal-overlay");
+  if (existingPopup) existingPopup.remove();
+
+  // 2. Create full-screen backing overlay
+  const overlay = document.createElement("div");
+  overlay.id = "course-modal-overlay";
+  
+  // FORCE OVERRIDE STYLES: This forces it to cover the screen no matter what your CSS file says
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100vw";
+  overlay.style.height = "100vh";
+  overlay.style.backgroundColor = "rgba(0, 0, 0, 0.85)";
+  overlay.style.display = "flex";
+  overlay.style.justifyContent = "center";
+  overlay.style.alignItems = "center";
+  overlay.style.zIndex = "99999"; // High index ensures it sits over headers/navbars
+
+  // 3. Create inner content panel box
+  const modal = document.createElement("div");
+  modal.className = "course-modal-content";
+  
+  // FORCE OVERRIDE STYLES: Styles the popup box cleanly in the center
+  modal.style.backgroundColor = "var(--surface, #1e1e1e)";
+  modal.style.border = "1px solid var(--border, #333)";
+  modal.style.borderRadius = "8px";
+  modal.style.width = "90%";
+  modal.style.maxWidth = "550px";
+  modal.style.padding = "24px";
+  modal.style.boxShadow = "0 10px 30px rgba(0, 0, 0, 0.6)";
+  modal.style.maxHeight = "80vh";
+  modal.style.overflowY = "auto";
+  modal.style.position = "relative";
+
+  const gradesDisplay = course.grades ? course.grades.join(", ") : "N/A";
+  const prereqDisplay = course.prerequisites && course.prerequisites.trim() !== "" 
+    ? course.prerequisites 
+    : "None";
+
+  // Assemble HTML elements inside modal layout
+  modal.innerHTML = `
+    <div class="modal-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+      <h3 style="margin: 0; color: var(--primary, #4cafef); font-size: 22px;">${course.name}</h3>
+      <button class="modal-close-btn" style="background: transparent; border: none; color: var(--muted, #888); font-size: 28px; cursor: pointer; line-height: 1; padding: 0 5px;">&times;</button>
+    </div>
+    <div class="modal-meta" style="font-size: 14px; color: #b0b0b0;">
+      <p style="margin: 6px 0;"><strong>Credits:</strong> ${course.credit}</p>
+      <p style="margin: 6px 0;"><strong>Grades:</strong> ${gradesDisplay}</p>
+      <p style="margin: 6px 0;"><strong>Term:</strong> ${course.term === "Y" ? "Full Year" : course.term}</p>
+      <p style="margin: 6px 0;"><strong>Prerequisites:</strong> ${prereqDisplay}</p>
+    </div>
+    <hr class="modal-divider" style="border: 0; border-top: 1px solid var(--border, #333); margin: 15px 0;">
+    <div class="modal-body" style="font-size: 14px; line-height: 1.6; color: var(--text, #e0e0e0);">
+      <p>${course.description ? course.description.replace(/\n/g, '<br>') : "No description available."}</p>
+    </div>
+  `;
+
+  overlay.appendChild(modal);
+  
+  // Append right onto the master window body layer
+  document.body.appendChild(overlay);
+
+  // Close popup logic
+  const closePopup = () => overlay.remove();
+
+  // Setup multiple interactive close triggers
+  modal.querySelector(".modal-close-btn").onclick = closePopup;
+  overlay.onclick = (e) => {
+    if (e.target === overlay) closePopup();
+  };
 }
 
 // CHANGED: Only adjusted the loop mapping to extract course data from unique course names
