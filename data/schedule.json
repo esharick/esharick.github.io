@@ -1,181 +1,248 @@
 [
-    {
-      "year": 9,
-      "courses": [
-        {
-          "name": "Literary Foundations",
-          "courseNumber": "0300",
-          "credits": 1,
-          "tags": ["EN", "LF"]
-        },
-        {
-          "name": "Algebra 1",
-          "courseNumber": "1200",
-          "credits": 1,
-          "tags": ["MA"]
-        },
-        {
-          "name": "Biology",
-          "courseNumber": "2200",
-          "credits": 1,
-          "tags": ["SC", "BI"]
-        },
-        {
-          "name": "World History",
-          "courseNumber": "3200",
-          "credits": 1,
-          "tags": ["SS", "WH"]
-        },
-        {
-          "name": "Spanish 1",
-          "courseNumber": "4200",
-          "credits": 1,
-          "tags": ["WL"]
-        },
-        {
-          "name": "Physical Education 9",
-          "courseNumber": "5200",
-          "credits": 0.5,
-          "tags": ["PE"]
-        },
-        {
-          "name": "Introduction to Computer Science",
-          "courseNumber": "6200",
-          "credits": 1,
-          "tags": ["TE", "EL"]
-        }
-      ]
-    },
-  
-    {
-      "year": 10,
-      "courses": [
-        {
-          "name": "American Literature",
-          "courseNumber": "0400",
-          "credits": 1,
-          "tags": ["EN"]
-        },
-        {
-          "name": "Geometry",
-          "courseNumber": "1300",
-          "credits": 1,
-          "tags": ["MA"]
-        },
-        {
-          "name": "Chemistry",
-          "courseNumber": "2300",
-          "credits": 1,
-          "tags": ["SC"]
-        },
-        {
-          "name": "United States History",
-          "courseNumber": "3300",
-          "credits": 1,
-          "tags": ["SS"]
-        },
-        {
-          "name": "Spanish 2",
-          "courseNumber": "4300",
-          "credits": 1,
-          "tags": ["WL"]
-        },
-        {
-          "name": "Physical Education 10",
-          "courseNumber": "5300",
-          "credits": 0.5,
-          "tags": ["PE"]
-        },
-        {
-          "name": "Digital Art",
-          "courseNumber": "7100",
-          "credits": 1,
-          "tags": ["VP", "EL"]
-        }
-      ]
-    },
-  
-    {
-      "year": 11,
-      "courses": [
-        {
-          "name": "AP English Language",
-          "courseNumber": "0500",
-          "credits": 1,
-          "tags": ["EN"]
-        },
-        {
-          "name": "Algebra 2",
-          "courseNumber": "1400",
-          "credits": 1,
-          "tags": ["MA"]
-        },
-        {
-          "name": "Physics",
-          "courseNumber": "2400",
-          "credits": 1,
-          "tags": ["SC"]
-        },
-        {
-          "name": "Economics",
-          "courseNumber": "3400",
-          "credits": 0.5,
-          "tags": ["SS"]
-        },
-        {
-          "name": "French 1",
-          "courseNumber": "4400",
-          "credits": 1,
-          "tags": ["WL"]
-        },
-        {
-          "name": "Business Fundamentals",
-          "courseNumber": "6400",
-          "credits": 1,
-          "tags": ["BU", "EL"]
-        }
-      ]
-    },
-  
-    {
-      "year": 12,
-      "courses": [
-        {
-          "name": "AP English Literature",
-          "courseNumber": "0600",
-          "credits": 1,
-          "tags": ["EN"]
-        },
-        {
-          "name": "Precalculus",
-          "courseNumber": "1500",
-          "credits": 1,
-          "tags": ["MA"]
-        },
-        {
-          "name": "Environmental Science",
-          "courseNumber": "2500",
-          "credits": 1,
-          "tags": ["SC"]
-        },
-        {
-          "name": "Government",
-          "courseNumber": "3500",
-          "credits": 0.5,
-          "tags": ["SS"]
-        },
-        {
-          "name": "Engineering Design",
-          "courseNumber": "6500",
-          "credits": 1,
-          "tags": ["TE", "EL"]
-        },
-        {
-          "name": "Choir",
-          "courseNumber": "7200",
-          "credits": 1,
-          "tags": ["VP", "EL"]
-        }
-      ]
-    }
-  ]
+  {
+    "year": 9,
+    "courses": [
+      {
+        "name": "Literary Foundations",
+        "courseNumber": "0300",
+        "credits": 1,
+        "tags": [
+          "EN",
+          "LF"
+        ]
+      },
+      {
+        "name": "Algebra 1",
+        "courseNumber": "1200",
+        "credits": 1,
+        "tags": [
+          "MA"
+        ]
+      },
+      {
+        "name": "Biology",
+        "courseNumber": "2200",
+        "credits": 1,
+        "tags": [
+          "SC",
+          "BI"
+        ]
+      },
+      {
+        "name": "World History",
+        "courseNumber": "3200",
+        "credits": 1,
+        "tags": [
+          "SS",
+          "WH"
+        ]
+      },
+      {
+        "name": "Spanish 1",
+        "courseNumber": "4200",
+        "credits": 1,
+        "tags": [
+          "WL"
+        ]
+      },
+      {
+        "name": "Physical Education 9",
+        "courseNumber": "5200",
+        "credits": 0.25,
+        "tags": [
+          "PE"
+        ]
+      },
+      {
+        "name": "Introduction to Computer Science",
+        "courseNumber": "6200",
+        "credits": 3,
+        "tags": [
+          "TE",
+          "EL"
+        ]
+      },
+      {
+        "name": "Health & Fitness 9",
+        "courseNumber": "5009",
+        "credits": 0.5,
+        "tags": [
+          "HF"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 10,
+    "courses": [
+      {
+        "name": "American Literature",
+        "courseNumber": "0400",
+        "credits": 1,
+        "tags": [
+          "EN",
+          "AV"
+        ]
+      },
+      {
+        "name": "Geometry",
+        "courseNumber": "1300",
+        "credits": 1,
+        "tags": [
+          "MA"
+        ]
+      },
+      {
+        "name": "Chemistry",
+        "courseNumber": "2300",
+        "credits": 1,
+        "tags": [
+          "SC"
+        ]
+      },
+      {
+        "name": "United States History",
+        "courseNumber": "3300",
+        "credits": 1,
+        "tags": [
+          "SS",
+          "UH"
+        ]
+      },
+      {
+        "name": "Spanish 2",
+        "courseNumber": "4300",
+        "credits": 1,
+        "tags": [
+          "WL"
+        ]
+      },
+      {
+        "name": "Physical Education 10",
+        "courseNumber": "5300",
+        "credits": 0.5,
+        "tags": [
+          "PE"
+        ]
+      },
+      {
+        "name": "Digital Art",
+        "courseNumber": "7100",
+        "credits": 1,
+        "tags": [
+          "VP",
+          "EL"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 11,
+    "courses": [
+      {
+        "name": "AP English Language",
+        "courseNumber": "0500",
+        "credits": 1,
+        "tags": [
+          "EN"
+        ]
+      },
+      {
+        "name": "Algebra 2",
+        "courseNumber": "1400",
+        "credits": 1,
+        "tags": [
+          "MA"
+        ]
+      },
+      {
+        "name": "Physics",
+        "courseNumber": "2400",
+        "credits": 1,
+        "tags": [
+          "SC"
+        ]
+      },
+      {
+        "name": "Economics",
+        "courseNumber": "3400",
+        "credits": 0.5,
+        "tags": [
+          "SS"
+        ]
+      },
+      {
+        "name": "French 1",
+        "courseNumber": "4400",
+        "credits": 1,
+        "tags": [
+          "WL"
+        ]
+      },
+      {
+        "name": "Business Fundamentals",
+        "courseNumber": "6400",
+        "credits": 1,
+        "tags": [
+          "BU",
+          "EL"
+        ]
+      }
+    ]
+  },
+  {
+    "year": 12,
+    "courses": [
+      {
+        "name": "AP English Literature",
+        "courseNumber": "0600",
+        "credits": 1,
+        "tags": [
+          "EN"
+        ]
+      },
+      {
+        "name": "Precalculus",
+        "courseNumber": "1500",
+        "credits": 1,
+        "tags": [
+          "MA"
+        ]
+      },
+      {
+        "name": "Environmental Science",
+        "courseNumber": "2500",
+        "credits": 1,
+        "tags": [
+          "SC"
+        ]
+      },
+      {
+        "name": "Government",
+        "courseNumber": "3500",
+        "credits": 0.5,
+        "tags": [
+          "SS"
+        ]
+      },
+      {
+        "name": "Engineering Design",
+        "courseNumber": "6500",
+        "credits": 1,
+        "tags": [
+          "TE",
+          "EL"
+        ]
+      },
+      {
+        "name": "Choir",
+        "courseNumber": "7200",
+        "credits": 1,
+        "tags": [
+          "VP",
+          "EL"
+        ]
+      }
+    ]
+  }
+]
