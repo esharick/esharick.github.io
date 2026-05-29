@@ -3,34 +3,101 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>My Website</title>
+    <title>Print Schedule</title>
+
     <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .grade-section {
+            margin-bottom: 40px;
+        }
+
+        .grade-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            text-align: left;
+        }
+
+        td:last-child,
+        th:last-child {
+            width: 120px;
+            text-align: center;
+        }
+
+        .total-row {
+            font-weight: bold;
+        }
+
+        .print-button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        #printButton {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        @media print {
+
+            @page {
+                size: landscape;
+                margin: 0.5in;
+            }
+
+            #navbar,
+            .print-button-container {
+                display: none;
+            }
+
+            body {
+                margin: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <div id="navbar"></div>
 
-    <h1>Welcome to the Home Page</h1>
+    <h1>Print Schedule Page</h1>
 
+    <div id="scheduleContainer"></div>
 
-    <div id="course"></div>
+    <div class="print-button-container">
+        <button id="printButton">Print Schedule</button>
+    </div>
 
     <script src="/js/nav.js"></script>
-    <script src="/js/courses.js"></script>
-    <script>
-        
-        function displayOneCourse() {
-          loadCourses(() => {
-            const course = coursesData[0];
-        
-            document.getElementById("course").innerHTML =
-              "<h2>" + course.name + "</h2>" +
-              "<p>" + course.description + "</p>";
-          });
-        }    
-        displayOneCourse();
-    </script>
+    <script src="/js/printview.js"></script>
 
 </body>
 
