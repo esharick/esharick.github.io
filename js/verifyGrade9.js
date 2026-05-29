@@ -1,51 +1,4 @@
-async function verifySchedule() {
-
-    try {
-
-        // Load schedule.json
-        const response = await fetch("/data/schedule.json");
-
-        if (!response.ok) {
-            throw new Error("Failed to load schedule.json");
-        }
-
-        const schedule = await response.json();
-
-        // Find Grade 9
-        const grade9 = schedule.find(year => year.year === 9);
-
-        if (!grade9) {
-            console.error("Grade 9 schedule not found.");
-            return;
-        }
-
-        // Run verification
-        const result = verifyGrade9(grade9);
-
-        // Console output
-        if (result.valid) {
-
-            console.log("✅ Grade 9 schedule PASSED verification.");
-
-        } else {
-
-            console.log("❌ Grade 9 schedule FAILED verification.");
-
-            result.errors.forEach(error => {
-                console.log("- " + error);
-            });
-        }
-
-        console.log("Total Credits:", result.totalCredits);
-        console.log("Limited Credits:", result.limitedCredits);
-
-    } catch (error) {
-
-        console.error("Verification error:", error);
-    }
-}
-
-function verifyGrade9(scheduleData) {
+function verifyGrade9Schedule(scheduleData) {
 
     const errors = [];
 
@@ -55,6 +8,9 @@ function verifyGrade9(scheduleData) {
     let hasLF = false;
     let hasWH = false;
     let hasBI = false;
+    let hasHF = false;
+
+    let peCredits = 0;
 
     scheduleData.courses.forEach(course => {
 
@@ -62,7 +18,7 @@ function verifyGrade9(scheduleData) {
 
         totalCredits += credits;
 
-        // Check if cocurricular
+        // Cocurricular check
         const isCC = course.tags.includes("CC");
 
         // CC courses do not count toward limit
@@ -82,6 +38,15 @@ function verifyGrade9(scheduleData) {
         if (course.tags.includes("BI")) {
             hasBI = true;
         }
+
+        if (course.tags.includes("HF")) {
+            hasHF = true;
+        }
+
+        // PE credits
+        if (course.tags.includes("PE")) {
+            peCredits += credits;
+        }
     });
 
     // Credit minimum
@@ -100,7 +65,7 @@ function verifyGrade9(scheduleData) {
         );
     }
 
-    // Required courses
+    // Required classes
     if (!hasLF) {
         errors.push("Missing Literary Foundations (LF) requirement.");
     }
@@ -113,13 +78,23 @@ function verifyGrade9(scheduleData) {
         errors.push("Missing Biology (BI) requirement.");
     }
 
+    if (!hasHF) {
+        errors.push("Missing Health & Fitness 9 (HF) requirement.");
+    }
+
+    // PE requirement
+    if (peCredits < 0.25) {
+
+        errors.push(
+            `Grade 9 requires at least 0.25 PE credits. Currently has ${peCredits}.`
+        );
+    }
+
     return {
         valid: errors.length === 0,
         totalCredits,
         limitedCredits,
+        peCredits,
         errors
     };
 }
-
-// Run verifier
-verifySchedule();
