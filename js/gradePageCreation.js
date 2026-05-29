@@ -432,6 +432,77 @@ document.getElementById("clear-btn").onclick = () => {
 document.getElementById("print-btn").onclick = () => {
   window.print();
 };
+// --- FORCE ACCESSIBLE DARK THEME OVERRIDE ON THE WHOLE PAGE ---
+(function forceDarkTheme() {
+  // 1. Create a dynamic style block
+  const darkStyle = document.createElement("style");
+  darkStyle.id = "forced-dark-theme-override";
+  
+  // 2. Inject raw dark mode CSS rules to override the layout completely
+  darkStyle.textContent = `
+    /* Body & Main Container Fallbacks */
+    body {
+      background-color: #121212 !important;
+      color: #e0e0e0 !important;
+    }
+    
+    .container, #course-selection, main, div {
+      background-color: transparent; 
+    }
 
+    /* Primary and Secondary Headers */
+    h1, h2, h3, h4, .subject-section {
+      color: #e0e0e0 !important;
+    }
+    
+    /* Subject Category Section Titles */
+    .subject-label {
+      color: #4cafef !important; /* Electric Blue Theme */
+    }
+
+    /* Course Selection Row Dividing Lines */
+    .subject-section {
+      border-color: #333333 !important;
+    }
+
+    /* Non-selected Default Course Buttons */
+    .course-buttons button {
+      background-color: #2a2a2a !important;
+      color: #e0e0e0 !important;
+      border: 1px solid #333333 !important;
+    }
+
+    /* Selected Active Course Buttons */
+    .course-buttons button.selected {
+      background-color: #4cafef !important;
+      color: #000000 !important;
+      border-color: #4cafef !important;
+      font-weight: bold !important;
+    }
+
+    /* Schedule Output Matrix Table */
+    table, #schedule-table {
+      background: #1e1e1e !important;
+      color: #e0e0e0 !important;
+    }
+
+    th, td {
+      border: 1px solid #333333 !important;
+      color: #e0e0e0 !important;
+    }
+
+    th {
+      background-color: #2a2a2a !important;
+    }
+    
+    /* Native Details Arrow Disclosures */
+    details summary.subject-label::-webkit-details-marker {
+      color: #4cafef !important;
+    }
+  `;
+
+  // 3. Attach it strictly onto the main document head layout frame
+  document.head.appendChild(darkStyle);
+})();
 // Called when the page loads
 loadCourses(renderCourses);
