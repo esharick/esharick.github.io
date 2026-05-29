@@ -3,21 +3,26 @@ let selectedGrade = null;
 let selectedSubject = null; 
 
 /**
- * Mapping Dictionary: Maps the 'category' abbreviations found inside your JSON 
- * directly to your 13 official, student-facing UI department headers.
+ * Mapping Dictionary: Maps the production 'category' abbreviations found inside your JSON 
+ * directly to your official, student-facing UI department headers.
  */
 const tagToSubjectMap = {
   "EN": "English/Communications",
   "MA": "Math",
-  "SS": "Social Studies",         // Prepared for your Social Studies courses
   "TE": "Tech/Engineering",
-  "BT": "Tech/Engineering",       // Maps both TE and BT safely to Tech/Engineering
+  "BT": "Tech/Engineering",
   "CC": "5CCT",
-  "EL": "Electives",
-  "VP": "Visual and Performing Arts",
-  "FA": "Family and Consumer Science",
-  // Maps EL to Individualized Learning
-  // If you add other tags later (e.g., "SCI": "Science", "WL": "World Languages"), add them right here!
+  "EL": "Individualized Learning",
+  
+  // Mappings for the rest of your curriculum layout
+  "SS": "Social Studies", 
+  "SCI": "Science",
+  "WL": "World Languages",
+  "PE": "Wellness/Fitness",
+  "FC": "FCS",                       // FIX: Changed from FA/FCS to exactly match "FC" from your JSON
+  "VP": "Visual and Performing Arts", // Visual Arts mapping
+  "BU": "Business",
+  "AP": "AP Capstone"
 };
 
 // Initialize app when loadCourses finishes fetching your JSON array
@@ -64,8 +69,11 @@ function renderFilterInterface() {
     "Visual and Performing Arts"
   ];
 
+  // ALPHABETICAL FIX: Sort the subjects alphabetically before rendering them
+  const sortedSubjects = [...subjects].sort((a, b) => a.localeCompare(b));
+
   // Generate Subject Filter Buttons Grid
-  const subjectButtonsHTML = subjects.map(s => `
+  const subjectButtonsHTML = sortedSubjects.map(s => `
     <button class="filter-btn subj-btn ${selectedSubject === s ? 'active' : ''}" 
             onclick="updateSubjectFilter('${s}')">
       ${s}
@@ -115,16 +123,45 @@ function resetFilters() {
   filterAndDisplayCourses();
 }
 
+/**
+ * Helper function to determine which primary UI subject group a course belongs to.
+ */
+function getCourseSubject(course) {
+  if (!course.category || course.category.length === 0) return "Other";
+  
+  // Prioritize primary core subjects first if multiple tags exist
+  if (course.category.includes("MA")) return "Math";
+  if (course.category.includes("EN")) return "English/Communications";
+  if (course.category.includes("TE") || course.category.includes("BT")) return "Tech/Engineering";
+  if (course.category.includes("VP")) return "Visual and Performing Arts";
+  if (course.category.includes("FC")) return "FCS"; // FIX: Adjusted to "FC" here as well
+  if (course.category.includes("CC")) return "5CCT";
+  if (course.category.includes("EL")) return "Individualized Learning";
+  
+  // Fallback map loop lookup
+  for (let catTag of course.category) {
+    if (tagToSubjectMap[catTag]) {
+      return tagToSubjectMap[catTag];
+    }
+  }
+  return "Other";
+}
+
 function filterAndDisplayCourses() {
-  // Filters data cleanly or leaves list unchanged if filter configurations are empty
+  // 1. Filter data cleanly based on user selection rules
   const filteredCourses = coursesData.filter(course => {
-    // 1. Evaluate Grade Match
+    
+    // Advanced Grade Matching (Handles strings, numbers, and grade ranges)
     let matchesGrade = true;
     if (selectedGrade !== null) {
-      matchesGrade = (course.grades || []).includes(selectedGrade);
+      const courseGrades = course.grades || [];
+      matchesGrade = courseGrades.some(g => {
+        const stringGrade = String(g).trim();
+        return stringGrade === selectedGrade || stringGrade.includes(selectedGrade);
+      });
     }
 
-    // 2. Evaluate Subject Department Match
+    // Evaluate Subject Department Match
     let matchesSubject = true;
     if (selectedSubject !== null) {
       matchesSubject = (course.category || []).some(catTag => {
@@ -141,49 +178,82 @@ function filterAndDisplayCourses() {
   if (filteredCourses.length === 0) {
     coursesElement.innerHTML = `
       <div class="no-courses-alert">
-        No courses match Grade ${selectedGrade} within "${selectedSubject}".
+        No courses match Grade ${selectedGrade || 'Any'} within "${selectedSubject || 'Any'}".
         <br><button class="filter-btn" style="margin-top: 1rem;" onclick="resetFilters()">Clear Filters</button>
       </div>
     `;
     return;
   }
 
-  // Map loop rendering matching courses array
-  coursesElement.innerHTML = filteredCourses.map(course => {
-    const levelsHTML = (course.levels || []).length 
-      ? course.levels.map(l => `<span class="badge level-${l.replace('*', '-star')}">${l}</span>`).join(" ")
-      : `<span class="badge level-none">Standard</span>`;
+  // 2. CATEGORIZE & GROUP: Organize the matched records under unique subject headings
+  const groupedCourses = {};
+  filteredCourses.forEach(course => {
+    const subjectGroup = getCourseSubject(course);
+    if (!groupedCourses[subjectGroup]) {
+      groupedCourses[subjectGroup] = [];
+    }
+    groupedCourses[subjectGroup].push(course);
+  });
 
-    const gradesHTML = (course.grades || []).map(g => `<span class="badge grade-pill">Grade ${g}</span>`).join(" ");
+  // Sort grouped headers alphabetically
+  const sortedSubjectGroups = Object.keys(groupedCourses).sort((a, b) => a.localeCompare(b));
 
-    const courseNumbersHTML = Object.entries(course.courseNumbers || {})
-      .map(([key, values]) => `<div><strong>${key}:</strong> <code>${values.join(", ")}</code></div>`)
-      .join("");
+  // 3. RENDER CONTENT: Generate structures sorted alphabetically
+  let finalHTML = "";
 
-    return `
-      <div class="course-card">
-        <div class="course-main">
-          <div class="course-header">
-            <h3>${course.name}</h3>
-            <div class="meta-badges">${levelsHTML} ${gradesHTML}</div>
+  sortedSubjectGroups.forEach(subjectName => {
+    // Sort items alphabetically by course name
+    groupedCourses[subjectName].sort((a, b) => a.name.localeCompare(b.name));
+
+    finalHTML += `
+      <div class="subject-section-group">
+        <h2 class="subject-group-title">${subjectName}</h2>
+        <div class="subject-courses-grid">
+    `;
+
+    finalHTML += groupedCourses[subjectName].map(course => {
+      const levelsHTML = (course.levels || []).length 
+        ? course.levels.map(l => `<span class="badge level-${l.replace('*', '-star')}">${l}</span>`).join(" ")
+        : `<span class="badge level-none">Standard</span>`;
+
+      const gradesHTML = (course.grades || []).map(g => `<span class="badge grade-pill">Grade ${g}</span>`).join(" ");
+
+      const courseNumbersHTML = Object.entries(course.courseNumbers || {})
+        .map(([key, values]) => `<div><strong>${key}:</strong> <code>${values.join(", ")}</code></div>`)
+        .join("");
+
+      return `
+        <div class="course-card">
+          <div class="course-main">
+            <div class="course-header">
+              <h3>${course.name}</h3>
+              <div class="meta-badges">${levelsHTML} ${gradesHTML}</div>
+            </div>
+            <div class="course-details">
+              <p><strong>Term:</strong> ${course.term === 'Y' ? 'Full Year' : 'Semester'} | <strong>Credit:</strong> ${course.credit}</p>
+              ${course.prerequisites ? `<p class="prereq-alert"><strong>Prerequisites:</strong> ${course.prerequisites}</p>` : ''}
+              <div class="course-numbers-box">${courseNumbersHTML}</div>
+            </div>
           </div>
-          <div class="course-details">
-            <p><strong>Term:</strong> ${course.term === 'Y' ? 'Full Year' : 'Semester'} | <strong>Credit:</strong> ${course.credit}</p>
-            ${course.prerequisites ? `<p class="prereq-alert"><strong>Prerequisites:</strong> ${course.prerequisites}</p>` : ''}
-            <div class="course-numbers-box">${courseNumbersHTML}</div>
+          <div class="course-sidebar">
+            <details>
+              <summary>Description</summary>
+              <div class="sidebar-content">
+                <pre>${course.description}</pre>
+              </div>
+            </details>
           </div>
         </div>
-        <div class="course-sidebar">
-          <details>
-            <summary>Description</summary>
-            <div class="sidebar-content">
-              <pre>${course.description}</pre>
-            </div>
-          </details>
+      `;
+    }).join("");
+
+    finalHTML += `
         </div>
       </div>
     `;
-  }).join("");
+  });
+
+  coursesElement.innerHTML = finalHTML;
 }
 
 // Hook onto window DOM load to trigger logic
