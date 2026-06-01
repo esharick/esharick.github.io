@@ -8,8 +8,6 @@ function verifyGrade10Schedule(scheduleData) {
     let hasUH = false;
     let hasAV = false;
 
-    let peCredits = 0;
-
     scheduleData.courses.forEach(course => {
 
         const credits = Number(course.credits);
@@ -31,11 +29,6 @@ function verifyGrade10Schedule(scheduleData) {
 
         if (course.tags.includes("AV")) {
             hasAV = true;
-        }
-
-        // PE credits
-        if (course.tags.includes("PE")) {
-            peCredits += credits;
         }
     });
 
@@ -64,19 +57,10 @@ function verifyGrade10Schedule(scheduleData) {
         errors.push("Missing American Voices (AV) requirement.");
     }
 
-    // PE requirement
-    if (peCredits < 0.5) {
-
-        errors.push(
-            `Grade 10 requires at least 0.5 PE credits. Currently has ${peCredits}.`
-        );
-    }
-
     return {
         valid: errors.length === 0,
         totalCredits,
         limitedCredits,
-        peCredits,
         errors
     };
 }

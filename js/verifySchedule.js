@@ -58,6 +58,52 @@ async function verifySchedule() {
             }
         }
 
+        const grade11Data = schedule.find(year => year.year === 11);
+
+        if (grade11Data) {
+
+            const grade11Result =
+                verifyGrade11Schedule(grade11Data);
+
+            console.log("GRADE 11");
+
+            if (grade11Result.valid) {
+
+                console.log("✅ Passed");
+
+            } else {
+
+                console.log("❌ Failed");
+
+                grade11Result.errors.forEach(error => {
+                    console.log("- " + error);
+                });
+            }
+        }
+
+        const grade12Data = schedule.find(year => year.year === 12);
+
+        if (grade12Data) {
+
+            const grade12Result =
+                verifyGrade12Schedule(grade12Data);
+
+            console.log("GRADE 12");
+
+            if (grade12Result.valid) {
+
+                console.log("✅ Passed");
+
+            } else {
+
+                console.log("❌ Failed");
+
+                grade12Result.errors.forEach(error => {
+                    console.log("- " + error);
+                });
+            }
+        }
+
     } catch (error) {
 
         console.error("Verification error:", error);
