@@ -16,7 +16,7 @@ const tagToSubjectMap = {
   
   // Mappings for the rest of your curriculum layout
   "SS": "Social Studies", 
-  "SCI": "Science",
+  "SC": "Science",
   "WL": "World Languages",
   "PE": "Wellness/Fitness",
   "FC": "FCS",                       // FIX: Changed from FA/FCS to exactly match "FC" from your JSON
