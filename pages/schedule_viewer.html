@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Print Schedule</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+        head {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .grade-section {
+            margin-bottom: 40px;
+        }
+
+        .grade-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            text-align: left;
+        }
+
+        /* Course Number Column */
+        td:nth-child(2),
+        th:nth-child(2) {
+            width: 160px;
+            text-align: center;
+        }
+
+        /* Credits Column */
+        td:nth-child(3),
+        th:nth-child(3) {
+            width: 120px;
+            text-align: center;
+        }
+
+        .total-row {
+            font-weight: bold;
+        }
+
+        .print-button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        #printButton {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        table {
+            table-layout: fixed;
+        }
+
+        td,
+        th {
+            word-wrap: break-word;
+        }
+
+        .page-content {
+            padding: 30px;
+        }
+
+        @media print {
+
+            @page {
+                size: landscape;
+                margin: 0.5in;
+            }
+
+            #navbar,
+            .print-button-container {
+                display: none;
+            }
+
+            body {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <div class="page-content">
+
+        <h1>Print Schedule Page</h1>
+    
+        <div id="scheduleContainer"></div>
+    
+        <div class="print-button-container">
+            <button id="printButton">Print Schedule</button>
+        </div>
+
+    <script src="/js/nav.js"></script>
+    <script src="/js/printview.js"></script>
+    <script src="/js/verifyGrade9.js"></script>
+    <script src="/js/verifyGrade10.js"></script>
+    <script src="/js/verifySchedule.js"></script>
+
+</body>
+
+</html>
