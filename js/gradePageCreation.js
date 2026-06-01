@@ -315,6 +315,7 @@ function showCoursePopup(course) {
 }
 
 // CHANGED: Only adjusted the loop mapping to extract course data from unique course names
+// MODIFIED: Restores saved level configurations cleanly if they exist in state tracking data
 function updateTable() {
   const tbody = document.querySelector("#schedule-table tbody");
   tbody.innerHTML = "";
@@ -350,16 +351,21 @@ function updateTable() {
     const levels = course.levels || [];
     const credits = parseFloat(course.credit) || 0;
     const hasLevels = levels.length > 0;
-    const defaultLevel = hasLevels ? levels[0] : null;
+    
+    // Use the saved selected level if it exists, otherwise fallback to standard default first option
+    const activeLevel = course.selectedLevel && levels.includes(course.selectedLevel)
+      ? course.selectedLevel
+      : (hasLevels ? levels[0] : null);
 
-    // If no levels, flatten all courseNumbers values
-    const defaultNumbers = defaultLevel
-      ? course.courseNumbers?.[defaultLevel] || []
+    // Dynamic numbers lookup matching the targeted choice
+    const defaultNumbers = activeLevel
+      ? course.courseNumbers?.[activeLevel] || []
       : Object.values(course.courseNumbers || {}).flat();
 
     totalCredits += credits;
 
     const tr = document.createElement("tr");
+    tr.setAttribute("data-course-name", course.name); // Tag row to extract data later during saves
 
     // Course Name
     const tdName = document.createElement("td");
@@ -374,16 +380,19 @@ function updateTable() {
 
     if (hasLevels) {
       const select = document.createElement("select");
+      select.className = "level-dropdown-select";
 
       levels.forEach(level => {
         const option = document.createElement("option");
         option.value = level;
         option.textContent = level;
+        if (level === activeLevel) option.selected = true;
         select.appendChild(option);
       });
 
-      // When level changes, update Course # cell
+      // When level changes, update local tracking instantly alongside view state text numbers
       select.addEventListener("change", () => {
+        course.selectedLevel = select.value;
         const nums = course.courseNumbers?.[select.value] || [];
         tdNum.textContent = nums.join(", ") || "—";
       });
@@ -420,8 +429,10 @@ function updateTable() {
   tbody.appendChild(totalTr);
 }
 
+// Clear button logic handles clearing browser cache memory as well
 document.getElementById("clear-btn").onclick = () => {
   Object.keys(selectedCourses).forEach(key => delete selectedCourses[key]);
+  localStorage.removeItem("selectedCoursesCache");
 
   document.querySelectorAll(".course-buttons button")
     .forEach(btn => btn.classList.remove("selected"));
@@ -429,9 +440,29 @@ document.getElementById("clear-btn").onclick = () => {
   updateTable();
 };
 
-document.getElementById("print-btn").onclick = () => {
-  window.print();
-};
+// REMOVED: print-btn setup
+// NEW: save-btn loops through table elements to lock down specific selected level configurations 
+const saveButton = document.getElementById("save-btn");
+if (saveButton) {
+  saveButton.onclick = () => {
+    try {
+      // Look over table structure to verify current chosen level drops match our saving state
+      document.querySelectorAll("#schedule-table tbody tr[data-course-name]").forEach(row => {
+        const name = row.getAttribute("data-course-name");
+        const selectDropdown = row.querySelector(".level-dropdown-select");
+        if (selectedCourses[name] && selectDropdown) {
+          selectedCourses[name].selectedLevel = selectDropdown.value;
+        }
+      });
+
+      localStorage.setItem("selectedCoursesCache", JSON.stringify(selectedCourses));
+      alert("Selections and levels successfully saved!");
+    } catch (error) {
+      console.error("Failed to save choices to local browser storage", error);
+    }
+  };
+}
+
 // --- FORCE ACCESSIBLE DARK THEME OVERRIDE ON THE WHOLE PAGE ---
 (function forceDarkTheme() {
   // 1. Create a dynamic style block
@@ -494,6 +525,15 @@ document.getElementById("print-btn").onclick = () => {
     th {
       background-color: #2a2a2a !important;
     }
+
+    /* Style level dropdowns neatly in dark mode */
+    .level-dropdown-select {
+      background-color: #2a2a2a !important;
+      color: #e0e0e0 !important;
+      border: 1px solid #333333 !important;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
     
     /* Native Details Arrow Disclosures */
     details summary.subject-label::-webkit-details-marker {
@@ -504,5 +544,22 @@ document.getElementById("print-btn").onclick = () => {
   // 3. Attach it strictly onto the main document head layout frame
   document.head.appendChild(darkStyle);
 })();
+
+// NEW: Automatically check and parse out selections from localStorage cache right away
+(function loadCachedData() {
+  try {
+    const cachedData = localStorage.getItem("selectedCoursesCache");
+    if (cachedData) {
+      const parsedData = JSON.parse(cachedData);
+      Object.assign(selectedCourses, parsedData);
+    }
+  } catch (error) {
+    console.error("Failed to extract cached items from localStorage configuration frame", error);
+  }
+})();
+
 // Called when the page loads
-loadCourses(renderCourses);
+loadCourses(() => {
+  renderCourses();
+  updateTable(); // Ensures table gets constructed with cached data and explicit levels visible immediately
+});
