@@ -20,7 +20,8 @@ const tagToSubjectMap = {
   "FC": "FCS",                       
   "VP": "Visual and Performing Arts", 
   "BU": "Business",                  
-  "CAP": "AP Capstone"
+  "CAP": "AP Capstone",
+  "AP": "AP Capstone"
 };
 
 // Initialize app when loadCourses finishes fetching your JSON array
@@ -128,10 +129,10 @@ function resetFilters() {
 function getCourseSubject(course) {
   if (!course.category || course.category.length === 0) return "Other";
   
-  // PRIORITY CHECK: Check for elective/special tracks first so they don't get trapped by core subjects
+  // PRIORITY CHECK: AP Capstone, Electives, and Special tracks must be checked first
+  if (course.category.includes("CAP") || course.category.includes("AP")) return "AP Capstone";
   if (course.category.includes("EL")) return "Individualized Learning";
   if (course.category.includes("CC")) return "5CCT";
-  if (course.category.includes("AP")) return "AP Capstone";
 
   // CORE CHECK: Fall back to core book subjects if it's not a special track
   if (course.category.includes("MA")) return "Math";
@@ -144,7 +145,6 @@ function getCourseSubject(course) {
   if (course.category.includes("SS")) return "Social Studies";
   if (course.category.includes("WL")) return "World Languages";
   if (course.category.includes("PE")) return "Wellness/Fitness";
-  if (couse.category.includes("CAP")) return "AP Capstone";
   
   // Fallback dictionary loop lookup if none of the above matched
   for (let catTag of course.category) {
@@ -220,36 +220,34 @@ function filterAndDisplayCourses() {
     `;
 
     finalHTML += groupedCourses[subjectName].map(course => {
-      const levelsHTML = (course.levels || []).length 
-        ? course.levels.map(l => `<span class="badge level-${l.replace('*', '-star')}">${l}</span>`).join(" ")
-        : `<span class="badge level-none">Standard</span>`;
+      // SPLIT DESCRIPTION: Separates the first line (level description) to bold it safely
+      const descText = course.description || "";
+      const firstBreakIndex = descText.indexOf("\n");
+      let boldHeaderHTML = "";
+      let remainingDescText = descText;
 
-      const gradesHTML = (course.grades || []).map(g => `<span class="badge grade-pill">Grade ${g}</span>`).join(" ");
+      if (firstBreakIndex !== -1) {
+        const firstLine = descText.substring(0, firstBreakIndex);
+        boldHeaderHTML = `<div class="description-level-header" style="margin-bottom: 4px;"><strong>${firstLine}</strong></div>`;
+        remainingDescText = descText.substring(firstBreakIndex + 1);
+      } else if (descText.trim().length > 0) {
+        boldHeaderHTML = `<div class="description-level-header" style="margin-bottom: 4px;"><strong>${descText}</strong></div>`;
+        remainingDescText = "";
+      }
 
-      const courseNumbersHTML = Object.entries(course.courseNumbers || {})
-        .map(([key, values]) => `<div><strong>${key}:</strong> <code>${values.join(", ")}</code></div>`)
-        .join("");
-
-      // Native entire-card accordion system output wrapper
+      // Term, Credit, Prerequisites, and Course Number HTML rows completely removed.
+      // Content drops straight into the description header and block wrapper.
       return `
         <details class="course-card">
           <summary class="course-summary-header">
             <span class="course-title-text">${course.name}</span>
-            <div class="meta-badges">${levelsHTML} ${gradesHTML}</div>
           </summary>
           
           <div class="course-expanded-content">
             <hr class="accordion-divider">
-            <div class="course-main">
-              <div class="course-details">
-                <p><strong>Term:</strong> ${course.term === 'Y' ? 'Full Year' : 'Semester'} | <strong>Credit:</strong> ${course.credit}</p>
-                ${course.prerequisites ? `<p class="prereq-alert"><strong>Prerequisites:</strong> ${course.prerequisites}</p>` : ''}
-                <div class="course-numbers-box">${courseNumbersHTML}</div>
-              </div>
-            </div>
             <div class="course-description-block">
-              <strong>Description:</strong>
-              <pre class="clean-description">${course.description}</pre>
+              ${boldHeaderHTML}
+              <pre class="clean-description" style="margin-top: 4px;">${remainingDescText}</pre>
             </div>
           </div>
         </details>
