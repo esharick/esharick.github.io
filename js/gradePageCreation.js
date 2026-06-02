@@ -32,7 +32,6 @@ function getStorageKey() {
 
 function saveSelections() {
   const key = getStorageKey();
-  // Store only course names as keys; full course objects as values
   localStorage.setItem(key, JSON.stringify(selectedCourses));
 }
 
@@ -116,7 +115,7 @@ function renderCourses() {
   const coreSubjects = coreOrder.filter(subj => allSubjects.includes(subj));
   const electiveSubjects = allSubjects.filter(subj => !coreOrder.includes(subj));
 
-  // --- Helper function to build a standard button section ---
+  // --- Helper function to build a button section with info buttons ---
   function createSection(labelName, coursesList) {
     const section = document.createElement("div");
     section.className = "subject-section";
@@ -129,7 +128,12 @@ function renderCourses() {
     buttonContainer.className = "course-buttons";
 
     coursesList.forEach(course => {
+      // Wrapper to anchor the main button and info button together neatly
+      const wrapper = document.createElement("div");
+      wrapper.className = "course-btn-wrapper";
+
       const btn = document.createElement("button");
+      btn.className = "course-select-btn";
       btn.textContent = course.name;
 
       // Restore selected state from savedCourses
@@ -138,7 +142,21 @@ function renderCourses() {
       }
 
       btn.onclick = () => selectCourse(labelName, course, btn);
-      buttonContainer.appendChild(btn);
+
+      // Dedicated Info Button
+      const infoBtn = document.createElement("button");
+      infoBtn.className = "course-info-btn";
+      infoBtn.innerHTML = "&#9432;"; // Unified layout standard info symbol (i)
+      infoBtn.title = "View Course Info";
+      
+      infoBtn.onclick = (e) => {
+        e.stopPropagation(); // Stop selection trigger
+        showCoursePopup(course);
+      };
+
+      wrapper.appendChild(btn);
+      wrapper.appendChild(infoBtn);
+      buttonContainer.appendChild(wrapper);
     });
 
     section.appendChild(label);
@@ -256,9 +274,7 @@ function selectCourse(subject, course, button) {
   } else {
     button.classList.add("selected");
     selectedCourses[course.name] = course;
-
-    // Trigger the floating pop-up box with details over everything else
-    showCoursePopup(course);
+    // POPUP TRIGGER REMOVED FROM HERE
   }
 
   // Save to localStorage whenever selection changes
@@ -429,7 +445,7 @@ document.getElementById("clear-btn").onclick = () => {
   // Also clear this grade's localStorage entry
   localStorage.removeItem(getStorageKey());
 
-  document.querySelectorAll(".course-buttons button")
+  document.querySelectorAll(".course-buttons .course-select-btn")
     .forEach(btn => btn.classList.remove("selected"));
 
   updateTable();
@@ -466,17 +482,56 @@ document.getElementById("print-btn").onclick = () => {
       border-color: #333333 !important;
     }
 
-    .course-buttons button {
+    /* Core Wrapper setup for side-by-side buttons */
+    .course-btn-wrapper {
+      display: inline-flex !important;
+      align-items: stretch !important;
+      margin: 5px !important;
+    }
+
+    .course-buttons .course-select-btn {
       background-color: #2a2a2a !important;
       color: #e0e0e0 !important;
       border: 1px solid #333333 !important;
+      border-right: none !important;
+      border-top-left-radius: 4px !important;
+      border-bottom-left-radius: 4px !important;
+      margin: 0 !important;
+      padding: 8px 12px !important;
+      cursor: pointer;
     }
 
-    .course-buttons button.selected {
+    .course-buttons .course-select-btn.selected {
       background-color: #4cafef !important;
       color: #000000 !important;
       border-color: #4cafef !important;
       font-weight: bold !important;
+    }
+
+    /* Beautiful Dedicated (i) Button Styling */
+    .course-buttons .course-info-btn {
+      background-color: #2a2a2a !important;
+      color: #4cafef !important;
+      border: 1px solid #333333 !important;
+      border-top-right-radius: 4px !important;
+      border-bottom-right-radius: 4px !important;
+      margin: 0 !important;
+      padding: 8px 10px !important;
+      font-size: 14px !important;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s;
+    }
+
+    .course-buttons .course-info-btn:hover {
+      background-color: #383838 !important;
+    }
+
+    /* Adjust info button if the primary course button is active */
+    .course-buttons .course-select-btn.selected + .course-info-btn {
+      border-left-color: #000000 !important;
     }
 
     table, #schedule-table {
@@ -503,4 +558,9 @@ document.getElementById("print-btn").onclick = () => {
 
 // Load saved selections first, then fetch and render courses
 loadSelections();
-loadCourses(renderCourses);
+// Assuming loadCourses exists globally elsewhere to fire renderCourses callback
+if (typeof loadCourses === "function") {
+  loadCourses(renderCourses);
+} else {
+  renderCourses();
+}
