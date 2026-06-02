@@ -274,7 +274,6 @@ function selectCourse(subject, course, button) {
   } else {
     button.classList.add("selected");
     selectedCourses[course.name] = course;
-    // POPUP TRIGGER REMOVED FROM HERE
   }
 
   // Save to localStorage whenever selection changes
@@ -451,10 +450,6 @@ document.getElementById("clear-btn").onclick = () => {
   updateTable();
 };
 
-document.getElementById("print-btn").onclick = () => {
-  window.print();
-};
-
 // --- FORCE ACCESSIBLE DARK THEME OVERRIDE ON THE WHOLE PAGE ---
 (function forceDarkTheme() {
   const darkStyle = document.createElement("style");
@@ -558,7 +553,6 @@ document.getElementById("print-btn").onclick = () => {
 
 // Load saved selections first, then fetch and render courses
 loadSelections();
-// Assuming loadCourses exists globally elsewhere to fire renderCourses callback
 if (typeof loadCourses === "function") {
   loadCourses(renderCourses);
 } else {
