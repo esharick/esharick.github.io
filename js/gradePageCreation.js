@@ -30,55 +30,12 @@ function getStorageKey() {
   return grade ? `selectedCourses_grade${grade}` : "selectedCourses_unknown";
 }
 
-// --- STRUCTURAL SAVE MECHANISM ---
 function saveSelections() {
   const key = getStorageKey();
-  const grade = getCurrentGrade();
-  
-  const exportData = {
-    year: grade ? parseInt(grade, 10) : "unknown",
-    courses: []
-  };
-
-  Object.entries(selectedCourses).forEach(([courseName, course]) => {
-    const levels = course.levels || [];
-    
-    const tableRow = Array.from(document.querySelectorAll("#schedule-table tbody tr"))
-      .find(row => row.cells[0] && row.cells[0].textContent === courseName);
-    
-    let activeLevel = levels[0] || null;
-    if (tableRow) {
-      const selectElem = tableRow.cells[1].querySelector("select");
-      if (selectElem) {
-        activeLevel = selectElem.value;
-      } else if (tableRow.cells[1].textContent !== "N/A") {
-        activeLevel = tableRow.cells[1].textContent;
-      }
-    }
-
-    const defaultNumbers = activeLevel
-      ? course.courseNumbers?.[activeLevel] || []
-      : Object.values(course.courseNumbers || {}).flat();
-
-    const courseObj = {
-      name: course.name,
-      courseNumber: defaultNumbers.join(", ") || "—",
-      credits: parseFloat(course.credit) || 0,
-      tags: course.category || []
-    };
-
-    if (activeLevel) {
-      courseObj.level = activeLevel;
-    }
-
-    exportData.courses.push(courseObj);
-  });
-
-  localStorage.setItem(key, JSON.stringify(exportData));
-  alert("Selections saved successfully!");
+  // Store only course names as keys; full course objects as values
+  localStorage.setItem(key, JSON.stringify(selectedCourses));
 }
 
-// --- FIXED: Safely parsing storage data after data array is populated ---
 function loadSelections() {
   const key = getStorageKey();
   const saved = localStorage.getItem(key);
@@ -86,21 +43,7 @@ function loadSelections() {
 
   try {
     const parsed = JSON.parse(saved);
-    
-    if (parsed && Array.isArray(parsed.courses)) {
-      // Clear out any old state to prepare fresh UI sync
-      Object.keys(selectedCourses).forEach(k => delete selectedCourses[k]);
-
-      parsed.courses.forEach(savedCourse => {
-        // Double-check if external courses array source exists
-        if (typeof coursesData !== "undefined" && Array.isArray(coursesData)) {
-          const found = coursesData.find(c => c.name === savedCourse.name);
-          if (found) {
-            selectedCourses[found.name] = found;
-          }
-        }
-      });
-    }
+    Object.assign(selectedCourses, parsed);
   } catch (e) {
     console.warn("Could not load saved selections:", e);
   }
@@ -109,23 +52,29 @@ function loadSelections() {
 // UNCHANGED: Kept exactly as it was originally
 function groupBySubject(courses) {
   const grouped = {};
+
   courses.forEach(course => {
     const subject = course.category[0];
+
     if (!grouped[subject]) {
       grouped[subject] = [];
     }
+
     grouped[subject].push(course);
   });
+
   return grouped;
 }
 
 function renderCourses() {
   const grade = getCurrentGrade();
 
+  // Filter to only courses available in the current grade
   const gradeCourses = grade
     ? coursesData.filter(c => c.grades && c.grades.includes(grade))
     : coursesData;
 
+  // --- Isolate English Electives from Core English ---
   const coreEnglishCourses = gradeCourses.filter(
     c => c.category.includes("EN") && !c.category.includes("EL")
   );
@@ -133,6 +82,7 @@ function renderCourses() {
     c => c.category.includes("EN") && c.category.includes("EL")
   );
 
+  // --- Isolate Social Studies Electives from Core Social Studies ---
   const coreSocialStudiesCourses = gradeCourses.filter(
     c => c.category.includes("SS") && !c.category.includes("EL")
   );
@@ -140,28 +90,33 @@ function renderCourses() {
     c => c.category.includes("SS") && c.category.includes("EL")
   );
 
+  // --- NEW: Isolate CCT (CT) if it is 11th Grade ---
   const isGrade11 = (grade === "11");
   const cctCourses = isGrade11
     ? gradeCourses.filter(c => c.category.includes("CT"))
     : [];
 
+  // Remaining courses: Exclude EN, SS, and conditionally CT so it doesn't duplicate in Electives
   const remainingCourses = gradeCourses.filter(c => {
     if (c.category.includes("EN") || c.category.includes("SS")) return false;
     if (isGrade11 && c.category.includes("CT")) return false;
     return true;
   });
 
+  // Group the remaining courses using your standard structural logic
   const grouped = groupBySubject(remainingCourses);
 
   const container = document.getElementById("course-selection");
   container.innerHTML = "";
 
+  // 1. Core Priority Order (Note: EN and SS are handled manually below)
   const coreOrder = ["MA", "SC", "WL", "PE"];
   const allSubjects = Object.keys(grouped);
 
   const coreSubjects = coreOrder.filter(subj => allSubjects.includes(subj));
   const electiveSubjects = allSubjects.filter(subj => !coreOrder.includes(subj));
 
+  // --- Helper function to build a standard button section ---
   function createSection(labelName, coursesList) {
     const section = document.createElement("div");
     section.className = "subject-section";
@@ -177,6 +132,7 @@ function renderCourses() {
       const btn = document.createElement("button");
       btn.textContent = course.name;
 
+      // Restore selected state from savedCourses
       if (selectedCourses[course.name]) {
         btn.classList.add("selected");
       }
@@ -190,22 +146,27 @@ function renderCourses() {
     return section;
   }
 
+  // 3. Render Core English First (Only if courses exist)
   if (coreEnglishCourses.length > 0) {
     container.appendChild(createSection("English", coreEnglishCourses));
   }
 
+  // Render Core Social Studies (Only if courses exist)
   if (coreSocialStudiesCourses.length > 0) {
     container.appendChild(createSection("Social Studies", coreSocialStudiesCourses));
   }
 
+  // Render Main Remaining Core Subjects (Math, Science, World Language, PE)
   coreSubjects.forEach(subject => {
     container.appendChild(createSection(subjectNames[subject] || subject, grouped[subject]));
 
+    // --- NEW: Inject CCT immediately after PE row if we are on Grade 11 ---
     if (subject === "PE" && isGrade11 && cctCourses.length > 0) {
       container.appendChild(createSection(subjectNames["CT"] || "CCT", cctCourses));
     }
   });
 
+  // 4. Construct the Main "Electives" Dropdown Menu
   const mainElectivesDetails = document.createElement("details");
   mainElectivesDetails.className = "subject-section electives-main-dropdown";
 
@@ -219,6 +180,7 @@ function renderCourses() {
   mainElectivesContainer.style.paddingLeft = "15px";
   mainElectivesContainer.style.marginTop = "10px";
 
+  // English Electives dropdown (EN + EL)
   if (englishElectiveCourses.length > 0) {
     const enDetails = document.createElement("details");
     enDetails.style.marginBottom = "10px";
@@ -238,6 +200,7 @@ function renderCourses() {
     mainElectivesContainer.appendChild(enDetails);
   }
 
+  // Social Studies Electives dropdown (SS + EL)
   if (socialStudiesElectiveCourses.length > 0) {
     const ssDetails = document.createElement("details");
     ssDetails.style.marginBottom = "10px";
@@ -257,6 +220,7 @@ function renderCourses() {
     mainElectivesContainer.appendChild(ssDetails);
   }
 
+  // B. Group remaining sections (TE, VP, IL, AP, FC, BU, EL, etc.) underneath
   electiveSubjects.forEach(subject => {
     const innerDetails = document.createElement("details");
     innerDetails.style.marginBottom = "10px";
@@ -279,6 +243,7 @@ function renderCourses() {
   mainElectivesDetails.appendChild(mainElectivesContainer);
   container.appendChild(mainElectivesDetails);
 
+  // Restore table after rendering buttons
   updateTable();
 }
 
@@ -291,9 +256,15 @@ function selectCourse(subject, course, button) {
   } else {
     button.classList.add("selected");
     selectedCourses[course.name] = course;
+
+    // Trigger the floating pop-up box with details over everything else
     showCoursePopup(course);
   }
 
+  // Save to localStorage whenever selection changes
+  saveSelections();
+
+  // Refresh the schedule table with the new state
   updateTable();
 }
 
@@ -303,6 +274,7 @@ function showCoursePopup(course) {
 
   const overlay = document.createElement("div");
   overlay.id = "course-modal-overlay";
+
   overlay.style.position = "fixed";
   overlay.style.top = "0";
   overlay.style.left = "0";
@@ -316,6 +288,7 @@ function showCoursePopup(course) {
 
   const modal = document.createElement("div");
   modal.className = "course-modal-content";
+
   modal.style.backgroundColor = "var(--surface, #1e1e1e)";
   modal.style.border = "1px solid var(--border, #333)";
   modal.style.borderRadius = "8px";
@@ -353,6 +326,7 @@ function showCoursePopup(course) {
   document.body.appendChild(overlay);
 
   const closePopup = () => overlay.remove();
+
   modal.querySelector(".modal-close-btn").onclick = closePopup;
   overlay.onclick = (e) => {
     if (e.target === overlay) closePopup();
@@ -364,17 +338,20 @@ function updateTable() {
   tbody.innerHTML = "";
 
   let totalCredits = 0;
+
   const tableOrder = ["EN", "MA", "SS", "SC", "WL", "PE"];
 
   const sortedEntries = Object.entries(selectedCourses).sort(([nameA, courseA], [nameB, courseB]) => {
     const subjA = courseA.category[0];
     const subjB = courseB.category[0];
+
     const indexA = tableOrder.indexOf(subjA);
     const indexB = tableOrder.indexOf(subjB);
 
     if (indexA !== -1 && indexB !== -1) return indexA - indexB;
     if (indexA !== -1) return -1;
     if (indexB !== -1) return 1;
+
     return subjA.localeCompare(subjB);
   });
 
@@ -390,15 +367,18 @@ function updateTable() {
     totalCredits += credits;
 
     const tr = document.createElement("tr");
+
     const tdName = document.createElement("td");
     tdName.textContent = course.name;
 
     const tdLevel = document.createElement("td");
+
     const tdNum = document.createElement("td");
     tdNum.textContent = defaultNumbers.join(", ") || "—";
 
     if (levels.length > 1) {
       const select = document.createElement("select");
+
       levels.forEach(level => {
         const option = document.createElement("option");
         option.value = level;
@@ -410,6 +390,7 @@ function updateTable() {
         const nums = course.courseNumbers?.[select.value] || [];
         tdNum.textContent = nums.join(", ") || "—";
       });
+
       tdLevel.appendChild(select);
     } else if (levels.length === 1) {
       tdLevel.textContent = levels[0];
@@ -444,41 +425,83 @@ function updateTable() {
 
 document.getElementById("clear-btn").onclick = () => {
   Object.keys(selectedCourses).forEach(key => delete selectedCourses[key]);
+
+  // Also clear this grade's localStorage entry
   localStorage.removeItem(getStorageKey());
-  document.querySelectorAll(".course-buttons button").forEach(btn => btn.classList.remove("selected"));
+
+  document.querySelectorAll(".course-buttons button")
+    .forEach(btn => btn.classList.remove("selected"));
+
   updateTable();
 };
 
-const saveBtn = document.getElementById("print-btn");
-if (saveBtn) {
-  saveBtn.textContent = "Save";
-  saveBtn.onclick = () => {
-    saveSelections();
-  };
-}
+document.getElementById("print-btn").onclick = () => {
+  window.print();
+};
 
 // --- FORCE ACCESSIBLE DARK THEME OVERRIDE ON THE WHOLE PAGE ---
 (function forceDarkTheme() {
   const darkStyle = document.createElement("style");
   darkStyle.id = "forced-dark-theme-override";
+
   darkStyle.textContent = `
-    body { background-color: #121212 !important; color: #e0e0e0 !important; }
-    .container, #course-selection, main, div { background-color: transparent; }
-    h1, h2, h3, h4, .subject-section { color: #e0e0e0 !important; }
-    .subject-label { color: #4cafef !important; }
-    .subject-section { border-color: #333333 !important; }
-    .course-buttons button { background-color: #2a2a2a !important; color: #e0e0e0 !important; border: 1px solid #333333 !important; }
-    .course-buttons button.selected { background-color: #4cafef !important; color: #000000 !important; border-color: #4cafef !important; font-weight: bold !important; }
-    table, #schedule-table { background: #1e1e1e !important; color: #e0e0e0 !important; }
-    th, td { border: 1px solid #333333 !important; color: #e0e0e0 !important; }
-    th { background-color: #2a2a2a !important; }
-    details summary.subject-label::-webkit-details-marker { color: #4cafef !important; }
+    body {
+      background-color: #121212 !important;
+      color: #e0e0e0 !important;
+    }
+
+    .container, #course-selection, main, div {
+      background-color: transparent;
+    }
+
+    h1, h2, h3, h4, .subject-section {
+      color: #e0e0e0 !important;
+    }
+
+    .subject-label {
+      color: #4cafef !important;
+    }
+
+    .subject-section {
+      border-color: #333333 !important;
+    }
+
+    .course-buttons button {
+      background-color: #2a2a2a !important;
+      color: #e0e0e0 !important;
+      border: 1px solid #333333 !important;
+    }
+
+    .course-buttons button.selected {
+      background-color: #4cafef !important;
+      color: #000000 !important;
+      border-color: #4cafef !important;
+      font-weight: bold !important;
+    }
+
+    table, #schedule-table {
+      background: #1e1e1e !important;
+      color: #e0e0e0 !important;
+    }
+
+    th, td {
+      border: 1px solid #333333 !important;
+      color: #e0e0e0 !important;
+    }
+
+    th {
+      background-color: #2a2a2a !important;
+    }
+
+    details summary.subject-label::-webkit-details-marker {
+      color: #4cafef !important;
+    }
   `;
+
   document.head.appendChild(darkStyle);
 })();
 
-// --- FIXED CHRONOLOGY: FETCH DATABASE FIRST, THEN LOAD SAVED, THEN RENDER ---
-loadCourses(() => {
-  loadSelections(); 
-  renderCourses();
-});
+// Load saved selections first, then fetch and render courses
+loadSelections();
+loadCourses(renderCourses);
+
