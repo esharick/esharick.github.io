@@ -102,6 +102,64 @@
                 margin: 0;
             }
         }
+
+        /* Graduation Warning Popup */
+
+        #graduationAlert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+
+            width: 320px;
+
+            background: #d32f2f;
+            color: white;
+
+            padding: 16px;
+
+            border-radius: 8px;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+            display: none;
+
+            z-index: 9999;
+        }
+
+        /* Graduation Audit Table */
+
+        #auditTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        #auditTable th,
+        #auditTable td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .audit-pass {
+            color: green;
+            font-weight: bold;
+        }
+
+        .audit-fail {
+            color: red;
+            font-weight: bold;
+        }
+
+        #graduationAuditContainer {
+            margin-top: 40px;
+        }
+
+        @media print {
+
+            #graduationAlert {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -111,20 +169,20 @@
     <div class="page-content">
 
         <h1>Print Schedule Page</h1>
-    
+
         <div id="scheduleContainer"></div>
-    
+
         <div class="print-button-container">
             <button id="printButton">Print Schedule</button>
         </div>
 
-    <script src="/js/nav.js"></script>
-    <script src="/js/printview.js"></script>
-    <script src="/js/verifyGrade9.js"></script>
-    <script src="/js/verifyGrade10.js"></script>
-    <script src="/js/verifyGrade11.js"></script>
-    <script src="/js/verifyGrade12.js"></script>
-    <script src="/js/verifySchedule.js"></script>
+        <script src="/js/nav.js"></script>
+        <script src="/js/printview.js"></script>
+        <script src="/js/verifyGrade9.js"></script>
+        <script src="/js/verifyGrade10.js"></script>
+        <script src="/js/verifyGrade11.js"></script>
+        <script src="/js/verifyGrade12.js"></script>
+        <script src="/js/verifySchedule.js"></script>
 
 </body>
 
