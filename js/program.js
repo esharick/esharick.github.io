@@ -13,16 +13,14 @@ const tagToSubjectMap = {
   "BT": "Tech/Engineering",
   "CC": "5CCT",
   "EL": "Individualized Learning",
-  
-  // Mappings for the rest of your curriculum layout
   "SS": "Social Studies", 
-  "SC": "Science",
+  "SC": "Science",                  
   "WL": "World Languages",
   "PE": "Wellness/Fitness",
-  "FC": "FCS",                       // FIX: Changed from FA/FCS to exactly match "FC" from your JSON
-  "VP": "Visual and Performing Arts", // Visual Arts mapping
-  "BU": "Business",
-  "AP": "AP Capstone"
+  "FC": "FCS",                       
+  "VP": "Visual and Performing Arts", 
+  "BU": "Business",                  
+  "CAP": "AP Capstone"
 };
 
 // Initialize app when loadCourses finishes fetching your JSON array
@@ -69,7 +67,7 @@ function renderFilterInterface() {
     "Visual and Performing Arts"
   ];
 
-  // ALPHABETICAL FIX: Sort the subjects alphabetically before rendering them
+  // Sort the subjects alphabetically before rendering them
   const sortedSubjects = [...subjects].sort((a, b) => a.localeCompare(b));
 
   // Generate Subject Filter Buttons Grid
@@ -125,20 +123,30 @@ function resetFilters() {
 
 /**
  * Helper function to determine which primary UI subject group a course belongs to.
+ * Priority rules are placed at the top to prevent cross-listed tracks from miscategorizing.
  */
 function getCourseSubject(course) {
   if (!course.category || course.category.length === 0) return "Other";
   
-  // Prioritize primary core subjects first if multiple tags exist
+  // PRIORITY CHECK: Check for elective/special tracks first so they don't get trapped by core subjects
+  if (course.category.includes("EL")) return "Individualized Learning";
+  if (course.category.includes("CC")) return "5CCT";
+  if (course.category.includes("AP")) return "AP Capstone";
+
+  // CORE CHECK: Fall back to core book subjects if it's not a special track
   if (course.category.includes("MA")) return "Math";
   if (course.category.includes("EN")) return "English/Communications";
   if (course.category.includes("TE") || course.category.includes("BT")) return "Tech/Engineering";
   if (course.category.includes("VP")) return "Visual and Performing Arts";
-  if (course.category.includes("FC")) return "FCS"; // FIX: Adjusted to "FC" here as well
-  if (course.category.includes("CC")) return "5CCT";
-  if (course.category.includes("EL")) return "Individualized Learning";
+  if (course.category.includes("FC")) return "FCS"; 
+  if (course.category.includes("SC")) return "Science";
+  if (course.category.includes("BU")) return "Business";
+  if (course.category.includes("SS")) return "Social Studies";
+  if (course.category.includes("WL")) return "World Languages";
+  if (course.category.includes("PE")) return "Wellness/Fitness";
+  if (couse.category.includes("CAP")) return "AP Capstone";
   
-  // Fallback map loop lookup
+  // Fallback dictionary loop lookup if none of the above matched
   for (let catTag of course.category) {
     if (tagToSubjectMap[catTag]) {
       return tagToSubjectMap[catTag];
@@ -222,28 +230,29 @@ function filterAndDisplayCourses() {
         .map(([key, values]) => `<div><strong>${key}:</strong> <code>${values.join(", ")}</code></div>`)
         .join("");
 
+      // Native entire-card accordion system output wrapper
       return `
-        <div class="course-card">
-          <div class="course-main">
-            <div class="course-header">
-              <h3>${course.name}</h3>
-              <div class="meta-badges">${levelsHTML} ${gradesHTML}</div>
-            </div>
-            <div class="course-details">
-              <p><strong>Term:</strong> ${course.term === 'Y' ? 'Full Year' : 'Semester'} | <strong>Credit:</strong> ${course.credit}</p>
-              ${course.prerequisites ? `<p class="prereq-alert"><strong>Prerequisites:</strong> ${course.prerequisites}</p>` : ''}
-              <div class="course-numbers-box">${courseNumbersHTML}</div>
-            </div>
-          </div>
-          <div class="course-sidebar">
-            <details>
-              <summary>Description</summary>
-              <div class="sidebar-content">
-                <pre>${course.description}</pre>
+        <details class="course-card">
+          <summary class="course-summary-header">
+            <span class="course-title-text">${course.name}</span>
+            <div class="meta-badges">${levelsHTML} ${gradesHTML}</div>
+          </summary>
+          
+          <div class="course-expanded-content">
+            <hr class="accordion-divider">
+            <div class="course-main">
+              <div class="course-details">
+                <p><strong>Term:</strong> ${course.term === 'Y' ? 'Full Year' : 'Semester'} | <strong>Credit:</strong> ${course.credit}</p>
+                ${course.prerequisites ? `<p class="prereq-alert"><strong>Prerequisites:</strong> ${course.prerequisites}</p>` : ''}
+                <div class="course-numbers-box">${courseNumbersHTML}</div>
               </div>
-            </details>
+            </div>
+            <div class="course-description-block">
+              <strong>Description:</strong>
+              <pre class="clean-description">${course.description}</pre>
+            </div>
           </div>
-        </div>
+        </details>
       `;
     }).join("");
 

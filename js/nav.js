@@ -12,4 +12,16 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
 
     document.getElementById("navbar").innerHTML = navHTML;
+
+    
+  // Highlight current page
+  const links = document.querySelectorAll("nav a");
+  const currentPath = window.location.pathname;
+
+  links.forEach(link => {
+      if (currentPath.includes(link.getAttribute("href"))) {
+        link.classList.add("active");
+    }
+  });
+
 });

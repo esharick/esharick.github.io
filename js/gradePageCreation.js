@@ -504,3 +504,4 @@ document.getElementById("print-btn").onclick = () => {
 // Load saved selections first, then fetch and render courses
 loadSelections();
 loadCourses(renderCourses);
+
