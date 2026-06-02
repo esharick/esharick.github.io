@@ -30,56 +30,10 @@ function getStorageKey() {
   return grade ? `selectedCourses_grade${grade}` : "selectedCourses_unknown";
 }
 
-// --- NEW STRUCTURAL SAVE MECHANISM ---
 function saveSelections() {
   const key = getStorageKey();
-  const grade = getCurrentGrade();
-  
-  // Format the output structure exactly as requested
-  const exportData = {
-    year: grade ? parseInt(grade, 10) : "unknown",
-    courses: []
-  };
-
-  // Process selected courses matching current state in table
-  Object.entries(selectedCourses).forEach(([courseName, course]) => {
-    const levels = course.levels || [];
-    
-    // Attempt to grab the currently active selected level from the table UI if it exists
-    const tableRow = Array.from(document.querySelectorAll("#schedule-table tbody tr"))
-      .find(row => row.cells[0] && row.cells[0].textContent === courseName);
-    
-    let activeLevel = levels[0] || null;
-    if (tableRow) {
-      const selectElem = tableRow.cells[1].querySelector("select");
-      if (selectElem) {
-        activeLevel = selectElem.value;
-      } else if (tableRow.cells[1].textContent !== "N/A") {
-        activeLevel = tableRow.cells[1].textContent;
-      }
-    }
-
-    // Determine the course numbers depending on active level
-    const defaultNumbers = activeLevel
-      ? course.courseNumbers?.[activeLevel] || []
-      : Object.values(course.courseNumbers || {}).flat();
-
-    const courseObj = {
-      name: course.name,
-      courseNumber: defaultNumbers.join(", ") || "—",
-      credits: parseFloat(course.credit) || 0,
-      tags: course.category || []
-    };
-
-    // Only inject level key if it exists
-    if (activeLevel) {
-      courseObj.level = activeLevel;
-    }
-
-    exportData.courses.push(courseObj);
-  });
-
-  localStorage.setItem(key, JSON.stringify(exportData));
+  // Store only course names as keys; full course objects as values
+  localStorage.setItem(key, JSON.stringify(selectedCourses));
 }
 
 function loadSelections() {
@@ -89,20 +43,7 @@ function loadSelections() {
 
   try {
     const parsed = JSON.parse(saved);
-    
-    // Rehydrate if it follows the new structural save pattern
-    if (parsed && Array.isArray(parsed.courses)) {
-      // Look up inside matching core courses source context data
-      parsed.courses.forEach(savedCourse => {
-        const found = coursesData.find(c => c.name === savedCourse.name);
-        if (found) {
-          selectedCourses[found.name] = found;
-        }
-      });
-    } else {
-      // Fallback fallback if old data schema is lingering in local storage
-      Object.assign(selectedCourses, parsed);
-    }
+    Object.assign(selectedCourses, parsed);
   } catch (e) {
     console.warn("Could not load saved selections:", e);
   }
@@ -320,7 +261,8 @@ function selectCourse(subject, course, button) {
     showCoursePopup(course);
   }
 
-  // REMOVED AUTOSAVE FROM HERE AS REQUESTED
+  // Save to localStorage whenever selection changes
+  saveSelections();
 
   // Refresh the schedule table with the new state
   updateTable();
@@ -493,9 +435,7 @@ document.getElementById("clear-btn").onclick = () => {
   updateTable();
 };
 
-// --- UPDATED: RUN SAVE LOGIC WITH THE PRINT BUTTON ---
 document.getElementById("print-btn").onclick = () => {
-  saveSelections(); // Saves configured snapshot data down into the schema requested
   window.print();
 };
 
@@ -564,3 +504,4 @@ document.getElementById("print-btn").onclick = () => {
 // Load saved selections first, then fetch and render courses
 loadSelections();
 loadCourses(renderCourses);
+
