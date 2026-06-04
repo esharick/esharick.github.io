@@ -21,30 +21,96 @@ const subjectNames = {
 // --- Detect current grade from URL (e.g. /pages/grade10.html → "10") ---
 function getCurrentGrade() {
   const match = window.location.pathname.match(/grade(\d+)/i);
-  return match ? match[1] : null;
+  return match ? parseInt(match[1], 10) : null;
 }
 
-// --- localStorage helpers ---
-function getStorageKey() {
-  const grade = getCurrentGrade();
-  return grade ? `selectedCourses_grade${grade}` : "selectedCourses_unknown";
-}
+// --- Unified Multi-Year localStorage helpers ---
+const STORAGE_KEY = "student_course_plan";
 
 function saveSelections() {
-  const key = getStorageKey();
-  localStorage.setItem(key, JSON.stringify(selectedCourses));
+  const currentGrade = getCurrentGrade();
+  if (!currentGrade) return;
+
+  let timeline = [];
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) timeline = JSON.parse(saved);
+  } catch (e) {
+    console.error("Error reading timeline database:", e);
+  }
+  if (!Array.isArray(timeline)) timeline = [];
+
+  const currentGradeCoursesArray = Object.values(selectedCourses).map(course => {
+    const selectedLevel = course.selectedLevel || (course.levels ? course.levels[0] : null);
+    
+    let targetNumbers = [];
+    if (selectedLevel && course.courseNumbers?.[selectedLevel]) {
+      targetNumbers = course.courseNumbers[selectedLevel];
+    } else {
+      targetNumbers = Object.values(course.courseNumbers || {}).flat();
+    }
+    
+    return {
+      name: course.name,
+      courseNumber: targetNumbers.join(", ") || "—",
+      credits: parseFloat(course.credit) || 0,
+      tags: course.category || []
+    };
+  });
+
+  const recordIndex = timeline.findIndex(item => item.year === currentGrade);
+
+  if (recordIndex !== -1) {
+    timeline[recordIndex].courses = currentGradeCoursesArray;
+  } else {
+    timeline.push({
+      year: currentGrade,
+      courses: currentGradeCoursesArray
+    });
+  }
+
+  timeline.sort((a, b) => a.year - b.year);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(timeline));
 }
 
 function loadSelections() {
-  const key = getStorageKey();
-  const saved = localStorage.getItem(key);
-  if (!saved) return;
+  const currentGrade = getCurrentGrade();
+  if (!currentGrade) return;
+
+  // Clear existing page selections before pulling from storage to prevent page bleed
+  Object.keys(selectedCourses).forEach(key => delete selectedCourses[key]);
 
   try {
-    const parsed = JSON.parse(saved);
-    Object.assign(selectedCourses, parsed);
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+
+    const timeline = JSON.parse(saved);
+    if (!Array.isArray(timeline)) return;
+
+    const gradeRecord = timeline.find(item => item.year === currentGrade);
+    if (!gradeRecord || !gradeRecord.courses) return;
+
+    gradeRecord.courses.forEach(savedCourse => {
+      // Safely checks coursesData now that it is running inside the render cycle
+      const fullCourseData = coursesData.find(c => c.name === savedCourse.name);
+      if (fullCourseData) {
+        const hydratedCourse = JSON.parse(JSON.stringify(fullCourseData));
+        
+        if (hydratedCourse.levels && hydratedCourse.courseNumbers) {
+          for (const level of hydratedCourse.levels) {
+            const numbersStr = hydratedCourse.courseNumbers[level]?.join(", ") || "—";
+            if (numbersStr.trim() === savedCourse.courseNumber.trim()) {
+              hydratedCourse.selectedLevel = level;
+              break;
+            }
+          }
+        }
+        
+        selectedCourses[hydratedCourse.name] = hydratedCourse;
+      }
+    });
   } catch (e) {
-    console.warn("Could not load saved selections:", e);
+    console.warn("Could not load timeline profiles safely:", e);
   }
 }
 
@@ -66,7 +132,10 @@ function groupBySubject(courses) {
 }
 
 function renderCourses() {
-  const grade = getCurrentGrade();
+  // FIX: Load selections RIGHT HERE, ensuring coursesData is fully ready
+  loadSelections();
+
+  const grade = getCurrentGrade() ? String(getCurrentGrade()) : null;
 
   // Filter to only courses available in the current grade
   const gradeCourses = grade
@@ -128,7 +197,6 @@ function renderCourses() {
     buttonContainer.className = "course-buttons";
 
     coursesList.forEach(course => {
-      // Wrapper to anchor the main button and info button together neatly
       const wrapper = document.createElement("div");
       wrapper.className = "course-btn-wrapper";
 
@@ -136,21 +204,20 @@ function renderCourses() {
       btn.className = "course-select-btn";
       btn.textContent = course.name;
 
-      // Restore selected state from savedCourses
+      // This works perfectly now because selectedCourses is hydrated right above
       if (selectedCourses[course.name]) {
         btn.classList.add("selected");
       }
 
       btn.onclick = () => selectCourse(labelName, course, btn);
 
-      // Dedicated Info Button
       const infoBtn = document.createElement("button");
       infoBtn.className = "course-info-btn";
-      infoBtn.innerHTML = "&#9432;"; // Unified layout standard info symbol (i)
+      infoBtn.innerHTML = "&#9432;"; 
       infoBtn.title = "View Course Info";
       
       infoBtn.onclick = (e) => {
-        e.stopPropagation(); // Stop selection trigger
+        e.stopPropagation(); 
         showCoursePopup(course);
       };
 
@@ -164,27 +231,22 @@ function renderCourses() {
     return section;
   }
 
-  // 3. Render Core English First (Only if courses exist)
   if (coreEnglishCourses.length > 0) {
     container.appendChild(createSection("English", coreEnglishCourses));
   }
 
-  // Render Core Social Studies (Only if courses exist)
   if (coreSocialStudiesCourses.length > 0) {
     container.appendChild(createSection("Social Studies", coreSocialStudiesCourses));
   }
 
-  // Render Main Remaining Core Subjects (Math, Science, World Language, PE)
   coreSubjects.forEach(subject => {
     container.appendChild(createSection(subjectNames[subject] || subject, grouped[subject]));
 
-    // --- NEW: Inject CCT immediately after PE row if we are on Grade 11 ---
     if (subject === "PE" && isGrade11 && cctCourses.length > 0) {
       container.appendChild(createSection(subjectNames["CT"] || "CCT", cctCourses));
     }
   });
 
-  // 4. Construct the Main "Electives" Dropdown Menu
   const mainElectivesDetails = document.createElement("details");
   mainElectivesDetails.className = "subject-section electives-main-dropdown";
 
@@ -198,7 +260,6 @@ function renderCourses() {
   mainElectivesContainer.style.paddingLeft = "15px";
   mainElectivesContainer.style.marginTop = "10px";
 
-  // English Electives dropdown (EN + EL)
   if (englishElectiveCourses.length > 0) {
     const enDetails = document.createElement("details");
     enDetails.style.marginBottom = "10px";
@@ -218,7 +279,6 @@ function renderCourses() {
     mainElectivesContainer.appendChild(enDetails);
   }
 
-  // Social Studies Electives dropdown (SS + EL)
   if (socialStudiesElectiveCourses.length > 0) {
     const ssDetails = document.createElement("details");
     ssDetails.style.marginBottom = "10px";
@@ -238,7 +298,6 @@ function renderCourses() {
     mainElectivesContainer.appendChild(ssDetails);
   }
 
-  // B. Group remaining sections (TE, VP, IL, AP, FC, BU, EL, etc.) underneath
   electiveSubjects.forEach(subject => {
     const innerDetails = document.createElement("details");
     innerDetails.style.marginBottom = "10px";
@@ -261,7 +320,6 @@ function renderCourses() {
   mainElectivesDetails.appendChild(mainElectivesContainer);
   container.appendChild(mainElectivesDetails);
 
-  // Restore table after rendering buttons
   updateTable();
 }
 
@@ -276,10 +334,7 @@ function selectCourse(subject, course, button) {
     selectedCourses[course.name] = course;
   }
 
-  // Save to localStorage whenever selection changes
   saveSelections();
-
-  // Refresh the schedule table with the new state
   updateTable();
 }
 
@@ -350,10 +405,10 @@ function showCoursePopup(course) {
 
 function updateTable() {
   const tbody = document.querySelector("#schedule-table tbody");
+  if (!tbody) return;
   tbody.innerHTML = "";
 
   let totalCredits = 0;
-
   const tableOrder = ["EN", "MA", "SS", "SC", "WL", "PE"];
 
   const sortedEntries = Object.entries(selectedCourses).sort(([nameA, courseA], [nameB, courseB]) => {
@@ -373,10 +428,11 @@ function updateTable() {
   sortedEntries.forEach(([courseName, course]) => {
     const levels = course.levels || [];
     const credits = parseFloat(course.credit) || 0;
-    const defaultLevel = levels[0] || null;
+    
+    const currentLevel = course.selectedLevel || levels[0] || null;
 
-    const defaultNumbers = defaultLevel
-      ? course.courseNumbers?.[defaultLevel] || []
+    const defaultNumbers = currentLevel
+      ? course.courseNumbers?.[currentLevel] || []
       : Object.values(course.courseNumbers || {}).flat();
 
     totalCredits += credits;
@@ -387,7 +443,6 @@ function updateTable() {
     tdName.textContent = course.name;
 
     const tdLevel = document.createElement("td");
-
     const tdNum = document.createElement("td");
     tdNum.textContent = defaultNumbers.join(", ") || "—";
 
@@ -398,12 +453,17 @@ function updateTable() {
         const option = document.createElement("option");
         option.value = level;
         option.textContent = level;
+        if (level === currentLevel) {
+          option.selected = true;
+        }
         select.appendChild(option);
       });
 
       select.addEventListener("change", () => {
+        course.selectedLevel = select.value;
         const nums = course.courseNumbers?.[select.value] || [];
         tdNum.textContent = nums.join(", ") || "—";
+        saveSelections();
       });
 
       tdLevel.appendChild(select);
@@ -439,10 +499,23 @@ function updateTable() {
 }
 
 document.getElementById("clear-btn").onclick = () => {
+  const currentGrade = getCurrentGrade();
+  if (!currentGrade) return;
+
   Object.keys(selectedCourses).forEach(key => delete selectedCourses[key]);
 
-  // Also clear this grade's localStorage entry
-  localStorage.removeItem(getStorageKey());
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      let timeline = JSON.parse(saved);
+      if (Array.isArray(timeline)) {
+        timeline = timeline.filter(item => item.year !== currentGrade);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(timeline));
+      }
+    }
+  } catch (e) {
+    console.error("Could not selectively clear grade data:", e);
+  }
 
   document.querySelectorAll(".course-buttons .course-select-btn")
     .forEach(btn => btn.classList.remove("selected"));
@@ -477,7 +550,6 @@ document.getElementById("clear-btn").onclick = () => {
       border-color: #333333 !important;
     }
 
-    /* Core Wrapper setup for side-by-side buttons */
     .course-btn-wrapper {
       display: inline-flex !important;
       align-items: stretch !important;
@@ -503,7 +575,6 @@ document.getElementById("clear-btn").onclick = () => {
       font-weight: bold !important;
     }
 
-    /* Beautiful Dedicated (i) Button Styling */
     .course-buttons .course-info-btn {
       background-color: #2a2a2a !important;
       color: #4cafef !important;
@@ -524,7 +595,6 @@ document.getElementById("clear-btn").onclick = () => {
       background-color: #383838 !important;
     }
 
-    /* Adjust info button if the primary course button is active */
     .course-buttons .course-select-btn.selected + .course-info-btn {
       border-left-color: #000000 !important;
     }
@@ -543,6 +613,14 @@ document.getElementById("clear-btn").onclick = () => {
       background-color: #2a2a2a !important;
     }
 
+    #schedule-table select {
+      background-color: #2a2a2a;
+      color: #e0e0e0;
+      border: 1px solid #333;
+      padding: 4px;
+      border-radius: 4px;
+    }
+
     details summary.subject-label::-webkit-details-marker {
       color: #4cafef !important;
     }
@@ -551,8 +629,7 @@ document.getElementById("clear-btn").onclick = () => {
   document.head.appendChild(darkStyle);
 })();
 
-// Load saved selections first, then fetch and render courses
-loadSelections();
+// Execution block at base triggers data loader callbacks safely
 if (typeof loadCourses === "function") {
   loadCourses(renderCourses);
 } else {
