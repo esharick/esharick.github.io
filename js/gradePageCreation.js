@@ -11,7 +11,7 @@ const subjectNames = {
   BU: "Business",
   TE: "Technology & Engineering",
   PE: "Physical Education",
-  EL: "Communications",
+  EL: "Highway Saftey",
   CAP: "AP Capstone",
   IL: "Indepenedent Learning",
   FC: "Family Consumer Science",
@@ -398,6 +398,63 @@ function showCoursePopup(course) {
     ? course.prerequisites
     : "None";
 
+  // --- ANCHOR SPLICING METHOD WITH SAFE FALLBACK ---
+  let finalDescription = "No description available.";
+
+  if (course.description) {
+    const backupDescription = course.description;
+
+    try {
+      // Split description cleanly into individual lines
+      const lines = course.description.split('\n');
+      
+      // We will look for the index of the last header line
+      let lastHeaderIndex = -1;
+
+      // Scanning the first 6 lines where headers live to find the last cutoff line
+      const linesToScan = Math.min(lines.length, 6);
+      
+      for (let i = 0; i < linesToScan; i++) {
+        const lineClean = lines[i].trim();
+        
+        // Check for any signature traits of a metadata header line
+        const hasPrereqKeyword = lineClean.toLowerCase().includes("prerequisite");
+        const hasAdminApproval = lineClean.toLowerCase().includes("administrative approval");
+        const hasLevelTags = /\([A-Z\*]+\)/.test(lineClean); // Matches (H), (X), (AP), (H*)
+        const hasCategoryTags = lineClean.includes(" EN") || lineClean.includes(" MA") || lineClean.includes(" SC") || lineClean.includes(" SS") || lineClean.includes(" WL") || lineClean.includes(" VP") || lineClean.includes(" TE") || lineClean.includes(" BU") || lineClean.includes(" FC") || lineClean.includes(" EL");
+        const isJustTitleOrGrade = lineClean.toLowerCase().startsWith("grade ") || lineClean.toLowerCase().startsWith("grades ") || lineClean.toLowerCase() === course.name.toLowerCase();
+
+        if (hasPrereqKeyword || hasAdminApproval || hasLevelTags || hasCategoryTags || isJustTitleOrGrade) {
+          lastHeaderIndex = i; // Mark this line as a header line to be stripped
+        }
+      }
+
+      // If we found headers, slice the array starting immediately AFTER the last header line
+      if (lastHeaderIndex !== -1 && lastHeaderIndex < lines.length - 1) {
+        let bodyLines = lines.slice(lastHeaderIndex + 1);
+        
+        // Remove empty placeholder spacing gaps at the beginning of our sliced body text
+        while (bodyLines.length > 0 && bodyLines[0].trim() === "") {
+          bodyLines.shift();
+        }
+
+        if (bodyLines.length > 0) {
+          finalDescription = bodyLines.join('\n').replace(/\n/g, '<br>');
+        } else {
+          // If slicing emptied it entirely, fall back to safe mode
+          finalDescription = backupDescription.replace(/\n/g, '<br>');
+        }
+      } else {
+        // Fallback: No obvious headers detected, print the entire description raw
+        finalDescription = backupDescription.replace(/\n/g, '<br>');
+      }
+
+    } catch (e) {
+      console.warn("Popup anchor splicing failed, using fallback:", e);
+      finalDescription = course.description.replace(/\n/g, '<br>');
+    }
+  }
+
   modal.innerHTML = `
     <div class="modal-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
       <h3 style="margin: 0; color: var(--primary, #4cafef); font-size: 22px;">${course.name}</h3>
@@ -411,7 +468,7 @@ function showCoursePopup(course) {
     </div>
     <hr class="modal-divider" style="border: 0; border-top: 1px solid var(--border, #333); margin: 15px 0;">
     <div class="modal-body" style="font-size: 14px; line-height: 1.6; color: var(--text, #e0e0e0);">
-      <p>${course.description ? course.description.replace(/\n/g, '<br>') : "No description available."}</p>
+      <p>${finalDescription}</p>
     </div>
   `;
 
