@@ -41,19 +41,15 @@ function saveSelections() {
   if (!Array.isArray(timeline)) timeline = [];
 
   const currentGradeCoursesArray = Object.values(selectedCourses).map(course => {
-    // Determine the exact level picked by the user (fallback to default first index if untouched)
     const chosenLevel = course.selectedLevel || (course.levels ? course.levels[0] : null);
     
-    // Grab ONLY the numbers linked with that single explicit level
     let singleTargetNumber = "—";
     if (chosenLevel && course.courseNumbers?.[chosenLevel]) {
       singleTargetNumber = course.courseNumbers[chosenLevel].join(", ");
     } else if (course.courseNumbers) {
-      // Fallback fallback if no defined levels arrays exist
       singleTargetNumber = Object.values(course.courseNumbers).flat().join(", ");
     }
     
-    // CLEAN OUTPUT FORMAT: Saves ONLY the active configuration values
     return {
       name: course.name,
       level: chosenLevel || "N/A",
@@ -95,16 +91,13 @@ function loadSelections() {
     if (!gradeRecord || !gradeRecord.courses) return;
 
     gradeRecord.courses.forEach(savedCourse => {
-      // Fetch master raw profile dictionary blueprints pool
       const fullCourseData = coursesData.find(c => c.name === savedCourse.name);
       if (fullCourseData) {
         const hydratedCourse = JSON.parse(JSON.stringify(fullCourseData));
         
-        // Match up the saved snapshot level with the local drop-down tracking variable state
         if (hydratedCourse.levels && hydratedCourse.levels.includes(savedCourse.level)) {
           hydratedCourse.selectedLevel = savedCourse.level;
         } else if (hydratedCourse.levels && hydratedCourse.courseNumbers) {
-          // Fallback reverse-check backup lookup
           for (const level of hydratedCourse.levels) {
             const numbersStr = hydratedCourse.courseNumbers[level]?.join(", ") || "—";
             if (numbersStr.trim() === savedCourse.courseNumber.trim()) {
@@ -149,12 +142,15 @@ function renderCourses() {
     ? coursesData.filter(c => c.grades && c.grades.includes(grade))
     : coursesData;
 
-  // --- Isolate English Electives from Core English ---
+  // --- NEW: Isolate ELD courses so they don't leak into core or other subsets ---
+  const eldCourses = gradeCourses.filter(c => c.category.includes("ELD"));
+
+  // --- Isolate English Electives from Core English (Exclude ELD here) ---
   const coreEnglishCourses = gradeCourses.filter(
-    c => c.category.includes("EN") && !c.category.includes("EL")
+    c => c.category.includes("EN") && !c.category.includes("EL") && !c.category.includes("ELD")
   );
   const englishElectiveCourses = gradeCourses.filter(
-    c => c.category.includes("EN") && c.category.includes("EL")
+    c => c.category.includes("EN") && c.category.includes("EL") && !c.category.includes("ELD")
   );
 
   // --- Isolate Social Studies Electives from Core Social Studies ---
@@ -165,15 +161,15 @@ function renderCourses() {
     c => c.category.includes("SS") && c.category.includes("EL")
   );
 
-  // --- NEW: Isolate CCT (CT) if it is 11th Grade ---
+  // --- Isolate CCT (CT) if it is 11th Grade ---
   const isGrade11 = (grade === "11");
   const cctCourses = isGrade11
     ? gradeCourses.filter(c => c.category.includes("CT"))
     : [];
 
-  // Remaining courses: Exclude EN, SS, and conditionally CT so it doesn't duplicate in Electives
+  // Remaining courses: Exclude EN, SS, ELD, and conditionally CT so it doesn't duplicate in Electives
   const remainingCourses = gradeCourses.filter(c => {
-    if (c.category.includes("EN") || c.category.includes("SS")) return false;
+    if (c.category.includes("EN") || c.category.includes("SS") || c.category.includes("ELD")) return false;
     if (isGrade11 && c.category.includes("CT")) return false;
     return true;
   });
@@ -253,6 +249,7 @@ function renderCourses() {
     }
   });
 
+  // 4. Construct the Main "Electives" Dropdown Menu
   const mainElectivesDetails = document.createElement("details");
   mainElectivesDetails.className = "subject-section electives-main-dropdown";
 
@@ -265,6 +262,26 @@ function renderCourses() {
   const mainElectivesContainer = document.createElement("div");
   mainElectivesContainer.style.paddingLeft = "15px";
   mainElectivesContainer.style.marginTop = "10px";
+
+  // --- NEW: Injected ELD Dropdown section under the Main Electives container ---
+  if (eldCourses.length > 0) {
+    const eldDetails = document.createElement("details");
+    eldDetails.style.marginBottom = "10px";
+
+    const eldSummary = document.createElement("summary");
+    eldSummary.className = "subject-label";
+    eldSummary.textContent = "English Language Development (ELD)";
+    eldSummary.style.cursor = "pointer";
+    eldSummary.style.fontSize = "14px";
+
+    const eldContent = createSection("ELD", eldCourses);
+    const oldEldLabel = eldContent.querySelector(".subject-label");
+    if (oldEldLabel) oldEldLabel.remove();
+
+    eldDetails.appendChild(eldSummary);
+    eldDetails.appendChild(eldContent);
+    mainElectivesContainer.appendChild(eldDetails);
+  }
 
   if (englishElectiveCourses.length > 0) {
     const enDetails = document.createElement("details");

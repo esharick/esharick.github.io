@@ -200,7 +200,8 @@
       "credit": "0.5",
       "category": [
         "EL",
-        "EN"
+        "EN",
+        "ELD"
       ],
       "grades": [
         "9",
@@ -223,7 +224,8 @@
       "credit": "0.5",
       "category": [
         "EL",
-        "EN"
+        "EN",
+        "ELD"
       ],
       "grades": [
         "9",
@@ -239,32 +241,7 @@
       "prerequisites": "",
       "description": "English Language Development** \nGrades 9, 10, 11, 12 \n0289 EN, EL Semester 1 .5 credit \n0299 EN, EL Semester 2 .5 credit\nThe English Language Development course is open only to students whose native language is not English and who have met the entry criteria as stated in the school district’s ELD policy. The course is designed to provide instruction in listening, speaking, reading and writing English. The course curriculum is designed to develop English language skills including grammar, usage, vocabulary, idioms and American customs. Language structure and form will be learned in authentic contexts. Weekly journals include informal entries and reader responses, ranging from 10-20 pages per week. Juniors will conclude the year with an independent writing project. ELD courses do not currently meet NCAA eligibility standards for English credit."
     },
-    {
-      "name": "English Language Development (ELD) S1",
-      "levels": [],
-      "term": "S",
-      "credit": "0.5",
-      "category": [
-        "EL",
-        "EN"
-      ],
-      "grades": [
-        "9",
-        "10",
-        "11",
-        "12"
-      ],
-      "courseNumbers": {
-        "S1": [
-          "0289"
-        ],
-        "S2": [
-          "0299"
-        ]
-      },
-      "prerequisites": "",
-      "description": "English Language Development** \nGrades 9, 10, 11, 12 \n0289 EN, EL Semester 1 .5 credit \n0299 EN, EL Semester 2 .5 credit\nThe English Language Development course is open only to students whose native language is not English and who have met the entry criteria as stated in the school district’s ELD policy. The course is designed to provide instruction in listening, speaking, reading and writing English. The course curriculum is designed to develop English language skills including grammar, usage, vocabulary, idioms and American customs. Language structure and form will be learned in authentic contexts. Weekly journals include informal entries and reader responses, ranging from 10-20 pages per week. Juniors will conclude the year with an independent writing project. ELD courses do not currently meet NCAA eligibility standards for English credit."
-    },
+    
     {
       "name": "Language of Film",
       "levels": [
