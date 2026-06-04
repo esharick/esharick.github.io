@@ -41,18 +41,23 @@ function saveSelections() {
   if (!Array.isArray(timeline)) timeline = [];
 
   const currentGradeCoursesArray = Object.values(selectedCourses).map(course => {
-    const selectedLevel = course.selectedLevel || (course.levels ? course.levels[0] : null);
+    // Determine the exact level picked by the user (fallback to default first index if untouched)
+    const chosenLevel = course.selectedLevel || (course.levels ? course.levels[0] : null);
     
-    let targetNumbers = [];
-    if (selectedLevel && course.courseNumbers?.[selectedLevel]) {
-      targetNumbers = course.courseNumbers[selectedLevel];
-    } else {
-      targetNumbers = Object.values(course.courseNumbers || {}).flat();
+    // Grab ONLY the numbers linked with that single explicit level
+    let singleTargetNumber = "—";
+    if (chosenLevel && course.courseNumbers?.[chosenLevel]) {
+      singleTargetNumber = course.courseNumbers[chosenLevel].join(", ");
+    } else if (course.courseNumbers) {
+      // Fallback fallback if no defined levels arrays exist
+      singleTargetNumber = Object.values(course.courseNumbers).flat().join(", ");
     }
     
+    // CLEAN OUTPUT FORMAT: Saves ONLY the active configuration values
     return {
       name: course.name,
-      courseNumber: targetNumbers.join(", ") || "—",
+      level: chosenLevel || "N/A",
+      courseNumber: singleTargetNumber || "—",
       credits: parseFloat(course.credit) || 0,
       tags: course.category || []
     };
@@ -77,7 +82,6 @@ function loadSelections() {
   const currentGrade = getCurrentGrade();
   if (!currentGrade) return;
 
-  // Clear existing page selections before pulling from storage to prevent page bleed
   Object.keys(selectedCourses).forEach(key => delete selectedCourses[key]);
 
   try {
@@ -91,12 +95,16 @@ function loadSelections() {
     if (!gradeRecord || !gradeRecord.courses) return;
 
     gradeRecord.courses.forEach(savedCourse => {
-      // Safely checks coursesData now that it is running inside the render cycle
+      // Fetch master raw profile dictionary blueprints pool
       const fullCourseData = coursesData.find(c => c.name === savedCourse.name);
       if (fullCourseData) {
         const hydratedCourse = JSON.parse(JSON.stringify(fullCourseData));
         
-        if (hydratedCourse.levels && hydratedCourse.courseNumbers) {
+        // Match up the saved snapshot level with the local drop-down tracking variable state
+        if (hydratedCourse.levels && hydratedCourse.levels.includes(savedCourse.level)) {
+          hydratedCourse.selectedLevel = savedCourse.level;
+        } else if (hydratedCourse.levels && hydratedCourse.courseNumbers) {
+          // Fallback reverse-check backup lookup
           for (const level of hydratedCourse.levels) {
             const numbersStr = hydratedCourse.courseNumbers[level]?.join(", ") || "—";
             if (numbersStr.trim() === savedCourse.courseNumber.trim()) {
@@ -132,7 +140,6 @@ function groupBySubject(courses) {
 }
 
 function renderCourses() {
-  // FIX: Load selections RIGHT HERE, ensuring coursesData is fully ready
   loadSelections();
 
   const grade = getCurrentGrade() ? String(getCurrentGrade()) : null;
@@ -204,7 +211,6 @@ function renderCourses() {
       btn.className = "course-select-btn";
       btn.textContent = course.name;
 
-      // This works perfectly now because selectedCourses is hydrated right above
       if (selectedCourses[course.name]) {
         btn.classList.add("selected");
       }
