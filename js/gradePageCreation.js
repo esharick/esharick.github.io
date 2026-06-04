@@ -11,7 +11,7 @@ const subjectNames = {
   BU: "Business",
   TE: "Technology & Engineering",
   PE: "Physical Education",
-  EL: "Communications",
+  EL: "Highway Saftey",
   CAP: "AP Capstone",
   IL: "Indepenedent Learning",
   FC: "Family Consumer Science",
@@ -21,31 +21,97 @@ const subjectNames = {
 // --- Detect current grade from URL (e.g. /pages/grade10.html → "10") ---
 function getCurrentGrade() {
   const match = window.location.pathname.match(/grade(\d+)/i);
-  return match ? match[1] : null;
+  return match ? parseInt(match[1], 10) : null;
 }
 
-// --- localStorage helpers ---
-function getStorageKey() {
-  const grade = getCurrentGrade();
-  return grade ? `selectedCourses_grade${grade}` : "selectedCourses_unknown";
-}
+// --- Unified Multi-Year localStorage helpers ---
+const STORAGE_KEY = "student_course_plan";
 
 function saveSelections() {
-  const key = getStorageKey();
-  // Store only course names as keys; full course objects as values
-  localStorage.setItem(key, JSON.stringify(selectedCourses));
+  const currentGrade = getCurrentGrade();
+  if (!currentGrade) return;
+
+  let timeline = [];
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) timeline = JSON.parse(saved);
+  } catch (e) {
+    console.error("Error reading timeline database:", e);
+  }
+  if (!Array.isArray(timeline)) timeline = [];
+
+  const currentGradeCoursesArray = Object.values(selectedCourses).map(course => {
+    const chosenLevel = course.selectedLevel || (course.levels ? course.levels[0] : null);
+    
+    let singleTargetNumber = "—";
+    if (chosenLevel && course.courseNumbers?.[chosenLevel]) {
+      singleTargetNumber = course.courseNumbers[chosenLevel].join(", ");
+    } else if (course.courseNumbers) {
+      singleTargetNumber = Object.values(course.courseNumbers).flat().join(", ");
+    }
+    
+    return {
+      name: course.name,
+      level: chosenLevel || "N/A",
+      courseNumber: singleTargetNumber || "—",
+      credits: parseFloat(course.credit) || 0,
+      tags: course.category || []
+    };
+  });
+
+  const recordIndex = timeline.findIndex(item => item.year === currentGrade);
+
+  if (recordIndex !== -1) {
+    timeline[recordIndex].courses = currentGradeCoursesArray;
+  } else {
+    timeline.push({
+      year: currentGrade,
+      courses: currentGradeCoursesArray
+    });
+  }
+
+  timeline.sort((a, b) => a.year - b.year);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(timeline));
 }
 
 function loadSelections() {
-  const key = getStorageKey();
-  const saved = localStorage.getItem(key);
-  if (!saved) return;
+  const currentGrade = getCurrentGrade();
+  if (!currentGrade) return;
+
+  Object.keys(selectedCourses).forEach(key => delete selectedCourses[key]);
 
   try {
-    const parsed = JSON.parse(saved);
-    Object.assign(selectedCourses, parsed);
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+
+    const timeline = JSON.parse(saved);
+    if (!Array.isArray(timeline)) return;
+
+    const gradeRecord = timeline.find(item => item.year === currentGrade);
+    if (!gradeRecord || !gradeRecord.courses) return;
+
+    gradeRecord.courses.forEach(savedCourse => {
+      const fullCourseData = coursesData.find(c => c.name === savedCourse.name);
+      if (fullCourseData) {
+        const hydratedCourse = JSON.parse(JSON.stringify(fullCourseData));
+        
+        if (hydratedCourse.levels && hydratedCourse.levels.includes(savedCourse.level)) {
+          hydratedCourse.selectedLevel = savedCourse.level;
+        } else if (hydratedCourse.levels && hydratedCourse.courseNumbers) {
+          for (const level of hydratedCourse.levels) {
+            const numbersStr = hydratedCourse.courseNumbers[level]?.join(", ") || "—";
+            if (numbersStr.trim() === savedCourse.courseNumber.trim()) {
+              hydratedCourse.selectedLevel = level;
+              break;
+            }
+          }
+        }
+        
+        selectedCourses[hydratedCourse.name] = hydratedCourse;
+      }
+    });
   } catch (e) {
-    console.warn("Could not load saved selections:", e);
+    console.warn("Could not load timeline profiles safely:", e);
   }
 }
 
@@ -67,19 +133,24 @@ function groupBySubject(courses) {
 }
 
 function renderCourses() {
-  const grade = getCurrentGrade();
+  loadSelections();
+
+  const grade = getCurrentGrade() ? String(getCurrentGrade()) : null;
 
   // Filter to only courses available in the current grade
   const gradeCourses = grade
     ? coursesData.filter(c => c.grades && c.grades.includes(grade))
     : coursesData;
 
-  // --- Isolate English Electives from Core English ---
+  // --- NEW: Isolate ELD courses so they don't leak into core or other subsets ---
+  const eldCourses = gradeCourses.filter(c => c.category.includes("ELD"));
+
+  // --- Isolate English Electives from Core English (Exclude ELD here) ---
   const coreEnglishCourses = gradeCourses.filter(
-    c => c.category.includes("EN") && !c.category.includes("EL")
+    c => c.category.includes("EN") && !c.category.includes("EL") && !c.category.includes("ELD")
   );
   const englishElectiveCourses = gradeCourses.filter(
-    c => c.category.includes("EN") && c.category.includes("EL")
+    c => c.category.includes("EN") && c.category.includes("EL") && !c.category.includes("ELD")
   );
 
   // --- Isolate Social Studies Electives from Core Social Studies ---
@@ -90,15 +161,15 @@ function renderCourses() {
     c => c.category.includes("SS") && c.category.includes("EL")
   );
 
-  // --- NEW: Isolate CCT (CT) if it is 11th Grade ---
+  // --- Isolate CCT (CT) if it is 11th Grade ---
   const isGrade11 = (grade === "11");
   const cctCourses = isGrade11
     ? gradeCourses.filter(c => c.category.includes("CT"))
     : [];
 
-  // Remaining courses: Exclude EN, SS, and conditionally CT so it doesn't duplicate in Electives
+  // Remaining courses: Exclude EN, SS, ELD, and conditionally CT so it doesn't duplicate in Electives
   const remainingCourses = gradeCourses.filter(c => {
-    if (c.category.includes("EN") || c.category.includes("SS")) return false;
+    if (c.category.includes("EN") || c.category.includes("SS") || c.category.includes("ELD")) return false;
     if (isGrade11 && c.category.includes("CT")) return false;
     return true;
   });
@@ -116,7 +187,7 @@ function renderCourses() {
   const coreSubjects = coreOrder.filter(subj => allSubjects.includes(subj));
   const electiveSubjects = allSubjects.filter(subj => !coreOrder.includes(subj));
 
-  // --- Helper function to build a standard button section ---
+  // --- Helper function to build a button section with info buttons ---
   function createSection(labelName, coursesList) {
     const section = document.createElement("div");
     section.className = "subject-section";
@@ -129,16 +200,32 @@ function renderCourses() {
     buttonContainer.className = "course-buttons";
 
     coursesList.forEach(course => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "course-btn-wrapper";
+
       const btn = document.createElement("button");
+      btn.className = "course-select-btn";
       btn.textContent = course.name;
 
-      // Restore selected state from savedCourses
       if (selectedCourses[course.name]) {
         btn.classList.add("selected");
       }
 
       btn.onclick = () => selectCourse(labelName, course, btn);
-      buttonContainer.appendChild(btn);
+
+      const infoBtn = document.createElement("button");
+      infoBtn.className = "course-info-btn";
+      infoBtn.innerHTML = "&#9432;"; 
+      infoBtn.title = "View Course Info";
+      
+      infoBtn.onclick = (e) => {
+        e.stopPropagation(); 
+        showCoursePopup(course);
+      };
+
+      wrapper.appendChild(btn);
+      wrapper.appendChild(infoBtn);
+      buttonContainer.appendChild(wrapper);
     });
 
     section.appendChild(label);
@@ -146,21 +233,17 @@ function renderCourses() {
     return section;
   }
 
-  // 3. Render Core English First (Only if courses exist)
   if (coreEnglishCourses.length > 0) {
     container.appendChild(createSection("English", coreEnglishCourses));
   }
 
-  // Render Core Social Studies (Only if courses exist)
   if (coreSocialStudiesCourses.length > 0) {
     container.appendChild(createSection("Social Studies", coreSocialStudiesCourses));
   }
 
-  // Render Main Remaining Core Subjects (Math, Science, World Language, PE)
   coreSubjects.forEach(subject => {
     container.appendChild(createSection(subjectNames[subject] || subject, grouped[subject]));
 
-    // --- NEW: Inject CCT immediately after PE row if we are on Grade 11 ---
     if (subject === "PE" && isGrade11 && cctCourses.length > 0) {
       container.appendChild(createSection(subjectNames["CT"] || "CCT", cctCourses));
     }
@@ -180,7 +263,26 @@ function renderCourses() {
   mainElectivesContainer.style.paddingLeft = "15px";
   mainElectivesContainer.style.marginTop = "10px";
 
-  // English Electives dropdown (EN + EL)
+  // --- NEW: Injected ELD Dropdown section under the Main Electives container ---
+  if (eldCourses.length > 0) {
+    const eldDetails = document.createElement("details");
+    eldDetails.style.marginBottom = "10px";
+
+    const eldSummary = document.createElement("summary");
+    eldSummary.className = "subject-label";
+    eldSummary.textContent = "English Language Development (ELD)";
+    eldSummary.style.cursor = "pointer";
+    eldSummary.style.fontSize = "14px";
+
+    const eldContent = createSection("ELD", eldCourses);
+    const oldEldLabel = eldContent.querySelector(".subject-label");
+    if (oldEldLabel) oldEldLabel.remove();
+
+    eldDetails.appendChild(eldSummary);
+    eldDetails.appendChild(eldContent);
+    mainElectivesContainer.appendChild(eldDetails);
+  }
+
   if (englishElectiveCourses.length > 0) {
     const enDetails = document.createElement("details");
     enDetails.style.marginBottom = "10px";
@@ -200,7 +302,6 @@ function renderCourses() {
     mainElectivesContainer.appendChild(enDetails);
   }
 
-  // Social Studies Electives dropdown (SS + EL)
   if (socialStudiesElectiveCourses.length > 0) {
     const ssDetails = document.createElement("details");
     ssDetails.style.marginBottom = "10px";
@@ -220,7 +321,6 @@ function renderCourses() {
     mainElectivesContainer.appendChild(ssDetails);
   }
 
-  // B. Group remaining sections (TE, VP, IL, AP, FC, BU, EL, etc.) underneath
   electiveSubjects.forEach(subject => {
     const innerDetails = document.createElement("details");
     innerDetails.style.marginBottom = "10px";
@@ -243,7 +343,6 @@ function renderCourses() {
   mainElectivesDetails.appendChild(mainElectivesContainer);
   container.appendChild(mainElectivesDetails);
 
-  // Restore table after rendering buttons
   updateTable();
 }
 
@@ -256,15 +355,9 @@ function selectCourse(subject, course, button) {
   } else {
     button.classList.add("selected");
     selectedCourses[course.name] = course;
-
-    // Trigger the floating pop-up box with details over everything else
-    showCoursePopup(course);
   }
 
-  // Save to localStorage whenever selection changes
   saveSelections();
-
-  // Refresh the schedule table with the new state
   updateTable();
 }
 
@@ -305,6 +398,75 @@ function showCoursePopup(course) {
     ? course.prerequisites
     : "None";
 
+  // --- ANCHOR SPLICING METHOD WITH SAFE FALLBACK ---
+  let finalDescription = "No description available.";
+
+  if (course.description) {
+    const backupDescription = course.description;
+
+    try {
+      // Split description cleanly into individual lines
+      const lines = course.description.split('\n');
+      
+      // We will look for the index of the last header line
+      let lastHeaderIndex = -1;
+
+      // Scanning the first 6 lines where headers live to find the last cutoff line
+      const linesToScan = Math.min(lines.length, 10);
+      
+      const tags = ["EN", "MA", "SC", "SS", "WL", "VP", "TE", "BU", "FC", "EL", "BI", "PE", "HF"];
+
+      for (let i = 0; i < linesToScan; i++) {
+        const lineClean = lines[i].trim();
+        
+        const looksLikeSentence = lineClean.length > 70 && lineClean.includes(" ") && !lineClean.toLowerCase().includes("prerequisite");;
+
+        if (looksLikeSentence) 
+        {
+            console.log(`$Broke on course ${course.name} because sentenced found at line ${i}.`);
+            break;
+        }
+
+        // Check for any signature traits of a metadata header line
+        const hasPrereqKeyword = lineClean.toLowerCase().includes("prerequisite");
+        const hasAdminApproval = lineClean.toLowerCase().includes("administrative approval");
+        const hasLevelTags = /\([A-Z\*]+\)/.test(lineClean) && /^\d{4}/.test(lineClean); // starts with course number
+        const isJustCourseNumber = /^\d{4}/.test(lineClean);
+        const hasCategoryTags = tags.some(tag => new RegExp(`\\b${tag}\\b`).test(lineClean));
+        const isJustTitleOrGrade = lineClean.toLowerCase().startsWith("grade ") || lineClean.toLowerCase().startsWith("grades ") || lineClean.toLowerCase() === course.name.toLowerCase();
+        if (hasPrereqKeyword || hasAdminApproval || hasLevelTags || isJustCourseNumber || hasCategoryTags || isJustTitleOrGrade) {
+          lastHeaderIndex = i; // Mark this line as a header line to be stripped
+        }
+      }
+
+      // If we found headers, slice the array starting immediately AFTER the last header line
+      if (lastHeaderIndex !== -1 && lastHeaderIndex < lines.length - 1) {
+        let bodyLines = lines.slice(lastHeaderIndex + 1);
+        
+        // Remove empty placeholder spacing gaps at the beginning of our sliced body text
+        while (bodyLines.length > 0 && bodyLines[0].trim() === "") {
+          bodyLines.shift();
+        }
+
+        if (bodyLines.length > 0) {
+          finalDescription = bodyLines.join('\n').replace(/\n/g, '<br>');
+        } else {
+          // If slicing emptied it entirely, fall back to safe mode
+          console.warn(`$Fallback course description emptied for course ${course.name}`);
+          finalDescription = backupDescription.replace(/\n/g, '<br>');
+        }
+      } else {
+        // Fallback: No obvious headers detected, print the entire description raw
+        console.warn(`$Fallback no headers detected for course ${course.name}`);
+        finalDescription = backupDescription.replace(/\n/g, '<br>');
+      }
+
+    } catch (e) {
+      console.warn("Popup anchor splicing failed, using fallback:", e);
+      finalDescription = course.description.replace(/\n/g, '<br>');
+    }
+  }
+
   modal.innerHTML = `
     <div class="modal-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
       <h3 style="margin: 0; color: var(--primary, #4cafef); font-size: 22px;">${course.name}</h3>
@@ -318,7 +480,7 @@ function showCoursePopup(course) {
     </div>
     <hr class="modal-divider" style="border: 0; border-top: 1px solid var(--border, #333); margin: 15px 0;">
     <div class="modal-body" style="font-size: 14px; line-height: 1.6; color: var(--text, #e0e0e0);">
-      <p>${course.description ? course.description.replace(/\n/g, '<br>') : "No description available."}</p>
+      <p>${finalDescription}</p>
     </div>
   `;
 
@@ -335,10 +497,10 @@ function showCoursePopup(course) {
 
 function updateTable() {
   const tbody = document.querySelector("#schedule-table tbody");
+  if (!tbody) return;
   tbody.innerHTML = "";
 
   let totalCredits = 0;
-
   const tableOrder = ["EN", "MA", "SS", "SC", "WL", "PE"];
 
   const sortedEntries = Object.entries(selectedCourses).sort(([nameA, courseA], [nameB, courseB]) => {
@@ -358,10 +520,11 @@ function updateTable() {
   sortedEntries.forEach(([courseName, course]) => {
     const levels = course.levels || [];
     const credits = parseFloat(course.credit) || 0;
-    const defaultLevel = levels[0] || null;
+    
+    const currentLevel = course.selectedLevel || levels[0] || null;
 
-    const defaultNumbers = defaultLevel
-      ? course.courseNumbers?.[defaultLevel] || []
+    const defaultNumbers = currentLevel
+      ? course.courseNumbers?.[currentLevel] || []
       : Object.values(course.courseNumbers || {}).flat();
 
     totalCredits += credits;
@@ -372,7 +535,6 @@ function updateTable() {
     tdName.textContent = course.name;
 
     const tdLevel = document.createElement("td");
-
     const tdNum = document.createElement("td");
     tdNum.textContent = defaultNumbers.join(", ") || "—";
 
@@ -383,12 +545,17 @@ function updateTable() {
         const option = document.createElement("option");
         option.value = level;
         option.textContent = level;
+        if (level === currentLevel) {
+          option.selected = true;
+        }
         select.appendChild(option);
       });
 
       select.addEventListener("change", () => {
+        course.selectedLevel = select.value;
         const nums = course.courseNumbers?.[select.value] || [];
         tdNum.textContent = nums.join(", ") || "—";
+        saveSelections();
       });
 
       tdLevel.appendChild(select);
@@ -424,19 +591,28 @@ function updateTable() {
 }
 
 document.getElementById("clear-btn").onclick = () => {
+  const currentGrade = getCurrentGrade();
+  if (!currentGrade) return;
+
   Object.keys(selectedCourses).forEach(key => delete selectedCourses[key]);
 
-  // Also clear this grade's localStorage entry
-  localStorage.removeItem(getStorageKey());
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      let timeline = JSON.parse(saved);
+      if (Array.isArray(timeline)) {
+        timeline = timeline.filter(item => item.year !== currentGrade);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(timeline));
+      }
+    }
+  } catch (e) {
+    console.error("Could not selectively clear grade data:", e);
+  }
 
-  document.querySelectorAll(".course-buttons button")
+  document.querySelectorAll(".course-buttons .course-select-btn")
     .forEach(btn => btn.classList.remove("selected"));
 
   updateTable();
-};
-
-document.getElementById("print-btn").onclick = () => {
-  window.print();
 };
 
 // --- FORCE ACCESSIBLE DARK THEME OVERRIDE ON THE WHOLE PAGE ---
@@ -466,17 +642,53 @@ document.getElementById("print-btn").onclick = () => {
       border-color: #333333 !important;
     }
 
-    .course-buttons button {
+    .course-btn-wrapper {
+      display: inline-flex !important;
+      align-items: stretch !important;
+      margin: 5px !important;
+    }
+
+    .course-buttons .course-select-btn {
       background-color: #2a2a2a !important;
       color: #e0e0e0 !important;
       border: 1px solid #333333 !important;
+      border-right: none !important;
+      border-top-left-radius: 4px !important;
+      border-bottom-left-radius: 4px !important;
+      margin: 0 !important;
+      padding: 8px 12px !important;
+      cursor: pointer;
     }
 
-    .course-buttons button.selected {
+    .course-buttons .course-select-btn.selected {
       background-color: #4cafef !important;
       color: #000000 !important;
       border-color: #4cafef !important;
       font-weight: bold !important;
+    }
+
+    .course-buttons .course-info-btn {
+      background-color: #2a2a2a !important;
+      color: #4cafef !important;
+      border: 1px solid #333333 !important;
+      border-top-right-radius: 4px !important;
+      border-bottom-right-radius: 4px !important;
+      margin: 0 !important;
+      padding: 8px 10px !important;
+      font-size: 14px !important;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s;
+    }
+
+    .course-buttons .course-info-btn:hover {
+      background-color: #383838 !important;
+    }
+
+    .course-buttons .course-select-btn.selected + .course-info-btn {
+      border-left-color: #000000 !important;
     }
 
     table, #schedule-table {
@@ -493,6 +705,14 @@ document.getElementById("print-btn").onclick = () => {
       background-color: #2a2a2a !important;
     }
 
+    #schedule-table select {
+      background-color: #2a2a2a;
+      color: #e0e0e0;
+      border: 1px solid #333;
+      padding: 4px;
+      border-radius: 4px;
+    }
+
     details summary.subject-label::-webkit-details-marker {
       color: #4cafef !important;
     }
@@ -501,7 +721,9 @@ document.getElementById("print-btn").onclick = () => {
   document.head.appendChild(darkStyle);
 })();
 
-// Load saved selections first, then fetch and render courses
-loadSelections();
-loadCourses(renderCourses);
-
+// Execution block at base triggers data loader callbacks safely
+if (typeof loadCourses === "function") {
+  loadCourses(renderCourses);
+} else {
+  renderCourses();
+}
