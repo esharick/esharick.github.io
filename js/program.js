@@ -21,7 +21,8 @@ const tagToSubjectMap = {
   "BU": "Business",                  
   "CAP": "AP Capstone",
   "CT": "College and Career Transition",
-  "IL": "Individual Learning"
+  "IL": "Individual Learning",
+  "ELD": "English Language Development"
 };
 
 // Initialize app when loadCourses finishes fetching your JSON array
@@ -53,26 +54,24 @@ function renderFilterInterface() {
 
   // Your exact 13 big subject categories
   const subjects = [
-    "Individualized Learning",
-    "5CCT",
-    "AP Capstone",
-    "English/Communications",
+    "English",
     "Social Studies",
     "Math",
     "Science",
     "World Languages",
     "Wellness/Fitness",
+    "Communications",
+    "Visual and Performing Arts",
+    "AP Capstone",
     "FCS",
     "Business",
     "Tech/Engineering",
-    "Visual and Performing Arts"
+    "Individualized Learning",
   ];
 
-  // Sort the subjects alphabetically before rendering them
-  const sortedSubjects = [...subjects].sort((a, b) => a.localeCompare(b));
 
   // Generate Subject Filter Buttons Grid
-  const subjectButtonsHTML = sortedSubjects.map(s => `
+  const subjectButtonsHTML = subjects.map(s => `
     <button class="filter-btn subj-btn ${selectedSubject === s ? 'active' : ''}" 
             onclick="updateSubjectFilter('${s}')">
       ${s}
@@ -127,27 +126,32 @@ function resetFilters() {
  * Priority rules are placed at the top to prevent cross-listed tracks from miscategorizing.
  */
 function getCourseSubject(course) {
-  if (!course.category || course.category.length === 0) return "Other";
+  let c = course.category;
+  if (!c || !Array.isArray(c) || c.length === 0) return "Other";
   
-  // PRIORITY CHECK: AP Capstone, Electives, and Special tracks must be checked first
-  if (course.category.includes("CAP") || course.category.includes("AP")) return "AP Capstone";
-  if (course.category.includes("EL")) return "Individualized Learning";
-  if (course.category.includes("CC")) return "5CCT";
+  // 1. ELECTIVE SPLITS (Check these first so they don't get swallowed by core categories)
+  if (c.includes("MA") && !c.includes("EL")) return "Math";
+  if (c.includes("EN") && !c.includes("EL")) return "English";
+  if (c.includes("TE")) return "Tech/Engineering";
+  if (c.includes("VP") && c.includes("EL")) return "Visual and Performing Arts";
+  if (c.includes("FC") && c.includes ("EL")) return "FCS"; 
+  if (c.includes("SC") && !c.includes("EL")) return "Science";
+  if (c.includes("BU") && c.includes("EL")) return "Business";
+  if (c.includes("SC") && c.includes("EL")) return "Science Elective";
+  if (c.includes("MA") && c.includes("EL")) return "Math Elective";
+  if (c.includes("EN") && c.includes("EL")) return "Communications";
+  if (c.includes("SS") && c.includes("EL")) return "Social Studies Elective";  
+  if (c.includes("SS")) return "Social Studies";
+  
+  // 3. DEPARTMENTAL & SPECIAL TRACKS
+  if (c.includes("WL")) return "World Languages";
+  if (c.includes("PE")) return "Wellness/Fitness";
+  if (c.includes("CAP") || c.includes("AP")) return "AP Capstone";
+  if (c.includes("CC")) return "Co-curricular";
+  if (c.includes("IL")) return "Individualized Learning";
 
-  // CORE CHECK: Fall back to core book subjects if it's not a special track
-  if (course.category.includes("MA")) return "Math";
-  if (course.category.includes("EN")) return "English/Communications";
-  if (course.category.includes("TE") || course.category.includes("BT")) return "Tech/Engineering";
-  if (course.category.includes("VP")) return "Visual and Performing Arts";
-  if (course.category.includes("FC")) return "FCS"; 
-  if (course.category.includes("SC")) return "Science";
-  if (course.category.includes("BU")) return "Business";
-  if (course.category.includes("SS")) return "Social Studies";
-  if (course.category.includes("WL")) return "World Languages";
-  if (course.category.includes("PE")) return "Wellness/Fitness";
-  
   // Fallback dictionary loop lookup if none of the above matched
-  for (let catTag of course.category) {
+  for (let catTag of c) {
     if (tagToSubjectMap[catTag]) {
       return tagToSubjectMap[catTag];
     }
@@ -172,12 +176,8 @@ function filterAndDisplayCourses() {
     // Evaluate Subject Department Match
     let matchesSubject = true;
     if (selectedSubject !== null) {
-      matchesSubject = (course.category || []).some(catTag => {
-        const mappedSubject = tagToSubjectMap[catTag];
-        return mappedSubject === selectedSubject;
-      });
+      matchesSubject = (getCourseSubject(course) === selectedSubject);
     }
-
     return matchesGrade && matchesSubject;
   });
 
@@ -203,14 +203,30 @@ function filterAndDisplayCourses() {
     groupedCourses[subjectGroup].push(course);
   });
 
-  // Sort grouped headers alphabetically
-  const sortedSubjectGroups = Object.keys(groupedCourses).sort((a, b) => a.localeCompare(b));
+  // Sort groups by the order of that list:   
+  const subjects = [
+    "English",
+    "Social Studies",
+    "Math",
+    "Science",
+    "World Languages",
+    "Wellness/Fitness",
+    "Communications",
+    "Visual and Performing Arts",
+    "AP Capstone",
+    "FCS",
+    "Business",
+    "Tech/Engineering",
+    "Individualized Learning",
+  ];
+  const subjectGroups = Object.keys(groupedCourses);
 
   // 3. RENDER CONTENT: Generate structures sorted alphabetically
   let finalHTML = "";
 
-  sortedSubjectGroups.forEach(subjectName => {
+  subjectGroups.forEach(subjectName => {
     // Sort items alphabetically by course name
+    //TODO: Sort by grades instead of alphabetically
     groupedCourses[subjectName].sort((a, b) => a.name.localeCompare(b.name));
 
     finalHTML += `
