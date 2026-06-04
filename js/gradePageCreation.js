@@ -412,7 +412,7 @@ function showCoursePopup(course) {
       let lastHeaderIndex = -1;
 
       // Scanning the first 6 lines where headers live to find the last cutoff line
-      const linesToScan = Math.min(lines.length, 6);
+      const linesToScan = Math.min(lines.length, 10);
       
       for (let i = 0; i < linesToScan; i++) {
         const lineClean = lines[i].trim();
