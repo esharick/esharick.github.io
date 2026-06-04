@@ -10,9 +10,8 @@ const tagToSubjectMap = {
   "EN": "English/Communications",
   "MA": "Math",
   "TE": "Tech/Engineering",
-  "BT": "Tech/Engineering",
-  "CC": "5CCT",
-  "EL": "Individualized Learning",
+  "CC": "Co-Curricular",
+  "EL": "Elective",
   "SS": "Social Studies", 
   "SC": "Science",                  
   "WL": "World Languages",
@@ -21,7 +20,8 @@ const tagToSubjectMap = {
   "VP": "Visual and Performing Arts", 
   "BU": "Business",                  
   "CAP": "AP Capstone",
-  "AP": "AP Capstone"
+  "CT": "College and Career Transition",
+  "IL": "Individual Learning"
 };
 
 // Initialize app when loadCourses finishes fetching your JSON array
