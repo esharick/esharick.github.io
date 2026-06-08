@@ -11,9 +11,9 @@ const subjectNames = {
   BU: "Business",
   TE: "Technology & Engineering",
   PE: "Physical Education",
-  EL: "Communications",
+  EL: "Highway Safety",
   CAP: "AP Capstone",
-  IL: "Indepenedent Learning",
+  IL: "Independent Learning",
   FC: "Family Consumer Science",
   CT: "CCT"
 };
@@ -149,7 +149,7 @@ function renderCourses() {
     ? coursesData.filter(c => c.grades && c.grades.includes(grade))
     : coursesData;
 
-  // --- NEW: Isolate ELD courses so they don't leak into core or other subsets ---
+  // --- Isolate ELD courses so they don't leak into core or other subsets ---
   const eldCourses = gradeCourses.filter(c => c.category.includes("ELD"));
 
   // --- Isolate English Electives from Core English (Exclude ELD here) ---
@@ -192,7 +192,6 @@ function renderCourses() {
   const allSubjects = Object.keys(grouped);
 
   const coreSubjects = coreOrder.filter(subj => allSubjects.includes(subj));
-  const electiveSubjects = allSubjects.filter(subj => !coreOrder.includes(subj));
 
   // --- Helper function to build a button section with info buttons ---
   function createSection(labelName, coursesList) {
@@ -240,6 +239,29 @@ function renderCourses() {
     return section;
   }
 
+  // --- Helper function to build a nested dropdown inside the Electives Menu ---
+  function appendDropdownSection(parentContainer, labelName, coursesList) {
+    if (!coursesList || coursesList.length === 0) return;
+
+    const details = document.createElement("details");
+    details.style.marginBottom = "10px";
+
+    const summary = document.createElement("summary");
+    summary.className = "subject-label";
+    summary.textContent = labelName;
+    summary.style.cursor = "pointer";
+    summary.style.fontSize = "14px";
+
+    const content = createSection(labelName, coursesList);
+    const oldLabel = content.querySelector(".subject-label");
+    if (oldLabel) oldLabel.remove();
+
+    details.appendChild(summary);
+    details.appendChild(content);
+    parentContainer.appendChild(details);
+  }
+
+  // Render Core Subject blocks onto the main wrapper
   if (coreEnglishCourses.length > 0) {
     container.appendChild(createSection("English", coreEnglishCourses));
   }
@@ -256,7 +278,7 @@ function renderCourses() {
     }
   });
 
-  // 4. Construct the Main "Electives" Dropdown Menu
+  // 4. Construct the Main "Electives" Dropdown Menu Container
   const mainElectivesDetails = document.createElement("details");
   mainElectivesDetails.className = "subject-section electives-main-dropdown";
 
@@ -270,82 +292,42 @@ function renderCourses() {
   mainElectivesContainer.style.paddingLeft = "15px";
   mainElectivesContainer.style.marginTop = "10px";
 
-  // --- NEW: Injected ELD Dropdown section under the Main Electives container ---
-  if (eldCourses.length > 0) {
-    const eldDetails = document.createElement("details");
-    eldDetails.style.marginBottom = "10px";
+  // --- STRICT ORDERED ELECTIVE GENERATION ---
+  
+  // 1. English Electives
+  appendDropdownSection(mainElectivesContainer, "English Electives", englishElectiveCourses);
 
-    const eldSummary = document.createElement("summary");
-    eldSummary.className = "subject-label";
-    eldSummary.textContent = "English Language Development (ELD)";
-    eldSummary.style.cursor = "pointer";
-    eldSummary.style.fontSize = "14px";
+  // 2. Social Studies Electives
+  appendDropdownSection(mainElectivesContainer, "Social Studies Electives", socialStudiesElectiveCourses);
 
-    const eldContent = createSection("ELD", eldCourses);
-    const oldEldLabel = eldContent.querySelector(".subject-label");
-    if (oldEldLabel) oldEldLabel.remove();
+  // 3. Tech and Engineering
+  if (grouped["TE"]) appendDropdownSection(mainElectivesContainer, subjectNames["TE"] || "Tech & Engineering", grouped["TE"]);
 
-    eldDetails.appendChild(eldSummary);
-    eldDetails.appendChild(eldContent);
-    mainElectivesContainer.appendChild(eldDetails);
-  }
+  // 4. Business
+  if (grouped["BU"]) appendDropdownSection(mainElectivesContainer, subjectNames["BU"] || "Business", grouped["BU"]);
 
-  if (englishElectiveCourses.length > 0) {
-    const enDetails = document.createElement("details");
-    enDetails.style.marginBottom = "10px";
+  // 5. Family Consumer Science
+  if (grouped["FC"]) appendDropdownSection(mainElectivesContainer, subjectNames["FC"] || "Family Consumer Science", grouped["FC"]);
 
-    const enSummary = document.createElement("summary");
-    enSummary.className = "subject-label";
-    enSummary.textContent = "English Electives";
-    enSummary.style.cursor = "pointer";
-    enSummary.style.fontSize = "14px";
+  // 6. AP Capstone
+  if (grouped["CAP"]) appendDropdownSection(mainElectivesContainer, subjectNames["CAP"] || "AP Capstone", grouped["CAP"]);
 
-    const enContent = createSection("English Electives", englishElectiveCourses);
-    const oldEnLabel = enContent.querySelector(".subject-label");
-    if (oldEnLabel) oldEnLabel.remove();
+  // 7. Highway Safety
+  if (grouped["EL"]) appendDropdownSection(mainElectivesContainer, subjectNames["EL"] || "Highway Saftey", grouped["EL"]);
 
-    enDetails.appendChild(enSummary);
-    enDetails.appendChild(enContent);
-    mainElectivesContainer.appendChild(enDetails);
-  }
-
-  if (socialStudiesElectiveCourses.length > 0) {
-    const ssDetails = document.createElement("details");
-    ssDetails.style.marginBottom = "10px";
-
-    const ssSummary = document.createElement("summary");
-    ssSummary.className = "subject-label";
-    ssSummary.textContent = "Social Studies Electives";
-    ssSummary.style.cursor = "pointer";
-    ssSummary.style.fontSize = "14px";
-
-    const ssContent = createSection("Social Studies Electives", socialStudiesElectiveCourses);
-    const oldSsLabel = ssContent.querySelector(".subject-label");
-    if (oldSsLabel) oldSsLabel.remove();
-
-    ssDetails.appendChild(ssSummary);
-    ssDetails.appendChild(ssContent);
-    mainElectivesContainer.appendChild(ssDetails);
-  }
-
-  electiveSubjects.forEach(subject => {
-    const innerDetails = document.createElement("details");
-    innerDetails.style.marginBottom = "10px";
-
-    const innerSummary = document.createElement("summary");
-    innerSummary.className = "subject-label";
-    innerSummary.textContent = subjectNames[subject] || subject;
-    innerSummary.style.cursor = "pointer";
-    innerSummary.style.fontSize = "14px";
-
-    const innerContent = createSection(subjectNames[subject] || subject, grouped[subject]);
-    const oldLabel = innerContent.querySelector(".subject-label");
-    if (oldLabel) oldLabel.remove();
-
-    innerDetails.appendChild(innerSummary);
-    innerDetails.appendChild(innerContent);
-    mainElectivesContainer.appendChild(innerDetails);
+  // --- Dynamic catch-all block for remaining unmapped elective tags (e.g. VP/Arts if applicable) ---
+  const structuredKeys = ["TE", "BU", "FC", "CAP", "EL", "IL"];
+  allSubjects.forEach(subj => {
+    if (!coreOrder.includes(subj) && !structuredKeys.includes(subj)) {
+      appendDropdownSection(mainElectivesContainer, subjectNames[subj] || subj, grouped[subj]);
+    }
   });
+
+  // 8. Independent Learning (Last 2 position)
+  if (grouped["IL"]) appendDropdownSection(mainElectivesContainer, subjectNames["IL"] || "Independent Learning", grouped["IL"]);
+
+  // 9. ELD (Absolute last position)
+  appendDropdownSection(mainElectivesContainer, "English Language Development (ELD)", eldCourses);
 
   mainElectivesDetails.appendChild(mainElectivesContainer);
   container.appendChild(mainElectivesDetails);
@@ -405,6 +387,75 @@ function showCoursePopup(course) {
     ? course.prerequisites
     : "None";
 
+  // --- ANCHOR SPLICING METHOD WITH SAFE FALLBACK ---
+  let finalDescription = "No description available.";
+
+  if (course.description) {
+    const backupDescription = course.description;
+
+    try {
+      // Split description cleanly into individual lines
+      const lines = course.description.split('\n');
+      
+      // We will look for the index of the last header line
+      let lastHeaderIndex = -1;
+
+      // Scanning the first 6 lines where headers live to find the last cutoff line
+      const linesToScan = Math.min(lines.length, 10);
+      
+      const tags = ["EN", "MA", "SC", "SS", "WL", "VP", "TE", "BU", "FC", "EL", "BI", "PE", "HF"];
+
+      for (let i = 0; i < linesToScan; i++) {
+        const lineClean = lines[i].trim();
+        
+        const looksLikeSentence = lineClean.length > 70 && lineClean.includes(" ") && !lineClean.toLowerCase().includes("prerequisite");;
+
+        if (looksLikeSentence) 
+        {
+            console.log(`$Broke on course ${course.name} because sentenced found at line ${i}.`);
+            break;
+        }
+
+        // Check for any signature traits of a metadata header line
+        const hasPrereqKeyword = lineClean.toLowerCase().includes("prerequisite");
+        const hasAdminApproval = lineClean.toLowerCase().includes("administrative approval");
+        const hasLevelTags = /\([A-Z\*]+\)/.test(lineClean) && /^\d{4}/.test(lineClean); // starts with course number
+        const isJustCourseNumber = /^\d{4}/.test(lineClean);
+        const hasCategoryTags = tags.some(tag => new RegExp(`\\b${tag}\\b`).test(lineClean));
+        const isJustTitleOrGrade = lineClean.toLowerCase().startsWith("grade ") || lineClean.toLowerCase().startsWith("grades ") || lineClean.toLowerCase() === course.name.toLowerCase();
+        if (hasPrereqKeyword || hasAdminApproval || hasLevelTags || isJustCourseNumber || hasCategoryTags || isJustTitleOrGrade) {
+          lastHeaderIndex = i; // Mark this line as a header line to be stripped
+        }
+      }
+
+      // If we found headers, slice the array starting immediately AFTER the last header line
+      if (lastHeaderIndex !== -1 && lastHeaderIndex < lines.length - 1) {
+        let bodyLines = lines.slice(lastHeaderIndex + 1);
+        
+        // Remove empty placeholder spacing gaps at the beginning of our sliced body text
+        while (bodyLines.length > 0 && bodyLines[0].trim() === "") {
+          bodyLines.shift();
+        }
+
+        if (bodyLines.length > 0) {
+          finalDescription = bodyLines.join('\n').replace(/\n/g, '<br>');
+        } else {
+          // If slicing emptied it entirely, fall back to safe mode
+          console.warn(`$Fallback course description emptied for course ${course.name}`);
+          finalDescription = backupDescription.replace(/\n/g, '<br>');
+        }
+      } else {
+        // Fallback: No obvious headers detected, print the entire description raw
+        console.warn(`$Fallback no headers detected for course ${course.name}`);
+        finalDescription = backupDescription.replace(/\n/g, '<br>');
+      }
+
+    } catch (e) {
+      console.warn("Popup anchor splicing failed, using fallback:", e);
+      finalDescription = course.description.replace(/\n/g, '<br>');
+    }
+  }
+
   modal.innerHTML = `
     <div class="modal-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
       <h3 style="margin: 0; color: var(--primary, #4cafef); font-size: 22px;">${course.name}</h3>
@@ -418,7 +469,7 @@ function showCoursePopup(course) {
     </div>
     <hr class="modal-divider" style="border: 0; border-top: 1px solid var(--border, #333); margin: 15px 0;">
     <div class="modal-body" style="font-size: 14px; line-height: 1.6; color: var(--text, #e0e0e0);">
-      <p>${course.description ? course.description.replace(/\n/g, '<br>') : "No description available."}</p>
+      <p>${finalDescription}</p>
     </div>
   `;
 

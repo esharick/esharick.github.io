@@ -215,7 +215,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "English Language Development** \nGrades 9, 10, 11, 12 \n0289 EN, EL Semester 1 .5 credit \n0299 EN, EL Semester 2 .5 credit\nThe English Language Development course is open only to students whose native language is not English and who have met the entry criteria as stated in the school district’s ELD policy. The course is designed to provide instruction in listening, speaking, reading and writing English. The course curriculum is designed to develop English language skills including grammar, usage, vocabulary, idioms and American customs. Language structure and form will be learned in authentic contexts. Weekly journals include informal entries and reader responses, ranging from 10-20 pages per week. Juniors will conclude the year with an independent writing project. ELD courses do not currently meet NCAA eligibility standards for English credit."
+      "description": "English Language Development** \nGrades 9, 10, 11, 12 \nSemester 1 .5 credit\n0289 EN, EL\nThe English Language Development course is open only to students whose native language is not English and who have met the entry criteria as stated in the school district’s ELD policy. The course is designed to provide instruction in listening, speaking, reading and writing English. The course curriculum is designed to develop English language skills including grammar, usage, vocabulary, idioms and American customs. Language structure and form will be learned in authentic contexts. Weekly journals include informal entries and reader responses, ranging from 10-20 pages per week. Juniors will conclude the year with an independent writing project. ELD courses do not currently meet NCAA eligibility standards for English credit."
     },
     {
       "name": "English Language Development (ELD) Semester 2",
@@ -239,7 +239,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "English Language Development** \nGrades 9, 10, 11, 12 \n0289 EN, EL Semester 1 .5 credit \n0299 EN, EL Semester 2 .5 credit\nThe English Language Development course is open only to students whose native language is not English and who have met the entry criteria as stated in the school district’s ELD policy. The course is designed to provide instruction in listening, speaking, reading and writing English. The course curriculum is designed to develop English language skills including grammar, usage, vocabulary, idioms and American customs. Language structure and form will be learned in authentic contexts. Weekly journals include informal entries and reader responses, ranging from 10-20 pages per week. Juniors will conclude the year with an independent writing project. ELD courses do not currently meet NCAA eligibility standards for English credit."
+      "description": "English Language Development** \nGrades 9, 10, 11, 12 \nSemester 1 .5 credit\n0289 EN, EL\nThe English Language Development course is open only to students whose native language is not English and who have met the entry criteria as stated in the school district’s ELD policy. The course is designed to provide instruction in listening, speaking, reading and writing English. The course curriculum is designed to develop English language skills including grammar, usage, vocabulary, idioms and American customs. Language structure and form will be learned in authentic contexts. Weekly journals include informal entries and reader responses, ranging from 10-20 pages per week. Juniors will conclude the year with an independent writing project. ELD courses do not currently meet NCAA eligibility standards for English credit."
     },
     
     {
@@ -613,7 +613,7 @@
         ]
       },
       "prerequisites": "Algebra 1",
-      "description": "Geometry\nGrades 9, 10, 11\n2080 (H) MA Year 1 credit\n2081 (X) MA Year 1 credit\n2082 (A) MA Year 1 credit\nPrerequisite: Algebra 1\n\nAThis course covers all major geometric topics and theorems typically taught in a year-long geometry class, while also introducing algebra-based applications in statistics, probability, and trigonometry. The rigor and scope will vary by course level. Students will develop skills to apply geometric concepts to problem-solving, write and analyze proofs, establish relationships among triangles, and identify corresponding parts in congruent and similar polygons. They will use algebraic and geometric techniques to solve perimeter, area, and volume problems, apply distance and midpoint formulas, and prove theorems using coordinates. The course includes performing geometric transformations and applying trigonometric definitions to right triangles. Students will also solve problems involving circles, inscribed polygons, and circumscribed polygons. Additionally, they will apply combinations, permutations, and probability theorems in discrete situations, and analyze data using measures of center and spread. "
+      "description": "Geometry\nGrades 9, 10, 11\n2080 (H) MA Year 1 credit\n2081 (X) MA Year 1 credit\n2082 (A) MA Year 1 credit\nPrerequisite: Algebra 1\n\nThis course covers all major geometric topics and theorems typically taught in a year-long geometry class, while also introducing algebra-based applications in statistics, probability, and trigonometry. The rigor and scope will vary by course level. Students will develop skills to apply geometric concepts to problem-solving, write and analyze proofs, establish relationships among triangles, and identify corresponding parts in congruent and similar polygons. They will use algebraic and geometric techniques to solve perimeter, area, and volume problems, apply distance and midpoint formulas, and prove theorems using coordinates. The course includes performing geometric transformations and applying trigonometric definitions to right triangles. Students will also solve problems involving circles, inscribed polygons, and circumscribed polygons. Additionally, they will apply combinations, permutations, and probability theorems in discrete situations, and analyze data using measures of center and spread. "
     },
     {
       "name": "Algebra 2",
@@ -887,7 +887,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Biology \nGrade 9 Year 1 credit\n3100 (AP) 3110 (H) 3111 (X) 3112 (A) BI\nBiology at the AP level prepares students for success on the Advanced Placement (AP) Biology examination. The pace of the AP course requires strong motivation along with strong work and study habits. Students enrolled in the AP level will read a college text which will examine more content and address more detail than that covered in the (H) level course. \nHonors Biology (H) includes all of the content of the accelerated level with more breadth and depth. In addition, the course is supplemented with readings in technical writing of laboratory projects and additional laboratory work.\nThe Accelerated (X) level features the study of the genetic continuity of life, cell structure and function, cell growth and reproduction, population characteristics, bioenergetics, interaction of organisms and their environment, and the chemistry of life. The class is a laboratory-based course where students perform a variety of laboratory experiments.\nAt the academic level (A), Biology is a laboratory-centered, college preparatory course in the life sciences and is paced to emphasize a thorough understanding of basic biological concepts. This course includes the study of plants, animals, genetics, cell composition, human physiology, microbiology, and ecology."
+      "description": "Biology \nGrade 9 Year 1 credit\n3100 (AP) 3110 (H) 3111 (X) 3112 (A) BI, SC\nBiology at the AP level prepares students for success on the Advanced Placement (AP) Biology examination. The pace of the AP course requires strong motivation along with strong work and study habits. Students enrolled in the AP level will read a college text which will examine more content and address more detail than that covered in the (H) level course. \nHonors Biology (H) includes all of the content of the accelerated level with more breadth and depth. In addition, the course is supplemented with readings in technical writing of laboratory projects and additional laboratory work.\nThe Accelerated (X) level features the study of the genetic continuity of life, cell structure and function, cell growth and reproduction, population characteristics, bioenergetics, interaction of organisms and their environment, and the chemistry of life. The class is a laboratory-based course where students perform a variety of laboratory experiments.\nAt the academic level (A), Biology is a laboratory-centered, college preparatory course in the life sciences and is paced to emphasize a thorough understanding of basic biological concepts. This course includes the study of plants, animals, genetics, cell composition, human physiology, microbiology, and ecology."
     },
     {
       "name": "Environmental Science",
@@ -3110,8 +3110,9 @@
         ]
       },
       "prerequisites": "",
-      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Use the special combination codes noted below to request multiple performing groups which cannot be scheduled separately. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
+      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
     },
+
     {
       "name": "Wind Ensemble/Choir",
       "levels": [],
@@ -3133,8 +3134,9 @@
         ]
       },
       "prerequisites": "",
-      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Use the special combination codes noted below to request multiple performing groups which cannot be scheduled separately. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
+      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
     },
+
     {
       "name": "Jazz Band/Cantata",
       "levels": [],
@@ -3156,8 +3158,9 @@
         ]
       },
       "prerequisites": "",
-      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Use the special combination codes noted below to request multiple performing groups which cannot be scheduled separately. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
+      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
     },
+
     {
       "name": "Jazz Ens/Cantata",
       "levels": [],
@@ -3179,8 +3182,9 @@
         ]
       },
       "prerequisites": "",
-      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Use the special combination codes noted below to request multiple performing groups which cannot be scheduled separately. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
+      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
     },
+
     {
       "name": "Orchestra/Camerata",
       "levels": [],
@@ -3202,8 +3206,9 @@
         ]
       },
       "prerequisites": "",
-      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Use the special combination codes noted below to request multiple performing groups which cannot be scheduled separately. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
+      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
     },
+
     {
       "name": "Jazz Band/Chorale",
       "levels": [],
@@ -3225,8 +3230,9 @@
         ]
       },
       "prerequisites": "",
-      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Use the special combination codes noted below to request multiple performing groups which cannot be scheduled separately. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
+      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
     },
+
     {
       "name": "Wind Ensemble.Perc",
       "levels": [],
@@ -3248,8 +3254,9 @@
         ]
       },
       "prerequisites": "",
-      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Use the special combination codes noted below to request multiple performing groups which cannot be scheduled separately. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
+      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
     },
+
     {
       "name": "Jazz Ens/Cantata/Chorale",
       "levels": [],
@@ -3271,8 +3278,9 @@
         ]
       },
       "prerequisites": "",
-      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Use the special combination codes noted below to request multiple performing groups which cannot be scheduled separately. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
+      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
     },
+
     {
       "name": "Jazz Band/Cantata/Chorale",
       "levels": [],
@@ -3294,8 +3302,9 @@
         ]
       },
       "prerequisites": "",
-      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Use the special combination codes noted below to request multiple performing groups which cannot be scheduled separately. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
+      "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
     },
+
     {
       "name": "Camerata",
       "levels": [],
@@ -3429,6 +3438,8 @@
           "7710"
         ]
       }
+    "prerequisites": "Applied Music Theory/Composition 7709 or Teacher Recommendation",
+    "description": "AP Music Theory\nGrades 10, 11, 12 Year 1 credit\n7710 VP, EL\n This course is designed for beginning students with limited or no musical background.   Treble and bass clef note reading, chording, and proper hand positions will be covered and individually monitored.  Intermediate pianists may also take the course to further their  piano technique. Full-size electronic keyboards in a lab setting are provided for each student."
     },
     {
       "name": "Piano Lab",
@@ -3977,7 +3988,7 @@
         
       },
       "prerequisites": "",
-      "description": "Racquet Sports\nGrades 10, 11, 12 Semester .25 credit\n5185 Semester 1 PE\n5285 Semester 2 PE\nThis elective PE course introduces students to the exciting\nworld of racquet sports, including pickleball, badminton,\nand tennis. Students will develop fundamental skills such as\nserving, volleying, and strategic play while improving handeye coordination, agility, and overall fitness. Instruction will\nemphasize proper technique, rules of play, and sportsmanship\nin both singles and doubles formats. With access to our\nnew tennis courts, students will enjoy a fun and engaging\nenvironment that promotes lifelong recreational activity. Whether\nyou’re a beginner or looking to refine your skills, this course\noffers a fun and challenging experience for all ability levels"
+      "description": "Racquet Sports\nGrades 10, 11, 12 Semester .25 credit\n5185 Semester 1 PE\n5285 Semester 2 PE\nThis elective PE course introduces students to the exciting world of racquet sports, including pickleball, badminton,and tennis. Students will develop fundamental skills such as serving, volleying, and strategic play while improving handeye coordination, agility, and overall fitness. Instruction will\nemphasize proper technique, rules of play, and sportsmanship\nin both singles and doubles formats. With access to our\nnew tennis courts, students will enjoy a fun and engaging\nenvironment that promotes lifelong recreational activity. Whether\nyou’re a beginner or looking to refine your skills, this course\noffers a fun and challenging experience for all ability levels"
     },
     {
       "name": "Racquet Sports Semester 2",
@@ -3999,7 +4010,7 @@
         
       },
       "prerequisites": "",
-      "description": "Racquet Sports\nGrades 10, 11, 12 Semester .25 credit\n5185 Semester 1 PE\n5285 Semester 2 PE\nThis elective PE course introduces students to the exciting\nworld of racquet sports, including pickleball, badminton,\nand tennis. Students will develop fundamental skills such as\nserving, volleying, and strategic play while improving handeye coordination, agility, and overall fitness. Instruction will\nemphasize proper technique, rules of play, and sportsmanship\nin both singles and doubles formats. With access to our\nnew tennis courts, students will enjoy a fun and engaging\nenvironment that promotes lifelong recreational activity. Whether\nyou’re a beginner or looking to refine your skills, this course\noffers a fun and challenging experience for all ability levels"
+      "description": "Racquet Sports\nGrades 10, 11, 12 Semester .25 credit\n5185 Semester 1 PE\n5285 Semester 2 PE\nThis elective PE course introduces students to the exciting world of racquet sports, including pickleball, badminton, and tennis. Students will develop fundamental skills such as\nserving, volleying, and strategic play while improving handeye coordination, agility, and overall fitness. Instruction will\nemphasize proper technique, rules of play, and sportsmanship\nin both singles and doubles formats. With access to our\nnew tennis courts, students will enjoy a fun and engaging\nenvironment that promotes lifelong recreational activity. Whether\nyou’re a beginner or looking to refine your skills, this course\noffers a fun and challenging experience for all ability levels"
     },
     {
       "name": "Adaptive Physical Education",
@@ -4021,7 +4032,7 @@
         
       },
       "prerequisites": "",
-      "description": "Adaptive Physical Education\nGrades 9, 10, 11, 12 Semester .25 credit\n5655 PE\nThis course is a program alternative that is available to meet the\nneeds of students who are temporarily or permanently unable,\nfor physical or medical reasons, to participate in the regularly\nscheduled physical education program. This program's flexibility\npermits a student to be changed from one activity to another\nduring the regularly scheduled class. Students will receive a\ngrade and credit for participation in this program. No student\nwill be excused from attending their regularly scheduled physical\neducation classes. Should the attending physician reject all the\nactivity options of the Adaptive Program, the student will be given\nappropriate alternative assignments for the recommended time\nperiod. When a student is released by the attending physician,\nthey will return to the regular physical education program"
+      "description": "Adaptive Physical Education\nGrades 9, 10, 11, 12 Semester .25 credit\n5655 PE\nThis course is a program alternative that is available to meet the needs of students who are temporarily or permanently unable, for physical or medical reasons, to participate in the regularly\nscheduled physical education program. This program's flexibility\npermits a student to be changed from one activity to another\nduring the regularly scheduled class. Students will receive a\ngrade and credit for participation in this program. No student\nwill be excused from attending their regularly scheduled physical\neducation classes. Should the attending physician reject all the\nactivity options of the Adaptive Program, the student will be given\nappropriate alternative assignments for the recommended time\nperiod. When a student is released by the attending physician,\nthey will return to the regular physical education program"
     },
     {
       "name": "Alternative Physical Education Semester 1",
@@ -4267,7 +4278,7 @@
         ]
       },
       "prerequisites": "Culinary Arts, Pastry Chef, Regional Cuisine, or Nutrition & Foods",
-      "description": "Signature Dish\nGrades 10, 11, 12 Semester .5 credit\n8079 FC, EL (Lab Fee: $25.00)\nPrerequisite: Culinary Arts, Pastry Chef, Regional Cuisine\nor Nutrition & Foods\nA professional chef understands that cooking is both an art and a science. The content of this course will cultivate each student’s individual cooking style and enhance their comprehensive cooking techniques culminating with a Signature Dish. In this course students will have the opportunity to deeply explore their own cooking style, hone more complex cooking techniques and study the science of baking. Students taking this course are foodies and home chefs looking to collaborate with other like-minded students to enhance their culinary skills, learn new recipes, and explore the world of culinary arts."
+      "description": "Signature Dish\nGrades 10, 11, 12 Semester .5 credit\n8079 FC, EL (Lab Fee: $25.00)\nPrerequisite: Culinary Arts, Pastry Chef, Regional Cuisine or Nutrition & Foods\nA professional chef understands that cooking is both an art and a science. The content of this course will cultivate each student’s individual cooking style and enhance their comprehensive cooking techniques culminating with a Signature Dish. In this course students will have the opportunity to deeply explore their own cooking style, hone more complex cooking techniques and study the science of baking. Students taking this course are foodies and home chefs looking to collaborate with other like-minded students to enhance their culinary skills, learn new recipes, and explore the world of culinary arts."
     },
     {
       "name": "Personal Finance",
@@ -4425,7 +4436,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Engineering Design, Production and Automation\nGrades 9, 10, 11, 12 Semester .5 credit\n(Lab Fee - $25.00)\n\nStudents in Engineering Design, Production, and Automation will learn to use drafting and design computer software programs for a variety of design problems. After computer hardware/software orientation, students will learn to read and render several types of technical drawings and output to computer-controlled fabrication machinery. That which is learned will then be applied in the design process. Students will work individually and in small groups on several engineering design activities. Working in both two-dimensional and three-dimensional programs, students will create mock-ups, prototypes, and scale models using 3D printers and scanners, computer numeric controlled routers, vinyl cutters, screen printing, and laser cutting technologies. This course is recommended for students interested in a career in engineering design and automation."
+      "description": "Engineering Design, Production and Automation\nGrades 9, 10, 11, 12 Semester .5 credit\n8659 TE, EL\n(Lab Fee - $25.00)\n\nStudents in Engineering Design, Production, and Automation will learn to use drafting and design computer software programs for a variety of design problems. After computer hardware/software orientation, students will learn to read and render several types of technical drawings and output to computer-controlled fabrication machinery. That which is learned will then be applied in the design process. Students will work individually and in small groups on several engineering design activities. Working in both two-dimensional and three-dimensional programs, students will create mock-ups, prototypes, and scale models using 3D printers and scanners, computer numeric controlled routers, vinyl cutters, screen printing, and laser cutting technologies. This course is recommended for students interested in a career in engineering design and automation."
     },
 
     {
@@ -4449,7 +4460,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Architectural Design\nGrades: 9, 10, 11, 12 Semester .5 credit\n(Lab Fee - $25.00)\nThis course is designed for students with interests in architecture, design, and curiosity about the spatial relationships around us. Students will approach design with an emphasis on aesthetics and function. This course will focus on residential architecture and its historical influences, landscape architecture, space planning, construction techniques, and building materials. Students will form a base of knowledge of building systems, design concepts, and performance criteria, with an emphasis on structure. Students will create architectural renderings, floor plans, and models using computer-aided drafting software and analog technologies. Students will compile a portfolio of designs."
+      "description": "Architectural Design\nGrades: 9, 10, 11, 12 Semester .5 credit\n8659 TE, EL\n(Lab Fee - $25.00)\nThis course is designed for students with interests in architecture, design, and curiosity about the spatial relationships around us. Students will approach design with an emphasis on aesthetics and function. This course will focus on residential architecture and its historical influences, landscape architecture, space planning, construction techniques, and building materials. Students will form a base of knowledge of building systems, design concepts, and performance criteria, with an emphasis on structure. Students will create architectural renderings, floor plans, and models using computer-aided drafting software and analog technologies. Students will compile a portfolio of designs."
     },
     {
       "name": "Mechanical and Electrical Engineering",
@@ -4472,7 +4483,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Mechanical and Electrical Engineering\nGrades 9, 10, 11, 12 Semester .5 credit\n(Lab Fee - $25.00)\nThis advanced course is designed for students with interests in technology, science, or engineering. Students will apply a problems-based approach to authentic situations in robotic technology, mechatronic technology, communications, electronics, and transportation. Solutions will be designed on computers and built in the fabrication lab using a CNC milling machine, a laser engraver, 3D printing machines, and traditional tools. Students will work in teams to learn research and development procedures, testing and analysis techniques, and applied technology. Topics include: robotic engineering, mechanical engineering, electrical engineering, and transportation engineering."
+      "description": "Mechanical and Electrical Engineering\nGrades 9, 10, 11, 12 Semester .5 credit\n8629 TE, EL\n(Lab Fee - $25.00)\nThis advanced course is designed for students with interests in technology, science, or engineering. Students will apply a problems-based approach to authentic situations in robotic technology, mechatronic technology, communications, electronics, and transportation. Solutions will be designed on computers and built in the fabrication lab using a CNC milling machine, a laser engraver, 3D printing machines, and traditional tools. Students will work in teams to learn research and development procedures, testing and analysis techniques, and applied technology. Topics include: robotic engineering, mechanical engineering, electrical engineering, and transportation engineering."
     },
     {
       "name": "Robotic Engineering",
@@ -4495,7 +4506,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Robotic Engineering\n\nGrades 9, 10, 11, 12 Semester .5 credit\n(Lab Fee - $25.00)\n\nThis advanced course is designed for students with interests in robotics. This project-based approach will immerse students in the problem-solving engineering design method. Students will apply a problems-based approach to authentic situations using robotic technology. Students will experience a wide variety of practical applications of robotics, including mechanical function, pneumatic actuators, soft robotics, autonomous programming, and control. Students will work in teams to complete design challenges using research and development procedures, testing and analysis techniques. They will have access to fabrication machinery, additive prototyping, and subtractive manufacturing."
+      "description": "Robotic Engineering\n\nGrades 9, 10, 11, 12 Semester .5 credit\n8669 TE, EL\n(Lab Fee - $25.00)\n\nThis advanced course is designed for students with interests in robotics. This project-based approach will immerse students in the problem-solving engineering design method. Students will apply a problems-based approach to authentic situations using robotic technology. Students will experience a wide variety of practical applications of robotics, including mechanical function, pneumatic actuators, soft robotics, autonomous programming, and control. Students will work in teams to complete design challenges using research and development procedures, testing and analysis techniques. They will have access to fabrication machinery, additive prototyping, and subtractive manufacturing."
     },
     {
       "name": "Structural And Environmental Engineering",
@@ -4518,7 +4529,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Grades 9, 10, 11, 12 Semester .5 credit\n8639 TE, EL (Lab Fee - $25.00)\n\nThis advanced course is designed for students with interests in technology, science, or engineering. Students will apply a problems-based approach to authentic situations in structural design, construction technology, communications, product design, manufacturing, and environmental engineering. Solutions will be designed on computers and built in the fabrication lab using a CNC milling machine, a laser engraver, 3D printing machines, and traditional tools. Students will work in teams to learn research and development procedures, testing and analysis techniques, and applied technology. Topics include structural engineering, design engineering, manufacturing systems engineering, and environmental engineering."
+      "description": "Grades 9, 10, 11, 12 Semester .5 credit\n8639 TE, EL\n(Lab Fee - $25.00)\n\nThis advanced course is designed for students with interests in technology, science, or engineering. Students will apply a problems-based approach to authentic situations in structural design, construction technology, communications, product design, manufacturing, and environmental engineering. Solutions will be designed on computers and built in the fabrication lab using a CNC milling machine, a laser engraver, 3D printing machines, and traditional tools. Students will work in teams to learn research and development procedures, testing and analysis techniques, and applied technology. Topics include structural engineering, design engineering, manufacturing systems engineering, and environmental engineering."
     },
     {
         "name": "AP Computer Science Principles",
