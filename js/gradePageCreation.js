@@ -42,14 +42,14 @@ function saveSelections() {
 
   const currentGradeCoursesArray = Object.values(selectedCourses).map(course => {
     const chosenLevel = course.selectedLevel || (course.levels ? course.levels[0] : null);
-    
+
     let singleTargetNumber = "—";
     if (chosenLevel && course.courseNumbers?.[chosenLevel]) {
       singleTargetNumber = course.courseNumbers[chosenLevel].join(", ");
     } else if (course.courseNumbers) {
       singleTargetNumber = Object.values(course.courseNumbers).flat().join(", ");
     }
-    
+
     return {
       name: course.name,
       level: chosenLevel || "N/A",
@@ -72,6 +72,13 @@ function saveSelections() {
 
   timeline.sort((a, b) => a.year - b.year);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(timeline));
+  console.log("Reached switch");
+  console.log("Current grade:", currentGrade);
+  console.log(
+    "verifyGrade9FromStorage:",
+    typeof verifyGrade9FromStorage
+  );
+  callVerification();
 }
 
 function loadSelections() {
@@ -94,7 +101,7 @@ function loadSelections() {
       const fullCourseData = coursesData.find(c => c.name === savedCourse.name);
       if (fullCourseData) {
         const hydratedCourse = JSON.parse(JSON.stringify(fullCourseData));
-        
+
         if (hydratedCourse.levels && hydratedCourse.levels.includes(savedCourse.level)) {
           hydratedCourse.selectedLevel = savedCourse.level;
         } else if (hydratedCourse.levels && hydratedCourse.courseNumbers) {
@@ -106,7 +113,7 @@ function loadSelections() {
             }
           }
         }
-        
+
         selectedCourses[hydratedCourse.name] = hydratedCourse;
       }
     });
@@ -215,11 +222,11 @@ function renderCourses() {
 
       const infoBtn = document.createElement("button");
       infoBtn.className = "course-info-btn";
-      infoBtn.innerHTML = "&#9432;"; 
+      infoBtn.innerHTML = "&#9432;";
       infoBtn.title = "View Course Info";
-      
+
       infoBtn.onclick = (e) => {
-        e.stopPropagation(); 
+        e.stopPropagation();
         showCoursePopup(course);
       };
 
@@ -451,7 +458,7 @@ function updateTable() {
   sortedEntries.forEach(([courseName, course]) => {
     const levels = course.levels || [];
     const credits = parseFloat(course.credit) || 0;
-    
+
     const currentLevel = course.selectedLevel || levels[0] || null;
 
     const defaultNumbers = currentLevel
@@ -657,4 +664,34 @@ if (typeof loadCourses === "function") {
   loadCourses(renderCourses);
 } else {
   renderCourses();
+}
+callVerification();
+
+function callVerification() {
+  switch (getCurrentGrade()) {
+
+    case 9:
+      if (typeof verifyGrade9FromStorage === "function") {
+        verifyGrade9FromStorage();
+      }
+      break;
+
+    case 10:
+      if (typeof verifyGrade10FromStorage === "function") {
+        verifyGrade10FromStorage();
+      }
+      break;
+
+    case 11:
+      if (typeof verifyGrade11FromStorage === "function") {
+        verifyGrade11FromStorage();
+      }
+      break;
+
+    case 12:
+      if (typeof verifyGrade12FromStorage === "function") {
+        verifyGrade12FromStorage();
+      }
+      break;
+  }
 }
