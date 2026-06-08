@@ -10,7 +10,7 @@ const subjectNames = {
   VP: "Visual & Performing Arts",
   BU: "Business",
   TE: "Technology & Engineering",
-  PE: "Physical Education",
+  PE: "Wellness/Fitness",
   EL: "Highway Safety",
   CAP: "AP Capstone",
   IL: "Independent Learning",
