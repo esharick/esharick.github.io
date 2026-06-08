@@ -9,18 +9,20 @@ async function verifyGraduationRequirements() {
 
         console.log("Graduation verifier started");
 
-        const response =
-            await fetch("/data/schedule.json");
+        const rawData =
+            localStorage.getItem(
+                "student_course_plan"
+            );
 
-        if (!response.ok) {
+        if (!rawData) {
 
             throw new Error(
-                `Unable to load schedule.json (${response.status})`
+                "No saved course plan found"
             );
         }
 
         const schedule =
-            await response.json();
+            JSON.parse(rawData);
 
         console.log("Loaded schedule:", schedule);
 
@@ -85,7 +87,7 @@ async function verifyGraduationRequirements() {
             hasTag(courses, "VP");
 
         const hasCCT =
-            hasTag(courses, "CC");
+            hasTag(courses, "CT");
 
         if (englishCredits < 4) {
 

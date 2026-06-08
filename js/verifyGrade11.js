@@ -71,3 +71,40 @@ function verifyGrade11Schedule(scheduleData) {
         errors
     };
 }
+
+function verifyGrade11FromStorage() {
+
+    const gradeData =
+        getGradeData(11);
+
+    if (!gradeData) {
+
+        showRequirementAlert(
+            "Grade 11 Requirements Missing",
+            [
+                "No Grade 11 schedule found."
+            ]
+        );
+
+        return;
+    }
+
+    const result =
+        verifyGrade11Schedule(
+            gradeData
+        );
+
+    if (!result.valid) {
+
+        showRequirementAlert(
+            "Grade 11 Requirements Missing",
+            result.errors
+        );
+    }
+    else {
+
+        hideRequirementAlert();
+    }
+
+    return result;
+}

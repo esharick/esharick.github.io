@@ -49,3 +49,40 @@ function verifyGrade12Schedule(scheduleData) {
         errors
     };
 }
+
+function verifyGrade12FromStorage() {
+
+    const gradeData =
+        getGradeData(12);
+
+    if (!gradeData) {
+
+        showRequirementAlert(
+            "Grade 12 Requirements Missing",
+            [
+                "No Grade 12 schedule found."
+            ]
+        );
+
+        return;
+    }
+
+    const result =
+        verifyGrade12Schedule(
+            gradeData
+        );
+
+    if (!result.valid) {
+
+        showRequirementAlert(
+            "Grade 12 Requirements Missing",
+            result.errors
+        );
+    }
+    else {
+
+        hideRequirementAlert();
+    }
+
+    return result;
+}

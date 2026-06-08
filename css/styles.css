@@ -602,3 +602,44 @@ summary:hover {
     padding-top: 16px;
   }
 }
+
+/* Requirement Pop-up */
+#requirementAlert {
+
+  position: fixed;
+
+  top: 20px;
+  right: 20px;
+
+  width: 350px;
+
+  background: #d32f2f;
+  color: white;
+
+  padding: 18px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+
+  display: none;
+
+  z-index: 9999;
+}
+
+#requirementAlert h3 {
+
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+#requirementAlert ul {
+
+  margin: 0;
+  padding-left: 20px;
+}
+
+#requirementAlert li {
+
+  margin-bottom: 6px;
+}

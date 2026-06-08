@@ -10,7 +10,7 @@ function verifyGrade9Schedule(scheduleData) {
     let hasBI = false;
     let hasHF = false;
 
-    let peCredits = 0;
+    let wellnessCredits = 0;
 
     scheduleData.courses.forEach(course => {
 
@@ -18,15 +18,13 @@ function verifyGrade9Schedule(scheduleData) {
 
         totalCredits += credits;
 
-        // Cocurricular check
         const isCC = course.tags.includes("CC");
 
-        // CC courses do not count toward limit
+        // CC courses do not count toward credit limits
         if (!isCC) {
             limitedCredits += credits;
         }
 
-        // Required tags
         if (course.tags.includes("LF")) {
             hasLF = true;
         }
@@ -43,9 +41,12 @@ function verifyGrade9Schedule(scheduleData) {
             hasHF = true;
         }
 
-        // PE credits
-        if (course.tags.includes("PE")) {
-            peCredits += credits;
+        // Count all wellness credits
+        if (
+            course.tags.includes("HF") ||
+            course.tags.includes("PE")
+        ) {
+            wellnessCredits += credits;
         }
     });
 
@@ -65,28 +66,37 @@ function verifyGrade9Schedule(scheduleData) {
         );
     }
 
-    // Required classes
+    // Required courses
+
     if (!hasLF) {
-        errors.push("Missing Literary Foundations (LF) requirement.");
+        errors.push(
+            "Missing Literary Foundations (LF) requirement."
+        );
     }
 
     if (!hasWH) {
-        errors.push("Missing World History (WH) requirement.");
+        errors.push(
+            "Missing World History (WH) requirement."
+        );
     }
 
     if (!hasBI) {
-        errors.push("Missing Biology (BI) requirement.");
+        errors.push(
+            "Missing Biology (BI) requirement."
+        );
     }
 
     if (!hasHF) {
-        errors.push("Missing Health & Fitness 9 (HF) requirement.");
+        errors.push(
+            "Missing Health & Fitness 9 (HF) requirement."
+        );
     }
 
-    // PE requirement
-    if (peCredits < 0.25) {
+    // Wellness requirement
+    if (wellnessCredits < 0.75) {
 
         errors.push(
-            `Grade 9 requires at least 0.25 PE credits. Currently has ${peCredits}.`
+            `Grade 9 requires 0.75 Wellness credits (HF + PE). Currently has ${wellnessCredits}.`
         );
     }
 
@@ -94,7 +104,47 @@ function verifyGrade9Schedule(scheduleData) {
         valid: errors.length === 0,
         totalCredits,
         limitedCredits,
-        peCredits,
+        wellnessCredits,
         errors
     };
+}
+
+function verifyGrade9FromStorage() {
+
+    console.log("Grade 9 verifier running");
+
+    const gradeData = getGradeData(9);
+
+    console.log("Grade data:", gradeData);
+
+    if (!gradeData) {
+
+        showRequirementAlert(
+            "Grade 9 Requirements Missing",
+            [
+                "No Grade 9 schedule found."
+            ]
+        );
+
+        return;
+    }
+
+    const result =
+        verifyGrade9Schedule(
+            gradeData
+        );
+
+    if (!result.valid) {
+
+        showRequirementAlert(
+            "Grade 9 Requirements Missing",
+            result.errors
+        );
+    }
+    else {
+
+        hideRequirementAlert();
+    }
+
+    return result;
 }
