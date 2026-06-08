@@ -162,7 +162,7 @@ function verifyGraduationRequirements() {
         if (!hasCCT) {
 
             errors.push(
-                "Missing College Career Transition (CCT)"
+                "Missing College Career Transition (CT)"
             );
         }
 
