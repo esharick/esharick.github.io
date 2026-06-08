@@ -403,27 +403,17 @@ function showCoursePopup(course) {
       // Scanning the first 6 lines where headers live to find the last cutoff line
       const linesToScan = Math.min(lines.length, 10);
       
-      const tags = ["EN", "MA", "SC", "SS", "WL", "VP", "TE", "BU", "FC", "EL", "BI", "PE", "HF"];
-
       for (let i = 0; i < linesToScan; i++) {
         const lineClean = lines[i].trim();
         
-        const looksLikeSentence = lineClean.length > 70 && lineClean.includes(" ") && !lineClean.toLowerCase().includes("prerequisite");;
-
-        if (looksLikeSentence) 
-        {
-            console.log(`$Broke on course ${course.name} because sentenced found at line ${i}.`);
-            break;
-        }
-
         // Check for any signature traits of a metadata header line
         const hasPrereqKeyword = lineClean.toLowerCase().includes("prerequisite");
         const hasAdminApproval = lineClean.toLowerCase().includes("administrative approval");
-        const hasLevelTags = /\([A-Z\*]+\)/.test(lineClean) && /^\d{4}/.test(lineClean); // starts with course number
-        const isJustCourseNumber = /^\d{4}/.test(lineClean);
-        const hasCategoryTags = tags.some(tag => new RegExp(`\\b${tag}\\b`).test(lineClean));
+        const hasLevelTags = /\([A-Z\*]+\)/.test(lineClean); // Matches (H), (X), (AP), (H*)
+        const hasCategoryTags = lineClean.includes(" EN") || lineClean.includes(" MA") || lineClean.includes(" SC") || lineClean.includes(" SS") || lineClean.includes(" WL") || lineClean.includes(" VP") || lineClean.includes(" TE") || lineClean.includes(" BU") || lineClean.includes(" FC") || lineClean.includes(" EL");
         const isJustTitleOrGrade = lineClean.toLowerCase().startsWith("grade ") || lineClean.toLowerCase().startsWith("grades ") || lineClean.toLowerCase() === course.name.toLowerCase();
-        if (hasPrereqKeyword || hasAdminApproval || hasLevelTags || isJustCourseNumber || hasCategoryTags || isJustTitleOrGrade) {
+
+        if (hasPrereqKeyword || hasAdminApproval || hasLevelTags || hasCategoryTags || isJustTitleOrGrade) {
           lastHeaderIndex = i; // Mark this line as a header line to be stripped
         }
       }
@@ -441,12 +431,10 @@ function showCoursePopup(course) {
           finalDescription = bodyLines.join('\n').replace(/\n/g, '<br>');
         } else {
           // If slicing emptied it entirely, fall back to safe mode
-          console.warn(`$Fallback course description emptied for course ${course.name}`);
           finalDescription = backupDescription.replace(/\n/g, '<br>');
         }
       } else {
         // Fallback: No obvious headers detected, print the entire description raw
-        console.warn(`$Fallback no headers detected for course ${course.name}`);
         finalDescription = backupDescription.replace(/\n/g, '<br>');
       }
 
