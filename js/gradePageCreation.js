@@ -293,7 +293,7 @@ function renderCourses() {
   mainElectivesContainer.style.marginTop = "10px";
 
   // --- STRICT ORDERED ELECTIVE GENERATION ---
-  
+
   // 1. English Electives
   appendDropdownSection(mainElectivesContainer, "English Electives", englishElectiveCourses);
 
@@ -396,16 +396,16 @@ function showCoursePopup(course) {
     try {
       // Split description cleanly into individual lines
       const lines = course.description.split('\n');
-      
+
       // We will look for the index of the last header line
       let lastHeaderIndex = -1;
 
       // Scanning the first 6 lines where headers live to find the last cutoff line
       const linesToScan = Math.min(lines.length, 10);
-      
+
       for (let i = 0; i < linesToScan; i++) {
         const lineClean = lines[i].trim();
-        
+
         // Check for any signature traits of a metadata header line
         const hasPrereqKeyword = lineClean.toLowerCase().includes("prerequisite");
         const hasAdminApproval = lineClean.toLowerCase().includes("administrative approval");
@@ -421,7 +421,7 @@ function showCoursePopup(course) {
       // If we found headers, slice the array starting immediately AFTER the last header line
       if (lastHeaderIndex !== -1 && lastHeaderIndex < lines.length - 1) {
         let bodyLines = lines.slice(lastHeaderIndex + 1);
-        
+
         // Remove empty placeholder spacing gaps at the beginning of our sliced body text
         while (bodyLines.length > 0 && bodyLines[0].trim() === "") {
           bodyLines.shift();
@@ -590,6 +590,7 @@ document.getElementById("clear-btn").onclick = () => {
     .forEach(btn => btn.classList.remove("selected"));
 
   updateTable();
+  callVerification();
 };
 
 // --- FORCE ACCESSIBLE DARK THEME OVERRIDE ON THE WHOLE PAGE ---
@@ -711,25 +712,79 @@ function callVerification() {
 
     case 9:
       if (typeof verifyGrade9FromStorage === "function") {
-        verifyGrade9FromStorage();
+        const result = verifyGrade9FromStorage();
+
+        if (!result.valid) {
+
+          showRequirementAlert(
+            "Grade 9 Requirements Missing",
+            result.errors
+          );
+        }
+        else {
+
+          hideRequirementAlert();
+        }
       }
       break;
 
     case 10:
       if (typeof verifyGrade10FromStorage === "function") {
-        verifyGrade10FromStorage();
+
+        const result =
+          verifyGrade10FromStorage();
+
+        if (!result.valid) {
+
+          showRequirementAlert(
+            "Grade 10 Requirements Missing",
+            result.errors
+          );
+        }
+        else {
+
+          hideRequirementAlert();
+        }
       }
       break;
 
     case 11:
       if (typeof verifyGrade11FromStorage === "function") {
-        verifyGrade11FromStorage();
+
+        const result =
+          verifyGrade11FromStorage();
+
+        if (!result.valid) {
+
+          showRequirementAlert(
+            "Grade 11 Requirements Missing",
+            result.errors
+          );
+        }
+        else {
+
+          hideRequirementAlert();
+        }
       }
       break;
 
     case 12:
       if (typeof verifyGrade12FromStorage === "function") {
-        verifyGrade12FromStorage();
+
+        const result =
+          verifyGrade12FromStorage();
+
+        if (!result.valid) {
+
+          showRequirementAlert(
+            "Grade 12 Requirements Missing",
+            result.errors
+          );
+        }
+        else {
+
+          hideRequirementAlert();
+        }
       }
       break;
   }

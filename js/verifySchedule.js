@@ -1,9 +1,10 @@
 document.addEventListener(
     "DOMContentLoaded",
-    verifyGraduationRequirements
+    runFullAudit
 );
 
-async function verifyGraduationRequirements() {
+function verifyGraduationRequirements() {
+    const errors = [];
 
     try {
 
@@ -26,6 +27,7 @@ async function verifyGraduationRequirements() {
 
         console.log("Loaded schedule:", schedule);
 
+        
         let courses = [];
 
         // Supports both:
@@ -51,8 +53,6 @@ async function verifyGraduationRequirements() {
         }
 
         console.log("All courses:", courses);
-
-        const errors = [];
 
         const totalCredits =
             sumCredits(courses);
@@ -190,6 +190,11 @@ async function verifyGraduationRequirements() {
             "Graduation verifier error. Check browser console."
         );
     }
+
+    return {
+        valid: errors.length === 0,
+        errors
+    };
 }
 
 function countCreditsByTag(courses, tag) {
@@ -261,4 +266,92 @@ function showGraduationAlert(errors) {
     alertBox.innerHTML = html;
 
     alertBox.style.display = "block";
+}
+
+function collectGradeErrors() {
+
+    const errors = [];
+
+    const grade9 = verifyGrade9FromStorage();
+
+    if (!grade9.valid) {
+
+        grade9.errors.forEach(error => {
+
+            errors.push(
+                `Grade 9: ${error}`
+            );
+        });
+    }
+
+    const grade10 = verifyGrade10FromStorage();
+
+    if (!grade10.valid) {
+
+        grade10.errors.forEach(error => {
+
+            errors.push(
+                `Grade 10: ${error}`
+            );
+        });
+    }
+
+    const grade11 = verifyGrade11FromStorage();
+
+    if (!grade11.valid) {
+
+        grade11.errors.forEach(error => {
+
+            errors.push(
+                `Grade 11: ${error}`
+            );
+        });
+    }
+
+    const grade12 = verifyGrade12FromStorage();
+
+    if (!grade12.valid) {
+
+        grade12.errors.forEach(error => {
+
+            errors.push(
+                `Grade 12: ${error}`
+            );
+        });
+    }
+
+    return errors;
+}
+
+function runFullAudit() {
+
+    const allErrors = [];
+
+    allErrors.push(
+        ...collectGradeErrors()
+    );
+
+    const graduation =
+        verifyGraduationRequirements();
+
+    if (!graduation.valid) {
+
+        graduation.errors.forEach(error => {
+
+            allErrors.push(
+                `Graduation: ${error}`
+            );
+        });
+    }
+
+    if (allErrors.length > 0) {
+
+        showGraduationAlert(
+            allErrors
+        );
+    }
+    else {
+
+        hideGraduationAlert();
+    }
 }

@@ -67,37 +67,14 @@ function verifyGrade10Schedule(scheduleData) {
 
 function verifyGrade10FromStorage() {
 
-    const gradeData =
-        getGradeData(10);
+    const gradeData = getGradeData(10);
 
     if (!gradeData) {
-
-        showRequirementAlert(
-            "Grade 10 Requirements Missing",
-            [
-                "No Grade 10 schedule found."
-            ]
-        );
-
-        return;
+        return {
+            valid: false,
+            errors: ["No Grade 10 schedule found."]
+        };
     }
 
-    const result =
-        verifyGrade10Schedule(
-            gradeData
-        );
-
-    if (!result.valid) {
-
-        showRequirementAlert(
-            "Grade 10 Requirements Missing",
-            result.errors
-        );
-    }
-    else {
-
-        hideRequirementAlert();
-    }
-
-    return result;
+    return verifyGrade10Schedule(gradeData);
 }
