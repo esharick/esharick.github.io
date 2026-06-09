@@ -40,9 +40,9 @@ function verifyGrade11Schedule(scheduleData) {
         );
     }
 
-    if (limitedCredits > 8) {
+    if (limitedCredits > 7) {
         errors.push(
-            `Maximum 8 credits allowed (excluding CC courses). Currently has ${limitedCredits}.`
+            `Maximum 7 credits allowed (excluding CC courses). Currently has ${limitedCredits}.`
         );
     }
 
