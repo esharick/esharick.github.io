@@ -643,3 +643,54 @@ summary:hover {
 
   margin-bottom: 6px;
 }
+/* Style for the banner container to ensure responsiveness */
+#banner-container {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+}
+
+/* Ensure the banner image scales cleanly */
+#homepage-banner {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style for the instructions text box */
+#instructions-container {
+    max-width: 800px;
+    margin: 40px auto; /* Centers the container, adds vertical space */
+    padding: 25px;
+    background-color: var(--surface, #f9f9f9); /* Surface color variable */
+    border: 1px solid var(--border, #e0e0e0);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    color: var(--text, #333);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+#instructions-header h2 {
+    color: var(--primary, #4cafef); /* Matching primary color theme from previous context */
+    border-bottom: 2px solid var(--primary, #4cafef);
+    padding-bottom: 10px;
+    margin-top: 0;
+    font-size: 24px;
+}
+
+#instructions-body ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+#instructions-body li {
+    margin-bottom: 10px;
+}
+
+#instructions-body strong {
+    color: var(--primary, #4cafef); /* Highlight key terms */
+}
