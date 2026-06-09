@@ -59,10 +59,10 @@ function verifyGrade9Schedule(scheduleData) {
     }
 
     // Credit maximum
-    if (limitedCredits > 8) {
+    if (limitedCredits > 7) {
 
         errors.push(
-            `Maximum 8 credits allowed (excluding CC courses). Currently has ${limitedCredits}.`
+            `Maximum 7 credits allowed (excluding CC courses). Currently has ${limitedCredits}.`
         );
     }
 
@@ -111,40 +111,14 @@ function verifyGrade9Schedule(scheduleData) {
 
 function verifyGrade9FromStorage() {
 
-    console.log("Grade 9 verifier running");
-
     const gradeData = getGradeData(9);
 
-    console.log("Grade data:", gradeData);
-
     if (!gradeData) {
-
-        showRequirementAlert(
-            "Grade 9 Requirements Missing",
-            [
-                "No Grade 9 schedule found."
-            ]
-        );
-
-        return;
+        return {
+            valid: false,
+            errors: ["No Grade 9 schedule found."]
+        };
     }
 
-    const result =
-        verifyGrade9Schedule(
-            gradeData
-        );
-
-    if (!result.valid) {
-
-        showRequirementAlert(
-            "Grade 9 Requirements Missing",
-            result.errors
-        );
-    }
-    else {
-
-        hideRequirementAlert();
-    }
-
-    return result;
+    return verifyGrade9Schedule(gradeData);
 }

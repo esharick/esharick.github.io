@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <style>
-
         /* PAGE WRAPPER */
 
         #scheduleViewerPage {
@@ -104,7 +103,7 @@
 
             border-radius: 10px;
 
-            box-shadow: 0 6px 18px rgba(0,0,0,.3);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
 
             display: none;
 
@@ -147,6 +146,45 @@
             }
         }
 
+        /* other stuff */
+        #graduationAlert {
+
+            position: fixed;
+
+            top: 20px;
+            right: 20px;
+
+            width: 380px;
+
+            max-height: 80vh;
+
+            overflow-y: auto;
+
+            background: #d32f2f;
+            color: white;
+
+            padding: 18px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+
+            display: none;
+
+            z-index: 9999;
+        }
+
+        #graduationAlert ul {
+
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        #graduationAlert li {
+
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
     </style>
 
 </head>
@@ -174,12 +212,14 @@
 
     <script src="/js/nav.js"></script>
     <script src="/js/printview.js"></script>
-    <script scr="/js/verifyGrades.js"></script>
-    <script scr="/js/verifyGrade9.js"></script>
-    <script scr="/js/verifyGrade10.js"></script>
-    <script scr="/js/verifyGrade11.js"></script>
-    <script scr="/js/verifyGrade12.js"></script>
+    <script src="/js/verifyGrades.js"></script>
+    <script src="/js/verifyGrade9.js"></script>
+    <script src="/js/verifyGrade10.js"></script>
+    <script src="/js/verifyGrade11.js"></script>
+    <script src="/js/verifyGrade12.js"></script>
     <script src="/js/verifySchedule.js"></script>
+
+
 
 </body>
 
