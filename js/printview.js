@@ -1,100 +1,151 @@
-async function loadSchedule() {
+document.addEventListener(
+    "DOMContentLoaded",
+    initializePrintView
+);
 
-    try {
+function initializePrintView() {
 
-        const response = await fetch("/data/schedule.json");
+    const rawData =
+        localStorage.getItem(
+            "student_course_plan"
+        );
 
-        if (!response.ok) {
-            throw new Error("Failed to load schedule.json");
-        }
+    if (!rawData) {
 
-        const schedule = await response.json();
+        document.getElementById(
+            "scheduleContainer"
+        ).innerHTML =
+            "<p>No schedule found.</p>";
 
-        const container = document.getElementById("scheduleContainer");
+        return;
+    }
 
-        container.innerHTML = "";
+    const schedule =
+        JSON.parse(rawData);
 
-        schedule.forEach(yearData => {
+    renderSchedule(schedule);
 
-            const section = document.createElement("div");
-            section.className = "grade-section";
+    document
+        .getElementById("printButton")
+        .addEventListener(
+            "click",
+            () => window.print()
+        );
+}
 
-            // Grade Header
-            const title = document.createElement("div");
-            title.className = "grade-title";
-            title.textContent = `Grade ${yearData.year}`;
+function renderSchedule(schedule) {
 
-            section.appendChild(title);
+    const container =
+        document.getElementById(
+            "scheduleContainer"
+        );
 
-            // Table
-            const table = document.createElement("table");
+    container.innerHTML = "";
 
-            // Table Header
-            const thead = document.createElement("thead");
+    schedule.forEach(yearData => {
 
-            thead.innerHTML = `
+        const section =
+            document.createElement("div");
+
+        section.className =
+            "grade-section";
+
+        const title =
+            document.createElement("div");
+
+        title.className =
+            "grade-title";
+
+        title.textContent =
+            `Grade ${yearData.year}`;
+
+        section.appendChild(title);
+
+        const table =
+            document.createElement("table");
+
+        table.innerHTML = `
+            <thead>
                 <tr>
                     <th>Course</th>
                     <th>Course Number</th>
                     <th>Credits</th>
                 </tr>
+            </thead>
+            <tbody></tbody>
+        `;
+
+        const tbody =
+            table.querySelector("tbody");
+
+        let totalCredits = 0;
+
+        yearData.courses.forEach(course => {
+
+            totalCredits +=
+                Number(course.credits);
+
+            const row =
+                document.createElement("tr");
+
+            const displayName =
+                formatCourseName(course);
+
+            const courseNumber =
+                Array.isArray(
+                    course.courseNumber
+                )
+                    ? course.courseNumber.join(", ")
+                    : course.courseNumber;
+
+            row.innerHTML = `
+                <td>${displayName}</td>
+                <td>${courseNumber}</td>
+                <td>${course.credits}</td>
             `;
 
-            table.appendChild(thead);
-
-            // Table Body
-            const tbody = document.createElement("tbody");
-
-            let totalCredits = 0;
-
-            yearData.courses.forEach(course => {
-
-                totalCredits += Number(course.credits);
-            
-                const row = document.createElement("tr");
-            
-                row.innerHTML = `
-                    <td>${course.name}</td>
-                    <td>${course.courseNumber}</td>
-                    <td>${course.credits}</td>
-                `;
-            
-                tbody.appendChild(row);
-            });
-
-            // Total Credits Row
-            const totalRow = document.createElement("tr");
-            totalRow.className = "total-row";
-
-            totalRow.innerHTML = `
-                <td>Total Credits</td>
-                <td></td>
-                <td>${totalCredits}</td>
-            `;
-
-            tbody.appendChild(totalRow);
-
-            table.appendChild(tbody);
-
-            section.appendChild(table);
-
-            container.appendChild(section);
+            tbody.appendChild(row);
         });
 
-    } catch (error) {
+        const totalRow =
+            document.createElement("tr");
 
-        console.error("Error loading schedule:", error);
-    }
+        totalRow.className =
+            "total-row";
+
+        totalRow.innerHTML = `
+            <td colspan="2">
+                Total Credits
+            </td>
+            <td>
+                ${totalCredits}
+            </td>
+        `;
+
+        tbody.appendChild(totalRow);
+
+        section.appendChild(table);
+
+        container.appendChild(section);
+    });
 }
 
-// Print Button
-document.addEventListener("DOMContentLoaded", () => {
+function formatCourseName(course) {
 
-    loadSchedule();
+    if (
+        !course.level ||
+        course.level === "N/A"
+    ) {
+        return course.name;
+    }
 
-    document.getElementById("printButton")
-        .addEventListener("click", () => {
+    // Avoid "AP AP Statistics"
+    if (
+        course.level === "AP" &&
+        course.name.startsWith("AP ")
+    ) {
+        return course.name;
+    }
 
-            window.print();
-        });
-});
+    return `${course.level} ${course.name}`;
+}

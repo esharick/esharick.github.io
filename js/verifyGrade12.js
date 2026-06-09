@@ -29,9 +29,9 @@ function verifyGrade12Schedule(scheduleData) {
         );
     }
 
-    if (limitedCredits > 8) {
+    if (limitedCredits > 7) {
         errors.push(
-            `Maximum 8 credits allowed (excluding CC courses). Currently has ${limitedCredits}.`
+            `Maximum 7 credits allowed (excluding CC courses). Currently has ${limitedCredits}.`
         );
     }
 
@@ -48,4 +48,18 @@ function verifyGrade12Schedule(scheduleData) {
         englishCredits,
         errors
     };
+}
+
+function verifyGrade12FromStorage() {
+
+    const gradeData = getGradeData(12);
+
+    if (!gradeData) {
+        return {
+            valid: false,
+            errors: ["No Grade 12 schedule found."]
+        };
+    }
+
+    return verifyGrade12Schedule(gradeData);
 }

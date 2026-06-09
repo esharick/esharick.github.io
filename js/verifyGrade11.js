@@ -40,9 +40,9 @@ function verifyGrade11Schedule(scheduleData) {
         );
     }
 
-    if (limitedCredits > 8) {
+    if (limitedCredits > 7) {
         errors.push(
-            `Maximum 8 credits allowed (excluding CC courses). Currently has ${limitedCredits}.`
+            `Maximum 7 credits allowed (excluding CC courses). Currently has ${limitedCredits}.`
         );
     }
 
@@ -70,4 +70,18 @@ function verifyGrade11Schedule(scheduleData) {
         limitedCredits,
         errors
     };
+}
+
+function verifyGrade11FromStorage() {
+
+    const gradeData = getGradeData(11);
+
+    if (!gradeData) {
+        return {
+            valid: false,
+            errors: ["No Grade 11 schedule found."]
+        };
+    }
+
+    return verifyGrade11Schedule(gradeData);
 }

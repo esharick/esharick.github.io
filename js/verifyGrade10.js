@@ -41,10 +41,10 @@ function verifyGrade10Schedule(scheduleData) {
     }
 
     // Credit maximum
-    if (limitedCredits > 8) {
+    if (limitedCredits > 7) {
 
         errors.push(
-            `Maximum 8 credits allowed (excluding CC courses). Currently has ${limitedCredits}.`
+            `Maximum 7 credits allowed (excluding CC courses). Currently has ${limitedCredits}.`
         );
     }
 
@@ -63,4 +63,18 @@ function verifyGrade10Schedule(scheduleData) {
         limitedCredits,
         errors
     };
+}
+
+function verifyGrade10FromStorage() {
+
+    const gradeData = getGradeData(10);
+
+    if (!gradeData) {
+        return {
+            valid: false,
+            errors: ["No Grade 10 schedule found."]
+        };
+    }
+
+    return verifyGrade10Schedule(gradeData);
 }

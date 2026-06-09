@@ -10,7 +10,7 @@ const subjectNames = {
   VP: "Visual & Performing Arts",
   BU: "Business",
   TE: "Technology & Engineering",
-  PE: "Physical Education",
+  PE: "Wellness/Fitness",
   EL: "Highway Safety",
   CAP: "AP Capstone",
   IL: "Independent Learning",
@@ -42,14 +42,14 @@ function saveSelections() {
 
   const currentGradeCoursesArray = Object.values(selectedCourses).map(course => {
     const chosenLevel = course.selectedLevel || (course.levels ? course.levels[0] : null);
-    
+
     let singleTargetNumber = "—";
     if (chosenLevel && course.courseNumbers?.[chosenLevel]) {
       singleTargetNumber = course.courseNumbers[chosenLevel].join(", ");
     } else if (course.courseNumbers) {
       singleTargetNumber = Object.values(course.courseNumbers).flat().join(", ");
     }
-    
+
     return {
       name: course.name,
       level: chosenLevel || "N/A",
@@ -72,6 +72,13 @@ function saveSelections() {
 
   timeline.sort((a, b) => a.year - b.year);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(timeline));
+  console.log("Reached switch");
+  console.log("Current grade:", currentGrade);
+  console.log(
+    "verifyGrade9FromStorage:",
+    typeof verifyGrade9FromStorage
+  );
+  callVerification();
 }
 
 function loadSelections() {
@@ -94,7 +101,7 @@ function loadSelections() {
       const fullCourseData = coursesData.find(c => c.name === savedCourse.name);
       if (fullCourseData) {
         const hydratedCourse = JSON.parse(JSON.stringify(fullCourseData));
-        
+
         if (hydratedCourse.levels && hydratedCourse.levels.includes(savedCourse.level)) {
           hydratedCourse.selectedLevel = savedCourse.level;
         } else if (hydratedCourse.levels && hydratedCourse.courseNumbers) {
@@ -106,7 +113,7 @@ function loadSelections() {
             }
           }
         }
-        
+
         selectedCourses[hydratedCourse.name] = hydratedCourse;
       }
     });
@@ -214,11 +221,11 @@ function renderCourses() {
 
       const infoBtn = document.createElement("button");
       infoBtn.className = "course-info-btn";
-      infoBtn.innerHTML = "&#9432;"; 
+      infoBtn.innerHTML = "&#9432;";
       infoBtn.title = "View Course Info";
-      
+
       infoBtn.onclick = (e) => {
-        e.stopPropagation(); 
+        e.stopPropagation();
         showCoursePopup(course);
       };
 
@@ -286,7 +293,7 @@ function renderCourses() {
   mainElectivesContainer.style.marginTop = "10px";
 
   // --- STRICT ORDERED ELECTIVE GENERATION ---
-  
+
   // 1. English Electives
   appendDropdownSection(mainElectivesContainer, "English Electives", englishElectiveCourses);
 
@@ -389,16 +396,16 @@ function showCoursePopup(course) {
     try {
       // Split description cleanly into individual lines
       const lines = course.description.split('\n');
-      
+
       // We will look for the index of the last header line
       let lastHeaderIndex = -1;
 
       // Scanning the first 6 lines where headers live to find the last cutoff line
       const linesToScan = Math.min(lines.length, 10);
-      
+
       for (let i = 0; i < linesToScan; i++) {
         const lineClean = lines[i].trim();
-        
+
         // Check for any signature traits of a metadata header line
         const hasPrereqKeyword = lineClean.toLowerCase().includes("prerequisite");
         const hasAdminApproval = lineClean.toLowerCase().includes("administrative approval");
@@ -414,7 +421,7 @@ function showCoursePopup(course) {
       // If we found headers, slice the array starting immediately AFTER the last header line
       if (lastHeaderIndex !== -1 && lastHeaderIndex < lines.length - 1) {
         let bodyLines = lines.slice(lastHeaderIndex + 1);
-        
+
         // Remove empty placeholder spacing gaps at the beginning of our sliced body text
         while (bodyLines.length > 0 && bodyLines[0].trim() === "") {
           bodyLines.shift();
@@ -490,7 +497,7 @@ function updateTable() {
   sortedEntries.forEach(([courseName, course]) => {
     const levels = course.levels || [];
     const credits = parseFloat(course.credit) || 0;
-    
+
     const currentLevel = course.selectedLevel || levels[0] || null;
 
     const defaultNumbers = currentLevel
@@ -583,6 +590,7 @@ document.getElementById("clear-btn").onclick = () => {
     .forEach(btn => btn.classList.remove("selected"));
 
   updateTable();
+  callVerification();
 };
 
 // --- FORCE ACCESSIBLE DARK THEME OVERRIDE ON THE WHOLE PAGE ---
@@ -696,4 +704,88 @@ if (typeof loadCourses === "function") {
   loadCourses(renderCourses);
 } else {
   renderCourses();
+}
+callVerification();
+
+function callVerification() {
+  switch (getCurrentGrade()) {
+
+    case 9:
+      if (typeof verifyGrade9FromStorage === "function") {
+        const result = verifyGrade9FromStorage();
+
+        if (!result.valid) {
+
+          showRequirementAlert(
+            "Grade 9 Requirements Missing",
+            result.errors
+          );
+        }
+        else {
+
+          hideRequirementAlert();
+        }
+      }
+      break;
+
+    case 10:
+      if (typeof verifyGrade10FromStorage === "function") {
+
+        const result =
+          verifyGrade10FromStorage();
+
+        if (!result.valid) {
+
+          showRequirementAlert(
+            "Grade 10 Requirements Missing",
+            result.errors
+          );
+        }
+        else {
+
+          hideRequirementAlert();
+        }
+      }
+      break;
+
+    case 11:
+      if (typeof verifyGrade11FromStorage === "function") {
+
+        const result =
+          verifyGrade11FromStorage();
+
+        if (!result.valid) {
+
+          showRequirementAlert(
+            "Grade 11 Requirements Missing",
+            result.errors
+          );
+        }
+        else {
+
+          hideRequirementAlert();
+        }
+      }
+      break;
+
+    case 12:
+      if (typeof verifyGrade12FromStorage === "function") {
+
+        const result =
+          verifyGrade12FromStorage();
+
+        if (!result.valid) {
+
+          showRequirementAlert(
+            "Grade 12 Requirements Missing",
+            result.errors
+          );
+        }
+        else {
+
+          hideRequirementAlert();
+        }
+      }
+      break;
+  }
 }
