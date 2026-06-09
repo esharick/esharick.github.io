@@ -6,31 +6,93 @@
     <title>Home Page</title>
 
     <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            background-color: #121212; /* Matches your --bg variable */
+            color: #e0e0e0; /* Matches your --text variable */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Alert box styling for your JS function */
+        #graduationAlert {
+            display: none;
+            background-color: #721c24;
+            color: #f8d7da;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 5px;
+            border: 1px solid #f5c6cb;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 
 <body>
     <div id="navbar"></div>
 
     <div id="banner-container">
-        <img src="banner.jpg" alt="Tredyffrin / Easttown School District Banner" id="homepage-banner">
+        <img src="banner.png" alt="Tredyffrin / Easttown School District Banner" id="homepage-banner">
     </div>
+
+    <div id="graduationAlert"></div>
+
     <div id="instructions-container">
         <div id="instructions-header">
             <h2>How to Use This Website</h2>
         </div>
         <div id="instructions-body">
-            <p>Welcome to Conestoga Scheuduling. Please follow the steps below to get started:</p>
+            <p>Welcome to Conestoga Scheduling Page. Please follow the steps below to get started:</p>
             <ul>
-                <li><strong>Navigation:</strong> Use the navigation bar at the top to browse main sections (loaded via nav.js).</li>
-                <li><strong>Course Explorer:</strong> Click on "Courses" (if available in the navbar) to view our curriculum catalog and explore learning opportunities (loaded via courses.js).</li>
-                <li><strong>Search:</strong> Use any available search tools to find specific courses or district content.</li>
-                <li><strong>Account:</strong> Log in using your credentials (if applicable) for personalized content and tools.</li>
-            </ul>
-            <p>If you encounter any issues, please check our FAQ section or contact IT support.</p>
+                        <ul>
+            <li><strong>Navigation:</strong> Use the top menu bar to browse the main sections.</li>
+            <li><strong>Program of Studies:</strong> Click here to view the curriculum catalog and explore your learning opportunities.</li>
+            <li><strong>Course Selection:</strong> Select your grade level to view available courses. Ensure your choices meet all graduation requirements.</li>
+            <li><strong>View Schedule:</strong> Check this page to review your complete list of selected courses.</li>
+            <li><strong>Export to PowerSchool:</strong> Once you are satisfied with your schedule, click "Export" to send your selections directly to PowerSchool.</li>
+        </ul>
+        <p>If you have any questions, please contact your guidance counselor.</p>
         </div>
     </div>
+
+    <div id="requirements-container">
+        <div id="requirements-header">
+            <h2>Graduation Requirements</h2>
+        </div>
+        <div id="requirements-body">
+            <p>To graduate, students must successfully complete a minimum of <strong>24 total credits</strong>, including the following specific credit requirements:</p>
+            
+            <ul>
+                <li><strong>English:</strong> 4 Credits</li>
+                <li><strong>Math:</strong> 3 Credits</li>
+                <li><strong>Science:</strong> 3 Credits</li>
+                <li><strong>Social Studies:</strong> 3 Credits</li>
+                <li><strong>World Language:</strong> 2 Credits</li>
+                <li><strong>Electives:</strong> 4.5 Credits</li>
+            </ul>
+
+            <p>In addition to the credits above, your schedule must also include at least one course from each of the following categories:</p>
+            <ul>
+                <li><strong>Business or Technology</strong> (BU/TE/BT)</li>
+                <li><strong>Family and Consumer Sciences</strong> (FC)</li>
+                <li><strong>Visual & Performing Arts</strong> (VP)</li>
+                <li><strong>College Career Transition</strong> (CT)</li>
+            </ul>
+
+            <h3>Promotion Requirements</h3>
+            <ul>
+                <li><strong>Grade 9 to 10:</strong> Students must have passed at least four major courses and earned at least 5.5 credits.</li>
+                <li><strong>Grade 10 to 11:</strong> Students must have earned at least 11.0 credits.</li>
+                <li><strong>Grade 11 to 12:</strong> Students must have earned at least 17.0 credits. However, final decisions on promotion to grade 12 may be based on whether the student can be scheduled during the regular school day for the courses needed for a June graduation.</li>
+            </ul>
+        </div>
+    </div>
+
     <script src="/js/nav.js"></script>
     <script src="/js/courses.js"></script>
+    <script src="/js/audit.js"></script> 
 </body>
 
 </html>
