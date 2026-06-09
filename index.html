@@ -8,36 +8,11 @@
     <link rel="stylesheet" href="/css/styles.css">
     <style>
         body {
-            background-color: #161616;
-            color: white;
+            background-color: #121212; /* Matches your --bg variable */
+            color: #e0e0e0; /* Matches your --text variable */
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
-        }
-
-        #banner-container {
-            width: 100%;
-            margin-top: 0px;
-            padding: 0;
-        }
-
-        #homepage-banner {
-            display: block;
-            width: auto;
-            height: auto;
-            max-width: 100%;
-            margin: 0;
-        }
-
-        /* Shared styling for both boxes */
-        .content-container {
-            background-color: #222222; /* Slightly lighter than body for contrast */
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px;
-            box-sizing: border-box;
-            width: calc(100% - 40px);
-            border: 1px solid #333;
+            font-family: Arial, sans-serif;
         }
 
         /* Alert box styling for your JS function */
@@ -46,10 +21,10 @@
             background-color: #721c24;
             color: #f8d7da;
             padding: 15px;
-            margin: 20px;
+            margin: 20px auto;
+            max-width: 800px;
             border-radius: 5px;
             border: 1px solid #f5c6cb;
-            width: calc(100% - 40px);
             box-sizing: border-box;
         }
     </style>
@@ -64,7 +39,7 @@
 
     <div id="graduationAlert"></div>
 
-    <div id="instructions-container" class="content-container">
+    <div id="instructions-container">
         <div id="instructions-header">
             <h2>How to Use This Website</h2>
         </div>
@@ -80,7 +55,7 @@
         </div>
     </div>
 
-    <div id="requirements-container" class="content-container">
+    <div id="requirements-container">
         <div id="requirements-header">
             <h2>Graduation Requirements</h2>
         </div>
@@ -98,10 +73,10 @@
 
             <p>In addition to the credits above, your schedule must also include at least one course from each of the following categories:</p>
             <ul>
-                <li>Business or Technology (BU/TE/BT)</li>
-                <li>Family and Consumer Sciences (FC)</li>
-                <li>Visual & Performing Arts (VP)</li>
-                <li>College Career Transition (CT)</li>
+                <li><strong>Business or Technology</strong> (BU/TE/BT)</li>
+                <li><strong>Family and Consumer Sciences</strong> (FC)</li>
+                <li><strong>Visual & Performing Arts</strong> (VP)</li>
+                <li><strong>College Career Transition</strong> (CT)</li>
             </ul>
 
             <h3>Promotion Requirements</h3>
