@@ -1,29 +1,52 @@
 // Global filter states - initialized to null so ALL courses show on first load
 let selectedGrade = null; 
 let selectedSubject = null; 
+let searchQuery = ""; //actively searches for desired course
 
 /**
  * Mapping Dictionary: Maps the production 'category' abbreviations found inside your JSON 
  * directly to your official, student-facing UI department headers.
  */
 const tagToSubjectMap = {
-  "EN": "English/Communications",
-  "MA": "Math",
-  "TE": "Tech/Engineering",
-  "CC": "Co-Curricular",
-  "EL": "Elective",
+  "EN": "English",
   "SS": "Social Studies", 
+  "MA": "Math",
   "SC": "Science",                  
   "WL": "World Languages",
   "PE": "Wellness/Fitness",
-  "FC": "FCS",                       
-  "VP": "Visual and Performing Arts", 
+  "ENE": "English Electives",
+  "SSE": "Social Studies Electives",
+  "TE": "Tech/Engineering",
   "BU": "Business",                  
+  "FC": "FCS",                       
   "CAP": "AP Capstone",
-  "CT": "College and Career Transition",
-  "IL": "Individual Learning",
-  "ELD": "English Language Development"
+  "HS": "Highway safety",
+  "VP": "Visual and Performing Arts", 
+  "IL": "Individualized Learning",
+  "ELD": "English Language Development",
+  "CC": "Co-Curricular",
+  "EL": "Elective"
 };
+
+// Define the precise order of subjects across the entire application
+const subjectsOrder = [
+  "English",
+  "Social Studies",
+  "Math",
+  "Science",
+  "World Languages",
+  "Wellness/Fitness",
+  "English Electives",
+  "Social Studies Electives",
+  "Tech/Engineering",
+  "Business",
+  "FCS",
+  "AP Capstone",
+  "Highway safety",
+  "Visual and Performing Arts",
+  "Individualized Learning",
+  "English Language Development (ELD)"
+];
 
 // Initialize app when loadCourses finishes fetching your JSON array
 function initCourseSelector() {
@@ -52,26 +75,8 @@ function renderFilterInterface() {
     </button>
   `).join("");
 
-  // Your exact 13 big subject categories
-  const subjects = [
-    "English",
-    "Social Studies",
-    "Math",
-    "Science",
-    "World Languages",
-    "Wellness/Fitness",
-    "Communications",
-    "Visual and Performing Arts",
-    "AP Capstone",
-    "FCS",
-    "Business",
-    "Tech/Engineering",
-    "Individualized Learning",
-  ];
-
-
-  // Generate Subject Filter Buttons Grid
-  const subjectButtonsHTML = subjects.map(s => `
+  // Generate Subject Filter Buttons Grid using the precise order array
+  const subjectButtonsHTML = subjectsOrder.map(s => `
     <button class="filter-btn subj-btn ${selectedSubject === s ? 'active' : ''}" 
             onclick="updateSubjectFilter('${s}')">
       ${s}
@@ -84,13 +89,18 @@ function renderFilterInterface() {
     : `<span class="all-indicator">Showing All Available Courses</span>`;
 
   filterContainer.innerHTML = `
-    <div class="filter-row">
+   <div class="filter-row" style="position: relative;">
       <div class="filter-group">
-        <div class="filter-header-row">
-          <span class="filter-label">Select Grade:</span>
-          ${clearBtnHTML}
+        <div class="filter-header-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <span class="filter-label">Select Grade:</span>
+            ${clearBtnHTML}
+          </div>
+          <div class="search-wrapper" style="margin-left: auto;">
+            <input type="text" id="course-search-bar" placeholder="Search courses..." value="${searchQuery}" oninput="updateSearchFilter(this.value)" style="padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; width: 220px; font-size: 14px;" />
+          </div>
         </div>
-        <div class="btn-group">${gradeButtonsHTML}</div>
+        <div class="btn-group" style="margin-top: 8px;">${gradeButtonsHTML}</div>
       </div>
       <div class="filter-group">
         <span class="filter-label">Select Subject:</span>
@@ -98,6 +108,11 @@ function renderFilterInterface() {
       </div>
     </div>
   `;
+}
+
+function updateSearchFilter(value){
+  searchQuery = value;
+  filterAndDisplayCourses();
 }
 
 // Interactive handlers toggle states off if clicked a second time
@@ -117,6 +132,7 @@ function updateSubjectFilter(subject) {
 function resetFilters() {
   selectedGrade = null;
   selectedSubject = null;
+  //searchQuery = "";
   renderFilterInterface();
   filterAndDisplayCourses();
 }
@@ -129,30 +145,36 @@ function getCourseSubject(course) {
   let c = course.category;
   if (!c || !Array.isArray(c) || c.length === 0) return "Other";
   
-  // 1. ELECTIVE SPLITS (Check these first so they don't get swallowed by core categories)
-  if (c.includes("MA") && !c.includes("EL")) return "Math";
-  if (c.includes("EN") && !c.includes("EL")) return "English";
-  if (c.includes("TE")) return "Tech/Engineering";
-  if (c.includes("VP") && c.includes("EL")) return "Visual and Performing Arts";
-  if (c.includes("FC") && c.includes ("EL")) return "FCS"; 
-  if (c.includes("SC") && !c.includes("EL")) return "Science";
-  if (c.includes("BU") && c.includes("EL")) return "Business";
+  // 1. ELECTIVE SPLITS (Intercepting elective combinations specifically)
+  if (c.includes("EN") && c.includes("EL")) return "English Electives";
+  if (c.includes("SS") && c.includes("EL")) return "Social Studies Electives";  
+  if (c.includes("MA") && c.includes("EL")) return "Math Elective"; // keeping fallback structural safety
   if (c.includes("SC") && c.includes("EL")) return "Science Elective";
-  if (c.includes("MA") && c.includes("EL")) return "Math Elective";
-  if (c.includes("EN") && c.includes("EL")) return "Communications";
-  if (c.includes("SS") && c.includes("EL")) return "Social Studies Elective";  
+
+  // 2. CORE CATEGORIES (Non-electives)
+  if (c.includes("EN")) return "English";
   if (c.includes("SS")) return "Social Studies";
-  
+  if (c.includes("MA")) return "Math";
+  if (c.includes("SC")) return "Science";
+
   // 3. DEPARTMENTAL & SPECIAL TRACKS
   if (c.includes("WL")) return "World Languages";
   if (c.includes("PE")) return "Wellness/Fitness";
+  if (c.includes("TE")) return "Tech/Engineering";
+  if (c.includes("BU")) return "Business";
+  if (c.includes("FC")) return "FCS"; 
   if (c.includes("CAP") || c.includes("AP")) return "AP Capstone";
-  if (c.includes("CC")) return "Co-curricular";
+  if (c.includes("HS")) return "Highway safety";
+  if (c.includes("VP")) return "Visual and Performing Arts";
   if (c.includes("IL")) return "Individualized Learning";
+  if (c.includes("ELD")) return "English Language Development (ELD)";
+  if (c.includes("CC")) return "Co-curricular";
 
   // Fallback dictionary loop lookup if none of the above matched
   for (let catTag of c) {
     if (tagToSubjectMap[catTag]) {
+      // Map ELD shorttag to its full title safely
+      if (catTag === "ELD") return "English Language Development (ELD)";
       return tagToSubjectMap[catTag];
     }
   }
@@ -178,7 +200,14 @@ function filterAndDisplayCourses() {
     if (selectedSubject !== null) {
       matchesSubject = (getCourseSubject(course) === selectedSubject);
     }
-    return matchesGrade && matchesSubject;
+
+    let matchesSearch = true;
+    if(searchQuery.trim() !== ""){
+      const normalizedCourseName = (course.name || "").toLowerCase();
+      const normalizedSearchQuery = searchQuery.toLowerCase().trim();
+      matchesSearch = normalizedCourseName.includes(normalizedSearchQuery);
+    }
+    return matchesGrade && matchesSubject && matchesSearch;
   });
 
   const coursesElement = document.getElementById("courses");
@@ -203,23 +232,17 @@ function filterAndDisplayCourses() {
     groupedCourses[subjectGroup].push(course);
   });
 
-  // Sort groups by the order of that list:   
-  const subjects = [
-    "English",
-    "Social Studies",
-    "Math",
-    "Science",
-    "World Languages",
-    "Wellness/Fitness",
-    "Communications",
-    "Visual and Performing Arts",
-    "AP Capstone",
-    "FCS",
-    "Business",
-    "Tech/Engineering",
-    "Individualized Learning",
-  ];
-  const subjectGroups = Object.keys(groupedCourses);
+  // Extract keys and sort them based on your strict array order index
+  const subjectGroups = Object.keys(groupedCourses).sort((a, b) => {
+    let indexA = subjectsOrder.indexOf(a);
+    let indexB = subjectsOrder.indexOf(b);
+    
+    // Fallback if custom group isn't defined in index array
+    if (indexA === -1) indexA = 999;
+    if (indexB === -1) indexB = 999;
+    
+    return indexA - indexB;
+  });
 
   // 3. RENDER CONTENT: Generate structures sorted alphabetically
   let finalHTML = "";
@@ -251,8 +274,6 @@ function filterAndDisplayCourses() {
         remainingDescText = "";
       }
 
-      // Term, Credit, Prerequisites, and Course Number HTML rows completely removed.
-      // Content drops straight into the description header and block wrapper.
       return `
         <details class="course-card">
           <summary class="course-summary-header">
