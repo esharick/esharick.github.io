@@ -1,0 +1,179 @@
+/* ==========================================================================
+   scheduleViewer.css
+   Schedule viewer — grade sections, tables, and graduation alert.
+   Requires: common.css
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Page Wrapper
+   ========================================================================== */
+   #scheduleViewerPage {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+}
+
+#scheduleViewerPage h1 {
+    text-align: center;
+    margin-bottom: 40px;
+
+}
+
+
+/* ==========================================================================
+   2. Grade Sections
+   ========================================================================== */
+#scheduleViewerPage .grade-section {
+    margin-bottom: 40px;
+}
+
+#scheduleViewerPage .grade-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--primary);
+
+}
+
+
+/* ==========================================================================
+   3. Schedule Tables
+   ========================================================================== */
+#scheduleViewerPage table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#scheduleViewerPage th,
+#scheduleViewerPage td {
+    border: 1px solid black;
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+#scheduleViewerPage th {
+    background-color: #f0f0f0;
+    text-align: left;
+}
+
+/* Course Number column */
+#scheduleViewerPage td:nth-child(2),
+#scheduleViewerPage th:nth-child(2) {
+    width: 160px;
+    text-align: center;
+}
+
+/* Credits column */
+#scheduleViewerPage td:nth-child(3),
+#scheduleViewerPage th:nth-child(3) {
+    width: 120px;
+    text-align: center;
+}
+
+#scheduleViewerPage .total-row {
+    font-weight: bold;
+}
+
+
+/* ==========================================================================
+   4. Graduation Alert (fixed, draggable, minimizable)
+   ========================================================================== */
+#graduationAlert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: min(450px, 90vw);
+    max-height: calc(100vh - 40px);
+    background: #d32f2f;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 9999;
+}
+
+#alertHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 15px;
+    background: rgba(0, 0, 0, 0.15);
+    cursor: move;
+    user-select: none;
+}
+
+#alertTitle {
+    flex-grow: 1;
+    font-size: 20px;
+    font-weight: bold;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+#minimizeAlertBtn {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#alertBody {
+    padding: 15px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+#alertBody ul {
+    margin: 0;
+    padding-left: 24px;
+    width: 100%;
+}
+
+#alertBody li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+#graduationAlert.minimized {
+    width: 250px;
+}
+
+#graduationAlert.minimized #alertBody {
+    display: none;
+}
+
+
+/* ==========================================================================
+   5. Print Overrides
+   ========================================================================== */
+@media print {
+    #navbar,
+    .print-button-container,
+    #graduationAlert,
+    #scheduleViewerPage h1 {
+        display: none !important;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .grade-section {
+        page-break-after: always;
+        break-after: page;
+    }
+
+    .grade-section:last-child {
+        page-break-after: auto;
+        break-after: auto;
+    }
+}

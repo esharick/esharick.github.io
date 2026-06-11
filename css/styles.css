@@ -1,96 +1,47 @@
 /* ==========================================================================
-   CSS Variables (Color Theme & Settings)
+   styles.css
+   Homepage & Course Explorer (button-grid card style).
+   Requires: common.css
    ========================================================================== */
-:root {
-    --bg: #121212;
-    --surface: #1e1e1e;
-    --primary: #4cafef;
-    --text: #e0e0e0;
-    --muted: #888;
-    --button: #2a2a2a;
-    --border: #333;
-}
+
 
 /* ==========================================================================
-   Global Styles
+   1. Homepage Layout — Banner
    ========================================================================== */
-body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: system-ui, -apple-system, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    padding: 20px;
-}
-
-h1, h2 {
-    margin-bottom: 10px;
-}
-
-/* ==========================================================================
-   Navigation Bar
-   ========================================================================== */
-nav {
-    background-color: #333;
-    padding: 10px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-    font-size: 16px;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-nav a.active {
-    font-weight: bold;
-    color: var(--primary); 
-}
-
-/* ==========================================================================
-   Homepage Layout (Banner & Content Boxes)
-   ========================================================================== */
-#banner-container {
+   #banner-container {
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    box-sizing: border-box;
 }
 
 #homepage-banner {
-    max-width: 100%;
+    width: 33%;
     height: auto;
     display: block;
-    margin: 0 auto;
-    margin-left: 15px; 
+    margin: 0;
 }
 
-/* Shared styles for both the Instructions and Requirements boxes */
+
+/* ==========================================================================
+   2. Homepage Layout — Instructions & Requirements Boxes
+   ========================================================================== */
 #instructions-container,
 #requirements-container {
-    width: 95%; /* Allows the boxes to span most of the page */
-    max-width: 1400px; /* Prevents them from getting too stretched on ultra-wide monitors */
-    margin: 40px auto; 
+    width: 95%;
+    max-width: 1400px;
+    margin: 40px auto;
     padding: 25px;
-    background-color: var(--surface); 
+    background-color: var(--surface);
     border: 1px solid var(--border);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     color: var(--text);
     line-height: 1.6;
-    box-sizing: border-box;
 }
 
 #instructions-header h2,
 #requirements-header h2 {
-    color: var(--primary); 
+    color: var(--primary);
     border-bottom: 2px solid var(--primary);
     padding-bottom: 10px;
     margin-top: 0;
@@ -118,11 +69,12 @@ nav a.active {
 
 #instructions-body strong,
 #requirements-body strong {
-    color: var(--primary); 
+    color: var(--primary);
 }
 
+
 /* ==========================================================================
-   Alerts & Notifications
+   3. Alerts & Notifications
    ========================================================================== */
 #graduationAlert {
     display: none;
@@ -130,8 +82,7 @@ nav a.active {
     color: #f8d7da;
     padding: 15px;
     margin: 20px auto;
-    width: 95%;
-    max-width: 1400px;
+    max-width: 800px;
     border-radius: 5px;
     border: 1px solid #f5c6cb;
     box-sizing: border-box;
@@ -146,7 +97,7 @@ nav a.active {
     color: white;
     padding: 18px;
     border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
     display: none;
     z-index: 9999;
 }
@@ -165,11 +116,12 @@ nav a.active {
     margin-bottom: 6px;
 }
 
+
 /* ==========================================================================
-   Course Explorer - Main Layout & Filter Controls
+   4. Course Explorer — Container & Subject Sections
    ========================================================================== */
 #courses {
-    max-width: 1400px; /* Increased to match the home boxes */
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 1.5rem 3rem 1.5rem;
     display: flex;
@@ -177,101 +129,6 @@ nav a.active {
     gap: 1.5rem;
 }
 
-#filter-controls {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.filter-row {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.filter-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.filter-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.btn-group {
-    display: flex;
-    gap: 0.4rem;
-}
-
-.filter-btn {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-}
-
-.filter-btn:hover {
-    background: #333;
-    border-color: #555;
-    color: white;
-}
-
-.grade-btn.active {
-    background-color: #333333;
-    color: #ffffff;
-    border-color: #333333;
-}
-
-.subj-btn.active {
-    background-color: #2563eb;
-    color: #ffffff;
-    border-color: #2563eb;
-}
-
-.clear-filters-btn {
-    background: #4a1c1c; 
-    border: 1px solid #721c24;
-    color: #ff6b6b;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.clear-filters-btn:hover {
-    background: #721c24;
-}
-
-.all-indicator {
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-style: italic;
-}
-
-/* ==========================================================================
-   Course Display Components (Buttons & Subjects)
-   ========================================================================== */
 .subject-section {
     padding: 20px 0;
     border-bottom: 1px solid var(--border);
@@ -294,9 +151,13 @@ nav a.active {
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem;
-    max-width: 100%; /* Adjusted to scale with the new wider container */
+    max-width: 100%;
 }
 
+
+/* ==========================================================================
+   5. Course Explorer — Button-Grid Cards
+   ========================================================================== */
 .course-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -322,15 +183,15 @@ nav a.active {
     color: #000000;
     font-weight: bold;
     border-color: var(--primary);
-    box-shadow: 0 0 8px rgba(76, 175, 239, 0.4); 
+    box-shadow: 0 0 8px rgba(76, 175, 239, 0.4);
 }
 
 .course-buttons button.selected:hover {
-    background-color: #3aa3de; 
+    background-color: #3aa3de;
     cursor: default;
 }
 
-/* Native Dropdown Layout Components */
+/* Native dropdown accordion within subject sections */
 details summary.subject-label {
     display: list-item;
     outline: none;
@@ -338,29 +199,30 @@ details summary.subject-label {
 }
 
 details summary.subject-label::-webkit-details-marker {
-    color: var(--primary); 
+    color: var(--primary);
 }
 
 details[open] > summary.subject-label {
     margin-bottom: 8px;
 }
 
+
 /* ==========================================================================
-   Dynamic Course Cards
+   6. Course Cards (expanded detail view)
    ========================================================================== */
 .course-card {
-    background: #ffffff; 
+    background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     display: flex;
     gap: 24px;
     padding: 1.5rem;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-    color: #334155; 
+    color: #334155;
 }
 
 .course-main {
-    flex: 3; 
+    flex: 3;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -419,30 +281,6 @@ details[open] > summary.subject-label {
     overflow-y: auto;
 }
 
-/* Course Badges & Meta Elements */
-.meta-badges {
-    display: flex;
-    gap: 0.35rem;
-    flex-wrap: wrap;
-}
-
-.badge {
-    display: inline-block;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    border-radius: 4px;
-}
-
-.level-H { background: #dbeafe; color: #1e40af; }
-.level-X { background: #fef3c7; color: #92400e; }
-.level-A { background: #e2e8f0; color: #334155; }
-.level-AP { background: #f3e8ff; color: #6b21a8; }
-.level-none { background: #f1f5f9; color: #64748b; }
-
-.grade-pill { background: #e2e8f0; color: #475569; }
-.category-pill { background: #e0f2fe; color: #0369a1; }
-
 .prereq-alert {
     background: #fffbeb;
     border-left: 3px solid #f59e0b;
@@ -470,23 +308,12 @@ details[open] > summary.subject-label {
     border-radius: 3px;
 }
 
-.no-courses-alert {
-    background: var(--surface);
-    border: 2px dashed var(--border);
-    border-radius: 8px;
-    padding: 4rem 2rem;
-    text-align: center;
-    color: var(--muted);
-    font-weight: 500;
-    font-size: 1.1rem;
-}
-
-/* Responsive Adjustments for Course Cards */
 @media (max-width: 768px) {
     .course-card {
         flex-direction: column;
         gap: 16px;
     }
+
     .course-sidebar {
         border-left: none;
         border-top: 1px solid #e2e8f0;
@@ -495,8 +322,9 @@ details[open] > summary.subject-label {
     }
 }
 
+
 /* ==========================================================================
-   Tables & Legacy Parsing Display
+   7. Legacy Parsing Display
    ========================================================================== */
 .course {
     display: flex;
@@ -519,74 +347,9 @@ details[open] > summary.subject-label {
     border-radius: 6px;
 }
 
-pre {
-    white-space: pre-wrap;
-    font-size: 13px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    background: var(--surface);
-}
-
-th, td {
-    border: 1px solid var(--border);
-    padding: 10px;
-}
-
-th {
-    background-color: var(--button) !important;
-    color: var(--text) !important;
-    text-align: left;
-}
-
-td:last-child, th:last-child {
-    width: 120px;
-    text-align: center;
-}
 
 /* ==========================================================================
-   Action & Print Buttons
-   ========================================================================== */
-.actions {
-    margin-top: 15px;
-    display: flex;
-    gap: 10px;
-}
-
-.actions button {
-    padding: 10px 14px;
-    border: none;
-    background: var(--primary);
-    color: black;
-    cursor: pointer;
-    border-radius: 6px;
-}
-
-.print-button-container {
-    margin-top: 30px;
-    text-align: center;
-}
-
-#printButton {
-    padding: 10px 18px;
-    background-color: var(--button);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-#printButton:hover {
-    background-color: var(--primary);
-    color: black;
-}
-
-/* ==========================================================================
-   Floating Modal (Course Detail Popup)
+   8. Floating Course Detail Modal
    ========================================================================== */
 #course-modal-overlay {
     position: fixed;
@@ -594,11 +357,11 @@ td:last-child, th:last-child {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.75); 
+    background-color: rgba(0, 0, 0, 0.75);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; 
+    z-index: 9999;
 }
 
 .course-modal-content {
@@ -610,7 +373,7 @@ td:last-child, th:last-child {
     padding: 24px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     max-height: 80vh;
-    overflow-y: auto; 
+    overflow-y: auto;
 }
 
 .modal-header {
@@ -660,38 +423,4 @@ td:last-child, th:last-child {
     font-size: 14px;
     line-height: 1.6;
     color: var(--text);
-}
-
-/* ==========================================================================
-   Print Styles
-   ========================================================================== */
-@media print {
-    body {
-        background: white;
-        color: black;
-    }
-
-    table {
-        background: white;
-    }
-
-    th {
-        background: #e0e0e0 !important;
-        color: black !important;
-    }
-
-    td {
-        color: black;
-    }
-
-    nav,
-    #navbar,
-    .print-button-container {
-        display: none;
-    }
-
-    @page {
-        size: landscape;
-        margin: 0.5in;
-    }
 }

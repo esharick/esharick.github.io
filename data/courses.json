@@ -373,7 +373,7 @@
       "description": "News Editors’ Seminar (The Spoke)**\nGrades 10, 11, 12 Year .5 credit\n0415 EL\nExperienced staff members of The Spoke may apply for editorial and management positions on the following year’s Editorial Board, which oversees the production of The Spoke. These leaders are required to schedule News Editors’ Seminar in addition to Newspaper. Prior to the close of the course selection period, applicants will be notified by the advisor whether they have been selected. The signature of the newspaper advisor is required on the Course Selection Card."
     },
     {
-      "name": "Literary and Art Magazine",
+      "name": "Literary and Art Magazine (The Folio)**",
       "levels": [],
       "term": "Y",
       "credit": "0.5",
@@ -648,7 +648,7 @@
         ]
       },
       "prerequisites": "Geometry",
-      "description": "Algebra 2\n2050 (H*) MA (Pre-BC Calculus)\nGrades 9, 10 Year 1 credit\n2150 (H) MA (Pre-AB Calculus)\nGrades 9, 10, 11 Year 1 credit\n2051 (X) MA Grades 10, 11, 12 Year 1 credit\n2052 (A) MA Grades 11, 12 Year 1 credit\nPrerequisite: Geometry\nAll of the traditional topics will be addressed in these Algebra 2 courses. This course extends the concepts learned in Algebra 1 to include the complex number system and functional notation. Topics include, but are not limited to, real numbers and expressions, linear equations and systems, matrices, functions, quadratic equations and functions, advanced factoring skills, polynomials, rational functions, exponential and logarithmic functions, conic sections, sequences and series, periodic functions and trigonometry and trigonometric identities and equations. The rigor and scope of the material covered will vary with the level of the course. \n\nAcademic (A) and Accelerated (X) Algebra 2 are college preparatory classes for students who wish to continue their formal study of Algebra in preparation for subsequent studies in Math Analysis or Trigonometry. \n\nHonors (Pre-AB Calculus) is a college preparatory class for students who wish to continue their mathematical studies in Math Analysis (AB) and then AP Calculus AB. The course is rigorous and the depth of the topics is extensive in preparation for continued studies at the Honors Math Analysis AB level. \n\nHonors (Pre-BC Calculus) is a college preparatory class for students who wish to continue their mathematics studies in Math Analysis (BC) and then AP Calculus BC. This course is part of a compacted curriculum in which Algebra 2, Math Analysis, AP Calculus AB, and AP Calculus BC are taught over the course of three years as opposed to a traditional pathway in which these courses would be taught over four years. The pace of this course requires strong motivation along with strong work and study habits. In addition, students will be expected to acquire and process new information rapidly while at the same time have strong foundational skills in which they will be asked to apply without needing review"
+      "description": "Algebra 2\n2050 (H*) MA (Pre-BC Calculus)\nGrades 9, 10 Year 1 credit\n2150 (H) MA (Pre-AB Calculus)\nGrades 9, 10, 11 Year 1 credit\n2051 (X) MA Grades 10, 11, 12 Year 1 credit\n2052 (A) MA Grades 11, 12 Year 1 credit\nPrerequisite: Geometry\nAll of the traditional topics will be addressed in these Algebra 2 courses. This course extends the concepts learned in Algebra 1 to include the complex number system and functional notation. Topics include, but are not limited to, real numbers and expressions, linear equations and systems, matrices, functions, quadratic equations and functions, advanced factoring skills, polynomials, rational functions, exponential and logarithmic functions, conic sections, sequences and series, periodic functions and trigonometry and trigonometric identities and equations. The rigor and scope of the material covered will vary with the level of the course. \n\nAcademic (A) and Accelerated (X) Algebra 2 are college preparatory classes for students who wish to continue their formal study of Algebra in preparation for subsequent studies in Math Analysis or Trigonometry. \n\nHonors (Pre-AB Calculus) is a college preparatory class for students who wish to continue their mathematical studies in Math Analysis (AB) and then AP Calculus AB. The course is rigorous and the depth of the topics is extensive in preparation for continued studies at the Honors Math Analysis AB level. \n\nHonors* (Pre-BC Calculus) is a college preparatory class for students who wish to continue their mathematics studies in Math Analysis (BC) and then AP Calculus BC. This course is part of a compacted curriculum in which Algebra 2, Math Analysis, AP Calculus AB, and AP Calculus BC are taught over the course of three years as opposed to a traditional pathway in which these courses would be taught over four years. The pace of this course requires strong motivation along with strong work and study habits. In addition, students will be expected to acquire and process new information rapidly while at the same time have strong foundational skills in which they will be asked to apply without needing review"
     },
     {
       "name": "Math Analysis",
@@ -680,7 +680,7 @@
         ]
       },
       "prerequisites": "Algebra 2",
-      "description": "Math Analysis\n2100 (H*) MA (Pre-BC Calculus)\nGrades 9, 10, 11 Year 1 credit\n2110 (H) MA (Pre-AB Calculus)\nGrades 9, 10, 11 Year 1 credit\n2111 (X) MA (Pre-Calculus)\nGrades 11, 12 Year 1 credit\nPrerequisite: Algebra 2\nThese Math Analysis courses are designed to prepare students for high school or college calculus. A functional approach is used throughout to provide an extensive treatment of topics from algebra, geometry, and trigonometry. Students who successfully complete the course will be able to analyze polynomial, trigonometric, rational, exponential, and logarithmic functions, apply graphing techniques to a variety of functions, evaluate and expand sequences and series, evaluate limits, and apply a variety of trigonometric concepts. Students who have completed a course in Trigonometry / Algebra 3 or its equivalent are not eligible to earn additional math credits through Math Analysis. The rigor and scope of the material covered will vary with the level of the course. \n\nAccelerated (X) Math Analysis is a college preparatory class for students who wish to continue their formal study of Math Analysis in preparation for subsequent studies in Calculus (H) or Calculus (X) or an introductory Calculus course at the University level. \n\nHonors (Pre-AB Calculus) is a college preparatory class for students who wish to continue their mathematical studies in Calculus (H) or AP Calculus AB. The course is rigorous and the depth of the topics is extensive in preparation for continued studies at the Honors or AP level of Calculus. \n\nHonors (Pre-BC Calculus) is a college preparatory class for students who wish to continue their mathematics studies in AP Calculus BC. This course is part of a compacted curriculum in which Algebra 2, Math Analysis, AP Calculus AB, and AP Calculus BC are taught over the course of three years as opposed to a traditions pathway in which these courses would be taught over four years. The pace of this course requires strong motivation along with strong work and study habits. In addition, students will be expected to acquire and process new information rapidly while at the same time have strong foundational skills in which they will be asked to apply without needing review"
+      "description": "Math Analysis\n2100 (H*) MA (Pre-BC Calculus)\nGrades 9, 10, 11 Year 1 credit\n2110 (H) MA (Pre-AB Calculus)\nGrades 9, 10, 11 Year 1 credit\n2111 (X) MA (Pre-Calculus)\nGrades 11, 12 Year 1 credit\nPrerequisite: Algebra 2\nThese Math Analysis courses are designed to prepare students for high school or college calculus. A functional approach is used throughout to provide an extensive treatment of topics from algebra, geometry, and trigonometry. Students who successfully complete the course will be able to analyze polynomial, trigonometric, rational, exponential, and logarithmic functions, apply graphing techniques to a variety of functions, evaluate and expand sequences and series, evaluate limits, and apply a variety of trigonometric concepts. Students who have completed a course in Trigonometry / Algebra 3 or its equivalent are not eligible to earn additional math credits through Math Analysis. The rigor and scope of the material covered will vary with the level of the course. \n\nAccelerated (X) Math Analysis is a college preparatory class for students who wish to continue their formal study of Math Analysis in preparation for subsequent studies in Calculus (H) or Calculus (X) or an introductory Calculus course at the University level. \n\nHonors (Pre-AB Calculus) is a college preparatory class for students who wish to continue their mathematical studies in Calculus (H) or AP Calculus AB. The course is rigorous and the depth of the topics is extensive in preparation for continued studies at the Honors or AP level of Calculus. \n\nHonors* (Pre-BC Calculus) is a college preparatory class for students who wish to continue their mathematics studies in AP Calculus BC. This course is part of a compacted curriculum in which Algebra 2, Math Analysis, AP Calculus AB, and AP Calculus BC are taught over the course of three years as opposed to a traditions pathway in which these courses would be taught over four years. The pace of this course requires strong motivation along with strong work and study habits. In addition, students will be expected to acquire and process new information rapidly while at the same time have strong foundational skills in which they will be asked to apply without needing review"
     },
     {
       "name": "Trigonometry and Algebra 3",
@@ -702,7 +702,7 @@
         ]
       },
       "prerequisites": "Algebra 2",
-      "description": "Trigonometry and Algebra 3\n\nGrades 11*, 12 Year 1 credit\n*with administrative approval\n2141 (X) MA\n\nPrerequisite: Algebra 2\n\nThis course emphasizes the inter-relationships of algebraic and trigonometric functions. A functional approach is used throughout to provide extensive treatment of topics from algebra and trigonometry. Topics in algebra are extended to make connections and identify similarities to trigonometry. Topics include, but are not limited to: solving quadratic and linear equations, graphing quadratic and linear functions, graphing trigonometric functions, solving trigonometric equations, sketching polynomial functions, and application problems. Students who have completed a course in Math Analysis or its equivalent are not eligible to earn additional math credits through Trigonometry and Algebra 3. This course is intended to be an alternative to Math Analysis for students who do not anticipate taking Calculus during or after high school. Students who have successfully completed this course should be able to:\n-Define the trigonometric functions and demonstrate relationships among them.\n-Demonstrate techniques of graph sketching of functions.\n-Solve equations involving the trigonometric functions and their inverses.\n-Apply algebraic concepts to the solution of equations and application problems."
+      "description": "Trigonometry and Algebra 3\n\nGrades 11*, 12 Year 1 credit\n11*with administrative approval\n2141 (X) MA\n\nPrerequisite: Algebra 2\n\nThis course emphasizes the inter-relationships of algebraic and trigonometric functions. A functional approach is used throughout to provide extensive treatment of topics from algebra and trigonometry. Topics in algebra are extended to make connections and identify similarities to trigonometry. Topics include, but are not limited to: solving quadratic and linear equations, graphing quadratic and linear functions, graphing trigonometric functions, solving trigonometric equations, sketching polynomial functions, and application problems. Students who have completed a course in Math Analysis or its equivalent are not eligible to earn additional math credits through Trigonometry and Algebra 3. This course is intended to be an alternative to Math Analysis for students who do not anticipate taking Calculus during or after high school. Students who have successfully completed this course should be able to:\n-Define the trigonometric functions and demonstrate relationships among them.\n-Demonstrate techniques of graph sketching of functions.\n-Solve equations involving the trigonometric functions and their inverses.\n-Apply algebraic concepts to the solution of equations and application problems."
     },
     {
       "name": "Calculus",
@@ -716,6 +716,7 @@
         "MA"
       ],
       "grades": [
+        
         "12"
       ],
       "courseNumbers": {
@@ -841,6 +842,7 @@
         "EL"
       ],
       "grades": [
+        "10",
         "11",
         "12"
       ],
@@ -1522,7 +1524,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Asian American Studies\nGrades 10, 11, 12 Semester .5 credit\n1350 (H) 1351 (X) 1352 (A) EL\nThis course will challenge students to explore the Asian Americanexperience through the lenses of history and culture. Thecurriculum is organized into themes which include the following: race, culture, and identity; Asian culture and history, the Asian Diaspora, the resistance and resilience of Asian Americans, leadership in the Asian American community, influence of Asian American cultures and traditions in Asian American history. In addition, there will be a focus on the influence of Asian culture in American culture, the fight for citizenship, equality, individual rights, current issues and future challenges in education, socio-economic status, cultural impact, and the persistence of discrimination"
+      "description": "Asian American Studies\nGrades 10, 11, 12 Semester .5 credit\n1350 (H) 1351 (X) 1352 (A) EL\nThis course will challenge students to explore the Asian American experience through the lenses of history and culture. Thecurriculum is organized into themes which include the following: race, culture, and identity; Asian culture and history, the Asian Diaspora, the resistance and resilience of Asian Americans, leadership in the Asian American community, influence of Asian American cultures and traditions in Asian American history. In addition, there will be a focus on the influence of Asian culture in American culture, the fight for citizenship, equality, individual rights, current issues and future challenges in education, socio-economic status, cultural impact, and the persistence of discrimination"
     },
     {
       "name": "Philosophy",
@@ -1922,6 +1924,7 @@
         "EL"
       ],
       "grades": [
+        "10",
         "11",
         "12"
       ],
@@ -2056,6 +2059,7 @@
         "EL"
       ],
       "grades": [
+        "10",
         "11",
         "12"
       ],
@@ -2213,7 +2217,7 @@
       "description": "Latin 4\nGrades 11, 12 Year 1 credit\n4240 (H) 4241 (X) WL, EL\nPrerequisite: Latin 3 \nIn Latin 4, students prepare for reading and analysis of authentic Latin prose and poetry. Students expand and refine the skills developed in Latin 3 by reading a variety of authors such as Vergil and Caesar. Recognizing grammatical structures, analyzing poetic style, extracting meaning from passages of poetry and prose, and tracing the influences of authors on later literature are the main components of the course. An understanding of the social and historical context which spawned the literature will foster the development of critical thinking skills."
     },
     {
-      "name": "AP Latin 4",
+      "name": "Latin 4",
       "levels": [
         "AP"
       ],
@@ -2677,7 +2681,7 @@
         ]
       },
       "prerequisites": "Digital Photography 8505 or Graphic Design and Animation 7259",
-      "description": "Advanced Digital Photography** \nGrades 9, 10, 11, 12 Semester .5 credit \n8525 VP, EL \nPrerequisite: Digital Photography 8505 or Graphic Design and Animation 7259 \n(Lab Fee - $25.00)\n This course is designed for students seeking to build upon the fundamental skills and techniques of digital media design learned from digital photography and/or graphic design. Students will expand on contemporary digital design concepts and effective visual communication techniques with the focus on collaborative design projects. Inspired by the ever-expanding career paths in art and design incorporating teams or groups of varied perspectives and input. Focusing upon the use of color, type, composition, illustration, and photography to create dynamic media products. Projects may include branding proposals, company logo redesigns, product photography, narrative animation, promotional sticker design, and mobile application icons. 2D and 3D software includes Adobe Illustrator, Photoshop, Animate, and Canva. Projects may be printed on paper, vinyl, fabric, 3D printed, or laser engraved on various surfaces."
+      "description": "Advanced Digital Photography** \nGrades 9, 10, 11, 12 Semester .5 credit \n8525 VP, EL (Lab Fee - $25.00) \nPrerequisite: Digital Photography 8505 or Graphic Design and Animation 7259 \nThis course is designed for students seeking to build upon the fundamental skills and techniques of digital media design learned from digital photography and/or graphic design. Students will expand on contemporary digital design concepts and effective visual communication techniques with the focus on collaborative design projects. Inspired by the ever-expanding career paths in art and design incorporating teams or groups of varied perspectives and input. Focusing upon the use of color, type, composition, illustration, and photography to create dynamic media products. Projects may include branding proposals, company logo redesigns, product photography, narrative animation, promotional sticker design, and mobile application icons. 2D and 3D software includes Adobe Illustrator, Photoshop, Animate, and Canva. Projects may be printed on paper, vinyl, fabric, 3D printed, or laser engraved on various surfaces."
     },
     {
       "name": "Studio Art 1",
@@ -2896,8 +2900,8 @@
           "7505"
         ]
       },
-      "prerequisites": "",
-      "description": "Concert Band** \nGrades 9, 10, 11, 12 Year .5 credit\n7505 VP, EL Audition Required for Percussion\nThis ensemble is open to all Brass and Woodwind instrumentalists without an audition. Percussionists must audition to be considered for this group. Members of Concert Band will explore a variety of musical styles from the Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional band repertoire. This group performs two concerts each year. Participation in this instrumentalist organization affords its members an opportunity to be considered for additional advanced performing groups such as Jazz Band, Jazz Ensemble, and Pennsylvania Music Educators Association (PMEA) Festivals. All Concert Band members are strongly encouraged to participate in Marching Band, an extra-curricular band activity that meets outside of the regular school day throughout the late summer and fall seasons."
+      "prerequisites": "Audition Required for Percussion",
+      "description": "Concert Band** \nGrades 9, 10, 11, 12 Year .5 credit\n7505 VP, EL\nThis ensemble is open to all Brass and Woodwind instrumentalists without an audition. Percussionists must audition to be considered for this group. Members of Concert Band will explore a variety of musical styles from the Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional band repertoire. This group performs two concerts each year. Participation in this instrumentalist organization affords its members an opportunity to be considered for additional advanced performing groups such as Jazz Band, Jazz Ensemble, and Pennsylvania Music Educators Association (PMEA) Festivals. All Concert Band members are strongly encouraged to participate in Marching Band, an extra-curricular band activity that meets outside of the regular school day throughout the late summer and fall seasons."
     },
     {
       "name": "Wind Ensemble",
@@ -2919,8 +2923,8 @@
           "7515"
         ]
       },
-      "prerequisites": "",
-      "description": "Wind Ensemble\n\nGrades 9, 10, 11, 12\nYear .5 credit\n7515 VP, EL\nAudition Required\n\nBrass, woodwind, and percussion instrumentalists are given an opportunity to audition in early January, prior to course selection.* Each instrumentalist is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition.\nThe group performs at least twice a year, exploring Renaissance, Baroque, Classical, Romantic, and Contemporary periods, as well as new and traditional band repertoire. Participation in this instrumentalist organization affords its members an opportunity to be considered for additional advanced performing groups such as Jazz Band, Jazz Ensemble, Symphony Orchestra, and PMEA Festivals.\nAll Wind Ensemble members are strongly encouraged to participate in Marching Band, an extracurricular band activity that meets outside of the regular school day throughout the late summer and fall seasons."
+      "prerequisites": "Audition Required",
+      "description": "Wind Ensemble\n\nGrades 9, 10, 11, 12\nYear .5 credit\n7515 VP, EL\n\nBrass, woodwind, and percussion instrumentalists are given an opportunity to audition in early January, prior to course selection.* Each instrumentalist is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition.\nThe group performs at least twice a year, exploring Renaissance, Baroque, Classical, Romantic, and Contemporary periods, as well as new and traditional band repertoire. Participation in this instrumentalist organization affords its members an opportunity to be considered for additional advanced performing groups such as Jazz Band, Jazz Ensemble, Symphony Orchestra, and PMEA Festivals.\nAll Wind Ensemble members are strongly encouraged to participate in Marching Band, an extracurricular band activity that meets outside of the regular school day throughout the late summer and fall seasons."
     },
     {
       "name": "String Ensemble",
@@ -2965,8 +2969,8 @@
           "7525"
         ]
       },
-      "prerequisites": "",
-      "description": "Symphony Orchestra**\nGrades 9, 10, 11, 12 Year\n7525 (Strings Only) .5 credit\nVP, EL Audition Required for all Strings\nMusicians in the Orchestra will prepare music to be performed at various times throughout the year, including the annual Winter and Spring Concerts. Various new and traditional orchestral compositions will be explored. Members will explore Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional string orchestra repertoire. Wind, brass, and percussion players are selected from the Wind Ensemble through competitive audition. String players are also auditioned."
+      "prerequisites": "Audition Required for all Strings",
+      "description": "Symphony Orchestra**\nGrades 9, 10, 11, 12 Year\n7525 (Strings Only) .5 credit\nVP, EL\nMusicians in the Orchestra will prepare music to be performed at various times throughout the year, including the annual Winter and Spring Concerts. Various new and traditional orchestral compositions will be explored. Members will explore Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional string orchestra repertoire. Wind, brass, and percussion players are selected from the Wind Ensemble through competitive audition. String players are also auditioned."
     },
     {
       "name": "Symphony Orchestra (Brass, Percussion, Winds)",
@@ -2988,8 +2992,8 @@
           "7535"
         ]
       },
-      "prerequisites": "",
-      "description": "Symphony Orchestra**\nGrades 9, 10, 11, 12 Year\n7535 (Brass, Percussion, Winds) .4 credit\nVP, EL Audition Required for all Brass, Woodwind and Percussion\nMusicians in the Orchestra will prepare music to be performed at various times throughout the year, including the annual Winter and Spring Concerts. Various new and traditional orchestral compositions will be explored. Members will explore Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional string orchestra repertoire. Wind, brass, and percussion players are selected from the Wind Ensemble through competitive audition. String players are also auditioned."
+      "prerequisites": "Audition Required for all Brass, Woodwind and Percussion",
+      "description": "Symphony Orchestra**\nGrades 9, 10, 11, 12 Year\n7535 (Brass, Percussion, Winds) .4 credit\nVP, EL\nMusicians in the Orchestra will prepare music to be performed at various times throughout the year, including the annual Winter and Spring Concerts. Various new and traditional orchestral compositions will be explored. Members will explore Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional string orchestra repertoire. Wind, brass, and percussion players are selected from the Wind Ensemble through competitive audition. String players are also auditioned."
     },
     {
       "name": "Jazz Band",
@@ -3011,8 +3015,8 @@
           "7545"
         ]
       },
-      "prerequisites": "",
-      "description": "Jazz Band**\nGrades 9, 10, 11, 12\nYear .5 credit\n7545 VP, EL\nAudition Required\nBrass, woodwind, percussion instrumentalists, guitarists, and pianists are given an opportunity to audition in early January, prior to course selection.* Each musician is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition. Those selected for the Jazz Band will play both contemporary and standard jazz music styles. Improvisational skills will be developed as students prepare for various performances throughout the year. Participation in this course is contingent upon participation in Marching Band, Concert Band, or Wind Ensemble (pianists, guitarists, and bassists excluded)."
+      "prerequisites": "Audition Required",
+      "description": "Jazz Band**\nGrades 9, 10, 11, 12\nYear .5 credit\n7545 VP, EL\nBrass, woodwind, percussion instrumentalists, guitarists, and pianists are given an opportunity to audition in early January, prior to course selection.* Each musician is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition. Those selected for the Jazz Band will play both contemporary and standard jazz music styles. Improvisational skills will be developed as students prepare for various performances throughout the year. Participation in this course is contingent upon participation in Marching Band, Concert Band, or Wind Ensemble (pianists, guitarists, and bassists excluded)."
     },
     {
       "name": "Percusion Ensemble",
@@ -3057,8 +3061,8 @@
           "7555"
         ]
       },
-      "prerequisites": "",
-      "description": "Jazz Ensemble**\nGrades 9, 10, 11, 12\nYear .5 credit\n7555 VP, EL\nAudition Required\nBrass, woodwind, percussion instrumentalists, guitarists, and pianists are given an opportunity to audition in early January, prior to course selection*. Each musician is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition. Those selected for the Jazz Ensemble will play advanced jazz literature. Improvisational skills will be developed as students prepare for various performances throughout the year. Participation in this course is contingent upon participation in Marching Band, Concert Band, or Wind Ensemble (pianists, guitarists, and bassists excluded)."
+      "prerequisites": "Audition Required",
+      "description": "Jazz Ensemble**\nGrades 9, 10, 11, 12\nYear .5 credit\n7555 VP, EL\nBrass, woodwind, percussion instrumentalists, guitarists, and pianists are given an opportunity to audition in early January, prior to course selection*. Each musician is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition. Those selected for the Jazz Ensemble will play advanced jazz literature. Improvisational skills will be developed as students prepare for various performances throughout the year. Participation in this course is contingent upon participation in Marching Band, Concert Band, or Wind Ensemble (pianists, guitarists, and bassists excluded)."
     },
     {
       "name": "Studio Session",
@@ -3228,7 +3232,7 @@
     },
 
     {
-      "name": "Wind Ensemble.Perc",
+      "name": "Wind Ensemble/Perc",
       "levels": [],
       "term": "Y",
       "credit": "0.5",
@@ -3250,7 +3254,28 @@
       "prerequisites": "",
       "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
     },
-
+    {
+      "name": "Chorale",
+      "levels": [],
+      "term": "Y",
+      "credit": "0.2",
+      "category": [
+        "VP",
+        "EL"
+      ],
+      "grades": [
+        "9",
+        "10"
+        
+      ],
+      "courseNumbers": {
+        "default": [
+          "7635"
+        ]
+      },
+      "prerequisites": "Audition Required",
+      "description": "Chorale\nGrades 9, 10 Year .2 credit\nChorale is a select vocal organization for 9th and 10th graders who may perform at extracurricular functions, in addition to the Winter and Spring Concerts. Students are selected through audition and must also be members of Concert Choir or Cantata"
+    },
     {
       "name": "Jazz Ens/Cantata/Chorale",
       "levels": [],
@@ -3317,8 +3342,8 @@
           "7625"
         ]
       },
-      "prerequisites": "",
-      "description": "Camerata**\nGrades 11,12 Year . 5 credit\n7625 VP, EL Audition Required\nCamerata is a select choral organization for juniors and seniors that performs at many extracurricular functions throughout the school year, in addition to the Winter and Spring Concerts. Students are chosen from the Concert Choir through competitive audition. They are expected to demonstrate an advanced level of proficiency, consistent with District 12 PMEA standards. Auditions for Camerata are open to all vocalists, who are members of the Concert Choir."
+      "prerequisites": "Audition Required",
+      "description": "Camerata**\nGrades 11,12 Year . 5 credit\n7625 VP, EL\nCamerata is a select choral organization for juniors and seniors that performs at many extracurricular functions throughout the school year, in addition to the Winter and Spring Concerts. Students are chosen from the Concert Choir through competitive audition. They are expected to demonstrate an advanced level of proficiency, consistent with District 12 PMEA standards. Auditions for Camerata are open to all vocalists, who are members of the Concert Choir."
     },
     {
       "name": "Concert Choir Soprano/Alto",
@@ -3629,7 +3654,7 @@
       ],
       "courseNumbers": {},
       "prerequisites": "",
-      "description": "Academic Reading**\nGrades 9, 10, 11, 12 Semester .25-.5 credit\nThis course provides supplemental instruction in reading skills tailored to each student’s learning needs. Instruction may includedecoding, fluency, comprehension, and vocabulary development. Students learn through evidence-based materials and practices designed to strengthen foundational reading skills."    
+      "description": "Academic Reading**\nGrades 9, 10, 11, 12 Semester .25-.5 credit\nThis course provides supplemental instruction in reading skills \n tailored to each student’s learning needs. Instruction may includedecoding, fluency, comprehension, and vocabulary development.\n Students learn through evidence-based materials and practicesdesigned to strengthen foundational reading skills"    
     },
     {
       "name": "Academic Reading (.5)",
@@ -3647,7 +3672,7 @@
       ],
       "courseNumbers": {},
       "prerequisites": "",
-      "description": "Academic Reading**\nGrades 9, 10, 11, 12 Semester .25-.5 credit\nThis course provides supplemental instruction in reading skills tailored to each student’s learning needs. Instruction may includedecoding, fluency, comprehension, and vocabulary development. Students learn through evidence-based materials and practicesdesigned to strengthen foundational reading skills."
+      "description": "Academic Reading**\nGrades 9, 10, 11, 12 Semester .25-.5 credit\nThis course provides supplemental instruction in reading skills \n tailored to each student’s learning needs. Instruction may includedecoding, fluency, comprehension, and vocabulary development.\n Students learn through evidence-based materials and practicesdesigned to strengthen foundational reading skills"
     },
   
     {
@@ -3684,7 +3709,7 @@
       ],
       "courseNumbers": {},
       "prerequisites": "",
-      "description": "Academic Math**\nGrades 9, 10, 11, 12 Semester .25 credits\nEligible students receive instruction and practice in skills related to their post-secondary transition needs as identified through their individual goals. Post-secondary transition encompasses three primary areas: preparation for education/training, employment skills, and independent living skills. Student skills in each of these areas are assessed and appropriate goals and specially designed instruction are identified for the students. Programming may consist of experiences off campus in coordination with the Chester County Intermediate Unit or other relevant agencies. Individual courses include: (1) Transition Math Skills; (2)Transition Reading Skills; (3) Transition English Skills; (4)Pre-Vocational Skills; (5) Independent Living Skills; (6) SocialSkills; and (7) Pre-Algebra Concepts."
+      "description": "Academic Math**\nGrades 9, 10, 11, 12 Semester .25 credits\nEligible students receive instruction and practice in skills related to their post-secondary transition needs as identified through their individual goals. Post-secondary transition encompasses three primary areas: preparation for education/training, employment skills, and independent living skills. Student skills in each of these areas are assessed and appropriate goals and specially designed instruction are identified for the students. Programming may consist of experiences off campus in coordination with the Chester County Intermediate Unit or other relevant agencies. Individual courses include: (1) Transition Math Skills; (2)Transition Reading Skills; (3) Transition English Skills; (4)Pre-Vocational Skills; (5) Independent Living Skills; (6) SocialSkills; and (7) Pre-Algebra Concepts. "
     },
     {
       "name": "College and Career Transition",
@@ -4025,7 +4050,7 @@
         
       },
       "prerequisites": "",
-      "description": "Adaptive Physical Education\nGrades 9, 10, 11, 12 Semester .25 credit\n5655 PE\nThis course is a program alternative that is available to meet the needs of students who are temporarily or permanently unable, for physical or medical reasons, to participate in the regularly scheduled physical education program. This program's flexibility permits a student to be changed from one activity to another during the regularly scheduled class. Students will receive a grade and credit for participation in this program. No student will be excused from attending their regularly scheduled physical education classes. Should the attending physician reject all the activity options of the Adaptive Program, the student will be given appropriate alternative assignments for the recommended time period. When a student is released by the attending physician, they will return to the regular physical education program"
+      "description": "Adaptive Physical Education\nGrades 9, 10, 11, 12 Semester .25 credit\n5655 PE\nThis course is a program alternative that is available to meet the needs of students who are temporarily or permanently unable, for physical or medical reasons, to participate in the regularly scheduled physical education program. This program's flexibility permits a student to be changed from one activity to another during the regularly scheduled class. Students will receive a grade and credit for participation in this program. No student will be excused from attending their regularly scheduled physical education classes. Should the attending physician reject all the\nactivity options of the Adaptive Program, the student will be given appropriate alternative assignments for the recommended time period. When a student is released by the attending physician, they will return to the regular physical education program"
     },
     {
       "name": "Alternative Physical Education Semester 1",
@@ -4271,7 +4296,7 @@
         ]
       },
       "prerequisites": "Culinary Arts, Pastry Chef, Regional Cuisine, or Nutrition & Foods",
-      "description": "Signature Dish\nGrades 10, 11, 12 Semester .5 credit\n8079 FC, EL (Lab Fee: $25.00)\nPrerequisite: Culinary Arts, Pastry Chef, Regional Cuisine or Nutrition & Foods\nA professional chef understands that cooking is both an art and a science. The content of this course will cultivate each student’s individual cooking style and enhance their comprehensive cooking techniques culminating with a Signature Dish. In this course students will have the opportunity to deeply explore their own cooking style, hone more complex cooking techniques and study the science of baking. Students taking this course are foodies and home chefs looking to collaborate with other like-minded students to enhance their culinary skills, learn new recipes, and explore the world of culinary arts."
+      "description": "Signature Dish\nGrades 10, 11, 12 Semester .5 credit\n8079 FC, EL (Lab Fee: $25.00)\nA professional chef understands that cooking is both an art and a science. The content of this course will cultivate each student’s individual cooking style and enhance their comprehensive cooking techniques culminating with a Signature Dish. In this course students will have the opportunity to deeply explore their own cooking style, hone more complex cooking techniques and study the science of baking. Students taking this course are foodies and home chefs looking to collaborate with other like-minded students to enhance their culinary skills, learn new recipes, and explore the world of culinary arts."
     },
     {
       "name": "Personal Finance",
@@ -4318,7 +4343,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Accounting 1\nGrades 10, 11, 12 Semester .5 credit\n6009 BU, EL, MA Software: MS Excel\nThis course provides an introductory understanding of financial accounting concepts and practices. It is a great first step that can lead to success in a variety of careers and is especially valuable for anyone planning to enter accounting or other business fields, including finance, economics, management and international business. Emphasis is placed on the accounting cycle, including: analyzing business transactions, managing receivables and payables and preparing financial reports. GAAP (Generally Accepted Accounting Principles) and ethics are examined throughout the course as they relate to each area. In class, students will develop strong technology skills using MS Excel.\nThe Personal Finance course is a recommended prerequisite. "
+      "description": "Accounting 1\nGrades 10, 11, 12 Semester .5 credit\n6009 BU, EL, MA Software: MS Excel\nThis course provides an introductory understanding of financial accounting concepts and practices. It is a great first step that can lead to success in a variety of careers and is especially valuable for anyone planning to enter accounting or other business fields, including finance, economics, management and international business. Emphasis is placed on the accounting cycle, including: analyzing business transactions, managing receivables and payables and preparing financial reports. GAAP (Generally Accepted Accounting Principles) and ethics are examined throughout the course as they relate to each area. In class, students will develop strong technology skills using MS Excel. The Personal Finance course is a recommended prerequisite. "
     },
 
     {
@@ -4429,7 +4454,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Engineering Design, Production and Automation\nGrades 9, 10, 11, 12 Semester .5 credit\n8659 TE, EL\n(Lab Fee - $25.00)\n\nStudents in Engineering Design, Production, and Automation will learn to use drafting and design computer software programs for a variety of design problems. After computer hardware/software orientation, students will learn to read and render several types of technical drawings and output to computer-controlled fabrication machinery. That which is learned will then be applied in the design process. Students will work individually and in small groups on several engineering design activities. Working in both two-dimensional and three-dimensional programs, students will create mock-ups, prototypes, and scale models using 3D printers and scanners, computer numeric controlled routers, vinyl cutters, screen printing, and laser cutting technologies. This course is recommended for students interested in a career in engineering design and automation."
+      "description": "Engineering Design, Production and Automation\nGrades 9, 10, 11, 12 Semester .5 credit\n8659 TE, EL\n(Lab Fee - $25.00)\nStudents in Engineering Design, Production, and Automation will learn to use drafting and design computer software programs for a variety of design problems. After computer hardware/software orientation, students will learn to read and render several types of technical drawings and output to computer-controlled fabrication machinery. That which is learned will then be applied in the design process. Students will work individually and in small groups on several engineering design activities. Working in both two-dimensional and three-dimensional programs, students will create mock-ups, prototypes, and scale models using 3D printers and scanners, computer numeric controlled routers, vinyl cutters, screen printing, and laser cutting technologies. This course is recommended for students interested in a career in engineering design and automation."
     },
 
     {
@@ -4497,9 +4522,9 @@
         "default": [
           "8669"
         ]
-      },
+      }, 
       "prerequisites": "",
-      "description": "Robotic Engineering\n\nGrades 9, 10, 11, 12 Semester .5 credit\n8669 TE, EL\n(Lab Fee - $25.00)\n\nThis advanced course is designed for students with interests in robotics. This project-based approach will immerse students in the problem-solving engineering design method. Students will apply a problems-based approach to authentic situations using robotic technology. Students will experience a wide variety of practical applications of robotics, including mechanical function, pneumatic actuators, soft robotics, autonomous programming, and control. Students will work in teams to complete design challenges using research and development procedures, testing and analysis techniques. They will have access to fabrication machinery, additive prototyping, and subtractive manufacturing."
+      "description": "Robotic Engineering\n\nGrades 9, 10, 11, 12 Semester .5 credit\n8669 TE, EL\n(Lab Fee - $25.00)\nThis advanced course is designed for students with interests in robotics. This project-based approach will immerse students in the problem-solving engineering design method. Students will apply a problems-based approach to authentic situations using robotic technology. Students will experience a wide variety of practical applications of robotics, including mechanical function, pneumatic actuators, soft robotics, autonomous programming, and control. Students will work in teams to complete design challenges using research and development procedures, testing and analysis techniques. They will have access to fabrication machinery, additive prototyping, and subtractive manufacturing."
     },
     {
       "name": "Structural And Environmental Engineering",
@@ -4522,7 +4547,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Grades 9, 10, 11, 12 Semester .5 credit\n8639 TE, EL\n(Lab Fee - $25.00)\n\nThis advanced course is designed for students with interests in technology, science, or engineering. Students will apply a problems-based approach to authentic situations in structural design, construction technology, communications, product design, manufacturing, and environmental engineering. Solutions will be designed on computers and built in the fabrication lab using a CNC milling machine, a laser engraver, 3D printing machines, and traditional tools. Students will work in teams to learn research and development procedures, testing and analysis techniques, and applied technology. Topics include structural engineering, design engineering, manufacturing systems engineering, and environmental engineering."
+      "description": "Grades 9, 10, 11, 12 Semester .5 credit\n8639 TE, EL\n(Lab Fee - $25.00)\nThis advanced course is designed for students with interests in technology, science, or engineering. Students will apply a problems-based approach to authentic situations in structural design, construction technology, communications, product design, manufacturing, and environmental engineering. Solutions will be designed on computers and built in the fabrication lab using a CNC milling machine, a laser engraver, 3D printing machines, and traditional tools. Students will work in teams to learn research and development procedures, testing and analysis techniques, and applied technology. Topics include structural engineering, design engineering, manufacturing systems engineering, and environmental engineering."
     },
     {
         "name": "AP Computer Science Principles",

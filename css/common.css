@@ -1,0 +1,313 @@
+/* ==========================================================================
+   common.css
+   Shared variables, resets, and components used across all pages.
+   Link this on every page BEFORE the page-specific stylesheet.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Theme Variables
+   ========================================================================== */
+   :root {
+    --bg: #121212;
+    --surface: #1e1e1e;
+    --primary: #4cafef;
+    --text: #e0e0e0;
+    --muted: #888;
+    --button: #2a2a2a;
+    --border: #333;
+}
+
+
+/* ==========================================================================
+   2. Base Resets
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, Arial, sans-serif;
+}
+
+h1, h2 {
+    margin-bottom: 10px;
+}
+
+pre {
+    white-space: pre-wrap;
+    font-size: 13px;
+}
+
+.container {
+    padding: 20px;
+}
+
+
+/* ==========================================================================
+   3. Navigation Bar
+   ========================================================================== */
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a.active {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+
+/* ==========================================================================
+   4. Filter Controls
+   ========================================================================== */
+#filter-controls {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.filter-row {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn-group {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.filter-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+    background: #333;
+    border-color: #555;
+    color: white;
+}
+
+.grade-btn.active {
+    background-color: #333333;
+    color: #ffffff;
+    border-color: #333333;
+}
+
+.subj-btn.active {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+}
+
+.clear-filters-btn {
+    background: #4a1c1c;
+    border: 1px solid #721c24;
+    color: #ff6b6b;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.clear-filters-btn:hover {
+    background: #721c24;
+}
+
+.all-indicator {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-style: italic;
+}
+
+
+/* ==========================================================================
+   5. Course Metadata Badges
+   ========================================================================== */
+.meta-badges {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.level-H  { background: #dbeafe; color: #1e40af; }
+.level-X  { background: #fef3c7; color: #92400e; }
+.level-A  { background: #e2e8f0; color: #334155; }
+.level-AP { background: #f3e8ff; color: #6b21a8; }
+.level-none { background: #f1f5f9; color: #64748b; }
+
+.grade-pill    { background: #e2e8f0; color: #475569; }
+.category-pill { background: #e0f2fe; color: #0369a1; }
+
+.no-courses-alert {
+    background: var(--surface);
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+
+/* ==========================================================================
+   6. Tables
+   ========================================================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: var(--surface);
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 10px;
+}
+
+th {
+    background-color: var(--button) !important;
+    color: var(--text) !important;
+    text-align: left;
+}
+
+td:last-child, th:last-child {
+    width: 120px;
+    text-align: center;
+}
+
+
+/* ==========================================================================
+   7. Action & Print Buttons
+   ========================================================================== */
+.actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    padding: 10px 14px;
+    border: none;
+    background: var(--primary);
+    color: black;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.print-button-container {
+    margin-top: 30px;
+    text-align: center;
+    color: var(--primary);
+}
+
+#printButton {
+    padding: 10px 18px;
+    background-color: var(--button);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#printButton:hover {
+    background-color: var(--primary);
+    color: black;
+}
+
+
+/* ==========================================================================
+   8. Print Styles (base — pages may extend)
+   ========================================================================== */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    table {
+        background: white;
+    }
+
+    th {
+        background: #e0e0e0 !important;
+        color: black !important;
+    }
+
+    td {
+        color: black;
+    }
+
+    nav,
+    #navbar,
+    .print-button-container,
+    #filter-controls {
+        display: none;
+    }
+
+    @page {
+        size: landscape;
+        margin: 0.5in;
+    }
+}
