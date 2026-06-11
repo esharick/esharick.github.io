@@ -598,7 +598,8 @@
       "grades": [
         "9",
         "10",
-        "11"
+        "11",
+        "12"
       ],
       "courseNumbers": {
         "H": [
@@ -648,7 +649,7 @@
         ]
       },
       "prerequisites": "Geometry",
-      "description": "Algebra 2\n2050 (H*) MA (Pre-BC Calculus)\nGrades 9, 10 Year 1 credit\n2150 (H) MA (Pre-AB Calculus)\nGrades 9, 10, 11 Year 1 credit\n2051 (X) MA Grades 10, 11, 12 Year 1 credit\n2052 (A) MA Grades 11, 12 Year 1 credit\nPrerequisite: Geometry\nAll of the traditional topics will be addressed in these Algebra 2 courses. This course extends the concepts learned in Algebra 1 to include the complex number system and functional notation. Topics include, but are not limited to, real numbers and expressions, linear equations and systems, matrices, functions, quadratic equations and functions, advanced factoring skills, polynomials, rational functions, exponential and logarithmic functions, conic sections, sequences and series, periodic functions and trigonometry and trigonometric identities and equations. The rigor and scope of the material covered will vary with the level of the course. \n\nAcademic (A) and Accelerated (X) Algebra 2 are college preparatory classes for students who wish to continue their formal study of Algebra in preparation for subsequent studies in Math Analysis or Trigonometry. \n\nHonors (Pre-AB Calculus) is a college preparatory class for students who wish to continue their mathematical studies in Math Analysis (AB) and then AP Calculus AB. The course is rigorous and the depth of the topics is extensive in preparation for continued studies at the Honors Math Analysis AB level. \n\nHonors (Pre-BC Calculus) is a college preparatory class for students who wish to continue their mathematics studies in Math Analysis (BC) and then AP Calculus BC. This course is part of a compacted curriculum in which Algebra 2, Math Analysis, AP Calculus AB, and AP Calculus BC are taught over the course of three years as opposed to a traditional pathway in which these courses would be taught over four years. The pace of this course requires strong motivation along with strong work and study habits. In addition, students will be expected to acquire and process new information rapidly while at the same time have strong foundational skills in which they will be asked to apply without needing review"
+      "description": "Algebra 2\n2050 (H*) MA (Pre-BC Calculus)\nGrades 9, 10 Year 1 credit\n2150 (H) MA (Pre-AB Calculus)\nGrades 9, 10, 11 Year 1 credit\n2051 (X) MA Grades 10, 11, 12 Year 1 credit\n2052 (A) MA Grades 11, 12 Year 1 credit\nPrerequisite: Geometry\nAll of the traditional topics will be addressed in these Algebra 2 courses. This course extends the concepts learned in Algebra 1 to include the complex number system and functional notation. Topics include, but are not limited to, real numbers and expressions, linear equations and systems, matrices, functions, quadratic equations and functions, advanced factoring skills, polynomials, rational functions, exponential and logarithmic functions, conic sections, sequences and series, periodic functions and trigonometry and trigonometric identities and equations. The rigor and scope of the material covered will vary with the level of the course. \n\nAcademic (A) and Accelerated (X) Algebra 2 are college preparatory classes for students who wish to continue their formal study of Algebra in preparation for subsequent studies in Math Analysis or Trigonometry. \n\nHonors (Pre-AB Calculus) is a college preparatory class for students who wish to continue their mathematical studies in Math Analysis (AB) and then AP Calculus AB. The course is rigorous and the depth of the topics is extensive in preparation for continued studies at the Honors Math Analysis AB level. \n\nHonors* (Pre-BC Calculus) is a college preparatory class for students who wish to continue their mathematics studies in Math Analysis (BC) and then AP Calculus BC. This course is part of a compacted curriculum in which Algebra 2, Math Analysis, AP Calculus AB, and AP Calculus BC are taught over the course of three years as opposed to a traditional pathway in which these courses would be taught over four years. The pace of this course requires strong motivation along with strong work and study habits. In addition, students will be expected to acquire and process new information rapidly while at the same time have strong foundational skills in which they will be asked to apply without needing review"
     },
     {
       "name": "Math Analysis",
@@ -680,7 +681,7 @@
         ]
       },
       "prerequisites": "Algebra 2",
-      "description": "Math Analysis\n2100 (H*) MA (Pre-BC Calculus)\nGrades 9, 10, 11 Year 1 credit\n2110 (H) MA (Pre-AB Calculus)\nGrades 9, 10, 11 Year 1 credit\n2111 (X) MA (Pre-Calculus)\nGrades 11, 12 Year 1 credit\nPrerequisite: Algebra 2\nThese Math Analysis courses are designed to prepare students for high school or college calculus. A functional approach is used throughout to provide an extensive treatment of topics from algebra, geometry, and trigonometry. Students who successfully complete the course will be able to analyze polynomial, trigonometric, rational, exponential, and logarithmic functions, apply graphing techniques to a variety of functions, evaluate and expand sequences and series, evaluate limits, and apply a variety of trigonometric concepts. Students who have completed a course in Trigonometry / Algebra 3 or its equivalent are not eligible to earn additional math credits through Math Analysis. The rigor and scope of the material covered will vary with the level of the course. \n\nAccelerated (X) Math Analysis is a college preparatory class for students who wish to continue their formal study of Math Analysis in preparation for subsequent studies in Calculus (H) or Calculus (X) or an introductory Calculus course at the University level. \n\nHonors (Pre-AB Calculus) is a college preparatory class for students who wish to continue their mathematical studies in Calculus (H) or AP Calculus AB. The course is rigorous and the depth of the topics is extensive in preparation for continued studies at the Honors or AP level of Calculus. \n\nHonors (Pre-BC Calculus) is a college preparatory class for students who wish to continue their mathematics studies in AP Calculus BC. This course is part of a compacted curriculum in which Algebra 2, Math Analysis, AP Calculus AB, and AP Calculus BC are taught over the course of three years as opposed to a traditions pathway in which these courses would be taught over four years. The pace of this course requires strong motivation along with strong work and study habits. In addition, students will be expected to acquire and process new information rapidly while at the same time have strong foundational skills in which they will be asked to apply without needing review"
+      "description": "Math Analysis\n2100 (H*) MA (Pre-BC Calculus)\nGrades 9, 10, 11 Year 1 credit\n2110 (H) MA (Pre-AB Calculus)\nGrades 9, 10, 11 Year 1 credit\n2111 (X) MA (Pre-Calculus)\nGrades 11, 12 Year 1 credit\nPrerequisite: Algebra 2\nThese Math Analysis courses are designed to prepare students for high school or college calculus. A functional approach is used throughout to provide an extensive treatment of topics from algebra, geometry, and trigonometry. Students who successfully complete the course will be able to analyze polynomial, trigonometric, rational, exponential, and logarithmic functions, apply graphing techniques to a variety of functions, evaluate and expand sequences and series, evaluate limits, and apply a variety of trigonometric concepts. Students who have completed a course in Trigonometry / Algebra 3 or its equivalent are not eligible to earn additional math credits through Math Analysis. The rigor and scope of the material covered will vary with the level of the course. \n\nAccelerated (X) Math Analysis is a college preparatory class for students who wish to continue their formal study of Math Analysis in preparation for subsequent studies in Calculus (H) or Calculus (X) or an introductory Calculus course at the University level. \n\nHonors (Pre-AB Calculus) is a college preparatory class for students who wish to continue their mathematical studies in Calculus (H) or AP Calculus AB. The course is rigorous and the depth of the topics is extensive in preparation for continued studies at the Honors or AP level of Calculus. \n\nHonors* (Pre-BC Calculus) is a college preparatory class for students who wish to continue their mathematics studies in AP Calculus BC. This course is part of a compacted curriculum in which Algebra 2, Math Analysis, AP Calculus AB, and AP Calculus BC are taught over the course of three years as opposed to a traditions pathway in which these courses would be taught over four years. The pace of this course requires strong motivation along with strong work and study habits. In addition, students will be expected to acquire and process new information rapidly while at the same time have strong foundational skills in which they will be asked to apply without needing review"
     },
     {
       "name": "Trigonometry and Algebra 3",
@@ -842,6 +843,7 @@
         "EL"
       ],
       "grades": [
+        "10",
         "11",
         "12"
       ],
@@ -1738,6 +1740,7 @@
         "EL"
       ],
       "grades": [
+        "9",
         "10",
         "11",
         "12"
@@ -1923,6 +1926,7 @@
         "EL"
       ],
       "grades": [
+        "10",
         "11",
         "12"
       ],
@@ -2057,6 +2061,7 @@
         "EL"
       ],
       "grades": [
+        "10",
         "11",
         "12"
       ],
@@ -2214,7 +2219,7 @@
       "description": "Latin 4\nGrades 11, 12 Year 1 credit\n4240 (H) 4241 (X) WL, EL\nPrerequisite: Latin 3 \nIn Latin 4, students prepare for reading and analysis of authentic Latin prose and poetry. Students expand and refine the skills developed in Latin 3 by reading a variety of authors such as Vergil and Caesar. Recognizing grammatical structures, analyzing poetic style, extracting meaning from passages of poetry and prose, and tracing the influences of authors on later literature are the main components of the course. An understanding of the social and historical context which spawned the literature will foster the development of critical thinking skills."
     },
     {
-      "name": "AP Latin 4",
+      "name": "Latin 4",
       "levels": [
         "AP"
       ],
@@ -2678,7 +2683,7 @@
         ]
       },
       "prerequisites": "Digital Photography 8505 or Graphic Design and Animation 7259",
-      "description": "Advanced Digital Photography** \nGrades 9, 10, 11, 12 Semester .5 credit \n8525 VP, EL \nPrerequisite: Digital Photography 8505 or Graphic Design and Animation 7259 \n(Lab Fee - $25.00)\n This course is designed for students seeking to build upon the fundamental skills and techniques of digital media design learned from digital photography and/or graphic design. Students will expand on contemporary digital design concepts and effective visual communication techniques with the focus on collaborative design projects. Inspired by the ever-expanding career paths in art and design incorporating teams or groups of varied perspectives and input. Focusing upon the use of color, type, composition, illustration, and photography to create dynamic media products. Projects may include branding proposals, company logo redesigns, product photography, narrative animation, promotional sticker design, and mobile application icons. 2D and 3D software includes Adobe Illustrator, Photoshop, Animate, and Canva. Projects may be printed on paper, vinyl, fabric, 3D printed, or laser engraved on various surfaces."
+      "description": "Advanced Digital Photography** \nGrades 9, 10, 11, 12 Semester .5 credit \n8525 VP, EL (Lab Fee - $25.00) \nPrerequisite: Digital Photography 8505 or Graphic Design and Animation 7259 \nThis course is designed for students seeking to build upon the fundamental skills and techniques of digital media design learned from digital photography and/or graphic design. Students will expand on contemporary digital design concepts and effective visual communication techniques with the focus on collaborative design projects. Inspired by the ever-expanding career paths in art and design incorporating teams or groups of varied perspectives and input. Focusing upon the use of color, type, composition, illustration, and photography to create dynamic media products. Projects may include branding proposals, company logo redesigns, product photography, narrative animation, promotional sticker design, and mobile application icons. 2D and 3D software includes Adobe Illustrator, Photoshop, Animate, and Canva. Projects may be printed on paper, vinyl, fabric, 3D printed, or laser engraved on various surfaces."
     },
     {
       "name": "Studio Art 1",
@@ -3630,7 +3635,7 @@
       ],
       "courseNumbers": {},
       "prerequisites": "",
-      "description": "Academic Reading**\nGrades 9, 10, 11, 12 Semester .25-.5 credit\nThis course provides supplemental instruction in reading skills tailored to each student’s learning needs. Instruction may includedecoding, fluency, comprehension, and vocabulary development. Students learn through evidence-based materials and practices designed to strengthen foundational reading skills."    
+      "description": "Academic Reading**\nGrades 9, 10, 11, 12 Semester .25-.5 credit\nThis course provides supplemental instruction in reading skills \n tailored to each student’s learning needs. Instruction may includedecoding, fluency, comprehension, and vocabulary development.\n Students learn through evidence-based materials and practicesdesigned to strengthen foundational reading skills"    
     },
     {
       "name": "Academic Reading (.5)",
@@ -3648,7 +3653,7 @@
       ],
       "courseNumbers": {},
       "prerequisites": "",
-      "description": "Academic Reading**\nGrades 9, 10, 11, 12 Semester .25-.5 credit\nThis course provides supplemental instruction in reading skills tailored to each student’s learning needs. Instruction may includedecoding, fluency, comprehension, and vocabulary development. Students learn through evidence-based materials and practicesdesigned to strengthen foundational reading skills."
+      "description": "Academic Reading**\nGrades 9, 10, 11, 12 Semester .25-.5 credit\nThis course provides supplemental instruction in reading skills \n tailored to each student’s learning needs. Instruction may includedecoding, fluency, comprehension, and vocabulary development.\n Students learn through evidence-based materials and practicesdesigned to strengthen foundational reading skills"
     },
   
     {
@@ -3685,7 +3690,7 @@
       ],
       "courseNumbers": {},
       "prerequisites": "",
-      "description": "Academic Math**\nGrades 9, 10, 11, 12 Semester .25 credits\nEligible students receive instruction and practice in skills related to their post-secondary transition needs as identified through their individual goals. Post-secondary transition encompasses three primary areas: preparation for education/training, employment skills, and independent living skills. Student skills in each of these areas are assessed and appropriate goals and specially designed instruction are identified for the students. Programming may consist of experiences off campus in coordination with the Chester County Intermediate Unit or other relevant agencies. Individual courses include: (1) Transition Math Skills; (2)Transition Reading Skills; (3) Transition English Skills; (4)Pre-Vocational Skills; (5) Independent Living Skills; (6) SocialSkills; and (7) Pre-Algebra Concepts."
+      "description": "Academic Math**\nGrades 9, 10, 11, 12 Semester .25 credits\nEligible students receive instruction and practice in skills related to their post-secondary transition needs as identified through their individual goals. Post-secondary transition encompasses three primary areas: preparation for education/training, employment skills, and independent living skills. Student skills in each of these areas are assessed and appropriate goals and specially designed instruction are identified for the students. Programming may consist of experiences off campus in coordination with the Chester County Intermediate Unit or other relevant agencies. Individual courses include: (1) Transition Math Skills; (2)Transition Reading Skills; (3) Transition English Skills; (4)Pre-Vocational Skills; (5) Independent Living Skills; (6) SocialSkills; and (7) Pre-Algebra Concepts. "
     },
     {
       "name": "College and Career Transition",
@@ -4026,7 +4031,7 @@
         
       },
       "prerequisites": "",
-      "description": "Adaptive Physical Education\nGrades 9, 10, 11, 12 Semester .25 credit\n5655 PE\nThis course is a program alternative that is available to meet the needs of students who are temporarily or permanently unable, for physical or medical reasons, to participate in the regularly scheduled physical education program. This program's flexibility permits a student to be changed from one activity to another during the regularly scheduled class. Students will receive a grade and credit for participation in this program. No student will be excused from attending their regularly scheduled physical education classes. Should the attending physician reject all the activity options of the Adaptive Program, the student will be given appropriate alternative assignments for the recommended time period. When a student is released by the attending physician, they will return to the regular physical education program"
+      "description": "Adaptive Physical Education\nGrades 9, 10, 11, 12 Semester .25 credit\n5655 PE\nThis course is a program alternative that is available to meet the needs of students who are temporarily or permanently unable, for physical or medical reasons, to participate in the regularly scheduled physical education program. This program's flexibility permits a student to be changed from one activity to another during the regularly scheduled class. Students will receive a grade and credit for participation in this program. No student will be excused from attending their regularly scheduled physical education classes. Should the attending physician reject all the\nactivity options of the Adaptive Program, the student will be given appropriate alternative assignments for the recommended time period. When a student is released by the attending physician, they will return to the regular physical education program"
     },
     {
       "name": "Alternative Physical Education Semester 1",
@@ -4319,7 +4324,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Accounting 1\nGrades 10, 11, 12 Semester .5 credit\n6009 BU, EL, MA Software: MS Excel\nThis course provides an introductory understanding of financial accounting concepts and practices. It is a great first step that can lead to success in a variety of careers and is especially valuable for anyone planning to enter accounting or other business fields, including finance, economics, management and international business. Emphasis is placed on the accounting cycle, including: analyzing business transactions, managing receivables and payables and preparing financial reports. GAAP (Generally Accepted Accounting Principles) and ethics are examined throughout the course as they relate to each area. In class, students will develop strong technology skills using MS Excel.\nThe Personal Finance course is a recommended prerequisite. "
+      "description": "Accounting 1\nGrades 10, 11, 12 Semester .5 credit\n6009 BU, EL, MA Software: MS Excel\nThis course provides an introductory understanding of financial accounting concepts and practices. It is a great first step that can lead to success in a variety of careers and is especially valuable for anyone planning to enter accounting or other business fields, including finance, economics, management and international business. Emphasis is placed on the accounting cycle, including: analyzing business transactions, managing receivables and payables and preparing financial reports. GAAP (Generally Accepted Accounting Principles) and ethics are examined throughout the course as they relate to each area. In class, students will develop strong technology skills using MS Excel. The Personal Finance course is a recommended prerequisite. "
     },
 
     {
