@@ -420,7 +420,7 @@ function showCoursePopup(course) {
       for (let i = 0; i < linesToScan; i++) {
         
         const lineClean = lines[i].trim();
-        
+
         const looksLikeSentence = lineClean.length > 70 && lineClean.includes(" ") && !lineClean.includes("prerequisite");
 
         if (looksLikeSentence) break;
@@ -429,11 +429,12 @@ function showCoursePopup(course) {
         // Check for any signature traits of a metadata header line
         const hasPrereqKeyword = lineClean.toLowerCase().includes("prerequisite");
         const hasAdminApproval = lineClean.toLowerCase().includes("administrative approval");
-        const hasLevelTags = /\([A-Z\*]+\)/.test(lineClean); // Matches (H), (X), (AP), (H*)
+        const hasLevelTags = /\([A-Z\*]+\)/.test(lineClean) && /^\d{4}/.test(lineClean); // Matches (H), (X), (AP), (H*)
+        const isCourseNumber = /^\d{4}/.test(lineClean);   
         const hasCategoryTags = lineClean.includes(" EN") || lineClean.includes(" MA") || lineClean.includes(" SC") || lineClean.includes(" SS") || lineClean.includes(" WL") || lineClean.includes(" VP") || lineClean.includes(" TE") || lineClean.includes(" BU") || lineClean.includes(" FC") || lineClean.includes(" EL");
         const isJustTitleOrGrade = lineClean.toLowerCase().startsWith("grade ") || lineClean.toLowerCase().startsWith("grades ") || lineClean.toLowerCase() === course.name.toLowerCase();
 
-        if (hasPrereqKeyword || hasAdminApproval || hasLevelTags || hasCategoryTags || isJustTitleOrGrade) {
+        if (hasPrereqKeyword || hasAdminApproval || hasLevelTags || hasCategoryTags || isJustTitleOrGrade || isCourseNumber) {
           lastHeaderIndex = i; // Mark this line as a header line to be stripped
         }
       }
