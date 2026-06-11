@@ -352,10 +352,26 @@ function selectCourse(subject, course, button) {
   } else {
     button.classList.add("selected");
     
-    // Assign the default level if it hasn't been set yet
-    if (!course.selectedLevel) {
-      course.selectedLevel = getDefaultLevel(course.levels);
+    // --- INDIVIDUAL CASE: Grade 9 Algebra 2 Restriction ---
+    const currentGrade = getCurrentGrade();
+    if (currentGrade === 9 && course.name === "Algebra 2") {
+      // Filter out any levels that are not H or H*
+      const allowedLevels = (course.levels || []).filter(lvl => lvl === "H" || lvl === "H*");
+      
+      if (allowedLevels.length > 0) {
+        // Temporarily mutate or safely read the filtered subset for this instantiation
+        course.selectedLevel = allowedLevels.includes("H*") ? "H*" : "H";
+      } else {
+        // Fallback case if structural data doesn't match expectations
+        course.selectedLevel = getDefaultLevel(course.levels);
+      }
+    } else {
+      // Standard default behavior for all other courses/grades
+      if (!course.selectedLevel) {
+        course.selectedLevel = getDefaultLevel(course.levels);
+      }
     }
+    // ------------------------------------------------------
 
     selectedCourses[course.name] = course;
   }
@@ -420,8 +436,8 @@ function showCoursePopup(course) {
       for (let i = 0; i < linesToScan; i++) {
         
         const lineClean = lines[i].trim();
-        
-        const looksLikeSentence = lineClean.length > 70 && lineClean.includes(" ") && !lineClean.includes("prerequisite");
+
+        const looksLikeSentence = lineClean.length > 75 && lineClean.includes(" ") && !lineClean.includes("prerequisite");
 
         if (looksLikeSentence) break;
 
@@ -429,11 +445,12 @@ function showCoursePopup(course) {
         // Check for any signature traits of a metadata header line
         const hasPrereqKeyword = lineClean.toLowerCase().includes("prerequisite");
         const hasAdminApproval = lineClean.toLowerCase().includes("administrative approval");
-        const hasLevelTags = /\([A-Z\*]+\)/.test(lineClean); // Matches (H), (X), (AP), (H*)
+        const hasLevelTags = /\([A-Z\*]+\)/.test(lineClean) && /^\d{4}/.test(lineClean); // Matches (H), (X), (AP), (H*)
+        const isCourseNumber = /^\d{4}/.test(lineClean);   
         const hasCategoryTags = lineClean.includes(" EN") || lineClean.includes(" MA") || lineClean.includes(" SC") || lineClean.includes(" SS") || lineClean.includes(" WL") || lineClean.includes(" VP") || lineClean.includes(" TE") || lineClean.includes(" BU") || lineClean.includes(" FC") || lineClean.includes(" EL");
         const isJustTitleOrGrade = lineClean.toLowerCase().startsWith("grade ") || lineClean.toLowerCase().startsWith("grades ") || lineClean.toLowerCase() === course.name.toLowerCase();
 
-        if (hasPrereqKeyword || hasAdminApproval || hasLevelTags || hasCategoryTags || isJustTitleOrGrade) {
+        if (hasPrereqKeyword || hasAdminApproval || hasLevelTags || hasCategoryTags || isJustTitleOrGrade || isCourseNumber) {
           lastHeaderIndex = i; // Mark this line as a header line to be stripped
         }
       }
@@ -492,6 +509,8 @@ function showCoursePopup(course) {
   };
 }
 
+
+
 function updateTable() {
   const tbody = document.querySelector("#schedule-table tbody");
   if (!tbody) return;
@@ -515,10 +534,15 @@ function updateTable() {
   });
 
   sortedEntries.forEach(([courseName, course]) => {
-    const levels = course.levels || [];
-    const credits = parseFloat(course.credit) || 0;
+    // --- INDIVIDUAL CASE: Filter levels array ONLY if Grade 9 Algebra 2 ---
+    let levels = course.levels || [];
+    if (getCurrentGrade() === 9 && course.name === "Algebra 2") {
+      levels = levels.filter(lvl => lvl === "H" || lvl === "H*");
+    }
 
-    // Updated fallback to use getDefaultLevel
+    const credits = parseFloat(course.credit) || 0;
+    
+    // Fall back to our newly filtered localized levels list 
     const currentLevel = course.selectedLevel || getDefaultLevel(levels);
 
     const defaultNumbers = currentLevel
