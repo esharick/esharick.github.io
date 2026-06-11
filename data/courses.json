@@ -3256,7 +3256,28 @@
       "prerequisites": "",
       "description": "Combination Music Courses\nGrades 9, 10, 11, 12 Year .5 credit\nStudents are encouraged to participate in more than one musical organization. Please note that these courses involve shared time.\n(See individual courses for course descriptions)"
     },
-
+    {
+      "name": "Chorale",
+      "levels": [],
+      "term": "Y",
+      "credit": "0.2",
+      "category": [
+        "VP",
+        "EL"
+      ],
+      "grades": [
+        "9",
+        "10"
+        
+      ],
+      "courseNumbers": {
+        "default": [
+          "7635"
+        ]
+      },
+      "prerequisites": "Audition Required",
+      "description": "Chorale\nGrades 9, 10 Year .2 credit\nChorale is a select vocal organization for 9th and 10th graders who may perform at extracurricular functions, in addition to the Winter and Spring Concerts. Students are selected through audition and must also be members of Concert Choir or Cantata"
+    },
     {
       "name": "Jazz Ens/Cantata/Chorale",
       "levels": [],
