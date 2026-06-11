@@ -8,8 +8,17 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <style>
-        /* PAGE WRAPPER */
+        * {
+            box-sizing: border-box;
+        }
 
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* PAGE WRAPPER */
         #scheduleViewerPage {
             font-family: Arial, sans-serif;
             padding: 30px;
@@ -103,13 +112,15 @@
 
             border-radius: 10px;
 
-            overflow: visible;
+            overflow: hidden;
 
             box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
 
             display: none;
 
             z-index: 9999;
+
+            box-sizing: border-box;
         }
 
         #alertHeader {
@@ -166,13 +177,18 @@
             max-height: calc(100vh - 110px);
 
             overflow-y: auto;
+            overflow-x: hidden;
+
+            width: 100%;
         }
 
         #alertBody ul {
 
             margin: 0;
 
-            padding-left: 20px;
+            padding-left: 24px;
+
+            width: 100%;
         }
 
 
@@ -181,6 +197,9 @@
             margin-bottom: 8px;
 
             line-height: 1.4;
+
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         #graduationAlert.minimized {
@@ -198,9 +217,7 @@
         @media print {
 
             @page {
-
                 size: landscape;
-
                 margin: 0.5in;
             }
 
@@ -208,13 +225,23 @@
             .print-button-container,
             #graduationAlert,
             #scheduleViewerPage h1 {
-
                 display: none !important;
             }
 
             body {
-
                 margin: 0;
+            }
+
+            /* New page for every grade */
+            .grade-section {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            /* Don't put a blank page after Grade 12 */
+            .grade-section:last-child {
+                page-break-after: auto;
+                break-after: auto;
             }
         }
     </style>

@@ -1,3 +1,24 @@
+// something else idk
+function initializePopupPosition() {
+
+    const popup =
+        document.getElementById(
+            "graduationAlert"
+        );
+
+    const rect =
+        popup.getBoundingClientRect();
+
+    popup.style.left =
+        rect.left + "px";
+
+    popup.style.top =
+        rect.top + "px";
+
+    popup.style.right =
+        "auto";
+}
+
 // =====================================================
 // Popup Manager
 // =====================================================
@@ -65,7 +86,7 @@ function showGraduationAlert(errors) {
     }
 
     popup.style.display = "block";
-
+    initializePopupPosition();
     updateMinimizedTitle();
 }
 
