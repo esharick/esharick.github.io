@@ -3428,7 +3428,6 @@
         "EL"
       ],
       "grades": [
-        "9",
         "10",
         "11",
         "12"
@@ -4599,7 +4598,7 @@
           ]
         },
         "prerequisites": "App Development 1",
-        "description": "App Development 2\nGrades 11, 12 2nd Semester .5 credit\n2569 MA, BT, EL\nPrerequisite: App Development 1\nIn this course, students will learn about the app development process using C# and the .NET framework. Students will build on the knowledge from App Development 1 to design and develop web and gaming applications, and study the architecture differences between mobile, web, and gaming applications. Students will understand the different graphical styles of gaming applications, including 2-dimensional, 3-dimensional, top-down, side-view, 1st person, and 3rd person. Students will build various UI and UX for some simple games and link their applications to a backend database for persistent data storage. Students who complete this course should be able to: Design and implement a frontend and backend for a web application Understand the different styles of gaming applications Design and implement their own gaming application\n*This course does not currently meet NCAA eligibility requirements for math."
+        "description": "App Development 2\nGrades 11, 12 2nd Semester .5 credit\n2569 MA, BT, EL\nPrerequisite: App Development 1\nIn this course, students will learn about the app development process using C# and the .NET framework. Students will build on the knowledge from App Development 1 to design and develop web and gaming applications, and study the architecture differences between mobile, web, and gaming applications. Students will understand the different graphical styles of gaming applications, including 2-dimensional, 3-dimensional, top-down, side-view, 1st person, and 3rd person. Students will build various UI and UX for some simple games and link their applications to a backend database for persistent data storage. Students who complete this course should be able to: Design and implement a frontend and backend for a web application Understand the different styles of gaming applications Design and implement their own gaming application\n*This course does not currently meet NCAA eligibility requirements for math. \n\n This website was made by Mr. Sharick's 2026 App Dev 2 Class with Anton Lalwani, Kevin Li, Harshita, Jerrick."
       },
       {
         "name": "Coding",

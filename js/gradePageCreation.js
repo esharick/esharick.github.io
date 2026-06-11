@@ -24,6 +24,14 @@ function getCurrentGrade() {
   return match ? parseInt(match[1], 10) : null;
 }
 
+// --- Helper to determine the default level (X > A > first available) ---
+function getDefaultLevel(levels) {
+  if (!levels || levels.length === 0) return null;
+  if (levels.includes("X")) return "X";
+  if (levels.includes("A")) return "A";
+  return levels[0];
+}
+
 // --- Unified Multi-Year localStorage helpers ---
 const STORAGE_KEY = "student_course_plan";
 
@@ -41,7 +49,8 @@ function saveSelections() {
   if (!Array.isArray(timeline)) timeline = [];
 
   const currentGradeCoursesArray = Object.values(selectedCourses).map(course => {
-    const chosenLevel = course.selectedLevel || (course.levels ? course.levels[0] : null);
+    // Updated fallback to use getDefaultLevel
+    const chosenLevel = course.selectedLevel || getDefaultLevel(course.levels);
 
     let singleTargetNumber = "—";
     if (chosenLevel && course.courseNumbers?.[chosenLevel]) {
@@ -122,7 +131,6 @@ function loadSelections() {
   }
 }
 
-// UNCHANGED: Kept exactly as it was originally
 function groupBySubject(courses) {
   const grouped = {};
 
@@ -343,6 +351,12 @@ function selectCourse(subject, course, button) {
     delete selectedCourses[course.name];
   } else {
     button.classList.add("selected");
+    
+    // Assign the default level if it hasn't been set yet
+    if (!course.selectedLevel) {
+      course.selectedLevel = getDefaultLevel(course.levels);
+    }
+
     selectedCourses[course.name] = course;
   }
 
@@ -498,7 +512,8 @@ function updateTable() {
     const levels = course.levels || [];
     const credits = parseFloat(course.credit) || 0;
 
-    const currentLevel = course.selectedLevel || levels[0] || null;
+    // Updated fallback to use getDefaultLevel
+    const currentLevel = course.selectedLevel || getDefaultLevel(levels);
 
     const defaultNumbers = currentLevel
       ? course.courseNumbers?.[currentLevel] || []
