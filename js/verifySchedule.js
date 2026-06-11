@@ -27,7 +27,7 @@ function verifyGraduationRequirements() {
 
         console.log("Loaded schedule:", schedule);
 
-        
+
         let courses = [];
 
         // Supports both:
@@ -227,45 +227,6 @@ function hasTag(courses, tag) {
             Array.isArray(course.tags) &&
             course.tags.includes(tag)
     );
-}
-
-function showGraduationAlert(errors) {
-
-    console.log("Showing graduation popup");
-
-    const alertBox =
-        document.getElementById(
-            "graduationAlert"
-        );
-
-    if (!alertBox) {
-
-        console.error(
-            "graduationAlert element not found"
-        );
-
-        return;
-    }
-
-    let html = `
-        <h3>Graduation Requirements Not Met</h3>
-        <ul>
-    `;
-
-    errors.forEach(error => {
-
-        html += `
-            <li>${error}</li>
-        `;
-    });
-
-    html += `
-        </ul>
-    `;
-
-    alertBox.innerHTML = html;
-
-    alertBox.style.display = "block";
 }
 
 function collectGradeErrors() {
