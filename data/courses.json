@@ -703,7 +703,7 @@
         ]
       },
       "prerequisites": "Algebra 2",
-      "description": "Trigonometry and Algebra 3\n\nGrades 11*, 12 Year 1 credit\n*with administrative approval\n2141 (X) MA\n\nPrerequisite: Algebra 2\n\nThis course emphasizes the inter-relationships of algebraic and trigonometric functions. A functional approach is used throughout to provide extensive treatment of topics from algebra and trigonometry. Topics in algebra are extended to make connections and identify similarities to trigonometry. Topics include, but are not limited to: solving quadratic and linear equations, graphing quadratic and linear functions, graphing trigonometric functions, solving trigonometric equations, sketching polynomial functions, and application problems. Students who have completed a course in Math Analysis or its equivalent are not eligible to earn additional math credits through Trigonometry and Algebra 3. This course is intended to be an alternative to Math Analysis for students who do not anticipate taking Calculus during or after high school. Students who have successfully completed this course should be able to:\n-Define the trigonometric functions and demonstrate relationships among them.\n-Demonstrate techniques of graph sketching of functions.\n-Solve equations involving the trigonometric functions and their inverses.\n-Apply algebraic concepts to the solution of equations and application problems."
+      "description": "Trigonometry and Algebra 3\n\nGrades 11*, 12 Year 1 credit\n11*with administrative approval\n2141 (X) MA\n\nPrerequisite: Algebra 2\n\nThis course emphasizes the inter-relationships of algebraic and trigonometric functions. A functional approach is used throughout to provide extensive treatment of topics from algebra and trigonometry. Topics in algebra are extended to make connections and identify similarities to trigonometry. Topics include, but are not limited to: solving quadratic and linear equations, graphing quadratic and linear functions, graphing trigonometric functions, solving trigonometric equations, sketching polynomial functions, and application problems. Students who have completed a course in Math Analysis or its equivalent are not eligible to earn additional math credits through Trigonometry and Algebra 3. This course is intended to be an alternative to Math Analysis for students who do not anticipate taking Calculus during or after high school. Students who have successfully completed this course should be able to:\n-Define the trigonometric functions and demonstrate relationships among them.\n-Demonstrate techniques of graph sketching of functions.\n-Solve equations involving the trigonometric functions and their inverses.\n-Apply algebraic concepts to the solution of equations and application problems."
     },
     {
       "name": "Calculus",
@@ -717,7 +717,7 @@
         "MA"
       ],
       "grades": [
-        "11",
+        
         "12"
       ],
       "courseNumbers": {
