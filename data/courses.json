@@ -373,7 +373,7 @@
       "description": "News Editors’ Seminar (The Spoke)**\nGrades 10, 11, 12 Year .5 credit\n0415 EL\nExperienced staff members of The Spoke may apply for editorial and management positions on the following year’s Editorial Board, which oversees the production of The Spoke. These leaders are required to schedule News Editors’ Seminar in addition to Newspaper. Prior to the close of the course selection period, applicants will be notified by the advisor whether they have been selected. The signature of the newspaper advisor is required on the Course Selection Card."
     },
     {
-      "name": "Literary and Art Magazine",
+      "name": "Literary and Art Magazine (The Folio)**",
       "levels": [],
       "term": "Y",
       "credit": "0.5",
@@ -598,8 +598,7 @@
       "grades": [
         "9",
         "10",
-        "11",
-        "12"
+        "11"
       ],
       "courseNumbers": {
         "H": [
@@ -1525,7 +1524,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Asian American Studies\nGrades 10, 11, 12 Semester .5 credit\n1350 (H) 1351 (X) 1352 (A) EL\nThis course will challenge students to explore the Asian Americanexperience through the lenses of history and culture. Thecurriculum is organized into themes which include the following: race, culture, and identity; Asian culture and history, the Asian Diaspora, the resistance and resilience of Asian Americans, leadership in the Asian American community, influence of Asian American cultures and traditions in Asian American history. In addition, there will be a focus on the influence of Asian culture in American culture, the fight for citizenship, equality, individual rights, current issues and future challenges in education, socio-economic status, cultural impact, and the persistence of discrimination"
+      "description": "Asian American Studies\nGrades 10, 11, 12 Semester .5 credit\n1350 (H) 1351 (X) 1352 (A) EL\nThis course will challenge students to explore the Asian American experience through the lenses of history and culture. Thecurriculum is organized into themes which include the following: race, culture, and identity; Asian culture and history, the Asian Diaspora, the resistance and resilience of Asian Americans, leadership in the Asian American community, influence of Asian American cultures and traditions in Asian American history. In addition, there will be a focus on the influence of Asian culture in American culture, the fight for citizenship, equality, individual rights, current issues and future challenges in education, socio-economic status, cultural impact, and the persistence of discrimination"
     },
     {
       "name": "Philosophy",
@@ -1740,7 +1739,6 @@
         "EL"
       ],
       "grades": [
-        "9",
         "10",
         "11",
         "12"
@@ -2902,8 +2900,8 @@
           "7505"
         ]
       },
-      "prerequisites": "",
-      "description": "Concert Band** \nGrades 9, 10, 11, 12 Year .5 credit\n7505 VP, EL Audition Required for Percussion\nThis ensemble is open to all Brass and Woodwind instrumentalists without an audition. Percussionists must audition to be considered for this group. Members of Concert Band will explore a variety of musical styles from the Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional band repertoire. This group performs two concerts each year. Participation in this instrumentalist organization affords its members an opportunity to be considered for additional advanced performing groups such as Jazz Band, Jazz Ensemble, and Pennsylvania Music Educators Association (PMEA) Festivals. All Concert Band members are strongly encouraged to participate in Marching Band, an extra-curricular band activity that meets outside of the regular school day throughout the late summer and fall seasons."
+      "prerequisites": "Audition Required for Percussion",
+      "description": "Concert Band** \nGrades 9, 10, 11, 12 Year .5 credit\n7505 VP, EL\nThis ensemble is open to all Brass and Woodwind instrumentalists without an audition. Percussionists must audition to be considered for this group. Members of Concert Band will explore a variety of musical styles from the Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional band repertoire. This group performs two concerts each year. Participation in this instrumentalist organization affords its members an opportunity to be considered for additional advanced performing groups such as Jazz Band, Jazz Ensemble, and Pennsylvania Music Educators Association (PMEA) Festivals. All Concert Band members are strongly encouraged to participate in Marching Band, an extra-curricular band activity that meets outside of the regular school day throughout the late summer and fall seasons."
     },
     {
       "name": "Wind Ensemble",
@@ -2925,8 +2923,8 @@
           "7515"
         ]
       },
-      "prerequisites": "",
-      "description": "Wind Ensemble\n\nGrades 9, 10, 11, 12\nYear .5 credit\n7515 VP, EL\nAudition Required\n\nBrass, woodwind, and percussion instrumentalists are given an opportunity to audition in early January, prior to course selection.* Each instrumentalist is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition.\nThe group performs at least twice a year, exploring Renaissance, Baroque, Classical, Romantic, and Contemporary periods, as well as new and traditional band repertoire. Participation in this instrumentalist organization affords its members an opportunity to be considered for additional advanced performing groups such as Jazz Band, Jazz Ensemble, Symphony Orchestra, and PMEA Festivals.\nAll Wind Ensemble members are strongly encouraged to participate in Marching Band, an extracurricular band activity that meets outside of the regular school day throughout the late summer and fall seasons."
+      "prerequisites": "Audition Required",
+      "description": "Wind Ensemble\n\nGrades 9, 10, 11, 12\nYear .5 credit\n7515 VP, EL\n\nBrass, woodwind, and percussion instrumentalists are given an opportunity to audition in early January, prior to course selection.* Each instrumentalist is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition.\nThe group performs at least twice a year, exploring Renaissance, Baroque, Classical, Romantic, and Contemporary periods, as well as new and traditional band repertoire. Participation in this instrumentalist organization affords its members an opportunity to be considered for additional advanced performing groups such as Jazz Band, Jazz Ensemble, Symphony Orchestra, and PMEA Festivals.\nAll Wind Ensemble members are strongly encouraged to participate in Marching Band, an extracurricular band activity that meets outside of the regular school day throughout the late summer and fall seasons."
     },
     {
       "name": "String Ensemble",
@@ -2971,8 +2969,8 @@
           "7525"
         ]
       },
-      "prerequisites": "",
-      "description": "Symphony Orchestra**\nGrades 9, 10, 11, 12 Year\n7525 (Strings Only) .5 credit\nVP, EL Audition Required for all Strings\nMusicians in the Orchestra will prepare music to be performed at various times throughout the year, including the annual Winter and Spring Concerts. Various new and traditional orchestral compositions will be explored. Members will explore Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional string orchestra repertoire. Wind, brass, and percussion players are selected from the Wind Ensemble through competitive audition. String players are also auditioned."
+      "prerequisites": "Audition Required for all Strings",
+      "description": "Symphony Orchestra**\nGrades 9, 10, 11, 12 Year\n7525 (Strings Only) .5 credit\nVP, EL\nMusicians in the Orchestra will prepare music to be performed at various times throughout the year, including the annual Winter and Spring Concerts. Various new and traditional orchestral compositions will be explored. Members will explore Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional string orchestra repertoire. Wind, brass, and percussion players are selected from the Wind Ensemble through competitive audition. String players are also auditioned."
     },
     {
       "name": "Symphony Orchestra (Brass, Percussion, Winds)",
@@ -2994,8 +2992,8 @@
           "7535"
         ]
       },
-      "prerequisites": "",
-      "description": "Symphony Orchestra**\nGrades 9, 10, 11, 12 Year\n7535 (Brass, Percussion, Winds) .4 credit\nVP, EL Audition Required for all Brass, Woodwind and Percussion\nMusicians in the Orchestra will prepare music to be performed at various times throughout the year, including the annual Winter and Spring Concerts. Various new and traditional orchestral compositions will be explored. Members will explore Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional string orchestra repertoire. Wind, brass, and percussion players are selected from the Wind Ensemble through competitive audition. String players are also auditioned."
+      "prerequisites": "Audition Required for all Brass, Woodwind and Percussion",
+      "description": "Symphony Orchestra**\nGrades 9, 10, 11, 12 Year\n7535 (Brass, Percussion, Winds) .4 credit\nVP, EL\nMusicians in the Orchestra will prepare music to be performed at various times throughout the year, including the annual Winter and Spring Concerts. Various new and traditional orchestral compositions will be explored. Members will explore Renaissance, Baroque, Classical, Romantic, and Contemporary periods as well as new and traditional string orchestra repertoire. Wind, brass, and percussion players are selected from the Wind Ensemble through competitive audition. String players are also auditioned."
     },
     {
       "name": "Jazz Band",
@@ -3017,8 +3015,8 @@
           "7545"
         ]
       },
-      "prerequisites": "",
-      "description": "Jazz Band**\nGrades 9, 10, 11, 12\nYear .5 credit\n7545 VP, EL\nAudition Required\nBrass, woodwind, percussion instrumentalists, guitarists, and pianists are given an opportunity to audition in early January, prior to course selection.* Each musician is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition. Those selected for the Jazz Band will play both contemporary and standard jazz music styles. Improvisational skills will be developed as students prepare for various performances throughout the year. Participation in this course is contingent upon participation in Marching Band, Concert Band, or Wind Ensemble (pianists, guitarists, and bassists excluded)."
+      "prerequisites": "Audition Required",
+      "description": "Jazz Band**\nGrades 9, 10, 11, 12\nYear .5 credit\n7545 VP, EL\nBrass, woodwind, percussion instrumentalists, guitarists, and pianists are given an opportunity to audition in early January, prior to course selection.* Each musician is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition. Those selected for the Jazz Band will play both contemporary and standard jazz music styles. Improvisational skills will be developed as students prepare for various performances throughout the year. Participation in this course is contingent upon participation in Marching Band, Concert Band, or Wind Ensemble (pianists, guitarists, and bassists excluded)."
     },
     {
       "name": "Percusion Ensemble",
@@ -3063,8 +3061,8 @@
           "7555"
         ]
       },
-      "prerequisites": "",
-      "description": "Jazz Ensemble**\nGrades 9, 10, 11, 12\nYear .5 credit\n7555 VP, EL\nAudition Required\nBrass, woodwind, percussion instrumentalists, guitarists, and pianists are given an opportunity to audition in early January, prior to course selection*. Each musician is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition. Those selected for the Jazz Ensemble will play advanced jazz literature. Improvisational skills will be developed as students prepare for various performances throughout the year. Participation in this course is contingent upon participation in Marching Band, Concert Band, or Wind Ensemble (pianists, guitarists, and bassists excluded)."
+      "prerequisites": "Audition Required",
+      "description": "Jazz Ensemble**\nGrades 9, 10, 11, 12\nYear .5 credit\n7555 VP, EL\nBrass, woodwind, percussion instrumentalists, guitarists, and pianists are given an opportunity to audition in early January, prior to course selection*. Each musician is expected to demonstrate an advanced level of proficiency, consistent with District 12 Pennsylvania Music Educators Association (PMEA) requirements made available to interested students prior to audition. Those selected for the Jazz Ensemble will play advanced jazz literature. Improvisational skills will be developed as students prepare for various performances throughout the year. Participation in this course is contingent upon participation in Marching Band, Concert Band, or Wind Ensemble (pianists, guitarists, and bassists excluded)."
     },
     {
       "name": "Studio Session",
@@ -3234,7 +3232,7 @@
     },
 
     {
-      "name": "Wind Ensemble.Perc",
+      "name": "Wind Ensemble/Perc",
       "levels": [],
       "term": "Y",
       "credit": "0.5",
@@ -3344,8 +3342,8 @@
           "7625"
         ]
       },
-      "prerequisites": "",
-      "description": "Camerata**\nGrades 11,12 Year . 5 credit\n7625 VP, EL Audition Required\nCamerata is a select choral organization for juniors and seniors that performs at many extracurricular functions throughout the school year, in addition to the Winter and Spring Concerts. Students are chosen from the Concert Choir through competitive audition. They are expected to demonstrate an advanced level of proficiency, consistent with District 12 PMEA standards. Auditions for Camerata are open to all vocalists, who are members of the Concert Choir."
+      "prerequisites": "Audition Required",
+      "description": "Camerata**\nGrades 11,12 Year . 5 credit\n7625 VP, EL\nCamerata is a select choral organization for juniors and seniors that performs at many extracurricular functions throughout the school year, in addition to the Winter and Spring Concerts. Students are chosen from the Concert Choir through competitive audition. They are expected to demonstrate an advanced level of proficiency, consistent with District 12 PMEA standards. Auditions for Camerata are open to all vocalists, who are members of the Concert Choir."
     },
     {
       "name": "Concert Choir Soprano/Alto",
@@ -4456,7 +4454,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Engineering Design, Production and Automation\nGrades 9, 10, 11, 12 Semester .5 credit\n8659 TE, EL\n(Lab Fee - $25.00)\n\nStudents in Engineering Design, Production, and Automation will learn to use drafting and design computer software programs for a variety of design problems. After computer hardware/software orientation, students will learn to read and render several types of technical drawings and output to computer-controlled fabrication machinery. That which is learned will then be applied in the design process. Students will work individually and in small groups on several engineering design activities. Working in both two-dimensional and three-dimensional programs, students will create mock-ups, prototypes, and scale models using 3D printers and scanners, computer numeric controlled routers, vinyl cutters, screen printing, and laser cutting technologies. This course is recommended for students interested in a career in engineering design and automation."
+      "description": "Engineering Design, Production and Automation\nGrades 9, 10, 11, 12 Semester .5 credit\n8659 TE, EL\n(Lab Fee - $25.00)\nStudents in Engineering Design, Production, and Automation will learn to use drafting and design computer software programs for a variety of design problems. After computer hardware/software orientation, students will learn to read and render several types of technical drawings and output to computer-controlled fabrication machinery. That which is learned will then be applied in the design process. Students will work individually and in small groups on several engineering design activities. Working in both two-dimensional and three-dimensional programs, students will create mock-ups, prototypes, and scale models using 3D printers and scanners, computer numeric controlled routers, vinyl cutters, screen printing, and laser cutting technologies. This course is recommended for students interested in a career in engineering design and automation."
     },
 
     {
@@ -4524,9 +4522,9 @@
         "default": [
           "8669"
         ]
-      },
+      }, 
       "prerequisites": "",
-      "description": "Robotic Engineering\n\nGrades 9, 10, 11, 12 Semester .5 credit\n8669 TE, EL\n(Lab Fee - $25.00)\n\nThis advanced course is designed for students with interests in robotics. This project-based approach will immerse students in the problem-solving engineering design method. Students will apply a problems-based approach to authentic situations using robotic technology. Students will experience a wide variety of practical applications of robotics, including mechanical function, pneumatic actuators, soft robotics, autonomous programming, and control. Students will work in teams to complete design challenges using research and development procedures, testing and analysis techniques. They will have access to fabrication machinery, additive prototyping, and subtractive manufacturing."
+      "description": "Robotic Engineering\n\nGrades 9, 10, 11, 12 Semester .5 credit\n8669 TE, EL\n(Lab Fee - $25.00)\nThis advanced course is designed for students with interests in robotics. This project-based approach will immerse students in the problem-solving engineering design method. Students will apply a problems-based approach to authentic situations using robotic technology. Students will experience a wide variety of practical applications of robotics, including mechanical function, pneumatic actuators, soft robotics, autonomous programming, and control. Students will work in teams to complete design challenges using research and development procedures, testing and analysis techniques. They will have access to fabrication machinery, additive prototyping, and subtractive manufacturing."
     },
     {
       "name": "Structural And Environmental Engineering",
@@ -4549,7 +4547,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Grades 9, 10, 11, 12 Semester .5 credit\n8639 TE, EL\n(Lab Fee - $25.00)\n\nThis advanced course is designed for students with interests in technology, science, or engineering. Students will apply a problems-based approach to authentic situations in structural design, construction technology, communications, product design, manufacturing, and environmental engineering. Solutions will be designed on computers and built in the fabrication lab using a CNC milling machine, a laser engraver, 3D printing machines, and traditional tools. Students will work in teams to learn research and development procedures, testing and analysis techniques, and applied technology. Topics include structural engineering, design engineering, manufacturing systems engineering, and environmental engineering."
+      "description": "Grades 9, 10, 11, 12 Semester .5 credit\n8639 TE, EL\n(Lab Fee - $25.00)\nThis advanced course is designed for students with interests in technology, science, or engineering. Students will apply a problems-based approach to authentic situations in structural design, construction technology, communications, product design, manufacturing, and environmental engineering. Solutions will be designed on computers and built in the fabrication lab using a CNC milling machine, a laser engraver, 3D printing machines, and traditional tools. Students will work in teams to learn research and development procedures, testing and analysis techniques, and applied technology. Topics include structural engineering, design engineering, manufacturing systems engineering, and environmental engineering."
     },
     {
         "name": "AP Computer Science Principles",
