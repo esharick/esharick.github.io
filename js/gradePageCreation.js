@@ -419,11 +419,12 @@ function showCoursePopup(course) {
 
       for (let i = 0; i < linesToScan; i++) {
         
-        const looksLikeSentence = lineClean.length > 70 && lineClean.includes(" ");
+        const lineClean = lines[i].trim();
+        
+        const looksLikeSentence = lineClean.length > 70 && lineClean.includes(" ") && !lineClean.includes("prerequisite");
 
         if (looksLikeSentence) break;
 
-        const lineClean = lines[i].trim();
 
         // Check for any signature traits of a metadata header line
         const hasPrereqKeyword = lineClean.toLowerCase().includes("prerequisite");
