@@ -4501,7 +4501,7 @@
         "default": [
           "8669"
         ]
-      },
+      }, 
       "prerequisites": "",
       "description": "Robotic Engineering\n\nGrades 9, 10, 11, 12 Semester .5 credit\n8669 TE, EL\n(Lab Fee - $25.00)\nThis advanced course is designed for students with interests in robotics. This project-based approach will immerse students in the problem-solving engineering design method. Students will apply a problems-based approach to authentic situations using robotic technology. Students will experience a wide variety of practical applications of robotics, including mechanical function, pneumatic actuators, soft robotics, autonomous programming, and control. Students will work in teams to complete design challenges using research and development procedures, testing and analysis techniques. They will have access to fabrication machinery, additive prototyping, and subtractive manufacturing."
     },
@@ -4526,7 +4526,7 @@
         ]
       },
       "prerequisites": "",
-      "description": "Grades 9, 10, 11, 12 Semester .5 credit\n8639 TE, EL\n(Lab Fee - $25.00)\n\nThis advanced course is designed for students with interests in technology, science, or engineering. Students will apply a problems-based approach to authentic situations in structural design, construction technology, communications, product design, manufacturing, and environmental engineering. Solutions will be designed on computers and built in the fabrication lab using a CNC milling machine, a laser engraver, 3D printing machines, and traditional tools. Students will work in teams to learn research and development procedures, testing and analysis techniques, and applied technology. Topics include structural engineering, design engineering, manufacturing systems engineering, and environmental engineering."
+      "description": "Grades 9, 10, 11, 12 Semester .5 credit\n8639 TE, EL\n(Lab Fee - $25.00)\nThis advanced course is designed for students with interests in technology, science, or engineering. Students will apply a problems-based approach to authentic situations in structural design, construction technology, communications, product design, manufacturing, and environmental engineering. Solutions will be designed on computers and built in the fabrication lab using a CNC milling machine, a laser engraver, 3D printing machines, and traditional tools. Students will work in teams to learn research and development procedures, testing and analysis techniques, and applied technology. Topics include structural engineering, design engineering, manufacturing systems engineering, and environmental engineering."
     },
     {
         "name": "AP Computer Science Principles",
