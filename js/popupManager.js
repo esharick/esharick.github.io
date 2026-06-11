@@ -146,7 +146,7 @@ function updateMinimizedTitle() {
             popup.dataset.errorCount || 0;
 
         title.textContent =
-            `${count} Errors Remaining`;
+            `${count} Errors Left`;
     }
     else {
 
