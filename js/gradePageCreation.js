@@ -421,7 +421,7 @@ function showCoursePopup(course) {
         
         const lineClean = lines[i].trim();
 
-        const looksLikeSentence = lineClean.length > 70 && lineClean.includes(" ") && !lineClean.includes("prerequisite");
+        const looksLikeSentence = lineClean.length > 75 && lineClean.includes(" ") && !lineClean.includes("prerequisite");
 
         if (looksLikeSentence) break;
 
