@@ -81,9 +81,24 @@ function renderFilterInterface() {
             <span class="filter-label">Select Grade:</span>
             ${clearBtnHTML}
           </div>
-          <div class="search-wrapper" style="margin-left: auto;">
-            <input type="text" id="course-search-bar" placeholder="Search courses..." value="${searchQuery}" oninput="updateSearchFilter(this.value)" style="padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px; width: 220px; font-size: 14px;" />
-          </div>
+            <div class="search-wrapper" style="margin-left: auto;">
+              <input 
+                type="text" 
+                id="course-search-bar" 
+                placeholder="Search courses..." 
+                value="${searchQuery}" 
+                oninput="updateSearchFilter(this.value)" 
+                style="
+                  padding: 6px 12px;
+                  border: 1px solid #555;
+                  border-radius: 4px;
+                  width: 220px;
+                  font-size: 14px;
+                  background-color: #2b2b2b;   /* light gray for dark theme */
+                  color: #e0e0e0;              /* readable text */
+                "
+              />
+            </div>
         </div>
         <div class="btn-group" style="margin-top: 8px;">${gradeButtonsHTML}</div>
       </div>
@@ -227,20 +242,6 @@ function filterAndDisplayCourses() {
     `;
 
     finalHTML += groupedCourses[subjectName].map(course => {
-      const descText = course.description || "";
-      const firstBreakIndex = descText.indexOf("\n");
-      let boldHeaderHTML = "";
-      let remainingDescText = descText;
-
-      if (firstBreakIndex !== -1) {
-        const firstLine = descText.substring(0, firstBreakIndex);
-        boldHeaderHTML = `<div class="description-level-header" style="margin-bottom: 4px;"><strong>${firstLine}</strong></div>`;
-        remainingDescText = descText.substring(firstBreakIndex + 1);
-      } else if (descText.trim().length > 0) {
-        boldHeaderHTML = `<div class="description-level-header" style="margin-bottom: 4px;"><strong>${descText}</strong></div>`;
-        remainingDescText = "";
-      }
-
       return `
         <details class="course-card">
           <summary class="course-summary-header">
@@ -250,8 +251,7 @@ function filterAndDisplayCourses() {
           <div class="course-expanded-content">
             <hr class="accordion-divider">
             <div class="course-description-block">
-              ${boldHeaderHTML}
-              <pre class="clean-description" style="margin-top: 4px;">${remainingDescText}</pre>
+              <pre class="clean-description" style="margin-top: 4px;">${course.description}</pre>
             </div>
           </div>
         </details>
