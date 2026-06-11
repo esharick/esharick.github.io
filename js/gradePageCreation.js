@@ -418,6 +418,11 @@ function showCoursePopup(course) {
       const linesToScan = Math.min(lines.length, 10);
 
       for (let i = 0; i < linesToScan; i++) {
+        
+        const looksLikeSentence = lineClean.length > 70 && lineClean.includes(" ");
+
+        if (looksLikeSentence) break;
+
         const lineClean = lines[i].trim();
 
         // Check for any signature traits of a metadata header line
